@@ -1,0 +1,72 @@
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+ <channel>
+   <title>Categories on Arquitetura de Software</title>
+   <link>https://www.example.org/categories/</link>
+   <description>Recent content in Categories on Arquitetura de Software</description>
+   <generator>Hugo -- gohugo.io</generator>
+   <copyright>Copyright &amp;copy; 2020 - Turma de Arquitetura de Software 2020.3.</copyright>
+   
+       <atom:link href="https://www.example.org/categories/index.xml" rel="self" type="application/rss+xml" />
+   
+   
+     <item>
+       <title>Exemplo de documento a ser produzido</title>
+       <link>https://www.example.org/posts/documento-guia/</link>
+       <pubDate>Tue, 22 Oct 2019 00:00:00 -0300</pubDate>
+       
+       <guid>https://www.example.org/posts/documento-guia/</guid>
+       <description>&lt;hr&gt;
+&lt;p&gt;Este é um documento guia para os alunos de Arquitetura de Software. A ideia é apresentar o modelo de documentação arquitetural que espero que seja produzido por eles. Esse guia foi baseado em um projeto chamado Parlametria, cujos detalhes arquiteturais estão descritos &lt;a href=&#34;https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;O documento que você, aluno, deve produzir, deve seguir às diretrizes abaixo. Naturalmente, você pode adicionar, remover e alterar o formato, mas minha sugestão é que você mantenha o padrão que estou apresentando, inclusive, a mesma ordem e nomes de seções. Isso facilitará não só a padronização da documentação produzida por vocês.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;autores&#34;&gt;Autores&lt;/h1&gt;
+&lt;p&gt;Este documento foi produzido por João Arthur Brunet.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Matrícula: 857394857&lt;/li&gt;
+&lt;li&gt;Contato: &lt;a href=&#34;mailto:joao.arthur@computacao.ufcg.edu.br&#34;&gt;joao.arthur@computacao.ufcg.edu.br&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Projeto documentado: &lt;a href=&#34;https://github.com/analytics-ufcg/parlametria-site&#34;&gt;https://github.com/analytics-ufcg/parlametria-site&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;descrição-arquitetural----serviço-de-análise-do-twitter&#34;&gt;Descrição Arquitetural &amp;ndash; Serviço de análise do twitter&lt;/h1&gt;
+&lt;p&gt;Este documento descreve parte da arquitetura do projeto &lt;a href=&#34;https://github.com/analytics-ufcg/parlametria-site&#34;&gt;Parlametria&lt;/a&gt;. Essa descrição foi baseada principalmente no modelo &lt;a href=&#34;https://c4model.com/&#34;&gt;C4&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;É importante destacar não será descrita toda a arquitetura do Parlametria. O foco aqui é a descrição de um serviço específico de análise do twitter, que é parte fundamental do projeto.&lt;/p&gt;
+&lt;h2 id=&#34;descrição-geral-sobre-o-parlametria&#34;&gt;Descrição Geral sobre o Parlametria&lt;/h2&gt;
+&lt;p&gt;O parlametria é um projeto que tem como objetivo &amp;ldquo;permitir o acompanhamento do posicionamento de cada deputado e senador nas votações, quais os seus vínculos e afinidades políticas e econômicas dentro e fora do Legislativo.&amp;rdquo; Mais detalhes sobre o projeto podem ser vistos &lt;a href=&#34;https://portal.ufcg.edu.br/ultimas-noticias/1706-plataforma-desenvolvida-na-ufcg-monitora-acoes-do-legislativo-federal.html&#34;&gt;neste link&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;o-serviço-de-monitoramento-do-twitter&#34;&gt;O Serviço de monitoramento do twitter&lt;/h2&gt;
+&lt;h3 id=&#34;objetivo-geral&#34;&gt;Objetivo Geral&lt;/h3&gt;
+&lt;p&gt;Implementar um serviço para capturar automaticamente o que é dito no twitter sobre as proposições que acompanhamos e prover indicadores sobre as publicações para serem usados no parlametria.&lt;/p&gt;
+&lt;h3 id=&#34;objetivos-específicos&#34;&gt;Objetivos Específicos&lt;/h3&gt;
+&lt;p&gt;Queremos ter acesso ao grau de atividade no twitter de parlamentares e de influenciadores do debate no twitter. Além disso, queremos saber quanto essas pessoas tuítam sobre cada proposição ou tema e a indicadores sobre sua atividade. Para parlamentares também queremos indicadores a partir dos léxicos de discurso desenvolvidos pelos nossos parceiros.&lt;/p&gt;
+&lt;h3 id=&#34;contexto&#34;&gt;Contexto&lt;/h3&gt;
+&lt;p&gt;Nesta seção eu espero duas coisas: o diagrama de contexto e um texto curto descrevendo em mais detalhes o contexto do sistema. Isso inclui as fronteiras do sistema, os sistemas/serviços externos com os quais ele se comunica etc.&lt;/p&gt;
+&lt;p&gt;Abaixo estão dois exemplos de diagramas de contexto.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;c4-context.png&#34; alt=&#34;fig1&#34;&gt;&lt;/p&gt;
+&lt;img class=&#34;center&#34; src=&#34;parlametria-contexto.png&#34; style=&#34;width:60%&#34;&gt;
+&lt;h3 id=&#34;containers&#34;&gt;Containers&lt;/h3&gt;
+&lt;p&gt;Nesta seção eu espero duas coisas: o diagrama de containers e  texto descrevendo os containers. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada container, suas tecnologias, APIs expostas, protocolos, onde são executados/implantados etc. Você pode criar um diagrama de implantação para dar mais detalhes sobre o ambiente em que os containers são implantados e executam. Essa parte de implantação pode ser uma subseção desta seção.&lt;/p&gt;
+&lt;p&gt;Importante, se um componente expor, por exemplo, uma API REST. Seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints &lt;a href=&#34;https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing&#34;&gt;deste documento&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Importante, se um container expuser, por exemplo, uma API REST, seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints &lt;a href=&#34;https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing&#34;&gt;deste documento&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Abaixo estão exemplos de diagramas de containers e de implantação.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;c4-containers.png&#34; alt=&#34;fig3&#34;&gt;
+&lt;img src=&#34;parlametria-container.png&#34; alt=&#34;fig4&#34;&gt;
+&lt;img src=&#34;c4-implantacao.png&#34; alt=&#34;fig5&#34;&gt;
+&lt;img src=&#34;parlametria-implantacao.png&#34; alt=&#34;fig6&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;componentes&#34;&gt;Componentes&lt;/h3&gt;
+&lt;p&gt;Nesta seção eu espero duas coisas: o diagrama de componentes e texto descrevendo os componentes. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada componente, seus relacionamentos, tecnologias, APIs expostas, protocolos, estilos, padrões etc.&lt;/p&gt;
+&lt;p&gt;Abaixo um exemplo de diagrama de componente.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;c4-componentes.png&#34; alt=&#34;fig7&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;código&#34;&gt;Código&lt;/h3&gt;
+&lt;pre&gt;
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+&lt;/pre&gt;
+&lt;h3 id=&#34;visão-de-informação&#34;&gt;Visão de Informação&lt;/h3&gt;
+&lt;p&gt;Aqui você deve descrever as informações importantes que são coletadas, manipuladas, armazenadas e distribuídas pelo sistema. Você não precisa descrever todas as informações, somente uma parte que seja essencial para o sistema. Por exemplo, se eu estivesse tratando do instagram, faria algo relacionado aos posts.&lt;/p&gt;
+&lt;p&gt;Além da descrição gostaria de ver aqui um diagrama para descrever os estados (ex: máquina de estados) de uma informação de acordo com as ações do sistema.&lt;/p&gt;
+&lt;h1 id=&#34;contribuições-concretas&#34;&gt;Contribuições Concretas&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;Descreva&lt;/em&gt; aqui os PRs enviados para o projeto e o status dos mesmos. Forneça os links dos PRs.&lt;/p&gt;
+</description>
+     </item>
+   
+ </channel>
+</rss>

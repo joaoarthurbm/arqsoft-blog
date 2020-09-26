@@ -1,0 +1,168 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Exemplo de documento a ser produzido - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Kiera: A Hugo theme for creative and technical writing." />
+<meta name="author" content="Example" /><meta property="og:title" content="Exemplo de documento a ser produzido" />
+<meta property="og:description" content="Este é um documento guia para os alunos de Arquitetura de Software. A ideia é apresentar o modelo de documentação arquitetural que espero que seja produzido por eles. Esse guia foi baseado em um projeto chamado Parlametria, cujos detalhes arquiteturais estão descritos aqui." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.example.org/posts/documento-guia/" />
+<meta property="article:published_time" content="2019-10-22T00:00:00-03:00" />
+<meta property="article:modified_time" content="2019-10-22T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Exemplo de documento a ser produzido"/>
+<meta name="twitter:description" content="Este é um documento guia para os alunos de Arquitetura de Software. A ideia é apresentar o modelo de documentação arquitetural que espero que seja produzido por eles. Esse guia foi baseado em um projeto chamado Parlametria, cujos detalhes arquiteturais estão descritos aqui."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://www.example.org/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://www.example.org/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://www.example.org/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/funkydan2" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Projetos da turma 2020.3 - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Exemplo de documento a ser produzido</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2019-10-22T00:00:00-03:00">Oct 22, 2019</time>
+        </li>
+        
+
+        
+
+        <li>4 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <hr>
+<p>Este é um documento guia para os alunos de Arquitetura de Software. A ideia é apresentar o modelo de documentação arquitetural que espero que seja produzido por eles. Esse guia foi baseado em um projeto chamado Parlametria, cujos detalhes arquiteturais estão descritos <a href="https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing">aqui</a>.</p>
+<p>O documento que você, aluno, deve produzir, deve seguir às diretrizes abaixo. Naturalmente, você pode adicionar, remover e alterar o formato, mas minha sugestão é que você mantenha o padrão que estou apresentando, inclusive, a mesma ordem e nomes de seções. Isso facilitará não só a padronização da documentação produzida por vocês.</p>
+<hr>
+<h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por João Arthur Brunet.</p>
+<ul>
+<li>Matrícula: 857394857</li>
+<li>Contato: <a href="mailto:joao.arthur@computacao.ufcg.edu.br">joao.arthur@computacao.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/analytics-ufcg/parlametria-site">https://github.com/analytics-ufcg/parlametria-site</a></li>
+</ul>
+<h1 id="descrição-arquitetural----serviço-de-análise-do-twitter">Descrição Arquitetural &ndash; Serviço de análise do twitter</h1>
+<p>Este documento descreve parte da arquitetura do projeto <a href="https://github.com/analytics-ufcg/parlametria-site">Parlametria</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<p>É importante destacar não será descrita toda a arquitetura do Parlametria. O foco aqui é a descrição de um serviço específico de análise do twitter, que é parte fundamental do projeto.</p>
+<h2 id="descrição-geral-sobre-o-parlametria">Descrição Geral sobre o Parlametria</h2>
+<p>O parlametria é um projeto que tem como objetivo &ldquo;permitir o acompanhamento do posicionamento de cada deputado e senador nas votações, quais os seus vínculos e afinidades políticas e econômicas dentro e fora do Legislativo.&rdquo; Mais detalhes sobre o projeto podem ser vistos <a href="https://portal.ufcg.edu.br/ultimas-noticias/1706-plataforma-desenvolvida-na-ufcg-monitora-acoes-do-legislativo-federal.html">neste link</a>.</p>
+<h2 id="o-serviço-de-monitoramento-do-twitter">O Serviço de monitoramento do twitter</h2>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Implementar um serviço para capturar automaticamente o que é dito no twitter sobre as proposições que acompanhamos e prover indicadores sobre as publicações para serem usados no parlametria.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>Queremos ter acesso ao grau de atividade no twitter de parlamentares e de influenciadores do debate no twitter. Além disso, queremos saber quanto essas pessoas tuítam sobre cada proposição ou tema e a indicadores sobre sua atividade. Para parlamentares também queremos indicadores a partir dos léxicos de discurso desenvolvidos pelos nossos parceiros.</p>
+<h3 id="contexto">Contexto</h3>
+<p>Nesta seção eu espero duas coisas: o diagrama de contexto e um texto curto descrevendo em mais detalhes o contexto do sistema. Isso inclui as fronteiras do sistema, os sistemas/serviços externos com os quais ele se comunica etc.</p>
+<p>Abaixo estão dois exemplos de diagramas de contexto.</p>
+<p><img src="c4-context.png" alt="fig1"></p>
+<img class="center" src="parlametria-contexto.png" style="width:60%">
+<h3 id="containers">Containers</h3>
+<p>Nesta seção eu espero duas coisas: o diagrama de containers e  texto descrevendo os containers. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada container, suas tecnologias, APIs expostas, protocolos, onde são executados/implantados etc. Você pode criar um diagrama de implantação para dar mais detalhes sobre o ambiente em que os containers são implantados e executam. Essa parte de implantação pode ser uma subseção desta seção.</p>
+<p>Importante, se um componente expor, por exemplo, uma API REST. Seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints <a href="https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing">deste documento</a>.</p>
+<p>Importante, se um container expuser, por exemplo, uma API REST, seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints <a href="https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing">deste documento</a>.</p>
+<p>Abaixo estão exemplos de diagramas de containers e de implantação.</p>
+<p><img src="c4-containers.png" alt="fig3">
+<img src="parlametria-container.png" alt="fig4">
+<img src="c4-implantacao.png" alt="fig5">
+<img src="parlametria-implantacao.png" alt="fig6"></p>
+<h3 id="componentes">Componentes</h3>
+<p>Nesta seção eu espero duas coisas: o diagrama de componentes e texto descrevendo os componentes. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada componente, seus relacionamentos, tecnologias, APIs expostas, protocolos, estilos, padrões etc.</p>
+<p>Abaixo um exemplo de diagrama de componente.</p>
+<p><img src="c4-componentes.png" alt="fig7"></p>
+<h3 id="código">Código</h3>
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p>Aqui você deve descrever as informações importantes que são coletadas, manipuladas, armazenadas e distribuídas pelo sistema. Você não precisa descrever todas as informações, somente uma parte que seja essencial para o sistema. Por exemplo, se eu estivesse tratando do instagram, faria algo relacionado aos posts.</p>
+<p>Além da descrição gostaria de ver aqui um diagrama para descrever os estados (ex: máquina de estados) de uma informação de acordo com as ações do sistema.</p>
+<h1 id="contribuições-concretas">Contribuições Concretas</h1>
+<p><em>Descreva</em> aqui os PRs enviados para o projeto e o status dos mesmos. Forneça os links dos PRs.</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020 - Turma de Arquitetura de Software 2020.3. |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://www.example.org/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://www.example.org/js/scripts.js"></script>
+
+</body>
+
+</html>
+
