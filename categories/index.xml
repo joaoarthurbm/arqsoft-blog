@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
  <channel>
    <title>Categories on Arquitetura de Software</title>
-   <link>https://www.example.org/categories/</link>
+   <link>https://joaoarthurbm.github.io/arqsoft20203/categories/</link>
    <description>Recent content in Categories on Arquitetura de Software</description>
    <generator>Hugo -- gohugo.io</generator>
    <copyright>Copyright &amp;copy; 2020 - Turma de Arquitetura de Software 2020.3.</copyright>
    
-       <atom:link href="https://www.example.org/categories/index.xml" rel="self" type="application/rss+xml" />
+       <atom:link href="https://joaoarthurbm.github.io/arqsoft20203/categories/index.xml" rel="self" type="application/rss+xml" />
    
    
      <item>
        <title>Exemplo de documento a ser produzido</title>
-       <link>https://www.example.org/posts/documento-guia/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/documento-guia/</link>
        <pubDate>Tue, 22 Oct 2019 00:00:00 -0300</pubDate>
        
-       <guid>https://www.example.org/posts/documento-guia/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/documento-guia/</guid>
        <description>&lt;hr&gt;
 &lt;p&gt;Este é um documento guia para os alunos de Arquitetura de Software. A ideia é apresentar o modelo de documentação arquitetural que espero que seja produzido por eles. Esse guia foi baseado em um projeto chamado Parlametria, cujos detalhes arquiteturais estão descritos &lt;a href=&#34;https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;O documento que você, aluno, deve produzir, deve seguir às diretrizes abaixo. Naturalmente, você pode adicionar, remover e alterar o formato, mas minha sugestão é que você mantenha o padrão que estou apresentando, inclusive, a mesma ordem e nomes de seções. Isso facilitará não só a padronização da documentação produzida por vocês.&lt;/p&gt;
