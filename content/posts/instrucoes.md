@@ -38,9 +38,9 @@ Você precisa instalar o hugo na sua máquina. Veja este link: https://gohugo.io
 
 ### Setup git/github
 
-1. Faça um fork do projeto.
+1. Faça um fork do projeto https://github.com/joaoarthurbm/arqsoft20203/.
 
-2. Faça clone do repositório e dos submodulos https://github.com/joaoarthurbm/arqsoft20203/
+2. Faça clone do repositório e dos submodulos https://github.com/SEU-USUARIO/arqsoft20203/
 
 	`git clone --recurse-submodules https://github.com/SEU-USUARIO/arqsoft20203.git`
 
