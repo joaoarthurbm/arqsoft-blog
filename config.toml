@@ -27,7 +27,7 @@ pygmentsCodeFences = true
 
 [params]
     tagline = "Projetos da turma 2020.3 - Computação @ UFCG"
-    description = "Kiera: A Hugo theme for creative and technical writing."
+    description = "Documentação arquitetural produzida pela turma 2020.3 - Computação @ UFCG."
     #images = [""] #This is used for opengraph/twitter cards.
     customCSS = []  #Optional Customised CSS
     #favicon = ""
