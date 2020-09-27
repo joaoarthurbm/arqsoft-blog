@@ -40,17 +40,17 @@ Você precisa instalar o hugo na sua máquina. Veja este link: https://gohugo.io
 
 1. Faça um fork do projeto.
 
-2. Faça clone do repositório https://github.com/joaoarthurbm/arqsoft20203/
+2. Faça clone do repositório e dos submodulos https://github.com/joaoarthurbm/arqsoft20203/
 
-	`git clone https://github.com/joaoarthurbm/arqsoft20203/`
+	`git clone --recurse-submodules https://github.com/SEU-USUARIO/arqsoft20203.git`
 
 3. Crie uma branch cujo nome será o seu login @ccc
 
-	`git branch nome.sobrenome`
+	`git branch NOME.SOBRENOME`
 
 4. Mude para a branch que você acabou de criar
 
-	`git checkout joao.arthur`
+	`git checkout NOME.SOBRENOME`
 
 ### Produzindo conteúdo
 
@@ -67,15 +67,14 @@ Use o nome do projeto que você está documentando. Por exemplo: `instagram.md`.
 
 2. Verifique se o seu post está bem formatado.
 
-	3.1 Vá para a raiz do projeto.
-	3.2 execute `hugo server`
-	3.3 Verifique o seu post em local `http://localhost:1313/arqsoft20203/`
+	2.1 Vá para a raiz do projeto.
+	
+	2.2 execute `hugo server`
+	
+	2.3 Verifique o seu post em `http://localhost:1313/arqsoft20203/`
 
 Observe que agora você pode mudar o markdown e ver o resultado sempre. O hugo fica monitorando atualizações nos arquivos e atualiza sempre que um arquivo for modificado. 
 
 # Como entregar?
 
 Simples. Faça um Pull Request do markdown e do diretório de figuras que você criou. Eu revisarei e, assim que for aceito, seu post estará publicado em https://joaoarthurbm.github.io/arqsoft20203
-
-
-
