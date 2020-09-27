@@ -1,10 +1,3 @@
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -267,11 +260,6 @@ width: 100%;
 .meta-aside ul li, #container main section#home ul li aside ul li, #container main article aside ul li {
   margin: 0;
   padding: 0;
-}
-
-[href*="//"]:not([href*="joaoarthurbm.github.io"]) {
-color: #0645AD;
-  text-decoration: none;
 }
 
 a {
