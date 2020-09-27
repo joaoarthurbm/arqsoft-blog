@@ -6,10 +6,80 @@
    <description>Recent content in Posts on Arquitetura de Software</description>
    <generator>Hugo -- gohugo.io</generator>
    <copyright>Copyright &amp;copy; 2020 - Turma de Arquitetura de Software 2020.3.</copyright>
-   <lastBuildDate>Tue, 22 Oct 2019 00:00:00 -0300</lastBuildDate>
+   <lastBuildDate>Tue, 29 Oct 2019 00:00:00 -0300</lastBuildDate>
    
        <atom:link href="https://joaoarthurbm.github.io/arqsoft20203/posts/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>Instruções para escrever o post</title>
+       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/instrucoes/</link>
+       <pubDate>Tue, 29 Oct 2019 00:00:00 -0300</pubDate>
+       
+       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/instrucoes/</guid>
+       <description>&lt;hr&gt;
+&lt;p&gt;Por favor, leia com cuidado as instruções abaixo.&lt;/p&gt;
+&lt;h1 id=&#34;o-que-você-deve-produzir&#34;&gt;O que você deve produzir?&lt;/h1&gt;
+&lt;p&gt;Um documento de descrição arquitetural. &lt;a href=&#34;https://joaoarthurbm.github.io/arqsoft20203/posts/documento-guia/&#34;&gt;Neste link&lt;/a&gt; estão as instruções sobre formato e sobre o que é preciso em cada seção do documento. Por favor, mantenha o formato que estabeleci.&lt;/p&gt;
+&lt;h1 id=&#34;como-escrever-o-documento&#34;&gt;Como escrever o documento?&lt;/h1&gt;
+&lt;p&gt;Você vai escrever em Markdown, que é uma linguagem simples de marcação. Não se preocupe se não souber a sintaxe, pois você pode, por exemplo, basear a escrita no Markdown que gerou este post (&lt;a href=&#34;https://raw.githubusercontent.com/joaoarthurbm/arqsoft20203/master/content/posts/documento-guia.md&#34;&gt;link&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Markdown é bem simples de entender e há muito material sobre markdown na web.&lt;/p&gt;
+&lt;h1 id=&#34;onde-escrever&#34;&gt;Onde escrever?&lt;/h1&gt;
+&lt;p&gt;Nós vamos usar este repositório: &lt;a href=&#34;https://github.com/joaoarthurbm/arqsoft20203&#34;&gt;https://github.com/joaoarthurbm/arqsoft20203&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Você terá que submeter o markdown (e as figuras que produziu) como Pull Requests.&lt;/p&gt;
+&lt;p&gt;Este pull request que você fará, será revisado por mim e, quando aceito, automaticamente vira um post em &lt;a href=&#34;https://joaoarthurbm.github.io/arqsoft20203/&#34;&gt;https://joaoarthurbm.github.io/arqsoft20203/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;como-fazer&#34;&gt;Como fazer?&lt;/h1&gt;
+&lt;h2 id=&#34;pré-quisitos&#34;&gt;Pré-quisitos&lt;/h2&gt;
+&lt;p&gt;Você precisa instalar o hugo na sua máquina. Veja este link: &lt;a href=&#34;https://gohugo.io/getting-started/installing/&#34;&gt;https://gohugo.io/getting-started/installing/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;passo-a-passo&#34;&gt;Passo a passo&lt;/h2&gt;
+&lt;h3 id=&#34;setup-gitgithub&#34;&gt;Setup git/github&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Faça um fork do projeto.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Faça clone do repositório &lt;a href=&#34;https://github.com/joaoarthurbm/arqsoft20203/&#34;&gt;https://github.com/joaoarthurbm/arqsoft20203/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git clone https://github.com/joaoarthurbm/arqsoft20203/&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Crie uma branch cujo nome será o seu login @ccc&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git branch nome.sobrenome&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mude para a branch que você acabou de criar&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git checkout joao.arthur&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;produzindo-conteúdo&#34;&gt;Produzindo conteúdo&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Entre na pasta &lt;code&gt;content/posts&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cd content/posts&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Nesta pasta estarão os documentos de vocês. Aqui você deve criar um arquivo e um diretório:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;O markdown do seu documento.
+Use o nome do projeto que você está documentando. Por exemplo: &lt;code&gt;instagram.md&lt;/code&gt;. Este documento é onde você vai escrever o conteúdo da sua descrição arquitetural. Veja um exemplo de markdown que eu gerei (&lt;a href=&#34;https://github.com/joaoarthurbm/arqsoft20203/blob/master/content/posts/documento-guia.md&#34;&gt;link&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;um diretório com o mesmo nome que você deu ao markdown (exceto pela extensão). No exemplo que tratei, seria um diretório chamado &lt;code&gt;instagram&lt;/code&gt;. Neste diretório estarão as imagens que você usará no seu documento (as que são referenciadas no markdown).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Verifique se o seu post está bem formatado.&lt;/p&gt;
+&lt;p&gt;3.1 Vá para a raiz do projeto.
+3.2 execute &lt;code&gt;hugo server&lt;/code&gt;
+3.3 Verifique o seu post em local &lt;code&gt;http://localhost:1313/arqsoft20203/&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Observe que agora você pode mudar o markdown e ver o resultado sempre. O hugo fica monitorando atualizações nos arquivos e atualiza sempre que um arquivo for modificado.&lt;/p&gt;
+&lt;h1 id=&#34;como-entregar&#34;&gt;Como entregar?&lt;/h1&gt;
+&lt;p&gt;Simples. Faça um Pull Request do markdown e do diretório de figuras que você criou. Eu revisarei e, assim que for aceito, seu post estará publicado em &lt;a href=&#34;https://joaoarthurbm.github.io/arqsoft20203&#34;&gt;https://joaoarthurbm.github.io/arqsoft20203&lt;/a&gt;&lt;/p&gt;
+</description>
+     </item>
    
      <item>
        <title>Exemplo de documento a ser produzido</title>
