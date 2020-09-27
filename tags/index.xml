@@ -34,10 +34,10 @@
 &lt;h3 id=&#34;setup-gitgithub&#34;&gt;Setup git/github&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;Faça um fork do projeto.&lt;/p&gt;
+&lt;p&gt;Faça um fork do projeto &lt;a href=&#34;https://github.com/joaoarthurbm/arqsoft20203/&#34;&gt;https://github.com/joaoarthurbm/arqsoft20203/&lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Faça clone do repositório e dos submodulos &lt;a href=&#34;https://github.com/joaoarthurbm/arqsoft20203/&#34;&gt;https://github.com/joaoarthurbm/arqsoft20203/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Faça clone do repositório e dos submodulos &lt;a href=&#34;https://github.com/SEU-USUARIO/arqsoft20203/&#34;&gt;https://github.com/SEU-USUARIO/arqsoft20203/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;git clone --recurse-submodules https://github.com/SEU-USUARIO/arqsoft20203.git&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
