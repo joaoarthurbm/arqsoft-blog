@@ -1,0 +1,3 @@
+[submodule "kiera"] 
+    path = themes/hugo-kiera
+    url = git://avianto/hugo-kiera/git/hugo-kiera.git
