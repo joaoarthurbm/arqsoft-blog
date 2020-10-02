@@ -7,7 +7,7 @@ categories = []
 
 # Autores
 
-Este documento foi produzido por João Arthur Brunet.
+Este documento foi produzido por Paulo Mendes da Silva Júnior.
 
 - Matrícula: 117210922
 - Contato: paulo.junior@ccc.ufcg.edu.br
@@ -17,14 +17,18 @@ Este documento foi produzido por João Arthur Brunet.
 
 # Descrição Arquitetural -- Projeto Eureca (Coleta de dados ao backend)
 
-Este documento descreve parte da arquitetura do projeto [Eureca](). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
+Este documento descreve parte da arquitetura de uma parte do projeto **Eureca** ([Coleta de dados](https://github.com/computacao-ufcg/eureca-coleta-de-dados) e [Backend](https://github.com/computacao-ufcg/eureca-backend)). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
 
 ## Descrição geral sobre o Eureca (da coleta de dados ao backend)
 
-O projeto [Eureca]() se trata de um projeto da coordenação do curso de Computação@UFCG que tem a finalidade de auxiliar a coordenação do curso em suas ações a curto e longo prazo. Com funcionalidades de monitoramento, estatísticas, comunicação e serviços que englobam todos os alunos do curso de Computação na UFCG.
+O projeto **Eureca** se trata de um projeto da coordenação do curso de Computação@UFCG que tem a finalidade de auxiliar a coordenação do curso em suas ações a curto e longo prazo. Com funcionalidades de monitoramento, estatísticas, comunicação e serviços que englobam todos os alunos do curso de Computação na UFCG.
 
 ## Eureca (da coleta de dados ao backend)
 
 ### Objetivo geral
 
+Prover uma interface de monitoramento para a coordenação do curso, que informe sobre como os alunos estão se comportando de acordo com o período aos quais se encontram, em relação as suas notas, presenças e demais especificidades. De modo que o coordenador poderá fazer um acompanhamento mais direto com aqueles alunos que se encontram em situações críticas. Além de também ter serviços de estatísticas sobre todos os alunos que já passaram pelo curso, sejam eles graduados, ativos ou evadidos.
+
 ### Objetivos Específicos
+
+Queremos ter acesso a uma plataforma que possui informações sobre todos os alunos do curso de Computação@UFCG, essas informações podem ser divididas em quatro grandes blocos: Monitoramento, Estatísticas, Comunicação e Serviços.
