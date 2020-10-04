@@ -78,3 +78,5 @@ Observe que agora você pode mudar o markdown e ver o resultado sempre. O hugo f
 # Como entregar?
 
 Simples. Faça um Pull Request do markdown e do diretório de figuras que você criou. Eu revisarei e, assim que for aceito, seu post estará publicado em https://joaoarthurbm.github.io/arqsoft20203
+
+**Importante.** Faça apenas um Pull Request com todo o conteúdo do seu post.
