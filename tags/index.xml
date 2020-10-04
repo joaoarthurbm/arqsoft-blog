@@ -77,6 +77,7 @@ Use o nome do projeto que você está documentando. Por exemplo: &lt;code&gt;ins
 &lt;p&gt;Observe que agora você pode mudar o markdown e ver o resultado sempre. O hugo fica monitorando atualizações nos arquivos e atualiza sempre que um arquivo for modificado.&lt;/p&gt;
 &lt;h1 id=&#34;como-entregar&#34;&gt;Como entregar?&lt;/h1&gt;
 &lt;p&gt;Simples. Faça um Pull Request do markdown e do diretório de figuras que você criou. Eu revisarei e, assim que for aceito, seu post estará publicado em &lt;a href=&#34;https://joaoarthurbm.github.io/arqsoft20203&#34;&gt;https://joaoarthurbm.github.io/arqsoft20203&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Importante.&lt;/strong&gt; Faça apenas um Pull Request com todo o conteúdo do seu post.&lt;/p&gt;
 </description>
      </item>
    
