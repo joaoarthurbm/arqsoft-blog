@@ -27,8 +27,20 @@ O projeto **Eureca** se trata de um projeto da coordenação do curso de Computa
 
 ### Objetivo geral
 
-Prover uma interface de monitoramento para a coordenação do curso, que informe sobre como os alunos estão se comportando de acordo com o período aos quais se encontram, em relação as suas notas, presenças e demais especificidades. De modo que o coordenador poderá fazer um acompanhamento mais direto com aqueles alunos que se encontram em situações críticas. Além de também ter serviços de estatísticas sobre todos os alunos que já passaram pelo curso, sejam eles graduados, ativos ou evadidos.
+Prover uma interface de monitoramento para a coordenação do curso, que possua informações sobre como os alunos estão se comportando de acordo com o período aos quais se encontram, em relação as suas notas, presenças e demais especificidades. Essas informações são divididas em quatro grandes blocos: Monitoramento, Estatísticas, Comunicação e Serviços.
 
 ### Objetivos Específicos
 
-Queremos ter acesso a uma plataforma que possui informações sobre todos os alunos do curso de Computação@UFCG, essas informações podem ser divididas em quatro grandes blocos: Monitoramento, Estatísticas, Comunicação e Serviços.
+Queremos que o coordenador seja capaz, de por exemplo, fazer um acompanhamento mais direto com aqueles alunos que se encontram em situações críticas. Além de observar também os que se encontram "Acima da média" e também os regulares. O sistema também irá possuir serviços de estatísticas sobre todos os alunos que já passaram pelo curso, sejam eles graduados, ativos ou evadidos.
+
+### Contexto
+
+### Containers
+
+### Componentes
+
+### Código
+
+### Visão de informação
+
+### Contribuições concretas
