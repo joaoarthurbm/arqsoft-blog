@@ -21,7 +21,7 @@ Este documento descreve parte da arquitetura de uma parte do projeto **Eureca** 
 
 ## Descrição geral sobre o Eureca (da coleta de dados ao backend)
 
-O projeto **Eureca** se trata de um projeto da coordenação do curso de Computação@UFCG que tem a finalidade de auxiliar a coordenação do curso em suas ações a curto e longo prazo. Com funcionalidades de monitoramento, estatísticas, comunicação e serviços que englobam todos os alunos do curso de Computação na UFCG.
+O projeto **Eureca** se trata de um projeto da coordenação do curso de Computação@UFCG, projeto ao qual eu estou vinculado, que tem a finalidade de auxiliar a coordenação do curso em suas ações a curto e longo prazo. Com funcionalidades de monitoramento, estatísticas, comunicação e serviços que englobam todos os alunos do curso de Computação na UFCG.
 
 ## Eureca (da coleta de dados ao backend)
 
