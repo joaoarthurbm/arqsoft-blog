@@ -42,7 +42,12 @@ Cadastrar comunidades de tecnologia, por tipo (Discord, Meetup, Slack, etc) e ca
 
 ### Contexto
 
- O sistema têm basicamente dois tipos de usuários. Um(a) representante de uma comunidade que deseja cadastrar a(s) comunidade(s) que ele representa, e um(a) interessado(a) que deseja buscar e visualizar comunidades do seu interesse. As informações cadastradas da comunidades são armazenadas em um Banco de Dados do próprio projeto Comunidades.tech.
+ Um usuário do sistema pode ser: 
+* Uma pessoa que representa uma ou mais comunidades e deseja cadastrar (divulgar) sua(s) comunidade(s);
+* uma pessoa que quer participar de comunidade(s) e deseja buscar e visualizar comunidades do seu interesse;
+* Ambos.
+
+As informações cadastradas das comunidades são armazenadas em um Banco de Dados do próprio projeto Comunidades.tech.
  
  
 Abaixo está o diagrama de contexto.
