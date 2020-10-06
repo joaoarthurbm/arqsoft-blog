@@ -23,20 +23,20 @@ Este documento foi produzido por Beatriz Bezerra de Souza.
 
 # Descrição Arquitetural -- Serviço de análise do twitter
 
-Este documento descreve parte da arquitetura do projeto [Parlametria](https://github.com/analytics-ufcg/parlametria-site). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
+Este documento descreve parte da arquitetura do projeto [Monitor Cidadão](https://github.com/analytics-ufcg/monitor-cidadao-dados). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
 
-É importante destacar não será descrita toda a arquitetura do Parlametria. O foco aqui é a descrição de um serviço específico de análise do twitter, que é parte fundamental do projeto.
+É importante destacar não será descrita toda a arquitetura do Monitor Cidadão. O foco aqui é a descrição de um serviço específico de análise do twitter, que é parte fundamental do projeto.
 
 
-## Descrição Geral sobre o Parlametria
+## Descrição Geral sobre o Monitor Cidadão
 
-O parlametria é um projeto que tem como objetivo "permitir o acompanhamento do posicionamento de cada deputado e senador nas votações, quais os seus vínculos e afinidades políticas e econômicas dentro e fora do Legislativo." Mais detalhes sobre o projeto podem ser vistos [neste link](https://portal.ufcg.edu.br/ultimas-noticias/1706-plataforma-desenvolvida-na-ufcg-monitora-acoes-do-legislativo-federal.html).
+O monitor cidadão é um projeto que tem como objetivo "possibilitar aos cidadãos o acompanhamento dos contratos realizados pelos municípios dos estados da Paraíba e do Rio Grande do Sul". Mais detalhes sobre o projeto podem ser vistos [neste link](https://github.com/analytics-ufcg/monitor-cidadao-dados).
 
-## O Serviço de monitoramento do twitter
+## O Serviço de predição de riscos dos contratos
 
 ### Objetivo Geral
 
-Implementar um serviço para capturar automaticamente o que é dito no twitter sobre as proposições que acompanhamos e prover indicadores sobre as publicações para serem usados no parlametria.
+Implementar um serviço para realizar predição do risco associado a contratos públicos.
 
 ### Objetivos Específicos
 
@@ -49,8 +49,6 @@ Nesta seção eu espero duas coisas: o diagrama de contexto e um texto curto des
 Abaixo estão dois exemplos de diagramas de contexto.
 
 ![fig1](c4-context.png)
-
-<img class="center" src="parlametria-contexto.png" style="width:60%">
 
 ### Containers
 
