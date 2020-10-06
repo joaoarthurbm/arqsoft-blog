@@ -5,12 +5,15 @@ tags = []
 categories = []
 +++
 
+
+
 ***
 
 como usar imagem 
 ![fig1](logo1.png)
+![fig2](logo2.png)
 
-<img src="logo2.png" style="border-radius: 80px"/>
+<img src="logo2.png" style="border-radius: 80px; width: 280px; height:150px"/>
 
 <img src="logo3.png" style="height: 0px; width: 80px;"/>
 
@@ -30,16 +33,36 @@ Este documento foi produzido por Gabriel Almeida Azevedo.
 - Contato: gabriel.almeida.azevedo@ccc.ufcg.edu.br
 - Projeto documentado: https://github.com/microsoft/vscode
 
-# Descrição Arquitetural do VSCode -- Serviço de análise do twitter
+# Descrição Arquitetural do VSCode -- Serviço de análise do twitter Alterar
 
-Este documento descreve parte da arquitetura do projeto [Parlametria](https://github.com/analytics-ufcg/parlametria-site). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
+Este documento descreve parte da arquitetura do projeto [VS Code](https://github.com/microsoft/vscode). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
 
-É importante destacar não será descrita toda a arquitetura do Parlametria. O foco aqui é a descrição de um serviço específico de análise do twitter, que é parte fundamental do projeto.
+É importante destacar não será descrita toda a arquitetura do VS Code. O foco aqui é a descrição do seu núcleo central, parte fundamental do projeto. Componentes satélites como o Chrome Debug Core, NLS Tools, CSS/LESS/SCSS Language Service, ESLint possuem seu próprio repositório e não serão abordados profundamente neste documento. Para ver a lista completa de projetos relacionados acesse o link [Related Projects](https://github.com/microsoft/vscode/wiki/Related-Projects).
 
 
-## Descrição Geral sobre o Parlametria
+## Descrição Geral sobre o VS Code 
 
-O parlametria é um projeto que tem como objetivo "permitir o acompanhamento do posicionamento de cada deputado e senador nas votações, quais os seus vínculos e afinidades políticas e econômicas dentro e fora do Legislativo." Mais detalhes sobre o projeto podem ser vistos [neste link](https://portal.ufcg.edu.br/ultimas-noticias/1706-plataforma-desenvolvida-na-ufcg-monitora-acoes-do-legislativo-federal.html).
+O Visual Code Studio, ou simplesmente VS Code, é um editor de código que foi lançado em 2015 pela Microsoft. É uma ferramenta de código aberto voltada para o desenvolvimento de aplicações Web. O Visual Code se baseia no Eletron (framework usada para desenvolver aplicativos Node.js). O seu conjunto de utilitários faz com que concorra de igual para igual com ferramentas pagas existentes no mercado.
+
+**Seus pontos de Destaque são:**
+
++ É Multiplataforma
+
+![fig3](multiplataforma.png)
+
++ É Multilinguagem: Suporta mais de 30 linguagens de programação além de formatos comuns de arquivos.
+
++ É Personalizável
+
++ É uma aplicação leve
+
++ Excelente paleta de atalhos
+
++ Permite adicionar Extensões
+
++ Possui o IntelliSense: Recurso de preenchimento de código que permite listar membros, obter informações de parâmetro, completar palavras.
+
+![intelliSense](intelliSense.gif)
 
 ## O Serviço de monitoramento do twitter
 
