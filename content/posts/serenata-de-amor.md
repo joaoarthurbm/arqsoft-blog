@@ -9,11 +9,7 @@ categories = []
 
 <img src="./logo.png" style="width: 50%; display: flex; margin: 0 auto;"/>
 
-Este é um documento guia para os alunos de Arquitetura de Software. A ideia é apresentar o modelo de documentação arquitetural que espero que seja produzido por eles. Esse guia foi baseado em um projeto chamado Parlametria, cujos detalhes arquiteturais estão descritos [aqui](https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing).
-
-O documento que você, aluno, deve produzir, deve seguir às diretrizes abaixo. Naturalmente, você pode adicionar, remover e alterar o formato, mas minha sugestão é que você mantenha o padrão que estou apresentando, inclusive, a mesma ordem e nomes de seções. Isso facilitará não só a padronização da documentação produzida por vocês.
-
-***
+Projeto de auditoria automática para a cota parlamentar de reembolsos para gastos parlamentares.
 
 # Autores
 
@@ -23,72 +19,71 @@ Este documento foi produzido por Nicácio Oliveira de Sousa.
 - Contato: nicacio.sousa@ccc.ufcg.edu.br
 - Projeto documentado: https://github.com/okfn-brasil/serenata-de-amor
 
-# Descrição Arquitetural -- Serviço de análise do twitter
+# Descrição Arquitetural
 
-Este documento descreve parte da arquitetura do projeto [Serenata de Amor](https://github.com/okfn-brasil/serenata-de-amor). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
+Este documento descreve parte da arquitetura do projeto [Serenata de Amor](https://github.com/okfn-brasil/serenata-de-amor). Essa descrição é baseada principalmente no modelo [C4](https://c4model.com/).
 
-É importante destacar não será descrita toda a arquitetura do Serenata de Amor. O foco aqui é a descrição de um serviço específico de análise do twitter, que é parte fundamental do projeto.
+É importante destacar que este documento visa expor de forma mais abstrata como funciona o conjunto de ferramentas da aplicação e não necessariamente explicará em detalhes a sua implementação.
 
-## Descrição Geral sobre o Parlametria
+## Descrição Geral sobre o Serenata de Amor
 
-O parlametria é um projeto que tem como objetivo "permitir o acompanhamento do posicionamento de cada deputado e senador nas votações, quais os seus vínculos e afinidades políticas e econômicas dentro e fora do Legislativo." Mais detalhes sobre o projeto podem ser vistos [neste link](https://portal.ufcg.edu.br/ultimas-noticias/1706-plataforma-desenvolvida-na-ufcg-monitora-acoes-do-legislativo-federal.html).
+O serenata de amor é um projeto que visa [auditar gastos públicos](https://brasil.elpais.com/brasil/2017/01/23/politica/1485199109_260961.html) relacionados a cota parlamentar para reembolsos.
 
-## O Serviço de monitoramento do twitter
+Um parlamentar possui uma cota para gastos com despesas relacionadas a atividades do seu cargo. Essa cota permite que o mesmo seja reembolsado por gastos que possa fazer durante a atividade parlamentar. Esses gastos incluem passagens, alimentação, aparelhamento para a atividade parlamentar etc.
 
-### Objetivo Geral
+#### Mas como isso é feito?
 
-Implementar um serviço para capturar automaticamente o que é dito no twitter sobre as proposições que acompanhamos e prover indicadores sobre as publicações para serem usados no parlametria. 
+O projeto possui dois grandes módulos. Um [(Rosie)](https://twitter.com/RosieDaSerenata) para auditar notas fiscais de pedidos de reembolsos e outro [(Jarbas)](https://jarbas.serenata.ai/) para listar os dados auditados de forma fácil.
+
+#### Rosie
+
+Robô que tem sua construção baseada na [toolbox do serenata de amor](https://github.com/okfn-brasil/serenata-toolbox).
+A Rosie faz auditoria em notas fiscais que são cadastradas na base de dados do governo federal e classifica as notas ficais como suspeitas ou não.
+
+A classificação das notas é feita com base em milhares de variáveis como:
+
+- Gasto exagerados com alimentação, combustível, passagens etc
+- Estar em dois lugares ao mesmo tempo
+- Valores exorbitantes em localidades que cobram um valor diferente do que a nota fiscal diz
+- Valores superfaturados
+- ...
+
+#### Jarbas
+
+Painel de controle que exibe os dados auditados pela Rosie de forma organizada.
+
+## Serviço de auditoria de cotas parlamentares
+
+### Objetivo
+
+Implementar um serviço que possa auditar notas fiscais cadastradas na base de dados do governo federal que sejam relacionadas a cota de gastos parlamentar e relacionar cada nota a variáveis que indiquem se cada nota fiscal é suspeita ou não.
 
 ### Objetivos Específicos
 
-Queremos ter acesso ao grau de atividade no twitter de parlamentares e de influenciadores do debate no twitter. Além disso, queremos saber quanto essas pessoas tuítam sobre cada proposição ou tema e a indicadores sobre sua atividade. Para parlamentares também queremos indicadores a partir dos léxicos de discurso desenvolvidos pelos nossos parceiros.
+Fazer com que a inteligência artificial Rosie consiga interpretar valores e situações de cada nota fiscal que requere reembolso para indicar se cada nota pode ser classificada como suspeita e interagir em rede social com alertas sobre gastos suspeitos.
 
 ### Contexto
 
-Nesta seção eu espero duas coisas: o diagrama de contexto e um texto curto descrevendo em mais detalhes o contexto do sistema. Isso inclui as fronteiras do sistema, os sistemas/serviços externos com os quais ele se comunica etc.
+A comunicação e contexto gerais dos sitema acontecem entre os dois elementos principais (Rosie e Jarbas) em conjunto com a publicação de mensagens com alertas no twitter.
 
-Abaixo estão dois exemplos de diagramas de contexto.
+Os dados devem ser lidos da base de dados do governo federal referente a dados de cota parlamentar. Em seguida, a Rosie deve classificar os dados de acordo com as regras que conhece e mante-los na base de dados em conjunto com o Jarbas. Por fim, a Rosie deve fazer posts de alerta para cada nota fiscal suspeita no twitter.
 
-![fig1](c4-context.png)
-
-<img class="center" src="parlametria-contexto.png" style="width:60%">
+![fig1](c4-contexto.svg)
 
 ### Containers
 
-Nesta seção eu espero duas coisas: o diagrama de containers e  texto descrevendo os containers. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada container, suas tecnologias, APIs expostas, protocolos, onde são executados/implantados etc. Você pode criar um diagrama de implantação para dar mais detalhes sobre o ambiente em que os containers são implantados e executam. Essa parte de implantação pode ser uma subseção desta seção.
-
-Importante, se um componente expor, por exemplo, uma API REST. Seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints [deste documento](https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing).
-
-Importante, se um container expuser, por exemplo, uma API REST, seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints [deste documento](https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing).
-
-Abaixo estão exemplos de diagramas de containers e de implantação.
-
-![fig3](c4-containers.png)
-![fig4](parlametria-container.png)
-![fig5](c4-implantacao.png)
-![fig6](parlametria-implantacao.png)
 
 ### Componentes
 
-Nesta seção eu espero duas coisas: o diagrama de componentes e texto descrevendo os componentes. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada componente, seus relacionamentos, tecnologias, APIs expostas, protocolos, estilos, padrões etc.
-
-Abaixo um exemplo de diagrama de componente.
-
-![fig7](c4-componentes.png)
 
 ### Código
 
 <pre>
-Nesta etapa não faremos diagramas que apresentam detalhes da
-implementação. Faremos isso mais adiante.
+    Nesta etapa não faremos diagramas que apresentam detalhes da
+    implementação. Faremos isso mais adiante.
 </pre>
 
 ### Visão de Informação
 
-Aqui você deve descrever as informações importantes que são coletadas, manipuladas, armazenadas e distribuídas pelo sistema. Você não precisa descrever todas as informações, somente uma parte que seja essencial para o sistema. Por exemplo, se eu estivesse tratando do instagram, faria algo relacionado aos posts.
-
-Além da descrição gostaria de ver aqui um diagrama para descrever os estados (ex: máquina de estados) de uma informação de acordo com as ações do sistema.
 
 # Contribuições Concretas
-
-*Descreva* aqui os PRs enviados para o projeto e o status dos mesmos. Forneça os links dos PRs.
