@@ -13,26 +13,22 @@ Este documento foi produzido por Cássio Cordeiro.
 - Contato: cassio.cordeiro@ccc.ufcg.edu.br
 - Projeto documentado: https://github.com/jenkinsci/jenkins
 
-# Descrição Arquitetural -- Jenkins
+# Jenkins
 
 Este documento descreve parte da arquitetura do [Jenkins](https://github.com/jenkinsci/jenkins). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
 
 ## Descrição
 
-O Jenkins é projeto focado em CI (continuous integration) e CD (continuous delivery), ele automatiza as partes do processo de desenvolvimento de software relacionadas ao build, testes, deploy e entrega. Além das funcionalidades nativas, possui um vasto acervo de plugins, que incorporam ainda mais funções. Outras informações podem ser encontradas no [site](https://www.jenkins.io/) oficial do sistema. 
+O Jenkins é projeto focado em ser expansível às necessidades dos usuários, contendo um vasto acervo de plugins criados e permitindo configurações personalizadas, suas principais usos são para atividades de  CI (continuous integration) e CD (continuous delivery). Ele automatiza as partes do processo de desenvolvimento de software relacionadas ao build, testes, deploy e entrega. Outras informações podem ser encontradas no site oficial do sistema. 
 
 ### Objetivos
 Oferecer um serviço que seja customizável e expansível aos requisitos dos projetos e de cada usuário, automatizando tarefas repetitivas no processo de desenvolvimento de software.
 
 ### Contexto
 
-Nesta seção eu espero duas coisas: o diagrama de contexto e um texto curto descrevendo em mais detalhes o contexto do sistema. Isso inclui as fronteiras do sistema, os sistemas/serviços externos com os quais ele se comunica etc.
+Os principais sistemas que o Jenkins se comunica são seus plugins, que quando instalados, acrescentam mais funcionalidades ao sistema e a possibilidade de comunicação com outros sistemas; o Git, podendo realizar processos com projetos hospedados nele; e serviços de comunicação, sendo capaz de enviar mensagens, contento, principalmente, o resultado de operações de build.
 
-Abaixo estão dois exemplos de diagramas de contexto.
-
-![fig1](c4-context.png)
-
-<img class="center" src="parlametria-contexto.png" style="width:60%">
+![fig1](contexto.png)
 
 ### Containers
 
