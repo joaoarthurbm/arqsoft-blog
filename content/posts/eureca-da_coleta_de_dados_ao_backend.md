@@ -5,7 +5,7 @@ tags = []
 categories = []
 +++
 
-# Autores
+# Autor
 
 Este documento foi produzido por Paulo Mendes da Silva Júnior.
 
@@ -35,7 +35,16 @@ Queremos que o coordenador seja capaz, de por exemplo, fazer um acompanhamento m
 
 ### Contexto
 
+O sistema inicia se comunicando com o sistema de controle acadêmico online, e através de um crawler são baixadas várias página .html por aluno, que são as de cadastro, histórico, faltas, notas, etc. Essas páginas são processadas por parsers, que filtram os dados necessários que estão nas páginas, esses dados então são formatados e por fim, retornados na saída padrão. Logo após scripts shell fazem a separação dos dados adicionado os relacionamentos e separando os dados em arquivos .csv que correspondem aos dados que serão inseridos em cada tabela do banco de dados.
+Com o banco de dados populado, o eureca-backend (API REST) o acessa através de queries SQL e o banco de dados retorna respostas JSON para o backend.
+
+Logo abaixo temos o diagrama de contexto referente a parte de coleta de dados e backend do projeto.
+
+![fig1](diagrama_contexto.png)
+
 ### Containers
+
+![fig2](diagrama_container.png)
 
 ### Componentes
 
