@@ -46,6 +46,30 @@ Logo abaixo temos o diagrama de contexto referente a parte de coleta de dados e 
 
 ![fig2](diagrama_container.png)
 
+#### Implantação
+
+![fig3](diagrama-implantacao.png)
+
+##### Endpoints
+
+A API REST que se trata do repositório Eureca-Backend, no momento em que este documento foi escrito possui os seguintes endpoints.
+
+* /api/estatisticas/ativos
+* /api/estatisticas/ativos?de=periodo
+* /api/estatisticas/ativos?de=periodo_min&ate=periodo_max
+* /api/estatisticas/ativos/csv
+* /api/estatisticas/egressos
+* /api/estatisticas/egressos?de=periodo
+* /api/estatisticas/egressos?de=periodo_min&ate=periodo_max
+* /api/estatisticas/egressos/csv
+* /api/estatisticas/evadidos
+* /api/estatisticas/evadidos?de=periodo
+* /api/estatisticas/evadidos?de=periodo_min&ate=periodo_max
+* /api/estatisticas/evadidos/csv
+
+
+
+
 ### Componentes
 
 ### Código
