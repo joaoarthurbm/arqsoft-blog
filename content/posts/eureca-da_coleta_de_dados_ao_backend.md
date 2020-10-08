@@ -35,8 +35,7 @@ Queremos que o coordenador seja capaz, de por exemplo, fazer um acompanhamento m
 
 ### Contexto
 
-O sistema inicia se comunicando com o sistema de controle acadêmico online, e através de um crawler são baixadas várias página .html por aluno, que são as de cadastro, histórico, faltas, notas, etc. Essas páginas são processadas por parsers, que filtram os dados necessários que estão nas páginas, esses dados então são formatados e por fim, retornados na saída padrão. Logo após scripts shell fazem a separação dos dados adicionado os relacionamentos e separando os dados em arquivos .csv que correspondem aos dados que serão inseridos em cada tabela do banco de dados.
-Com o banco de dados populado, o eureca-backend (API REST) o acessa através de queries SQL e o banco de dados retorna respostas JSON para o backend.
+O repositório Eureca-coleta-de-dados inicia se comunicando com o sistema de controle acadêmico a fim de baixar páginas .html de alunos do curso de Computação@UFCG, onde ocorre todo um processamento nessas páginas, desde a raspagem dos dados relevantes das páginas .html até a criação dos relacionamentos dos dados em arquivos .csv para inserção no banco de dados. Logo após, esses dados são inseridos no Banco de Dados Eureca-Deploy, a partir disso, o Eureca-Backend, que consiste de uma API REST, acessa o banco de dados atráves de requisições HTTP e expõe endpoints para que a API seja acessada pelo Eureca-Frontend.
 
 Logo abaixo temos o diagrama de contexto referente a parte de coleta de dados e backend do projeto.
 
@@ -44,9 +43,16 @@ Logo abaixo temos o diagrama de contexto referente a parte de coleta de dados e 
 
 ### Containers
 
+O crawler acessa o sistema de controle acadêmico (serviço externo) e baixa várias páginas .html por aluno, que são as de cadastro, histórico, faltas, notas, etc. Essas páginas são processadas por parsers, que filtram os dados relevantes que estão nas páginas, esses dados então são formatados e por fim, retornados na saída padrão. Logo após scripts shell fazem a separação dos dados adicionado os relacionamentos e separando os dados em arquivos .csv que correspondem aos dados que serão inseridos em cada tabela do banco de dados, incluindo relacionamentos de chaves estrangeiras, chave auto incremental, etc. Assim os dados estarão prontos para serem inseridos no banco de dados.
+Com o banco de dados populado, o eureca-backend (API REST) o acessa através de queries SQL e o banco de dados retorna respostas JSON para o backend.
+
 ![fig2](diagrama_container.png)
 
 #### Implantação
+
+Todo o sistema (exceto o Eureca-coleta-de-dados) está hospedado em uma máquina virtual Linux (Ubuntu) do LSD (Laboratório de Sistemas Distribuídos) da UFCG, onde nessa máquina virtual encontram-se 3 (três) contêineres Docker em execução, o primeiro é Eureca-deploy rodando na porta 5432, o segundo é o Eureca-Backend rodando na porta 5500, e por fim, o Eureca-frontend rodando na porta 3333. 
+
+**Obs:** O Eureca-coleta-de-dados não encontra-se em execução porque o coordenador, no momento, está fazendo esse processo de download das páginas e geração dos dados para o banco de dados localmente. Além de que esse é um processo que não é feito com frequência.
 
 ![fig3](diagrama-implantacao.png)
 
@@ -77,3 +83,5 @@ A API REST que se trata do repositório Eureca-Backend, no momento em que este d
 ### Visão de informação
 
 ### Contribuições concretas
+
+Como eu faço parte do projeto Eureca, então eu já fiz inúmeras Pull Request's, principalmente nos repositórios Eureca-Deploy e Eureca-Backend, algumas dessas PR's podem ser vistas nos seguintes links: [Eureca-deploy](https://github.com/computacao-ufcg/eureca-deploy/pulls?q=is%3Apr+is%3Aclosed) e [Eureca-backend](https://github.com/computacao-ufcg/eureca-backend/pulls?q=is%3Apr+is%3Aclosed).
