@@ -42,17 +42,17 @@ Cadastrar comunidades de tecnologia, por tipo (Discord, Meetup, Slack, etc) e ca
 
 ### Contexto
 
- Um usuário do sistema pode ser: 
+ O sistema Comunidades.tech utiliza a API do LinkedIn como login para manter o cadastro de um usuário, o mesmo pode ser classificado nas seguintes categorias: 
 * Uma pessoa que representa uma ou mais comunidades e deseja cadastrar (divulgar) sua(s) comunidade(s);
 * uma pessoa que quer participar de comunidade(s) e deseja buscar e visualizar comunidades do seu interesse;
 * Ambos.
 
-As informações cadastradas das comunidades são armazenadas em um Banco de Dados do próprio projeto Comunidades.tech.
+As informações das comunidades cadastradas são maninpuladas pelo Back-end do sistema Comunidades.tech e armazenadas em um Banco de Dados mantido pelo mesmo.
  
  
 Abaixo está o diagrama de contexto.
 
-![fig1](contexto.png)
+![fig](diagrama-contexto.png)
 
 
 ### Containers
@@ -87,9 +87,11 @@ implementação. Faremos isso mais adiante.
 
 ### Visão de Informação
 
-Aqui você deve descrever as informações importantes que são coletadas, manipuladas, armazenadas e distribuídas pelo sistema. Você não precisa descrever todas as informações, somente uma parte que seja essencial para o sistema. Por exemplo, se eu estivesse tratando do instagram, faria algo relacionado aos posts.
+O objetivo do sistema é divulgar comunidades, por isso, entender como acontece a publicação dessas comunidades é muito importante. O primeiro passo é fazer parte do comunidades.tech, ou seja, ter um cadastrado ativo no sistema. Após o login, é possível visualizar um botão "Casdastre uma comunidade", clicando nele, será aberta a página de cadastro com alguns formulários que solicitam informações como: nome, localização, membros e links. Após o preenchimento dos formulários, e clicando no botão "Criar Comunidade" a comunidade será cadastrada, e será encaminhada para análise, onde  ocorre a validação dos dados. Finalmente, a depender do resultado da análise, a comunidade será publicada, ou não.
 
-Além da descrição gostaria de ver aqui um diagrama para descrever os estados (ex: máquina de estados) de uma informação de acordo com as ações do sistema.
+A seguir está o diagrama de máquina de estados para descrever os estados do procedimento de publicação de uma comunidade.
+
+![fig](diagrama-maquina-estados.png)
 
 # Contribuições Concretas
 
