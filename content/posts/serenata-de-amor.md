@@ -42,9 +42,9 @@ Um usuário precisa manipular a Rosie para que ela classifique dados entregues p
 Robô que tem sua construção baseada na [toolbox do serenata de amor](https://github.com/okfn-brasil/serenata-toolbox).
 A Rosie faz auditoria em notas fiscais que são cadastradas na base de dados do governo federal e classifica cada nota com uma flag de suspeita ou não.
 
-A classificação das notas é feita com base em milhares de variáveis como:
+A classificação das notas é feita com base em diversas de variáveis como:
 
-- Gasto exagerados com alimentação, combustível, passagens etc
+- Gastos exagerados com alimentação, combustível, passagens etc
 - Estar em dois lugares ao mesmo tempo
 - Valores exorbitantes em localidades que cobram um valor diferente do que a nota fiscal diz
 - Valores superfaturados
@@ -53,12 +53,13 @@ A classificação das notas é feita com base em milhares de variáveis como:
 #### Jarbas
 
 Painel de controle que exibe os dados auditados pela Rosie de forma organizada.
+O Jabas também é responsável por criar posts de alerta no twitter indicando pedidos de reembolso suspeitos.
 
 ## Serviço de auditoria de cotas parlamentares
 
 ### Objetivo
 
-Implementar um serviço que possa auditar notas fiscais cadastradas na base de dados do governo federal que sejam relacionadas a cota de gastos parlamentares e relacionar cada nota a variáveis que indiquem se cada uma delas é suspeita ou não.
+Implementar um serviço que possa auditar notas fiscais cadastradas na base de dados do governo federal que sejam relacionadas a cota de gastos parlamentares e relacionar cada nota a variáveis que indiquem se cada uma delas é suspeita de fraude ou não.
 
 ### Objetivos Específicos
 
@@ -68,34 +69,40 @@ Fazer com que a inteligência artificial Rosie consiga interpretar valores e sit
 
 A comunicação e contexto gerais dos sitema acontecem entre os dois elementos principais (Rosie e Jarbas) em conjunto com a publicação de mensagens com alertas no twitter.
 
-Os dados devem ser lidos da base de dados do governo federal referente a dados de cota parlamentar. Em seguida, a Rosie deve classificar os dados de acordo com as regras que conhece e mante-los na base de dados em conjunto com o Jarbas. Por fim, a Rosie deve fazer posts de alerta para cada nota fiscal suspeita no twitter.
+Os dados devem ser lidos da base de dados do governo federal referente a dados de cota parlamentar. Em seguida, a Rosie deve ser ativada para classificar os dados de acordo com as regras que conhece e indicar se a nota fiscal atrelada ao pedido de reenbolso é suspeita. Por fim, o banco de dados do Jarbas deve ser alimentado com os novos dados classificados pela Rosie e então o Jarbas irá lista-los e criar posts de tempos em tempos para todas as suspeitas encontradas.
 
-![fig1](c4-contexto.svg)
+![fig1](contexto.svg)
 
 ### Containers
 
-A Rosie é constituída por um conjunto de classificadores para pedidos de reembolso. É basicamente um módulo python que utiliza Scikit para criar classificadores.
+A Rosie é constituída por um conjunto de classificadores de notas fiscais de pedidos de reembolso. É basicamente um módulo python que utiliza Scikit para criar classificadores.
 
-Classificadores:
+Classificadores esperados:
 - Despesas eleitorais
 - Empresas irregulares no lançamento das notas fiscais
 - Despesas com refeições
 - Limite de subcota parlamentar mensal
 - Gastos com combustível
 
----
-##### *colocar imagem do container*
+Em uma visão mais detalhada dos containers, podemos entender como se dá o funcionamento dos dois módulos.
 
-##### *ver possibilidade de criar diagrama de implementação*
----
+![fig1](containers-rosie-jarbas.svg)
+
+A implantação do sistema é feita em Droplest da digital ocean e não há muitos detalhes aqui a não ser um docker-compose para instanciar containers das tecnologias utilizadas em uma única máquina virtual da Digital Ocean.
+
+Apenas o jarbas deve ficar no ar 24 horas por dia. Por simplicidade, a Rosie é acionada apenas algumas vezes ao mês de forma manual e a base de dados do Jarbas é atualizada com os dados novos também manualmente.
+
+O Jarbas é apenas um dashboard que expõe os dados classificados e que não chegam na casa dos milhões. Logo, a arquitetura de implantação deve-se manter simples pois traz baixo custo e facilidade de implantação.
 
 ### Componentes
 
 Os componentes da rosie são os seguintes:
 
+![fig1](componentes-rosie.svg)
+
 Os componentes do jarbas são os seguintes:
 
-
+![fig1](componentes-jarbas.svg)
 
 ### Código
 
