@@ -7,7 +7,7 @@ Repositório para organizar as documentações arquiteturais produzidas pelos al
 Caso não queira instalar o hugo, utilize o docker.
 
 ```shell
-docker-compose -f "docker-compose.yml" up -d --build
+docker-compose up -d
 ```
 
 Em seguida, acesse http://localhost:1313/arqsoft20203
