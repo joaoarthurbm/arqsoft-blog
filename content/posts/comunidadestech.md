@@ -7,7 +7,7 @@ categories = []
 
 ***
 
-Este documento descreve parte da arquitetura geral do Comunidades.tech.
+Este documento descreve parte da arquitetura de parte do sistema Comunidades.tech.
 
 ***
 
@@ -21,9 +21,9 @@ Este documento foi produzido por Raquel Ambrozio da Fonseca.
 
 # Descrição Arquitetural -- Comunidades.tech
 
-Este documento descreve parte da arquitetura do projeto [Comunidades.tech](https://github.com/universoimpulso/comunidadestech). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
+Este documento descreve parte da arquitetura de parte do sistema [Comunidades.tech](https://github.com/universoimpulso/comunidadestech). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
 
-É importante destacar que será descrita parte da arquitetura geral do Comunidades.tech, considerando suas principais funcionlidades, elementos específicos do projeto e sua implementação não serão detalhados.
+É importante destacar será considerando apenas as principais funcionlidades do Comunidades.tech, ou seja, elementos específicos do sistema e sua implementação não serão detalhados.
 
 
 ## Descrição Geral sobre o Comunidades.tech
@@ -54,23 +54,23 @@ As informações das comunidades cadastradas são maninpuladas pelo Back-end do 
  
 Abaixo está o diagrama de contexto.
 
-![fig](diagrama-contexto.png)
+![fig](diagrama-contexto.jpg)
 
 
 ### Containers
 
-Nesta seção eu espero duas coisas: o diagrama de containers e  texto descrevendo os containers. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada container, suas tecnologias, APIs expostas, protocolos, onde são executados/implantados etc. Você pode criar um diagrama de implantação para dar mais detalhes sobre o ambiente em que os containers são implantados e executam. Essa parte de implantação pode ser uma subseção desta seção.
+O sistema Comunidades.tech é uma aplicação que pode ser dividida basicamente em três grandes partes (containers):
 
-Importante, se um componente expor, por exemplo, uma API REST. Seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints [deste documento](https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing).
+* O Front-end (implementado utilizando React.JS), é a parte que o usuário interage através do seu navergador web para acessar as funcionalidades do sistema;
+* O Back-end (implementado utilizando Node.JS), responsável pela lógica de negócios;
+* Banco de Dados (MongoDB): onde os dados são armazenados;
 
-Importante, se um container expuser, por exemplo, uma API REST, seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints [deste documento](https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing).
+[//]: <> (O Back-end  expõe uma API-REST utilizando o Express. )
+Os containers estão **executando/implantandos** na plataforma em núvem **Heroku**. E toda comunicação é feita via API-REST (Express.JS) em formato JSON utilizando protocolos HTTPS.
 
-Abaixo estão exemplos de diagramas de containers e de implantação.
+Abaixo está o diagrama de containers.
 
-![fig3](c4-containers.png)
-![fig4](parlametria-container.png)
-![fig5](c4-implantacao.png)
-![fig6](parlametria-implantacao.png)
+![fig3](diagrama-containers.png)
 
 ### Componentes
 
