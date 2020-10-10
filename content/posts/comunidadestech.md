@@ -7,7 +7,7 @@ categories = []
 
 ***
 
-Este é um documento descreve a arquitetura geral do Comunidades.tech.
+Este documento descreve parte da arquitetura geral do Comunidades.tech.
 
 ***
 
@@ -17,13 +17,13 @@ Este documento foi produzido por Raquel Ambrozio da Fonseca.
 
 - Matrícula: 116210531
 - Contato: raquel.fonseca@ccc.ufcg.edu.br
-- Projeto: https://github.com/universoimpulso/comunidadestech
+- Projeto documentado: https://github.com/universoimpulso/comunidadestech
 
 # Descrição Arquitetural -- Comunidades.tech
 
-Este documento descreve a arquitetura do projeto [Comunidades.tech](https://github.com/universoimpulso/comunidadestech). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
+Este documento descreve parte da arquitetura do projeto [Comunidades.tech](https://github.com/universoimpulso/comunidadestech). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
 
-É importante destacar que será descrita a arquitetura geral do Comunidades.tech. O foco aqui não é detalhar elementos específicos do projeto.
+É importante destacar que será descrita parte da arquitetura geral do Comunidades.tech, considerando suas principais funcionlidades, elementos específicos do projeto e sua implementação não serão detalhados.
 
 
 ## Descrição Geral sobre o Comunidades.tech
@@ -34,20 +34,22 @@ O Comunidades.tech é um projeto open source desenvolvido pela comunidade da [Im
 
 ### Objetivo Geral
 
-O projeto divulga comunidades de tecnologia de todo Brasil, sendo essas vituais ou presenciais. 
+Implementar um sistema para divulgar comunidades nacionais relacionadas a tecnologia, sendo essas vituais ou presenciais. 
 
 ### Objetivos Específicos
 
-Cadastrar comunidades de tecnologia, por tipo (Discord, Meetup, Slack, etc) e categoria (Desenvolvimento de Software, Infraestrutura, Dados, Games, etc ). Além disso, disponibilizar essas comunidades em um catálogo com seus devidos dados (nome, descrição, tecnologias utilizadas, localização, dados para contato, entre outras).
+Queremos cadastrar e publicar comunidades de tecnologia, levando em consideração suas principais caracteríticas, como tipo (Discord, Meetup, Slack, etc) e categoria (Desenvolvimento de Software, Infraestrutura, Dados, Games, etc ). Por fim, disponibilizar essas comunidades em um catálogo com seus devidos dados, para que as pessoas consigam encontrar (utilizando os filtros) comunidades de seu interesse de maneira rápida e prática. 
 
 ### Contexto
 
- O sistema Comunidades.tech utiliza a API do LinkedIn como login para manter o cadastro de um usuário, o mesmo pode ser classificado nas seguintes categorias: 
-* Uma pessoa que representa uma ou mais comunidades e deseja cadastrar (divulgar) sua(s) comunidade(s);
-* uma pessoa que quer participar de comunidade(s) e deseja buscar e visualizar comunidades do seu interesse;
+O sistema Comunidades.tech utiliza a API do LinkedIn como login para manter o cadastro de um usuário e fazer a autenticação.
+O usuário do sistema pode ser classificado nas seguintes categorias: 
+
+* Pessoa que representa uma ou mais comunidades e deseja cadastrar e divulgar sua(s) comunidade(s);
+* Pessoa que quer participar de comunidade(s) e deseja buscar e visualizar comunidades do seu interesse;
 * Ambos.
 
-As informações das comunidades cadastradas são maninpuladas pelo Back-end do sistema Comunidades.tech e armazenadas em um Banco de Dados mantido pelo mesmo.
+As informações das comunidades cadastradas são maninpuladas pelo Back-end do sistema Comunidades.tech, e armazenadas em um Banco de Dados mantido pelo mesmo.
  
  
 Abaixo está o diagrama de contexto.
