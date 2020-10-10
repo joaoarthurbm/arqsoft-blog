@@ -89,11 +89,13 @@ implementação. Faremos isso mais adiante.
 
 ### Visão de Informação
 
-O objetivo do sistema é divulgar comunidades, por isso, entender como acontece a publicação dessas comunidades é muito importante. O primeiro passo é fazer parte do comunidades.tech, ou seja, ter um cadastrado ativo no sistema. Após o login, é possível visualizar um botão "Casdastre uma comunidade", clicando nele, será aberta a página de cadastro com alguns formulários que solicitam informações como: nome, localização, membros e links. Após o preenchimento dos formulários, e clicando no botão "Criar Comunidade" a comunidade será cadastrada, e será encaminhada para análise, onde  ocorre a validação dos dados. Finalmente, a depender do resultado da análise, a comunidade será publicada, ou não.
+O objetivo do sistema é divulgar comunidades, por isso, entender o fluxo das informações relacionadas com o cadastro e divulgação dessas comunidades é muito importante. 
+
+O primeiro passo para conseguir publicar uma comunidade é fazer parte do Comunidades.tech, ou seja, ter um cadastrado ativo no sistema. Após o login, é possível visualizar um botão "Casdastre uma comunidade", clicando nele, será aberta a página de cadastro com alguns formulários que solicitam informações como: nome, localização, membros e links. Após o preenchimento dos quatro formulários, e concluída a revisão dos dados preenchidos, basta clicar no botão "Criar Comunidade", e acomunidade será cadastrada. Logo pós o cadastro, automaticamente a comunidade será encaminhada para análise, onde  ocorre a validação dos dados. Finalmente, a depender do resultado da análise, a comunidade será aprovada e publicada no catálogo de comunidades.
 
 A seguir está o diagrama de máquina de estados para descrever os estados do procedimento de publicação de uma comunidade.
 
-![fig](diagrama-maquina-estados.png)
+![fig](diagrama-maquina-estados.jpeg)
 
 # Contribuições Concretas
 
