@@ -76,22 +76,17 @@ Prover uma ferramenta poderosa para o desenvolvedor, que tenha uma edição de c
 
 O VS Code é uma aplicação que roda em sistemas windows, macOS e Linux. Tem como base para sua interface com o usuário o framework Electron. Interage com o sistema de versionamento do GitHub.
 
-![fig4](c4-contexto-vscode-plat.png)
+![fig4](c4-contexto-vscode-plat.png) 
 
 ### Containers
 
-Nesta seção eu espero duas coisas: o diagrama de containers e  texto descrevendo os containers. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada container, suas tecnologias, APIs expostas, protocolos, onde são executados/implantados etc. Você pode criar um diagrama de implantação para dar mais detalhes sobre o ambiente em que os containers são implantados e executam. Essa parte de implantação pode ser uma subseção desta seção.
+Através da API de extensões é possível customizar todo o VS Code.
 
-Importante, se um componente expor, por exemplo, uma API REST. Seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints [deste documento](https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing).
+Os serviços de linguagem e de depuração são tratados como uma classe especial de Extensões. O servidor de linguagem permite a experiência de edição para muitas linguagens de programação. Pode-se implementar autocomplete, verificação de erros (diagnóstico), salto para definição e muitos outros recursos de linguagem suportados no VS Code. Com o serviço de depuração os autores de extensão podem integrar facilmente os depuradores existentes no VS Code, ao mesmo tempo em que tem uma interface de usuário comum com todos eles.
 
-Importante, se um container expuser, por exemplo, uma API REST, seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints [deste documento](https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing).
+A interface de versionamento de arquivos permite criar/troca de branch, adicionar/remover arquivos à um commit, solucionar conflitos, atualizar a branch remota, etc. 
 
-Abaixo estão exemplos de diagramas de containers e de implantação.
-
-![fig3](c4-containers.png)
-![fig4](parlametria-container.png)
-![fig5](c4-implantacao.png)
-![fig6](parlametria-implantacao.png)
+![fig5](c4-containers-vscode.png)
 
 ### Componentes
 
