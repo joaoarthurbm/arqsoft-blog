@@ -108,6 +108,8 @@ A seguir está o diagrama de máquina de estados para descrever os estados do pr
 
 # Contribuições Concretas
 
-Acessei o repositório onde está localizado o projeto Comunidades.tech, fiz o fork do projeto, clonei o reposítório, criei uma branch chamada architectural-documentation. Na raiz do projeto, criei um arquivo Markdown chamado architectural-documentationn e uma pasta (com o mesmo nome) para armazenar as imagens utilizadas no Markdown. Por fim, copiei e colei o conteúdo desse documento (exceto as seções código e contribuições concretas) no arquivo destinado para documentação do projeto, fiz o commit, o push, realizei o pull request e estou aguardando a revisão do mesmo. Segue o link do pull:
-https://github.com/universoimpulso/comunidadestech/pull/247
+Acessei o repositório onde está localizado o projeto Comunidades.tech, fiz o fork do projeto, clonei o reposítório, criei uma branch chamada architectural-documentation. Na raiz do projeto, criei um arquivo Markdown chamado architectural-documentationn e uma pasta (com o mesmo nome) para armazenar as imagens utilizadas no Markdown. Por fim, copiei e colei o conteúdo desse documento (exceto as seções código e contribuições concretas) no arquivo destinado para documentação do projeto, fiz o commit, o push, realizei o pull request e estou aguardando a revisão do mesmo. O pull request pode ser visualizado [aqui](https://github.com/universoimpulso/comunidadestech/pull/247).
+
+# Referências
+Todo conteúdo desse documento foi baseado no estudo do código do repositório do projeto, juntamente com informações adicionais adquiridas através de integrantes da [comunidade da Impulso Network](https://impulso.network/entrar). 
 
