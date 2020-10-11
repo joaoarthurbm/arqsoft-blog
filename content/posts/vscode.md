@@ -37,12 +37,12 @@ Este documento foi produzido por Gabriel Almeida Azevedo.
 
 Este documento descreve parte da arquitetura do projeto [VS Code](https://github.com/microsoft/vscode). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
 
-É importante destacar não será descrita toda a arquitetura do VS Code. O foco aqui é a descrição do seu núcleo central, parte fundamental do projeto. Componentes satélites como o Chrome Debug Core, NLS Tools, CSS/LESS/SCSS Language Service, ESLint possuem seu próprio repositório e não serão abordados profundamente neste documento. Para ver a lista completa de projetos relacionados acesse o link [Related Projects](https://github.com/microsoft/vscode/wiki/Related-Projects).
+É importante destacar que não será descrita toda a arquitetura do VS Code. O foco aqui é a descrição do seu núcleo central, parte fundamental do projeto. Componentes satélites como o Chrome Debug Core, NLS Tools, CSS/LESS/SCSS Language Service e ESLint possuem seu próprio repositório e não serão abordados profundamente neste documento. Para ver a lista completa de projetos relacionados acesse o link [Related Projects](https://github.com/microsoft/vscode/wiki/Related-Projects).
 
 
 ## Descrição Geral sobre o VS Code 
 
-O Visual Code Studio, ou simplesmente VS Code, é um editor de código que foi lançado em 2015 pela Microsoft. É uma ferramenta de código aberto voltada para o desenvolvimento de aplicações Web. O Visual Code se baseia no Eletron (framework usada para desenvolver aplicativos Node.js). O seu conjunto de utilitários faz com que concorra de igual para igual com ferramentas pagas existentes no mercado.
+O Visual Code Studio, ou simplesmente VS Code, é um editor de código que foi lançado em 2015 pela Microsoft. É uma ferramenta de código aberto voltada para o desenvolvimento de aplicações web, mobile e de cloud. O Visual Code se baseia no Electron (framework usada para desenvolver aplicativos Node.js). O seu conjunto de utilitários faz com que concorra de igual para igual com ferramentas pagas existentes no mercado.
 
 **Seus pontos de Destaque são:**
 
@@ -56,36 +56,27 @@ O Visual Code Studio, ou simplesmente VS Code, é um editor de código que foi l
 
 + É uma aplicação leve
 
-+ Excelente paleta de atalhos
++ Apresenta uma excelente paleta de atalhos: além da seus atalhos, é possível alterar para os atalhos reconhecidos pelo Sublime e pelo Atom.
 
 + Permite adicionar Extensões
 
-+ Possui o IntelliSense: Recurso de preenchimento de código que permite listar membros, obter informações de parâmetro, completar palavras.
++ Possui o IntelliSense: Recurso de preenchimento de código que permite listar métodos, obter informações de parâmetro, completar palavras.
 
 ![intelliSense](intelliSense.gif)
 
-## O Serviço de monitoramento do twitter
+### Objetivo Geral do VS Code
 
-### Objetivo Geral
-
-Implementar um serviço para capturar automaticamente o que é dito no twitter sobre as proposições que acompanhamos e prover indicadores sobre as publicações para serem usados no parlametria. 
+Fornecer um editor de código simples que cubra as necessidades dos desenvolvedores nas 3 fases de desenvolvimento: codificação, criação do artefato e depuração.
 
 ### Objetivos Específicos
 
-Queremos ter acesso ao grau de atividade no twitter de parlamentares e de influenciadores do debate no twitter. Além disso, queremos saber quanto essas pessoas tuítam sobre cada proposição ou tema e a indicadores sobre sua atividade. Para parlamentares também queremos indicadores a partir dos léxicos de discurso desenvolvidos pelos nossos parceiros.
+Prover uma ferramenta poderosa para o desenvolvedor, que tenha uma edição de código abrangente, navegação e suporte de compreensão, depuração leve, um modelo de extensibilidade rico e integração leve com ferramentas existentes.
 
 ### Contexto
 
-Nesta seção eu espero duas coisas: o diagrama de contexto e um texto curto descrevendo em mais detalhes o contexto do sistema. Isso inclui as fronteiras do sistema, os sistemas/serviços externos com os quais ele se comunica etc.
+O VS Code é uma aplicação que roda em sistemas windows, macOS e Linux. Tem como base para sua interface com o usuário o framework Electron. Interage com o sistema de versionamento do GitHub.
 
-Abaixo estão dois exemplos de diagramas de contexto.
-
-![fig1](c4-context.png)
-
-<img class="center" src="parlametria-contexto.png" style="width:60%">
-
-
-**ATÉ AQUI DEVE SER FINALIZADO**
+![fig4](c4-contexto-vscode-plat.png)
 
 ### Containers
 
