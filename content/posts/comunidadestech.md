@@ -54,8 +54,9 @@ As informações das comunidades cadastradas são maninpuladas pelo Back-end do 
  
 Abaixo está o diagrama de contexto.
 
-![fig](diagrama-contexto.jpg)
+![fig1](diagrama-contexto.png)
 
+**OBS**: Além do LinkedIn, também pode ser utilizada uma conta do Google para realizar o cadastro do usuário, mas, por questões de simplificação, esse detalhe não foi ilustrado.
 
 ### Containers
 
@@ -65,20 +66,19 @@ O sistema Comunidades.tech é uma aplicação que pode ser dividida basicamente 
 * O Back-end (implementado utilizando Node.JS), responsável pela lógica de negócios;
 * Banco de Dados (MongoDB): onde os dados são armazenados;
 
-[//]: <> (O Back-end  expõe uma API-REST utilizando o Express. )
-Os containers estão **executando/implantandos** na plataforma em núvem **Heroku**. E toda comunicação é feita via API-REST (Express.JS) em formato JSON utilizando protocolos HTTPS.
-
 Abaixo está o diagrama de containers.
 
-![fig3](diagrama-containers.png)
+![fig2](diagrama-containers.svg)
+
+[//]: <> (O Back-end  expõe uma API-REST utilizando o Express. )
+Os containers estão **executando/implantandos** na plataforma em núvem **Heroku**. E toda comunicação é feita via API-REST em formato JSON utilizando protocolos HTTPS.
+
 
 ### Componentes
 
-Nesta seção eu espero duas coisas: o diagrama de componentes e texto descrevendo os componentes. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada componente, seus relacionamentos, tecnologias, APIs expostas, protocolos, estilos, padrões etc.
+Os principais componentes, do sistema Comunidades.tech, bem como suas descrições estão ilustrados abaixo no diagrama de componentes.
 
-Abaixo um exemplo de diagrama de componente.
-
-![fig7](c4-componentes.png)
+![fig3](diagrama-componentes.png)
 
 ### Código
 
