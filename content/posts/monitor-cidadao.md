@@ -52,11 +52,13 @@ O diagrama abaixo apresenta os conteiners do Monitor Cidadão. A camada de dados
 
 O fetcher, o transformador, e o preditor são sistemas desenvolvidos em R. Os dois bancos de dados são relacionais, fazem uso do postgres. O fetcher é responsável por buscar os dados em suas fontes. O transformador utiliza o tradutor, um serviço interno responsável por traduzir os dados para um formato tabular, e em seguida realiza manipulações, como joins, nos dados. O preditor encapsula diversas funções para a realização das predições em torno dos contratos públicos.
 
-Note que acessos aos banco de dados são realizados por meio de objetos de acesso a dados (DAO).
+Note que acessos aos bancos de dados são realizados por meio de objetos de acesso a dados (DAO).
 
 ![fig2](containers.png)
 
 #### Implantação
+
+O diagrama abaixo mostra onde os containers do Monitor Cidadão estão implantados. As fontes de dados são serviços externos. O banco de dados SAGRES está implantado em uma máquina virtual chamada data-lake-mc. Os demais componentes estão implantados em outra máquina virtual chamada monitor-cidadão. 
 
 ![fig3](implantacao.png)
 
@@ -66,7 +68,7 @@ O diagrama abaixo apresenta os componentes do preditor do Monitor Cidadão: um g
 
 O gerador de features recebe dados do AL_DB e cria novas features com base em manipulações dos dados existentes. O seletor de features seleciona as features mais recentemente adicionadas no banco de dados MC_DB. O pré-processador recebe as features selecionadas e realiza pré-processamento nos dados: divide os dados em treino e teste e realiza conversões de tipo. O treinador é responsável por treinar modelos do tipo regressão logística e floresta aleatória. O avaliador calcula métricas para os modelos treinados.
 
-Note que as informações referentes à predição: conjunto de features utilizadas, modelos, métricas, são salvos no MC_DB. Acessos aos banco de dados são realizados por meio de objetos de acesso a dados (DAO).
+Note que as informações referentes à predição: conjunto de features utilizadas, modelos, métricas, são salvos no MC_DB. Acessos aos bancos de dados são realizados por meio de objetos de acesso a dados (DAO).
 
 ![fig4](componentes.png)
 
