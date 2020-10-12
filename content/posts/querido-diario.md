@@ -1,13 +1,13 @@
 +++
 title = "Documento arquitetural do Querido Diário"
-date = 2020-10-06
+date = 2020-10-12
 tags = []
 categories = []
 +++
 
 ***
 
-# Autores
+# Autor
 
 Este documento foi produzido por Matheus Alves dos Santos.
 
@@ -17,17 +17,21 @@ Este documento foi produzido por Matheus Alves dos Santos.
 
 # Descrição Arquitetural -- Querido Diário
 
+<div align="center" style="margin-top:1.5rem;">
+    <img src="logo.png" style="width:20rem;">
+</div>
+
 Este documento descreve a arquitetura do projeto [Querido Diário](https://github.com/okfn-brasil/querido-diario) da *[Open Knowledge Brasil](https://github.com/okfn-brasil)*, baseando-se especialmente no modelo [C4](https://c4model.com/).
 
 É importante ressaltar que o Querido Diário é composto por módulos cujas implementações estão em repositórios à parte do principal. Por isso, este documento incluirá módulos como a [API do Querido Diário](https://github.com/okfn-brasil/querido-diario-api) e o serviço de [Busca por Palavras-Chave](https://github.com/okfn-brasil/busca-querido-diario). Em contrapartida, o conteúdo de repositórios relacionados que não têm impacto direto no sistema, como o site de divulgação do projeto, não será incluído.
 
-## Descrição Geral
+## Descrição Geral e Objetivos
 
-Os Diários Oficiais estão entre as melhores fontes de informação sobre as ações da administração pública brasileira, especialmente por sua granularidade, existindo até mesmo no âmbito municipal. Contudo, mesmo com a [Lei de Acesso à Informação](https://www.gov.br/acessoainformacao/pt-br) vigente, a maioria destas publicações está disponível exclusivamente através de PDFs. 
+Os Diários Oficiais estão entre as melhores fontes de informação sobre as ações da administração pública brasileira, especialmente por sua granularidade, existindo até mesmo no âmbito municipal. Contudo, mesmo com a [Lei de Acesso à Informação](https://www.gov.br/acessoainformacao/pt-br) vigente, a maioria destas publicações não está disponível em formatos adequados. Elas são encontradas quase exclusivamente em formato PDF. 
 
-Nesse cenário, o Querido Diário busca rastrear as fontes destas publicações nos 5.570 municípios brasileiros, extrair as informações ali contidas e, posteriormente, disponibilizá-las na forma de dados abertos.
+Nesse cenário, o Querido Diário visa rastrear as fontes destas publicações nos 5.570 municípios brasileiros, extrair as informações ali contidas e, posteriormente, disponibilizá-las na forma de dados abertos.
 
-Ao criar uma fonte confiável e centralizada para estas informações, o Querido Diário poderá fomentar muitos avanços nas ferramentas de fiscalização da administração pública brasileira, bem como auxiliar a sociedade civil no acompanhamento dos atos públicos municipais.
+Ao criar uma fonte confiável e centralizada para estas informações, o Querido Diário busca auxiliar a sociedade civil no acompanhamento dos atos públicos municipais, bem como fomentar avanços nas ferramentas de fiscalização da administração pública brasileira.
 
 ## Contexto
 
@@ -35,24 +39,31 @@ Os usuários do Querido Diário formam um grupo muito heterogêneo, contemplando
 
 Ainda assim, é possível dividi-los em dois grupos principais: a **sociedade civil** e as **ferramentas de fiscalização da administração pública**. Ambos utilizam o Querido Diário como fonte centralizada e confiável de informação acerca dos Diários Oficiais municipais. Contudo, diferenciam-se à medida que as ferramentas de fiscalização não usam os dados disponibilizados apenas como fonte de informação. Elas vão além, aplicando-os na identificação de padrões, detecção de problemas e promoção de impactos positivos na administração pública das cidades brasileiras.
 
-Para atender às demandas desses dois grupos de usuários, o Querido Diário precisa acessar uma grande quantidade de **portais dos poderes públicos municipais** nos quais os Diários Oficiais são disponibilizados. A partir dos PDFs encontrados, as informações de interesse são extraídas e estruturadas adequadamente para que possam ser, posteriormente, disponibilizadas.
+Para atender às demandas desses dois grupos de usuários, o Querido Diário precisa acessar uma grande quantidade de **portais dos poderes públicos municipais** nos quais os Diários Oficiais são disponibilizados. A partir dos documentos encontrados, as informações de interesse são extraídas e estruturadas adequadamente para que possam ser, posteriormente, disponibilizadas.
 
 O diagrama apresentado na Figura 1 descreve sucintamente o contexto em que o Querido Diário está inserido.
+
+<div align="center" style="margin:2rem 0;">
+    <img src="diagrama-contexto.png" style="width:95%;">
+    <span style="display:block;font-weight:bold;">
+        Figura 1 - Diagrama de contexto do Querido Diário
+    </span>
+</div>
 
 ## *Containers*
 
 O Querido Diário é composto atualmente pelos quatro *containers* que serão descritos a seguir.
 
-O **Raspador de Diários Oficiais** é o *container* responsável por acessar os portais do poder público onde são disponibilizados os Diários Oficiais municipais, bem como por extrair as informações de interesse sobre estes documentos. Ele foi implementado em [Python](https://www.python.org/), mais especificamente através das bibliotecas [SQLAlchemy](https://www.sqlalchemy.org/) e [Scrapy](https://scrapy.org/). Este *container* se comunica com os portais do poder público através de requisições HTTP e aplica rotinas de pré-processamento nos dados (por meio de *middleware*) antes de enviá-los para o armazenamento usando *DataMappers*.
+O **Raspador de Diários Oficiais** é o *container* responsável por acessar os portais do poder público onde são disponibilizados os Diários Oficiais municipais, bem como por extrair as informações de interesse sobre estes documentos. Ele foi implementado em [Python](https://www.python.org/), mais especificamente através das bibliotecas [SQLAlchemy](https://www.sqlalchemy.org/) e [Scrapy](https://scrapy.org/). Este *container* se comunica com os portais do poder público através de requisições HTTP e aplica rotinas de pré-processamento nos dados (por meio de *middleware*) antes de enviá-los para o armazenamento usando *Data Mappers*.
 
-O **Pré-Processador de Dados** é o *container* responsável por realizar transformações nos dados brutos extraídos dos Diários Oficiais, colocando-os em um formato estruturado, acessível e mais amigável à compreensão humana. Ele foi implementado em [Python](https://www.python.org/) e disponibiliza diversas rotinas de tratamento e limpeza de dados, sendo utilizado como um *middleware*.
+O **Pré-Processador de Dados** é o *container* responsável por aplicar transformações aos dados brutos extraídos dos Diários Oficiais, colocando-os em um formato estruturado, acessível e mais amigável à compreensão humana. Ele foi implementado em [Python](https://www.python.org/) e disponibiliza diversas rotinas de tratamento e limpeza de dados, sendo utilizado como um *middleware*.
 
-O **Banco de Dados** é o *container* responsável por armazenar, de forma estruturada, todas as informações extraídas a partir dos Diários Oficiais municipais. Ele foi implementado em [PostgreSQL](https://www.postgresql.org/) e outros *containers* utilizam *DataMappers* para acessá-lo.
+O **Banco de Dados** é o *container* responsável por armazenar, de forma estruturada, todas as informações extraídas a partir dos Diários Oficiais municipais. Ele foi implementado em [PostgreSQL](https://www.postgresql.org/) e outros *containers* utilizam *Data Mappers* para acessá-lo.
 
-A **API do Querido Diário** é o *container* que viabiliza o acesso externo e eficiente aos dados armazenados no banco de dados. Ela foi implemetada em [Python](https://www.python.org/), mais especificamente através das bibliotecas [Elastic Search](https://elasticsearch-py.readthedocs.io/en/master/), [Fast-API](https://fastapi.tiangolo.com/) e [SQLAlchemy](https://www.sqlalchemy.org/). Foram utilizados padrões REST e o acesso a esta API se dá por meio de requisições HTTP em formato JSON. Os dois *endpoints* disponíveis atualmente estão descritos a seguir.
+A **API do Querido Diário** é o *container* que viabiliza o acesso externo e eficiente aos dados armazenados no banco de dados. Ela foi implementada em [Python](https://www.python.org/), mais especificamente através das bibliotecas [Elastic Search](https://elasticsearch-py.readthedocs.io/en/master/), [Fast-API](https://fastapi.tiangolo.com/) e [SQLAlchemy](https://www.sqlalchemy.org/). Foram utilizados padrões REST e o acesso a esta API se dá por meio de requisições HTTP em formato JSON. Os dois *endpoints* disponíveis atualmente estão descritos a seguir.
 
 **`GET /gazzettes/`**
-- **Descrição:** Retorna informações sobre os Diários Oficiais que atendam às características descritas no *Payload* da requisição.
+- **Descrição:** Retorna informações sobre os Diários Oficiais que atendam às características descritas no *payload* da requisição.
 
 - **Atributos do *Payload***
     - **`since`:** Data mínima de publicação dos Diários Oficiais a serem retornados.
@@ -72,8 +83,8 @@ A **API do Querido Diário** é o *container* que viabiliza o acesso externo e e
     }
     ```
 
-**`GET /gazzettes/:territory_id`**
-- **Descrição:** Retorna informações sobre os Diários Oficiais que atendam às características descritas no *Payload* da requisição e que sejam do município cujo código no IBGE é igual ao **territory_id**.
+**`GET /gazzettes/<territory_id>`**
+- **Descrição:** Retorna informações sobre os Diários Oficiais que atendam às características descritas no *payload* da requisição e que sejam do município cujo código no IBGE é igual ao **territory_id**.
 
 - **Atributos do *Payload***
     - **`since`:** Data mínima de publicação dos Diários Oficiais a serem retornados.
@@ -94,6 +105,13 @@ A **API do Querido Diário** é o *container* que viabiliza o acesso externo e e
     ```
 
 O diagrama apresentado na Figura 2 descreve os *containers* que compõem o Querido Diário.
+
+<div align="center" style="margin:2rem 0;">
+    <img src="diagrama-containers.png" style="width:95%;">
+    <span style="display:block;font-weight:bold;">
+        Figura 2 - Diagrama de <i>containers</i> do Querido Diário
+    </span>
+</div>
 
 Além destes *containers*, futuramente serão implementados outros dois: um para o ***Front-End***, que permitirá o acesso facilitado aos resultados e informações do Querido Diário, e um para **Processamento de Linguagem Natural**, que permitirá a execução de algoritmos de Inteligência Artificial com os dados extraídos.
 
@@ -116,3 +134,27 @@ Já na API do Querido Diário, é possível identificar dois componentes princip
 Por fim, o **Buscador de Dados** é o componente responsável por recuperar o conjunto de dados que atenda às especificações dos parâmetros de consulta recebidos. Para isso, o acesso ao Banco de Dados utiliza o [Elastic Search](https://elasticsearch-py.readthedocs.io/en/master/) e os *Data Mappers* do [SQLAlchemy](https://www.sqlalchemy.org/), permitindo que mesmo consultas complexas (como a busca por palavras-chave nos documentos) sejam executadas de forma eficiente. 
 
 O diagrama apresentado na Figura 3 descreve os componentes do Querido Diário que foram citados ao longo desta seção.
+
+<div align="center" style="margin:2rem 0;">
+    <img src="diagrama-componentes.png" style="width:95%;">
+    <span style="display:block;font-weight:bold;">
+        Figura 3 - Diagrama de componentes do Querido Diário
+    </span>
+</div>
+
+## Visão da Informação
+
+Apesar da grande quantidade de dados que é manipulada pelo Querido Diário, todas as informações podem ser centralizadas no conceito de Diário Oficial.
+
+Inicialmente, o Diário Oficial é um documento **disponibilizado** em algum portal de poder público municipal, geralmente em formatos pouco amigáveis ao processamento por máquina (como PDFs). Por isso, a primeira atividade do Querido Diário é acessá-lo e obtê-lo. Uma vez que o documento foi **recuperado**, as informações de interesse contidas nele precisam ser "raspadas", de modo que o sistema passe a lidar apenas com esse conjunto de dados **extraído**. Durante este processo, o conjunto de dados ainda deve sofrer diversas transformações para que se torne mais acessível e compreensível, ou seja, se torne **tratado**.
+
+Com essas etapas concluídas, o Diário Oficial pode finalmente ser **armazenado** no banco de dados do Querido Diário, onde permanecerá indefinidamente. Finalmente, todas as publicações de Diários Oficiais que forem armazenadas pelo Querido Diário poderão ser **requisitadas** por qualquer indivíduo que tenha interesse em conhecer mais sobre os atos do poder público nos municípios brasileiros.
+
+O fluxo de informações descrito nesta seção está apresentado no diagrama de estados da Figura 4.
+
+<div align="center" style="margin:2rem 0;">
+    <img src="visao-informacao.png" style="width:95%;">
+    <span style="display:block;font-weight:bold;">
+        Figura 4 - Visão da Informação dos Diários Oficiais no Querido Diário
+    </span>
+</div>
