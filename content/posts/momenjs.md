@@ -49,9 +49,7 @@ Auxiliar no desenvolvimento de projetos que manipulam datas e horas, a partir da
 
 ### Componentes
 
-Nesta seção eu espero duas coisas: o diagrama de componentes e texto descrevendo os componentes. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada componente, seus relacionamentos, tecnologias, APIs expostas, protocolos, estilos, padrões etc.
-
-Abaixo um exemplo de diagrama de componente.
+![container](momentjs/momentjs-component-diagram.png)
 
 ### Código
 
