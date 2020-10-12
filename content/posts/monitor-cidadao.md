@@ -48,7 +48,7 @@ Queremos ter acesso a dados, provenientes de diferentes fontes, relacionados a c
 
 ### Containers
 
-O diagrama abaixo apresenta os conteiners do Monitor Cidadão. A camada de dados, que contém o serviço de predição que queremos descrever, é composta por cinco componentes: um fetcher, um transformador, um preditor, e dois bancos de dados.
+O diagrama abaixo apresenta os containers do Monitor Cidadão. A camada de dados, que contém o serviço de predição que queremos descrever, é composta por cinco componentes: um fetcher, um transformador, um preditor, e dois bancos de dados.
 
 O fetcher, o transformador, e o preditor são sistemas desenvolvidos em R. Os dois bancos de dados são relacionais, fazem uso do postgres. O fetcher é responsável por buscar os dados em suas fontes. O transformador utiliza o tradutor, um serviço interno responsável por traduzir os dados para um formato tabular, e em seguida realiza manipulações, como joins, nos dados. O preditor encapsula diversas funções para a realização das predições em torno dos contratos públicos.
 
@@ -90,3 +90,5 @@ Do estado (5), executamos o seletor de features e vamos para o estado (6), onde 
 # Contribuições Concretas
 
 *Descreva* aqui os PRs enviados para o projeto e o status dos mesmos. Forneça os links dos PRs.
+
+Ao produzir o conteúdo deste post, abri dois PRs para o repositório da camada de dados do Monitor Cidadão. O primeiro PR foi para atualizar o diagrama do fluxo de dados, que se encontra desatualizado no README do repositório. Em 12 de Outubro de 2020, o PR está aberto: https://github.com/analytics-ufcg/monitor-cidadao-dados/pull/73. O segundo PR foi para adicionar um documento de descrição da arquitetura do preditor do Monitor Cidadão de acordo com o modelo C4. Tal documento não existia no projeto. Em 12 de Outubro de 2020, o PR está aberto: https://github.com/analytics-ufcg/monitor-cidadao-dados/pull/74.
