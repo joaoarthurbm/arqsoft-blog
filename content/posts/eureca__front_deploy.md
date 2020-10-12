@@ -27,13 +27,22 @@ Este documento descreve parte da arquitetura do projeto [Eureca](https://github.
 
 O Eureca-Frontend é um projeto que tem como objetivo separar a parte visual do projeto Eureca. Atualmente está sendo possível visualizar apenas um dos sub-módulos do Eureca, que é o sub-módulo Estatísticas.
 
-O Eureca-Deploy é um projeto com principal objetivo de efetuar o Deploy do Eureca, além de fazer todo o processo de configuração, escalabilidade e scripts para o Banco de Dados.
+O Eureca-Deploy é um projeto com principal objetivo efetuar o Deploy do Eureca, além de fazer todo o processo de configuração, escalabilidade e scripts para o Banco de Dados.
 
 ## O Serviço Eureca
 
 ### Objetivo Geral
 
+Servir uma plataforma administradora para coordenadores de cursos da UFCG. A princípio está sendo desenvolvida para o curso de Ciências da Computação - UFCG. Esta plataforma tem como principal objetivo aumentar a eficiêcia e a facilidade para o coordenador com respeito aos discentes do curso. Ela contará com diversos serviços que auxiliará o coordenador na sua administração, sendo estes:
+
+- Monitoramento
+- Estatísticas
+- Comunicação
+- Serviços
+
 ### Objetivos Específicos
+
+Queremos implantar os dados obtidos através do eureca-coleta-dados em um banco de dados para que este possar ser acessado por um outro projeto Eureca (eureca-backend), que servirá uma API para ser acessada pelo eureca-frontend, sendo este, responsável por mostrar visualmente todos os serviços disponíveis na plataforma.
 
 ### Contexto
 
