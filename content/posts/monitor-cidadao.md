@@ -89,6 +89,4 @@ Do estado (5), executamos o seletor de features e vamos para o estado (6), onde 
 
 # Contribuições Concretas
 
-*Descreva* aqui os PRs enviados para o projeto e o status dos mesmos. Forneça os links dos PRs.
-
 Ao produzir o conteúdo deste post, abri dois PRs para o repositório da camada de dados do Monitor Cidadão. O primeiro PR foi para atualizar o diagrama do fluxo de dados, que se encontra desatualizado no README do repositório. Em 12 de Outubro de 2020, o PR está aberto: https://github.com/analytics-ufcg/monitor-cidadao-dados/pull/73. O segundo PR foi para adicionar um documento de descrição da arquitetura do preditor do Monitor Cidadão de acordo com o modelo C4. Tal documento não existia no projeto. Em 12 de Outubro de 2020, o PR está aberto: https://github.com/analytics-ufcg/monitor-cidadao-dados/pull/74.
