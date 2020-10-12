@@ -33,7 +33,7 @@ Este documento foi produzido por Gabriel Almeida Azevedo.
 - Contato: gabriel.almeida.azevedo@ccc.ufcg.edu.br
 - Projeto documentado: https://github.com/microsoft/vscode
 
-# Descrição Arquitetural do VSCode -- Serviço de análise do twitter Alterar
+# Descrição Arquitetural do VSCode
 
 Este documento descreve parte da arquitetura do projeto [VS Code](https://github.com/microsoft/vscode). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
 
@@ -94,12 +94,15 @@ A interface de versionamento de arquivos permite criar/troca de branch, adiciona
 
 ### Componentes
 
-Nesta seção eu espero duas coisas: o diagrama de componentes e texto descrevendo os componentes. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada componente, seus relacionamentos, tecnologias, APIs expostas, protocolos, estilos, padrões etc.
+Vale salientar que o VS Code é uma aplicação grande. Foi escolhido apenas 2 containers para serem expandidos e, ainda assim, só uma amostra dos seus componentes está no diagrama.   
 
-Abaixo um exemplo de diagrama de componente.
+Abrindo o container de Extensões tem-se como principais componentes o *Extension Gallery Service* que provê a listagem de extensões disponíveis para usuário juntamente com suas descrições e changelogs. A partir dessa listagem o usuário pode escolher fazer o download de uma extensão. O componente responsável por este papel é o *Extension Downloader* que baixa a extensão desejada e repassa os arquivos para o *Extension Management Service* que por sua vez tem a responsabilidade de averiguar se a extensão é confiável, realizar sua instalação e registro.  
 
-![fig7](c4-containers.png)
-![fig7](c4-componentes.png)
+O container do Editor possui vários componentes mas sem dúvida o *Text Change* faz parte do seu core. Ele é responsável por realizar toda e qualquer alteração nos arquivos e interage fortemente com o componente *Diff Computer*. Ambos componentes são utilizados pelo versionador do VS Code. Existe ainda o *Cursor Delete Operations Controller* e o *Find Controller* que invocam o *Text Change* para realizar as alterações/remoções de código.
+
+Todas as alterações feitas no workspace, através do editor, são salvas no storage (componente não abordado).
+
+![fig7](c4-componentes-vscode.png)
 
 ### Código
 
