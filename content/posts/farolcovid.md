@@ -64,16 +64,19 @@ Abaixo encontra-se o diagrama de container para o que foi discutido anteriorment
 
 ### Componentes
 
+A fim de detalhamento, podemos dividir o container View em cinco componentes: Resources, Model, Helper Server, Utils e Pages.
 
+O componente Resources é composto por um conglomerado de scripts em Python que são utilizados em páginas HTML, compondo de forma fragmentada, funcionalidades para interação do usuário no sistema.
 
-Nesta seção eu espero duas coisas: o diagrama de componentes e texto descrevendo os componentes. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada componente, seus relacionamentos, tecnologias, APIs expostas, protocolos, estilos, padrões etc.
+Model provê o conceito matemático utilizado para a realização de simulações e projeções epidemiológicas, através da linguagem em Python.
 
-Logo abaixo. temos o diagrama de componente para o FarolCovid:
+Helper Server utiliza o microframework Flask juntamente com Python, para fornecer um serviço de cache do sistema, carregando dados via API calls.
 
+O elemento Utils, é responsável pela realização de diferentes funções relacionadas ao gerenciamento da seção do usuário no sistema coletando, informações da seção dos usuário e interações através do Streamlit framework, integrado com Python.
 
+Por último temos o componente Pages que usa Python, HTML e o framework Streamlit, para fornecer visualização interativa com dados. É nesse componente, encontra-se todas as subaplicações disponibilizadas pelo FarolCovid (descritas na seção **Visão de Informação** deste documento) e se comunica com a API para buscas, filtragens e realização de análises dos dados.
 
-
-
+Logo abaixo, temos o diagrama de componentes para o FarolCovid:
 
 ![fig3](03_diagrama_de_componentes.png)
 
