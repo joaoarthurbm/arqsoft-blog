@@ -73,10 +73,14 @@ A API REST que se trata do repositório Eureca-Backend, no momento em que este d
 * /api/estatisticas/evadidos?de=periodo_min&ate=periodo_max
 * /api/estatisticas/evadidos/csv
 
-
-
-
 ### Componentes
+
+No diagrama de componentes temos os componentes principais de cada container, além de seus relacionamentos e responsabilidades. Em nosso projeto o **Crawler** obtém as páginas .html de alunos no sistema de controle acadêmico, então os **Parsers** (que são scripts python) utilizam essas páginas para fazer uma espécie de raspagem dos dados relevantes (web scrapping) utilizando o Beautiful Soap, que é um pacote python para análise de documentos, e assim, retirar as informações relevantes para o projeto. 
+
+Então os **Scripts Shell** fazem uso desses dados filtrados para gerar arquivos .csv contendo relacionamentos desses dados para formar os dados que irão compor as tabelas do banco de dados. Após isso os dados são inseridos no banco de dados, e esses dados são acessados a partir de uma API REST (Eureca-Backend) que possui **Controllers** que fornecem as rotas e se comunicam com os **Models**, onde estes fazem as requisições que utilizam queries SQL, que são feitas através de uma lib chamada psycopg, que nada mais que é que um adaptador de banco de dados Postgres, onde o mesmo acessa um banco de dados Postgres através de queries SQL. Então esses dados resultantes das queries são processados no backend e retornados no formato JSOn em endpoints ou rotas, que são acessadas pelo Eureca-Frontend que renderiza esses dados de forma amigável em uma interface do usuário.
+
+![fig4](diagrama-componentes.png)
+
 
 ### Código
 
