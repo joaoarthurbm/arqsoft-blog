@@ -19,7 +19,7 @@ Este documento foi produzido por Matheus Alves dos Santos.
 
 Este documento descreve a arquitetura do projeto [Querido Diário](https://github.com/okfn-brasil/querido-diario) da *[Open Knowledge Brasil](https://github.com/okfn-brasil)*, baseando-se especialmente no modelo [C4](https://c4model.com/).
 
-É importante ressaltar que o Querido Diário é composto por módulos cujas implementações estão em repositórios à parte do principal. Por isso, este documento incluirá módulos como a [API do Querido Diário](https://github.com/okfn-brasil/querido-diario-api) e o serviço de [Busca por Palavras-Chave](https://github.com/okfn-brasil/busca-querido-diario). Em contrapartida, o conteúdo de repositórios relacionados que não tem impacto direto no sistema, como o site de divulgação do projeto, não será incluído.
+É importante ressaltar que o Querido Diário é composto por módulos cujas implementações estão em repositórios à parte do principal. Por isso, este documento incluirá módulos como a [API do Querido Diário](https://github.com/okfn-brasil/querido-diario-api) e o serviço de [Busca por Palavras-Chave](https://github.com/okfn-brasil/busca-querido-diario). Em contrapartida, o conteúdo de repositórios relacionados que não têm impacto direto no sistema, como o site de divulgação do projeto, não será incluído.
 
 ## Descrição Geral
 
@@ -31,9 +31,9 @@ Ao criar uma fonte confiável e centralizada para estas informações, o Querido
 
 ## Contexto
 
-Os usuários do Querido Diário formam um grupo muito heterogêneo, contemplando desde servidores públicos e jornalistas até organizações não-governamentais de controle social. De forma geral, todos os cidadãos que busquem acesso aos atos públicos dos municípios brasileiros são potenciais usuários deste *software*.
+Os usuários do Querido Diário formam um grupo muito heterogêneo, contemplando desde servidores públicos e jornalistas até organizações não governamentais de controle social. De forma geral, todos os cidadãos que busquem acesso aos atos públicos dos municípios brasileiros são potenciais usuários deste *software*.
 
-Ainda assim, é possível dividí-los em dois grupos principais: a **sociedade civil** e as **ferramentas de fiscalização da administração pública**. Ambos utilizam o Querido Diário como fonte centralizada e confiável de informação acerca dos Diários Oficiais municipais. Contudo, diferenciam-se à medida que as ferramentas de fiscalização não usam os dados disponibilizados apenas como fonte de informação. Elas vão além, aplicando-os na identificação de padrões, detecção de problemas e promoção de impactos positivos na administração pública das cidades brasileiras.
+Ainda assim, é possível dividi-los em dois grupos principais: a **sociedade civil** e as **ferramentas de fiscalização da administração pública**. Ambos utilizam o Querido Diário como fonte centralizada e confiável de informação acerca dos Diários Oficiais municipais. Contudo, diferenciam-se à medida que as ferramentas de fiscalização não usam os dados disponibilizados apenas como fonte de informação. Elas vão além, aplicando-os na identificação de padrões, detecção de problemas e promoção de impactos positivos na administração pública das cidades brasileiras.
 
 Para atender às demandas desses dois grupos de usuários, o Querido Diário precisa acessar uma grande quantidade de **portais dos poderes públicos municipais** nos quais os Diários Oficiais são disponibilizados. A partir dos PDFs encontrados, as informações de interesse são extraídas e estruturadas adequadamente para que possam ser, posteriormente, disponibilizadas.
 
@@ -49,7 +49,7 @@ O **Pré-Processador de Dados** é o *container* responsável por realizar trans
 
 O **Banco de Dados** é o *container* responsável por armazenar, de forma estruturada, todas as informações extraídas a partir dos Diários Oficiais municipais. Ele foi implementado em [PostgreSQL](https://www.postgresql.org/) e outros *containers* utilizam *DataMappers* para acessá-lo.
 
-A **API do Querido Diário** é o *container* que viabiliza o acesso externo e eficiente aos dados armazenados no banco de dados. Ela foi implemetada em [Python](https://www.python.org/), mais especificamente através das bibliotecas [Elastic Search](https://elasticsearch-py.readthedocs.io/en/master/), [Fast-API](https://fastapi.tiangolo.com/) e [SQLAlchemy](https://www.sqlalchemy.org/). Foram utilizados padrões REST e o acesso à esta API se dá por meio de requisições HTTP em formato JSON. Os dois *endpoints* disponíveis atualmente estão descritos a seguir.
+A **API do Querido Diário** é o *container* que viabiliza o acesso externo e eficiente aos dados armazenados no banco de dados. Ela foi implemetada em [Python](https://www.python.org/), mais especificamente através das bibliotecas [Elastic Search](https://elasticsearch-py.readthedocs.io/en/master/), [Fast-API](https://fastapi.tiangolo.com/) e [SQLAlchemy](https://www.sqlalchemy.org/). Foram utilizados padrões REST e o acesso a esta API se dá por meio de requisições HTTP em formato JSON. Os dois *endpoints* disponíveis atualmente estão descritos a seguir.
 
 **`GET /gazzettes/`**
 - **Descrição:** Retorna informações sobre os Diários Oficiais que atendam às características descritas no *Payload* da requisição.
@@ -102,3 +102,17 @@ Além destes *containers*, futuramente serão implementados outros dois: um para
 Até a conclusão deste documento, o processo de implantação do Querido Diário não havia sido concluído e, portanto, nem todas as decisões sobre este tópico estavam disponíveis.
 
 Contudo, já se sabe que o serviço [Spaces Object Storage](https://www.digitalocean.com/products/spaces/) da [Digital Ocean](https://www.digitalocean.com/) será utilizado para a hospedagem de todos os arquivos e que a integração contínua com o código hospedado no [GitHub](https://github.com/) será feita por meio do [Docker Hub](https://hub.docker.com/).
+
+## Componentes
+
+Observando a arquitetura do Querido Diário em mais detalhes, os *containers* descritos anteriormente podem ser subdivididos em componentes.
+
+No Raspador de Diários Oficiais, o componente mais importante talvez seja o **Extrator de Documentos**. Ele é formado por um extenso conjunto de *spiders* do [Scrapy](https://scrapy.org/) que, através de requisições HTTP, recuperam os arquivos dos Diários Oficiais municipais no formato em que estão disponibilizados. Já o componente **Raspador de Dados** é aquele responsável por identificar e executar a forma mais adequada de raspagem das informações contidas nestes arquivos.
+
+É durante essa raspagem de dados que ocorre o uso (como *middleware*) do Pré-Processador de Dados ou, mais especificamente, do conjunto de **Rotinas de Tratamento de Dados** implementadas em [Python](https://www.python.org/) que o compõe. Esses componentes são responsáveis por garantir que, uma vez extraídos, os dados assumam a forma acessível e amigável que se espera deles. A partir deste ponto, o componente **Modelador de Dados** irá garantir que os dados sejam armazenados, estruturando-os adequadamente e enviando-os ao Banco de Dados por meio de *Data Mappers* do [SQLAlchemy](https://www.sqlalchemy.org/).
+
+Já na API do Querido Diário, é possível identificar dois componentes principais. O primeiro deles, a **Interface de Acesso**, utiliza o [Fast-API](https://fastapi.tiangolo.com/) para manipular as requisições HTTP recebidas e extrair os parâmetros de consulta que serão encaminhandos ao Buscador de Dados. Além disso, também é este componente que envia os resultados das consultas aos usuários que realizaram as requisições à API do Querido Diário.
+
+Por fim, o **Buscador de Dados** é o componente responsável por recuperar o conjunto de dados que atenda às especificações dos parâmetros de consulta recebidos. Para isso, o acesso ao Banco de Dados utiliza o [Elastic Search](https://elasticsearch-py.readthedocs.io/en/master/) e os *Data Mappers* do [SQLAlchemy](https://www.sqlalchemy.org/), permitindo que mesmo consultas complexas (como a busca por palavras-chave nos documentos) sejam executadas de forma eficiente. 
+
+O diagrama apresentado na Figura 3 descreve os componentes do Querido Diário que foram citados ao longo desta seção.
