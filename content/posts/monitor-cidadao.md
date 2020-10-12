@@ -19,7 +19,7 @@ Este documento foi produzido por Beatriz Bezerra de Souza.
 
 Este documento descreve parte da arquitetura do projeto [Monitor Cidadão](https://github.com/analytics-ufcg/monitor-cidadao-dados). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
 
-É importante destacar não será descrita toda a arquitetura do Monitor Cidadão. O foco aqui é a descrição de um serviço específico de predição de risco de contratos públicos.
+É importante destacar que não será descrita toda a arquitetura do Monitor Cidadão. O foco aqui é a descrição de um serviço específico de predição de risco de contratos públicos.
 
 
 ## Descrição Geral sobre o Monitor Cidadão
@@ -58,7 +58,7 @@ Note que acessos aos bancos de dados são realizados por meio de objetos de aces
 
 #### Implantação
 
-O diagrama abaixo mostra onde os containers do Monitor Cidadão estão implantados. As fontes de dados são serviços externos. O banco de dados SAGRES está implantado em uma máquina virtual chamada data-lake-mc. Os demais componentes estão implantados em outra máquina virtual chamada monitor-cidadão. 
+O diagrama abaixo mostra onde os containers do Monitor Cidadão estão implantados. As fontes de dados são serviços externos. O banco de dados SAGRES está implantado em uma máquina virtual chamada data-lake-mc. Os demais componentes estão implantados em outra máquina virtual chamada monitor-cidadão.
 
 ![fig3](implantacao.png)
 
@@ -81,9 +81,11 @@ implementação. Faremos isso mais adiante.
 
 ### Visão de Informação
 
-Aqui você deve descrever as informações importantes que são coletadas, manipuladas, armazenadas e distribuídas pelo sistema. Você não precisa descrever todas as informações, somente uma parte que seja essencial para o sistema. Por exemplo, se eu estivesse tratando do instagram, faria algo relacionado aos posts.
+O diagrama abaixo descreve a máquina de estados dos dados do preditor do Monitor Cidadão. Se formos gerar novas features, saímos do estado inicial (1) para o estado (2), onde os dados estão armazenados no AL_DB. Então executamos o DAO e vamos para o estado (3), onde os dados foram carregados para manipulação. Depois, executamos o gerador de features e vamos para o estado (4), onde temos os dados com as novas features. Executamos o DAO e vamos para o estado (5), onde as features foram armazenadas no MC_DB. Se não formos gerar novas features, saímos do estado inicial (1) para o estado (5), onde as features estão armazenadas no MC_DB.
 
-Além da descrição gostaria de ver aqui um diagrama para descrever os estados (ex: máquina de estados) de uma informação de acordo com as ações do sistema.
+Do estado (5), executamos o seletor de features e vamos para o estado (6), onde os dados com as features mais recentes foram escolhidos. Depois, executamos o DAO e vamos para o estado (7), onde os dados para manipulação foram carregados. Então executamos o pré-processador e vamos para o estado (8), onde temos os dados balanceados e com tipos adequados. Em seguida, executamos o treinador e vamos para o estado (9), onde temos os modelos treinados. Executamos o avaliador e vamos para o estado (10), onde temos os modelos avaliados. Por fim, executando o DAO, vamos para o estado (11), que é o estado de aceitação, onde os dados do experimento estão armazenados no MC_DB.
+
+![fig5](estados-preditor.png)
 
 # Contribuições Concretas
 
