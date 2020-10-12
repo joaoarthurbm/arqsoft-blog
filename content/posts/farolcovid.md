@@ -1,6 +1,6 @@
 +++
 title = "Documentação arquitetural para o projeto Farol Covid"
-date = 2020-10-06
+date = 2020-10-12
 tags = []
 categories = []
 +++
@@ -15,51 +15,30 @@ Este documento foi produzido por Natan Macena Ribeiro.
 - Contato: natan.ribeiro@ccc.ufcg.edu.br
 - Projeto documentado: https://github.com/ImpulsoGov/farolcovid
 
-# Descrição Arquitetural -- FarolCovid????????Serviço de análise do twitter
+# Descrição Arquitetural -- FarolCovid
 
-
-
-Este documento descreve parte da arquitetura do projeto [Farol Covid](https://github.com/ImpulsoGov/farolcovid). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/). Vale lembrar que não será descrita toda a arquitetura do Farol Covid. O foco aqui é a.......
-
-
+Este documento descreve a arquitetura do projeto [Farol Covid](https://github.com/ImpulsoGov/farolcovid). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/), permitindo que diferentes stakeholders possam compreender o funcionamento da ferramenta a partir de algumas visões arquiteturais.
 
 ## Descrição Geral sobre o Farol Covid
 
-O Farol Covid é uma ferramenta de monitoramento do risco de colapso no sistema de saúde em municípios brasileiros com a Covid-19. Além de apresentar a situação atual da Covid-19 nos estados ou municípios, esse projeto permite que governantes consigam definir políticas de contingenciamento da doença, baseando-se em indicadores bem definidos que inclusive, permitem a realização de simulações que projetam possíveis cenários para a região de interesse. Para mais  detalhes sobre o projeto abordado, acesse [este link](https://farolcovid.coronacidades.org/).
-
-## ............O Serviço de monitoramento do twitter
-
-
-
-
+O Farol Covid é uma ferramenta de monitoramento do risco de colapso no sistema de saúde em municípios brasileiros com a COVID-19. Além de apresentar a situação atual da COVID-19 nos estados ou municípios, esse projeto permite que governantes consigam definir políticas de contingenciamento da doença, baseando-se em indicadores bem definidos que inclusive, permitem a realização de simulações que projetam possíveis cenários para a região de interesse. Para mais detalhes sobre o projeto abordado, acesse [este link](https://farolcovid.coronacidades.org/).
 
 ### Objetivo Geral
 
-Implementar um serviço para capturar automaticamente o que é dito no twitter sobre as proposições que acompanhamos e prover indicadores sobre as publicações para serem usados no parlametria. 
-
-
+Implementação de um serviço para coleta e visualização de dados relacionados a COVID-19, apresentando análises e indicadores da situação da doença para uma determinada região.
 
 ### Objetivos Específicos
 
-
-
-Queremos ter acesso ao grau de atividade no twitter de parlamentares e de influenciadores do debate no twitter. Além disso, queremos saber quanto essas pessoas tuítam sobre cada proposição ou tema e a indicadores sobre sua atividade. Para parlamentares também queremos indicadores a partir dos léxicos de discurso desenvolvidos pelos nossos parceiros.
-
-
+A idéia é viabilizar que gestores públicos (estaduais e municipais), possuam uma ferramenta que mostra a situação atual da COVID-19 e indica possíveis cenários baseados no comportamento da doença na região de seu mandato.
 
 ### Contexto
 
+A partir da introdução, podemos expecificar o sistema do FarolCovid, como um serviço Web que apresenta informações contidas nos sistemas de base de dados brasileiros [Brasil.IO](https://brasil.io/home/) e [DataSUS](https://datasus.saude.gov.br/), considerando os interesses especificos do usuário. De maneira geral, o sistema funciona como um facilitador, entre o usuário e as bases de dados anteriormente citadas, em que simplifica a obtenção de determinada informação por meio de refinamento e operações de analises sobre tais bases de dados. 
 
+Assim, podemos representar a aplicação como uma entidade intermediária ("FarolCovid") entre as entidades "Usuário" e "Brasil.IO" juntamente com "DataSUS", como é ilustrado no diagrama de contexto abaixo:
 
-Nesta seção eu espero duas coisas: o diagrama de contexto e um texto curto descrevendo em mais detalhes o contexto do sistema. Isso inclui as fronteiras do sistema, os sistemas/serviços externos com os quais ele se comunica etc.
-
-
-Abaixo estão dois exemplos de diagramas de contexto.
-
-
-![fig1](c4-context.png)
-
-<img class="center" src="parlametria-contexto.png" style="width:60%">
+![fig1](01_diagrama_de_contexto.png)
+<img class="center" src="01_diagrama_de_contexto.png" style="width:99%">
 
 ### Containers
 
@@ -73,12 +52,44 @@ Importante, se um container expuser, por exemplo, uma API REST, seria importante
 
 Abaixo estão exemplos de diagramas de containers e de implantação.
 
-![fig3](c4-containers.png)
-![fig4](parlametria-container.png)
-![fig5](c4-implantacao.png)
-![fig6](parlametria-implantacao.png)
+
+publicacoes/:parlamentar/:agenda
+publicacoes/:parlamentar/:agenda/:tema?data-inicio
+atividade
+léxicos
+publicacoes/:parlamentar/:agenda/:tema/tweets
+publicacoes/:parlamentar/:agenda/:tema/tweets/:id
 
 
+
+
+
+
+
+[API](http://datasource.coronacidades.org/br/)
+https://github.com/ImpulsoGov/coronacidades-datasource
+
+
+
+[Coronacidades API](https://github.com/ImpulsoGov/coronacidades-datasource)
+
+            simulacovid: "br/cities/simulacovid/main"
+
+- endpoint: 'br/cities/cases/full' # endpoint route following [country]/[unit]/[content]
+http://datasource.coronacidades.org/br/cities/cases/full
+
+    br/cities/cases/full: Full history data from Brasil.IO with notification rate and estimated active cases
+    br/cities/cnes: Beds and ventilators data from DataSus/CNES
+    br/cities/farolcovid/main: Data filtered & cities'indicatores for FarolCovid app
+    br/cities/rt: Cities effective reproduction number (Rt) calculations by date
+    br/cities/simulacovid/main: Data filtered to serve SimulaCovid app
+    br/states/farolcovid/main: Data filtered & states' indicators for FarolCovid app
+    br/states/rt: State effective reproduction number (Rt) calculations by date
+    br/states/safereopen/main: States' security and economic priority index for reopening sectors
+    world/owid/heatmap: Our World in Data data to serve the heatmaps
+
+
+![fig2](02_diagrama_de_containers.png)
 
 ### Componentes
 
@@ -86,11 +97,14 @@ Abaixo estão exemplos de diagramas de containers e de implantação.
 
 Nesta seção eu espero duas coisas: o diagrama de componentes e texto descrevendo os componentes. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada componente, seus relacionamentos, tecnologias, APIs expostas, protocolos, estilos, padrões etc.
 
-Abaixo um exemplo de diagrama de componente.
-
-![fig7](c4-componentes.png)
+Logo abaixo. temos o diagrama de componente para o FarolCovid:
 
 
+
+
+
+
+![fig3](03_diagrama_de_componentes.png)
 
 ### Código
 
@@ -111,10 +125,6 @@ Além disso, é disponibilizado quatro seções que agregam uma análise mais de
 
 Para cada interação do usuário, a página é automaticamente recarregada de acordo com o que foi selecionado. Por default, o elemento pré-selecionado do sistema é o estado do Acre.
 
-Vejamos abaixo, uma máquina de estados que ilustra fluxo da informação da aplicação em estudo.
+Vejamos abaixo, uma máquina de estados que ilustra fluxo da informação da aplicação em estudo, para ações basicas de um usuário:
 
-![fig3](03_fluxo_informacao.png)
-
-# Contribuições Concretas
-
-*Descreva* aqui os PRs enviados para o projeto e o status dos mesmos. Forneça os links dos PRs.
+![fig4](04_fluxo_informacao.png)
