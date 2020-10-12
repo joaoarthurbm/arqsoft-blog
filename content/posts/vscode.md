@@ -80,13 +80,17 @@ O VS Code é uma aplicação que roda em sistemas windows, macOS e Linux. Tem co
 
 ### Containers
 
-Através da API de extensões é possível customizar todo o VS Code.
+Através da API de extensões é possível customizar todo o VS Code. Os serviços de linguagem e de depuração são tratados como uma classe especial de Extensões. 
 
-Os serviços de linguagem e de depuração são tratados como uma classe especial de Extensões. O servidor de linguagem permite a experiência de edição para muitas linguagens de programação. Pode-se implementar autocomplete, verificação de erros (diagnóstico), salto para definição e muitos outros recursos de linguagem suportados no VS Code. Com o serviço de depuração os autores de extensão podem integrar facilmente os depuradores existentes no VS Code, ao mesmo tempo em que tem uma interface de usuário comum com todos eles.
+O serviço de Linguagens é dividido em 2 partes: o client (entensão VS Code) escrito em JavaScript/TypeScript e o Server (ferramenta de análise de linguagem executada em um processo separado). O Client cria uma instância do Server da linguagem correspondente e se comunica através do LSP. Este serviço permite a experiência de edição para muitas linguagens de programação. Pode-se implementar autocomplete, verificação de erros (diagnóstico), salto para definição e muitos outros recursos de linguagem suportados no VS Code. 
+
+Com o serviço de depuração os autores de extensão podem integrar facilmente os depuradores existentes no VS Code, ao mesmo tempo em que tem uma interface de usuário comum com todos eles.
 
 A interface de versionamento de arquivos permite criar/troca de branch, adicionar/remover arquivos à um commit, solucionar conflitos, atualizar a branch remota, etc. 
 
+
 ![fig5](c4-containers-vscode.png)
+![fig5](c4-containers-vscode-2.png)
 
 ### Componentes
 
@@ -94,6 +98,7 @@ Nesta seção eu espero duas coisas: o diagrama de componentes e texto descreven
 
 Abaixo um exemplo de diagrama de componente.
 
+![fig7](c4-containers.png)
 ![fig7](c4-componentes.png)
 
 ### Código
