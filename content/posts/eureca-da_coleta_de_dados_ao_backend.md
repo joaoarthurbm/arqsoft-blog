@@ -75,17 +75,22 @@ A API REST que se trata do repositório Eureca-Backend, no momento em que este d
 
 ### Componentes
 
-No diagrama de componentes temos os componentes principais de cada container, além de seus relacionamentos e responsabilidades. Em nosso projeto o **Crawler** obtém as páginas .html de alunos no sistema de controle acadêmico, então os **Parsers** (que são scripts python) utilizam essas páginas para fazer uma espécie de raspagem dos dados relevantes (web scrapping) utilizando o Beautiful Soap, que é um pacote python para análise de documentos, e assim, retirar as informações relevantes para o projeto. 
+No diagrama de componentes (localizado abaixo) temos os componentes principais de cada container, além de seus relacionamentos e responsabilidades. Em nosso projeto o **Crawler** obtém as páginas .html de alunos no sistema de controle acadêmico, então os **Parsers** (que são scripts python) utilizam essas páginas para fazer uma espécie de raspagem dos dados relevantes (web scrapping) utilizando o Beautiful Soap, que é um pacote python para análise de documentos, e assim, retirar as informações relevantes para o projeto. 
 
 Então os **Scripts Shell** fazem uso desses dados filtrados para gerar arquivos .csv contendo relacionamentos desses dados para formar os dados que irão compor as tabelas do banco de dados. Após isso os dados são inseridos no banco de dados, e esses dados são acessados a partir de uma API REST (Eureca-Backend) que possui **Controllers** que fornecem as rotas e se comunicam com os **Models**, onde estes fazem as requisições que utilizam queries SQL, que são feitas através de uma lib chamada psycopg, que nada mais que é que um adaptador de banco de dados Postgres, onde o mesmo acessa um banco de dados Postgres através de queries SQL. Então esses dados resultantes das queries são processados no backend e retornados no formato JSOn em endpoints ou rotas, que são acessadas pelo Eureca-Frontend que renderiza esses dados de forma amigável em uma interface do usuário.
 
 ![fig4](diagrama-componentes.png)
 
-
 ### Código
 
 ### Visão de informação
 
+As informações trafegam pelo sistema de modo que tudo se inicia com os dados brutos, que são as páginas .html do SCA, então essas páginas são processadas pelos scripts de parser que filtram os dados relevantes para a aplicação. Logo, esses dados filtrados são processados por scripts shell que geram arquivos .csv que criam relacionamentos entre os dados, de modo que esses arquivos são os dados que serão inseridos nas tabelas no banco de dados.
+
+Logo a seguir, podemos ver o diagrama de máquina de estados referente à coleta de dados:
+
+![fig5](maquina_estados.png)
+
 ### Contribuições concretas
 
-Como eu faço parte do projeto Eureca, então eu já fiz inúmeras Pull Request's, principalmente nos repositórios Eureca-Deploy e Eureca-Backend, algumas dessas PR's podem ser vistas nos seguintes links: [Eureca-deploy](https://github.com/computacao-ufcg/eureca-deploy/pulls?q=is%3Apr+is%3Aclosed) e [Eureca-backend](https://github.com/computacao-ufcg/eureca-backend/pulls?q=is%3Apr+is%3Aclosed).
+Como eu faço parte do projeto Eureca, então eu já fiz inúmeras Pull Request's, principalmente nos repositórios Eureca-Deploy e Eureca-Backend, algumas dessas PR's podem ser vistas nos seguintes links: [Eureca-Deploy-pull_requests](https://github.com/computacao-ufcg/eureca-deploy/pulls?q=is%3Apr+is%3Aclosed) e [Eureca-Backend-pull_requests](https://github.com/computacao-ufcg/eureca-backend/pulls?q=is%3Apr+is%3Aclosed).
