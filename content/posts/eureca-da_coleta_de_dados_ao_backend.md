@@ -1,6 +1,6 @@
 +++
 title = "Projeto Eureca - Da coleta de dados ao backend"
-date = 2019-10-28
+date = 2020-10-12
 tags = []
 categories = []
 +++
