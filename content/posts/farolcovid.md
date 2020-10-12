@@ -89,16 +89,16 @@ implementação. Faremos isso mais adiante.
 
 ### Visão de Informação
 
-Como sabemos, a principal funcionalidade do projeto Farol Covid é apresentar informações pré-processadas, no formato de análises, de acordo com uma determinada localidade. Dessa forma, nesta seção abordaremos de maneira simplificada, o percurso habitual que os usuários percorrem na busca das informações disponibilizadas pela aplicação.
+Como sabemos, a principal funcionalidade do projeto Farol Covid é apresentar informações pré-processadas, no formato de análises, de acordo com uma determinada localidade. Dessa forma, nesta seção abordaremos de maneira simplificada, o percurso habitual que os usuários percorrem na busca das informações disponibilizadas pela aplicação em estudo.
 
-Na página inicial, o usuário se depara com uma breve apresentação da plataforma e logo em seguida, uma bloco de seleção é disponibilizado dividindo-se em três tipos: Estado, Região de Saúde (algo particular de cada estado) e Município (Municípios do estado selecionado). Podemos perceber que há uma hierarquia entre os tipos disponíveis, onde um "Município" é um subtipo de uma "Região de Saúde" e de um "Estado", assim como "Região de Saúde" é subtipo de um "Estado".
+Na página inicial, o usuário se depara com uma breve apresentação da plataforma e, logo em seguida, uma caixa de seleção é disponibilizada dividida em três tipos: Estado, Região de Saúde (algo particular de cada estado) e Município (Municípios do estado selecionado). Podemos perceber que há uma hierarquia entre os tipos disponíveis, onde um "Município" é um subtipo de uma "Região de Saúde" e de um "Estado", assim como "Região de Saúde" é subtipo de um "Estado".
 
 Logo abaixo, temos as informações apresentadas de acordo com o que foi selecionado pelo usuário. Essas informações são mostradas a partir de métricas bem definidas (que  estão disponíveis para consulta no botão "Entenda a Classificação dos Níveis") e indicam, por exemplo, situação e controle da doença, capacidade do sistema de saúde, etc.
 
-Além disso, é disponibilizado quatro seções que agregam uma análise mais detalhada de acordo com a localidade anteriormente escolhida, sendo elas: Simula Covid, que permite a realização de uma simulação da situação da Covid considerando variáveis pertinentes; Distanciamento Social, que mostra a taxa de isolamento social; Saúde em Ordem, que dá uma prognóstico no que diz respeito a possíveis atividades econômicas seguras para reabertura; Onda Covid, que mostra a evolução da curva de contágio da Covid-19 em relação a outros países.
+Além disso, é disponibilizado quatro subaplicações que permitem uma análise mais detalhada de acordo com a localidade anteriormente escolhida, sendo elas: Simula Covid, que permite a realização de uma simulação da situação da Covid considerando variáveis pertinentes; Distanciamento Social, que mostra a taxa de isolamento social; Saúde em Ordem, que dá uma prognóstico no que diz respeito a possíveis atividades econômicas seguras para reabertura; Onda Covid, que mostra a evolução da curva de contágio da Covid-19 em relação a outros países.
 
 Para cada interação do usuário, a página é automaticamente recarregada de acordo com o que foi selecionado. Por default, o elemento pré-selecionado do sistema é o estado do Acre.
 
-Vejamos abaixo, uma máquina de estados que ilustra fluxo da informação da aplicação em estudo, para ações basicas de um usuário:
+Vejamos abaixo, uma máquina de estados que ilustra fluxo da informação da aplicação estudada, para principais interações de um usuário:
 
 ![fig4](04_fluxo_informacao.png)
