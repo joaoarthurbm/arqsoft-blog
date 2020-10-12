@@ -52,7 +52,7 @@ O diagrama abaixo apresenta os conteiners do Monitor Cidadão. A camada de dados
 
 O fetcher, o transformador, e o preditor são sistemas desenvolvidos em R. Os dois bancos de dados são relacionais, fazem uso do postgres. O fetcher é responsável por buscar os dados em suas fontes. O transformador utiliza o tradutor, um serviço interno responsável por traduzir os dados para um formato tabular, e em seguida realiza manipulações, como joins, nos dados. O preditor encapsula diversas funções para a realização das predições em torno dos contratos públicos.
 
-Falar dos DAOs
+Note que acessos aos banco de dados são realizados por meio de objetos de acesso a dados (DAO).
 
 ![fig2](containers.png)
 
@@ -62,11 +62,13 @@ Falar dos DAOs
 
 ### Componentes
 
-Nesta seção eu espero duas coisas: o diagrama de componentes e texto descrevendo os componentes. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada componente, seus relacionamentos, tecnologias, APIs expostas, protocolos, estilos, padrões etc.
+O diagrama abaixo apresenta os componentes do preditor do Monitor Cidadão: um gerador de features, um seletor de features, um pré-processador, um treinador e um avaliador. Todos estes componentes são desenvolvidos em R.
 
-Abaixo um exemplo de diagrama de componente.
+O gerador de features recebe dados do AL_DB e cria novas features com base em manipulações dos dados existentes. O seletor de features seleciona as features mais recentemente adicionadas no banco de dados MC_DB. O pré-processador recebe as features selecionadas e realiza pré-processamento nos dados: divide os dados em treino e teste e realiza conversões de tipo. O treinador é responsável por treinar modelos do tipo regressão logística e floresta aleatória. O avaliador calcula métricas para os modelos treinados.
 
-![fig7](c4-componentes.png)
+Note que as informações referentes à predição: conjunto de features utilizadas, modelos, métricas, são salvos no MC_DB. Acessos aos banco de dados são realizados por meio de objetos de acesso a dados (DAO).
+
+![fig4](componentes.png)
 
 ### Código
 
