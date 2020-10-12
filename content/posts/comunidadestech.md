@@ -63,7 +63,7 @@ O sistema Comunidades.tech é uma aplicação que pode ser dividida basicamente 
 
 Abaixo está o diagrama de containers.
 
-![fig2](diagrama-containers.jpg)
+![fig2](diagrama-containers.png)
 
 [//]: <> (O Back-end  expõe uma API-REST utilizando o Express. )
 Os **containers** estão **executando/implantandos** na plataforma em núvem **Heroku**. E toda comunicação é feita via API-REST em formato JSON utilizando protocolos HTTPS.
