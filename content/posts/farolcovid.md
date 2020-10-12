@@ -38,56 +38,27 @@ A partir da introdução, podemos expecificar o sistema do FarolCovid, como um s
 Assim, podemos representar a aplicação como uma entidade intermediária ("FarolCovid") entre as entidades "Usuário" e "Brasil.IO" juntamente com "DataSUS", como é ilustrado no diagrama de contexto abaixo:
 
 ![fig1](01_diagrama_de_contexto.png)
-<img class="center" src="01_diagrama_de_contexto.png" style="width:99%">
 
 ### Containers
 
+Como containers do FarolCovid, podemos elencar 3 entidades: Web Page, View e API.
 
+O primeiro deles, **Web Page**, é responsável por pela representação gráfica do sistema, ou seja, todo o HTML que o browser irá interpretar e renderizar para o usuário final.
 
-Nesta seção eu espero duas coisas: o diagrama de containers e  texto descrevendo os containers. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada container, suas tecnologias, APIs expostas, protocolos, onde são executados/implantados etc. Você pode criar um diagrama de implantação para dar mais detalhes sobre o ambiente em que os containers são implantados e executam. Essa parte de implantação pode ser uma subseção desta seção.
+O elemento **View**, trata-se de toda lógica do negócio, realizando todas as operações com os dados (refinamento, filtragem e análise) coletados das bases de dados ([Brasil.IO](https://brasil.io/home/) e [DataSUS](https://datasus.saude.gov.br/)) atravéz de uma [API](http://datasource.coronacidades.org/br/) desenvolvida para isso. Esse contêiner utilizar Python como linguagem e é acompanhado pelos frameworks Flask e Streamlit. O sistema é executado numa nuvem Heroku, utilizando uma máquina virtual com o sistema operacional Ubuntu 18.04 LTS.
 
-Importante, se um componente expor, por exemplo, uma API REST. Seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints [deste documento](https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing).
+O container **API**, é um conjunto de rotinas e padrões de programação para acesso das bases de dados do FarolCovid. Foi construido para o sistema que estamos apresentando e o projeto (que pode ser acessado [neste link](https://github.com/ImpulsoGov/coronacidades-datasource)) possui o nome de *Coronacidades API*. Assim como o FarolCovid, o [Coronacidades API](https://github.com/ImpulsoGov/coronacidades-datasource) é servido por uma maquina virtual Heroku e foi desenvolvido em Python juntamente com o framework Django, a partir do padrão de projeto MTV (Model, Template, View).
 
-Importante, se um container expuser, por exemplo, uma API REST, seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints [deste documento](https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing).
+Veja principais endpoints utilizados pelo FarolCovid:
 
-Abaixo estão exemplos de diagramas de containers e de implantação.
+- br/cities/cases/full: Fornece histórico completo de dados do [Brasil.IO](https://brasil.io/home/) com a taxa e estimativa dos casos ativos
+- br/cities/simulacovid/main: Dados filtrados para servir a aplicação SimulaCovid do FarolCovid
+- br/cities/farolcovid/main: Dados filtrados e indicadores de cidades
+- br/states/farolcovid/main: Dados filtrados e indicadores de estados
 
+*Para os demais endpoints acesse [API.](http://datasource.coronacidades.org/br/)
 
-publicacoes/:parlamentar/:agenda
-publicacoes/:parlamentar/:agenda/:tema?data-inicio
-atividade
-léxicos
-publicacoes/:parlamentar/:agenda/:tema/tweets
-publicacoes/:parlamentar/:agenda/:tema/tweets/:id
-
-
-
-
-
-
-
-[API](http://datasource.coronacidades.org/br/)
-https://github.com/ImpulsoGov/coronacidades-datasource
-
-
-
-[Coronacidades API](https://github.com/ImpulsoGov/coronacidades-datasource)
-
-            simulacovid: "br/cities/simulacovid/main"
-
-- endpoint: 'br/cities/cases/full' # endpoint route following [country]/[unit]/[content]
-http://datasource.coronacidades.org/br/cities/cases/full
-
-    br/cities/cases/full: Full history data from Brasil.IO with notification rate and estimated active cases
-    br/cities/cnes: Beds and ventilators data from DataSus/CNES
-    br/cities/farolcovid/main: Data filtered & cities'indicatores for FarolCovid app
-    br/cities/rt: Cities effective reproduction number (Rt) calculations by date
-    br/cities/simulacovid/main: Data filtered to serve SimulaCovid app
-    br/states/farolcovid/main: Data filtered & states' indicators for FarolCovid app
-    br/states/rt: State effective reproduction number (Rt) calculations by date
-    br/states/safereopen/main: States' security and economic priority index for reopening sectors
-    world/owid/heatmap: Our World in Data data to serve the heatmaps
-
+Abaixo encontra-se o diagrama de container para o que foi discutido anteriormente:
 
 ![fig2](02_diagrama_de_containers.png)
 
