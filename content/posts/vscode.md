@@ -17,12 +17,6 @@ como usar imagem
 
 <img src="logo3.png" style="height: 0px; width: 80px;"/>
 
-*itálico*
-
-**Negrito**
-
-[Link](google.com.br)
-
 ***
 
 # Autores
@@ -115,8 +109,9 @@ implementação. Faremos isso mais adiante.
 
 Aqui você deve descrever as informações importantes que são coletadas, manipuladas, armazenadas e distribuídas pelo sistema. Você não precisa descrever todas as informações, somente uma parte que seja essencial para o sistema. Por exemplo, se eu estivesse tratando do instagram, faria algo relacionado aos posts.
 
-Além da descrição gostaria de ver aqui um diagrama para descrever os estados (ex: máquina de estados) de uma informação de acordo com as ações do sistema.
+![fig8](informacao-vscode.png)
+
 
 # Contribuições Concretas
 
-*Descreva* aqui os PRs enviados para o projeto e o status dos mesmos. Forneça os links dos PRs.
+*Até o presente momento ainda não foi aberto nenhum pull request desta documentação para o [repositório](https://github.com/microsoft/vscode-docs/) de docs do VS Code.*
