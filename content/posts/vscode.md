@@ -68,7 +68,7 @@ Prover uma ferramenta poderosa para o desenvolvedor, que tenha uma edição de c
 
 ### Contexto
 
-O VS Code é uma aplicação que roda em sistemas windows, macOS e Linux. Tem como base para sua interface com o usuário o framework Electron. Interage com o sistema de versionamento do GitHub.
+O VS Code é uma aplicação que roda em sistemas windows, macOS e Linux. Tem como base para sua interface com o usuário o framework Electron. Interage com o sistema de versionamento do **[GitHub](https://github.com/)**.
 
 ![fig4](c4-contexto-vscode-plat.png) 
 
@@ -107,9 +107,15 @@ implementação. Faremos isso mais adiante.
 
 ### Visão de Informação
 
-Aqui você deve descrever as informações importantes que são coletadas, manipuladas, armazenadas e distribuídas pelo sistema. Você não precisa descrever todas as informações, somente uma parte que seja essencial para o sistema. Por exemplo, se eu estivesse tratando do instagram, faria algo relacionado aos posts.
+O container responsável pela parte de edições e versionamento de arquivos é o *Editor*. Para o diagrama de estados de um Arquivo no VS Code tem-se 3 possibilidades iniciais: Criar um arquivo, editar um arquivo ou ainda remover um arquivo. 
+   
+Pontos que devem ser mencionados: 
++ Ao criar um arquivo e definir sua extensão o VS Code invoca o Serviço de Linguagens para verificar se já existe em seu ambiente uma conexão com o server da extensão do arquivo criado;
++ Ao editar um arquivo, pode-se alterar o código manualmente, usar atalhos de cursor, o que envolve seus respectivos controllers (ex: Cursor Delete Operations Controller) e o find/replace. Cada um desses modos invocará o componente *TextChange* para efetivar a mudança;  
++ Sempre que tenta-se excluir um arquivo que está aberto ou em raschunho, o VS Code pergunta se essa ação deverá ser realmente realizada, se sim, ele exclui o arquivo e fecha sua janela de edição;  
++ Pode-se, ou não, usar o VS Code para versionar seu arquivo. Isto é feito através do componente *Versionador* (trata questões de branch, diffs, commits, conflitos, pull/pushs e merges) que se integra ao **GitHub**.
 
-![fig8](informacao-vscode.png)
+![fig8](diagrama-informacao-vscode.png)
 
 
 # Contribuições Concretas
