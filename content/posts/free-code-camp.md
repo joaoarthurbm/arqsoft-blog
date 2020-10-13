@@ -52,4 +52,8 @@ A partir da imagem acima, infere-se que o container **freeCodeCamp-Client** (par
 
 * freeCodeCamp-Client: Nesse container, são executadas funções solicitadas pelo cliente. É responsável também por lidar com os eventos desencadeados pelas ações do usuário. Além disso, renderiza os componentes que, juntos, constroem as páginas da plataforma e fornecem para o usuário um ambiente interativo e prático. Comunica-se com a API usando o protocolo *HTTP*.
 * API-Server: Container que engloba toda a parte do servidor da aplicação. Define os models, rotinas de inicialização do sistema, templates para emails, etc. Além disso, preocupa-se com a lógica de aspectos como autenticação (usando *OAuth*) e doações. Como dito acima, esse container fornece uma API REST para ser, consequentemente, consumida pelo container do Client.
-* Database: Container que provê um armazenamento para os dados do sistema, como as informações dos usuários. A aplicação usa o *Compose*, uma plataforma *cloud database*, que torna o gerenciamento da DB mais prático e fácil. O banco de dados usado aqui é o Mongo, um banco de dados não relacional (NoSQL).
+* Database: Container que provê um armazenamento para os dados do sistema, como as informações dos usuários. A aplicação usa o *Compose*, uma plataforma *cloud database*, que torna o gerenciamento da DB mais prático e fácil. O banco de dados usado aqui é o Mongo, um banco de dados não relacional (NoSQL). O MongoDB no compose é oferecido através do serviço de *cloud* da IBM.
+
+Sobre a implantação do sistema, os containers freeCodeCamp-Client e API-Server traduzem-se em máquinas virtuais na núvem, providas pela plataforma Azure. Detalhes dos pipelines de testes de aceitação e CI podem ser vistos com mais detalhes através dos seguintes links:
+* [Azure DevOps](https://dev.azure.com/freeCodeCamp-org/freeCodeCamp/_build)
+* [Travis CI](https://travis-ci.org/github/freeCodeCamp/freeCodeCamp/branches).
