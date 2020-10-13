@@ -32,18 +32,21 @@ Os principais sistemas que o Jenkins se comunica são seus plugins, que quando i
 
 ### Containers
 
-Nesta seção eu espero duas coisas: o diagrama de containers e  texto descrevendo os containers. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada container, suas tecnologias, APIs expostas, protocolos, onde são executados/implantados etc. Você pode criar um diagrama de implantação para dar mais detalhes sobre o ambiente em que os containers são implantados e executam. Essa parte de implantação pode ser uma subseção desta seção.
+O sistema é composto basicamente por dois containers: a interface web e a aplicação (API). O primeiro, possibilita interação com o usuário, é feito usando Jelly e renderizado do lado do servidor. Já o segundo, gerencia toda a parte de projetos, de dados e comunicação externa.
 
-Importante, se um componente expor, por exemplo, uma API REST. Seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints [deste documento](https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing).
+![fig2](containers.png)
 
-Importante, se um container expuser, por exemplo, uma API REST, seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints [deste documento](https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing).
+Abaixo estão alguns exemplos de como são processados os paths:
+- Get: /log/… &rarr; Jenkins#getLog()
+    * Busca o arquivo log do sistema.
+- Get com argumentos: /job/foo/… &rarr; Hudson#getJob(“foo”)
+    * Busca um job chamado foo.
+- Get dinâmico: /job/foo/1/… &rarr; Job#getDynamic(“1” ...)
+    * Busca o build 1 do job foo.
+- Método de ação: /job/foo/1/artifact &rarr; Run#doArtifact(...)
+    * Executa o método doArtifact no build 1 do job foo.
 
-Abaixo estão exemplos de diagramas de containers e de implantação.
-
-![fig3](c4-containers.png)
-![fig4](parlametria-container.png)
-![fig5](c4-implantacao.png)
-![fig6](parlametria-implantacao.png)
+Quanto à implantação, o Jenkins pode ser instalado em qualquer máquina. Ele possui compatibilidade com os principais sistemas operacionais, Linux, MacOS e Windows, além de poder ser instalado usando o Docker ou na nuvem.
 
 ### Componentes
 
@@ -52,13 +55,6 @@ Nesta seção eu espero duas coisas: o diagrama de componentes e texto descreven
 Abaixo um exemplo de diagrama de componente.
 
 ![fig7](c4-componentes.png)
-
-### Código
-
-<pre>
-Nesta etapa não faremos diagramas que apresentam detalhes da
-implementação. Faremos isso mais adiante.
-</pre>
 
 ### Visão de Informação
 
