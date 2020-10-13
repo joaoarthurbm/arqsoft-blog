@@ -41,9 +41,15 @@ Auxiliar no desenvolvimento de projetos que manipulam datas, a partir da criaç�
 
 ### Contexto
 
+O Moment é um pacote que possui diversas ferramentas para manipulação de datas. Tornando mais simples a contrução de datas e a sua conversão para diferentes formatos. Deste modo, ele não utiliza nenhuma API externa, fazendo utilização apenas do sistema computacional na qual está sendo utilizado.
+
+Na criação de um objeto moment, o construtor extrai a data do sistema computacional na qual está inserido. Deste modo, permite a utilização do moment em um sistema offline e em qualquer plataforma.
+
 ![contexto](momentjs/momentjs-context-diagram.png)
 
 ### Containers
+
+A principal funcionalidade do Moment Js é a criação e manipulação de datas, mas, além disso, ele também apresenta um modulo para internacionalização e um módulo que é responsável pela criação de objetos de duração, que são representantes de periodos de tempo.
 
 ![container](momentjs/momentjs-container-diagram.png)
 
@@ -60,9 +66,7 @@ implementação. Faremos isso mais adiante.
 
 ### Visão de Informação
 
-Aqui você deve descrever as informações importantes que são coletadas, manipuladas, armazenadas e distribuídas pelo sistema. Você não precisa descrever todas as informações, somente uma parte que seja essencial para o sistema. Por exemplo, se eu estivesse tratando do instagram, faria algo relacionado aos posts.
-
-Além da descrição gostaria de ver aqui um diagrama para descrever os estados (ex: máquina de estados) de uma informação de acordo com as ações do sistema.
+![container](momentjs/momentjs-visao-informacao.png)
 
 # Contribuições Concretas
 
