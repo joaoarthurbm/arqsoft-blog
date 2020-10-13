@@ -62,10 +62,44 @@ de entrada de diversas operações da plataforma. A API permite a realização d
 de funções por desenvolvedores, dessa forma, o *Core Services* é o responsável por
 interagir com os serviços internos para que a operação seja concluída.
  
-Além disso, depois de implantada a função pode ser utilizada pelos seus clientes.
-Neste caso, a API deve rotear as requisições HTTP para as instâncias que estão executando o 
-código-fonte da função.
+Além disso, depois de implantada a função pode ser invocada pelos seus clientes.
+Neste caso, a API deve rotear as requisições HTTP para as instâncias que executam 
+o código-fonte da função.
 
 ### Contexto
 
+O diagrama abaixo apresenta os principais sistemas que interagem com o *Core Services*,
+assim como as suas responsabilidades.
+
 ![contexto](fission/Fission-Architecture.png)
+
+### Eventos de entrada
+
+Podemos observar que o *Core Services*, como já descrito anteriormente, também funciona
+como o *Back-end* da *Fission*. Os Desenvolvedores e seus Clientes podem interagir 
+com a plataforma por meio do *Front-end* ou do *Fission CLI* (um software de linha
+de comando). 
+
+Quando os Desenvolvedores realizam a implantação de uma função, a plataforma 
+disponibiliza um *endpoint* que pode ser acessado para invocar a execução da função.
+Assim, a forma mais comum dos Clientes interagirem com a plataforma é 
+pelo disparo de requisições HTTP para invocar funções. 
+
+### Eventos de saída
+
+Como o *Core Services* é o ponto de entrada da plataforma, pode ser razoável imaginar
+que todos os recursos sejam resolvidos por esse componente, contudo, diversas tarefas
+são delegadas para outros componentes. 
+
+Como apresentado no diagrama acima, o *Kubernetes* é responsável por gerenciar os 
+recursos computacionais para permitir que as funções processem requisições dos seus 
+clientes. Dessa forma, o *Core Services* precisa interagir com o Kubernetes para 
+realizar o CRUD de funções, além de consultar os endereços das réplicas da função
+para roteá-las. O *Kubernetes* também é o responsável por realizar o escalonamento
+das instâncias em execução da função com base na métrica de utilização de CPU.
+
+Quando um desenvolvedor realiza o *deployment* de uma função, o *Core Services* se 
+encarrega de transformar o código-fonte em uma função implantável. Após o processo de 
+*build*, o *StorageSVC* é o responsável por armazenar os artefatos de 
+implantação resultantes. Dessa forma, quando necessário, o *Kubernetes* pode recuperar
+esses artefatos para criar novas réplicas da função.
