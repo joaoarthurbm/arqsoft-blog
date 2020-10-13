@@ -39,3 +39,15 @@ Implementar uma plataforma de aprendizagem interativa que torne acessível aos u
 Abaixo, é possível observar o diagrama de contexto do sistema. Nele, temos um usuário que, em nosso contexto, é descrito como o estudante (ou potencial estudante) da área de programação. A plataforma freeCodeCamp usa o AWS SES (um dos sistemas externos) para o envio de emails para os estudantes, além de um sistema de pagamentos (o PayPal) para os usuários que desejam realizar doações para ajudar a comunidade.
 
 <img class="center" src="contexto.png" alt="Diagrama de contexto - freeCodeCamp" style="width:60%">
+
+### Containers
+
+Abaixo, observamos o diagrama de container para a plataforma freeCodeCamp:
+
+![Diagrama de container - freeCodeCamp](container.png)
+
+A partir da imagem acima, infere-se que o container **freeCodeCamp-Client** (parte da aplicação que é executada no lado do cliente; o frontend) é acessado diretamente pelo usuário do sistema. O container **API-Server** expõe uma *API REST* que será usada pelo *client* para ter acesso a toda parte executada no servidor. A API ainda usa um banco de dados NoSQL, para operações de escrita e leitura (em relação aos schemas). Abaixo, tem-se uma descrição mais detalhada dos containers explicitados:
+
+* freeCodeCamp-Client: Nesse container, são executadas funções solicitadas pelo cliente. É responsável também por lidar com os eventos desencadeados pelas ações do usuário. Além disso, renderiza os componentes que, juntos, constroem as páginas da plataforma e fornecem para o usuário um ambiente interativo e prático. Comunica-se com a API usando o protocolo *HTTP*.
+* API-Server: Container que engloba toda a parte do servidor da aplicação. Define os models, rotinas de inicialização do sistema, templates para emails, etc. Além disso, preocupa-se com a lógica de aspectos como autenticação (usando *OAuth*) e doações. Como dito acima, esse container fornece uma API REST para ser, consequentemente, consumida pelo container do Client.
+* Database: Container que provê um armazenamento para os dados do sistema, como as informações dos usuários. A aplicação usa o *Compose*, uma plataforma *cloud database*, que torna o gerenciamento da DB mais prático e fácil. O banco de dados usado aqui é o Mongo, um banco de dados não relacional (NoSQL).
