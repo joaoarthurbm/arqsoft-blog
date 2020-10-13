@@ -37,7 +37,7 @@ Criar objetos do tipo Date que são facilmente convertidos, formatados e manipul
 
 ### Objetivos Específicos
 
-Auxiliar no desenvolvimento de projetos que manipulam datas e horas, a partir da criação de objetos mutáveis que são simples de serem trabalhados.
+Auxiliar no desenvolvimento de projetos que manipulam datas, a partir da criação de objetos mutáveis que são simples de serem trabalhados.
 
 ### Contexto
 
