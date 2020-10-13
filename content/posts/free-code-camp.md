@@ -19,6 +19,8 @@ Este documento foi produzido por Arthur Silva Lima Guedes.
 
 Este documento descreve a arquitetura da plataforma [freeCodeCamp](https://github.com/freeCodeCamp/freeCodeCamp). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
 
+É importante destacar que o foco nessa descrição são os módulos *api-server* e *client* do repositório acima.
+
 
 ## Descrição Geral sobre o freeCodeCamp
 
