@@ -1,6 +1,13 @@
++++
+title = "Arquitetura do Jitsi Meet"
+date = 2020-10-13
+tags = []
+categories = []
++++
+
 # Autores
 
-Este documento foi produzido por Daniele A. de Melo Silva.
+Este documento foi produzido por Daniele Aparecida de Melo Silva.
 
 - Matrícula: 117110348
 - Contato: daniele.silva@ccc.ufcg.edu.br
@@ -14,30 +21,27 @@ Este documento descreve parte da arquitetura do projeto [Jitsi Meet](https://git
 
 ## Descrição Geral sobre o Jitsi Meet
 
-O Jitsi Meet é uma solução de videoconferência totalmente criptografada e 100% de código aberto disponível todos os dias, gratuitamente e sem necessidade de conta. O Jitsi Meet é executado no navegador, sem instalação: https://meet.jit.si.
+O Jitsi Meet é uma solução de videoconferência totalmente criptografada e de código aberto disponível todos os dias gratuitamente. O Jitsi Meet é executado no navegador, sem necessidade de criar uma conta ou de instalação: https://meet.jit.si.
 
 O Jitsi Meet permite uma colaboração muito eficiente. Os usuários podem transmitir sua área de trabalho ou apenas algumas janelas. Ele também suporta edição de documentos compartilhados com Etherpad.
 
 ## O Serviço de gravação de uma conferência
 
-### Objetivo Geral
+### Objetivo
 
-Implementar um serviço para capturar áudio e vídeo de uma conferência e salvar no destino escolhido pelo usuário.
-
-### Objetivos Específicos
-
-A fazer.
+Implementar um serviço para capturar áudio e vídeo de uma conferência e salvar localmente.
 
 ### Contexto
 
 O contexto de gravação de uma conferência compreende os seguintes sistemas:
 
-- Jitsi Meet - aplicativo JavaScript compatível com WebRTC que usa o Jitsi Videobridge para fornecer videoconferências ​​de alta qualidade, seguras e escaláveis.
-- Jitsi Conference Focus (Jicofo) - componente server-side usado nas conferências do Jitsi Meet para gerenciar as sessões de mídia entre cada um dos participantes e o Videobridge.
-- Jibri - conjunto de ferramentas para gravar e/ou transmitir uma conferência do Jitsi Meet, que funciona iniciando uma instância do Chrome renderizada em um framebuffer virtual e capturando e codificando a saída com ffmpeg.
-- Prosody - servidor XMPP usado para sinalização (software externo)
+- Jitsi Meet — aplicação JavaScript que usa o Jitsi Videobridge para fornecer videoconferências ​​de alta qualidade, seguras e escaláveis.
+- Jitsi Conference Focus (Jicofo) — componente server-side usado nas conferências do Jitsi Meet para gerenciar as sessões de mídia entre cada um dos participantes e o Videobridge.
+- Jibri — conjunto de ferramentas para gravar e/ou transmitir uma conferência do Jitsi Meet.
+- Prosody — servidor externo XMPP (abreviação para _Extensible Messaging and Presence Protocol_) usado para sinalização.
 
-Segue o diagrama de contexto para o serviço de gravação.
+No seguinte diagrama de contexto para o serviço de gravação, o processo começa quando o usuário clica em "Iniciar gravação". O frontend do Jitsi Meet captura esse evento e o servidor envia uma requisição para o Prosody em formato XMPP, para que este encaminhe a mensagem ao Jicofo. O Jitsi Meet possui uma instância da conferência criada pelo Jicofo — responsável por todo o gerenciamento de uma conferência —, mas a comunicação entre eles é via XMPP.
+Jicofo recebe um token e o formato do arquivo de gravação ('ogg', 'flac' ou 'wav') e utiliza o Jibri para lidar com a gravação. O Jibri é notificado que a gravação deve ser iniciada, entra como participante para gravar a conferência e informa o Jicofo sobre seu novo status.
 
 ![fig1](context.png)
 
