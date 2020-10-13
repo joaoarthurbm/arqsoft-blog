@@ -21,9 +21,9 @@ Este documento descreve parte da arquitetura do projeto [Jitsi Meet](https://git
 
 ## Descrição Geral sobre o Jitsi Meet
 
-O Jitsi Meet é uma solução de videoconferência totalmente criptografada e de código aberto disponível todos os dias gratuitamente. O Jitsi Meet é executado no navegador, sem necessidade de criar uma conta ou de instalação: https://meet.jit.si.
+O Jitsi Meet é uma solução de videoconferência totalmente criptografada e de código aberto disponível todos os dias gratuitamente. O Jitsi Meet é executado no navegador, sem necessidade de criar uma conta ou de instalação.
 
-O Jitsi Meet permite uma colaboração muito eficiente. Os usuários podem transmitir sua área de trabalho ou apenas algumas janelas. Ele também suporta edição de documentos compartilhados com Etherpad.
+O Jitsi Meet permite uma colaboração muito eficiente. Os usuários podem transmitir sua área de trabalho ou apenas algumas janelas. Ele também suporta edição de documentos compartilhados com Etherpad. O site oficial é: https://meet.jit.si.
 
 ## O Serviço de gravação de uma conferência
 
@@ -41,46 +41,31 @@ O contexto de gravação de uma conferência compreende os seguintes sistemas:
 - Prosody — servidor externo XMPP (abreviação para _Extensible Messaging and Presence Protocol_) usado para sinalização.
 
 No seguinte diagrama de contexto para o serviço de gravação, o processo começa quando o usuário clica em "Iniciar gravação". O frontend do Jitsi Meet captura esse evento e o servidor envia uma requisição para o Prosody em formato XMPP, para que este encaminhe a mensagem ao Jicofo. O Jitsi Meet possui uma instância da conferência criada pelo Jicofo — responsável por todo o gerenciamento de uma conferência —, mas a comunicação entre eles é via XMPP.
-Jicofo recebe um token e o formato do arquivo de gravação ('ogg', 'flac' ou 'wav') e utiliza o Jibri para lidar com a gravação. O Jibri é notificado que a gravação deve ser iniciada, entra como participante para gravar a conferência e informa o Jicofo sobre seu novo status.
 
-![fig1](context.png)
+Jicofo recebe um token e o formato do arquivo de gravação ('ogg', 'flac' ou 'wav') e utiliza o Jibri para lidar com a gravação. O Jibri é notificado que a gravação deve ser iniciada e entra como participante para gravar a conferência. Então, informa ao Jicofo seu novo status.
+
+![fig1](contexto.png)
 
 ### Containers
 
-Nesta seção eu espero duas coisas: o diagrama de containers e texto descrevendo os containers. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada container, suas tecnologias, APIs expostas, protocolos, onde são executados/implantados etc. Você pode criar um diagrama de implantação para dar mais detalhes sobre o ambiente em que os containers são implantados e executam. Essa parte de implantação pode ser uma subseção desta seção.
+O Jitsi Meet é composto de quatro containers: aplicação client-side escrita em React; aplicação móvel implementada com React Native; um servidor Nginx; e um banco de dados SQL.
 
-Importante, se um componente expor, por exemplo, uma API REST. Seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints [deste documento](https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing).
+As aplicações se comunicam com o servidor via HTTPS. O Nginx conversa com o Prosody atráves de mensagens XMPP, para então ser encaminhadas ao Jicofo. Jicofo e Jibri são escritos na linguagem Java.
 
-Importante, se um container expuser, por exemplo, uma API REST, seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints [deste documento](https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing).
+Abaixo se encontra o diagrama de containers.
 
-Abaixo estão exemplos de diagramas de containers e de implantação.
-
-![fig3](c4-containers.png)
-![fig4](parlametria-container.png)
-![fig5](c4-implantacao.png)
-![fig6](parlametria-implantacao.png)
+![fig2](containers.png)
 
 ### Componentes
 
-Nesta seção eu espero duas coisas: o diagrama de componentes e texto descrevendo os componentes. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada componente, seus relacionamentos, tecnologias, APIs expostas, protocolos, estilos, padrões etc.
+No Jitsi Meet, existem três componentes principais para o processo de gravação:
 
-Abaixo um exemplo de diagrama de componente.
+- RecordingController, que lida com a sinalização entre os participantes e serve de fachada para outros componentes.
+- RecordingAdapter, que engloba a API de áudio da Web e diferentes codecs de áudio. Possui uma interface que facilita alternar entre diferentes formatos e serve como um ponto para futuras extensões.
+- SessionManager, que gerencia e mantém as informações sobre cada segmento da gravação. Essas informações são usadas para restauração de travamento e concatenação de segmentos da gravação.
 
-![fig7](c4-componentes.png)
+As gravações são mantidas no armazenamento local do navegador (local storage) de cada participante, que não possui uma cota. Um codec com espaço eficiente diminui o risco de perda de gravações devido ao espaço.
 
-### Código
+Abaixo está o diagrama de componentes.
 
-<pre>
-Nesta etapa não faremos diagramas que apresentam detalhes da
-implementação. Faremos isso mais adiante.
-</pre>
-
-### Visão de Informação
-
-Aqui você deve descrever as informações importantes que são coletadas, manipuladas, armazenadas e distribuídas pelo sistema. Você não precisa descrever todas as informações, somente uma parte que seja essencial para o sistema. Por exemplo, se eu estivesse tratando do instagram, faria algo relacionado aos posts.
-
-Além da descrição gostaria de ver aqui um diagrama para descrever os estados (ex: máquina de estados) de uma informação de acordo com as ações do sistema.
-
-# Contribuições Concretas
-
-_Descreva_ aqui os PRs enviados para o projeto e o status dos mesmos. Forneça os links dos PRs.
+![fig3](componentes.png)
