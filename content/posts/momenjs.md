@@ -26,7 +26,7 @@ Este documento descreve parte da arquitetura do projeto [Moment](https://github.
 
 ## Descrição Geral sobre o Moment
 
-O Moment tem como objetivo disponibilizar ao desenvolvedor ferramentas para a criação e manipulação de datas em projetos JavaScript.
+O _Moment_ tem como objetivo disponibilizar ao desenvolvedor ferramentas para a criação e manipulação de datas em projetos JavaScript.
 Ele dispõe de um conjunto de funções que tem como objetivo auxiliar o trabalho do desenvolvedor, fazendo com que o trabalho com objetos do tipo Date se torne mais simples.
 
 ## O Serviço de manipulação de datas do Moment
@@ -41,7 +41,7 @@ Auxiliar no desenvolvimento de projetos que manipulam datas, a partir da criaç�
 
 ### Contexto
 
-O Moment é um pacote que possui diversas ferramentas para manipulação de datas. Tornando mais simples a construção de datas e a sua conversão para diferentes formatos. Deste modo, ele não utiliza nenhuma API externa, fazendo utilização apenas do sistema operacional na qual está sendo utilizado.
+O _Moment_ é um pacote que possui diversas ferramentas para manipulação de datas. Tornando mais simples a construção de datas e a sua conversão para diferentes formatos. Deste modo, ele não utiliza nenhuma API externa, fazendo utilização apenas do sistema operacional na qual está sendo utilizado.
 
 Na criação de um objeto moment, o construtor extrai a data do sistema operacional na qual está inserido. Deste modo, permite a utilização do moment em sistemas offline e em qualquer plataforma.
 
@@ -53,15 +53,15 @@ A principal funcionalidade do Moment Js é a criação e manipulação de datas,
 
 ![container](momentjs/momentjs-container-diagram.png)
 
-#### Analisador de objetos de data e hora
+##### Analisador de objetos de data e hora
 
 O container analisador de objetos de data e hora é responsável por criar um objeto que empacota uma data. Além disso, ele possui diversas ferramentas para incrementar, decrementar ou converter este objeto, tendo em vista que estes objetos do moment são mutáveis.
 
-#### i18n
+##### i18n
 
 O container de internacionalização é responsável por configurar o ambiente para a qual o moment será utilizado. Com ele é possível estabelecer qual a localização geográfica do sistema e o idioma default utilizado, além de permitir a visualização de meses de dias de semana no idioma estabelecido.
 
-#### Analisador de objetos de duração
+##### Analisador de objetos de duração
 
 Já o container representante da análise de objetos do tipo duração possui a função de criar objetos que representam períodos de tempo. Com eles é possível realizar conversão entre diferentes unidades de tempo (exemplo: minutos, segundos, horas) e manipular estes objetos.
 
@@ -71,23 +71,23 @@ O principal container do moment é o de análise de objetos de data e hora, por 
 
 ![componente](momentjs/momentjs-component-diagram.png)
 
-#### Parser
+##### Parser
 
 O componente de Parser é responsável por criar os objetos que representam data e hora. A partir dele que os métodos de manipulação e conversão são disponibilizados.
 
-#### Get and Set
+##### Get and Set
 
 O componente Get and Set é composto por um conjunto de métodos que possibilita a modificação e obtenção de parâmetros pontuais de um objeto. Por exemplo, é através deste componente que pode-se modificar data ou hora de um objeto moment, assim como obter essas informações do mesmo objeto.
 
-#### Manipulate
+##### Manipulate
 
 Semelhante ao componente de Getter and Setter, o componente Manipulate também é responsável por realizar modificações em objetos criados pelo Parser. A diferença é que os métodos disponibilizados pelo Manipulate não realizam modificações nos objetos de forma direta. O Manipulate pode adicionar ou remover horas, minutos, dias, meses, de forma muito mais prática. O desenvolvedor pode deixar a cargo do componente o cálculo de conversão de data ao ser retirado 1 mês, por exemplo, do dia informado.
 
-#### Display
+##### Display
 
 O componente Display é responsável pelas conversões dos objetos moment para diferentes formatos, como por exemplo: String, JSON, Date, dentre outros. Com ele o moment pode converter seus objetos para o formato Date, para assim serem salvos em um banco de dados. Além disso, pode converter datas para o formato String, para ser apresentado ao usuário.
 
-#### Compare
+##### Compare
 
 Por fim, o componente Compare é responsável por fazer comparações entre diferentes datas. Assim, ele disponibiliza mecanismos para informar se um data está a frente de outra e se duas datas, construídas a partir de diferentes formatos, são iguais. Além disso, é com esse componente que é possível verificar se uma String pode ser utilizada para construir um objeto moment.
 
