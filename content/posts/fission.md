@@ -29,9 +29,9 @@ Este documento descreve parte da arquitetura do projeto
 [Fission](https://fission.io/). 
 Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
 
-É importante destacar que não será descrita toda a arquitetura do Fission. 
+É importante destacar que não será descrita toda a arquitetura da Fission. 
 O foco deste documento será a descrição arquitetural dos serviços de *core business* da 
-plataforma *serverless Fission*.
+plataforma em questão.
 
 ## Descrição Geral sobre o *Fission*.
 
@@ -41,7 +41,7 @@ software. Dessa forma, os programadores podem se preocupar apenas com os detalhe
 implementação da lógica de negócio. 
 
 A plataforma garante realizar automaticamente o *scale-up* e *scale-down* dos recursos 
-computacionais para executar as funções, quando estiverem sobre uma alta ou baixa 
+computacionais para executar as funções quando estiverem sobre uma alta ou baixa 
 utilização. Mais detalhes sobre a plataforma podem ser acessados 
 [aqui](https://docs.fission.io/docs/).
 
@@ -147,3 +147,37 @@ encaminha a requisição para a réplica. Caso contrário, o *Router* requisita 
 ele realiza o *download* da função executável no *StorageSVC*, cria um processo para
 a função quee aceita requisições via um servidor HTTP. Dessa forma, o *Router* pode 
 encaminhar as requisições para o servidor HTTP associado à função.
+
+### Componentes
+
+O diagrama abaixo apresenta o diagrama de componentes do serviço *Function Pod*
+que pertence ao *Fission Core Services*.
+
+![components](Fission-Architecture-Components.png)
+
+Podemos observar que *Function Pod* possui dois componentes principais: *Fetcher* e 
+*Environment Container*. O *Fetcher* é o responsável por realizar o *download* 
+dos artefatos de *deployment* de uma função. Esses artefatos são compartilhados com
+o *Environment Container* via um *Shared Volume*, ou seja, com o protocolo de
+comunicação via *File System*.
+
+Dessa forma, quando o *Fetcher* requisita a inicialização da função, o *Environment
+Container* cria um processo que carrega a função executável, que por meio de um
+servidor HTTP pode processar as requisições encaminhadas pelo *Router*.
+
+### Visão da informação
+
+A máquina de estados abaixo apresenta a visão da informação do estado das funções
+dentro da plataforma *Fission*.
+
+![informacao](Fission-Architecture-Visao-da-Informacao.png)
+
+O diagrama expõe os possíveis estados de uma função assim como as possíveis
+transições dos estados. Os estados mais importantes são: **Implantada** e 
+**Disponível**. 
+
+Quando uma função está **Implantada**, significa que os seus artefatos
+de implantação estão disponíveis no *StorageSVC*, porém não existe nenhuma 
+réplica/instância da função disponível. Por outro lado, quando uma função está 
+implantada e existe pelo menos uma réplica da função em execução, então a função
+é classificada como **Disponível**.
