@@ -58,3 +58,20 @@ A partir da imagem acima, infere-se que o container **freeCodeCamp-Client** (par
 Sobre a implantação do sistema, os containers freeCodeCamp-Client, API-Server e search-indexing traduzem-se em máquinas virtuais na núvem, providas pela plataforma Azure. Detalhes dos pipelines de testes de aceitação e CI podem ser vistos com mais detalhes através dos seguintes links:
 * [Azure DevOps](https://dev.azure.com/freeCodeCamp-org/freeCodeCamp/_build)
 * [Travis CI](https://travis-ci.org/github/freeCodeCamp/freeCodeCamp/branches)
+
+### Componentes
+
+Abaixo, é possível observar o diagrama de componentes do sistema:
+
+![Diagrama de componentes - freeCodeCamp](componentes.png)
+
+No diagrama, tem-se a expansão de três containers do sistema:
+* No freeCodeCamp-Client, temos um componente responsável por renderizar os dados que formam as páginas, o Renderizador, além do Controlador de Pesquisa, responsável por implementar uma lógica para pesquisa de posts a partir do que foi digitado pelo usuário no campo de busca;
+* No container API-Server, tem-se diversos componentes:
+    * Inicializador de Sessão e Controlador de Autenticação: os componentes responsáveis pelo *Sign in* do usuário no sistema. Como descrito no diagrama, os usuários são aptos, caso não queiram fazer um cadastro completo, a acessarem a plataforma usando suas contas do Google, por exemplo (OAuth). O controlador de autenticação é responsável por realizar as verificações dos dados fornecidos pelos usuários;
+    * Buscador do Currículo: componente responsável por buscar o guia de conteúdos da plataforma (currículo, como é chamado);
+    * Extrator de Challenges: componente que extrai os challenges propostos no currículo;
+    * Gerador de Certificado: componente que gera o certificado do usuário após o mesmo concluir os desafios propostos em determinado módulo do curso;
+    * Controlador de Doações: componente que comunica-se com o sistema externo explicitado para que os usuários possam fazer doações, caso desejem;
+    * Controlador de envio de emails: Componente que, usando um serviço externo, implementa a lógica para envio dos emails da plataforma;
+* O container search-indexing possui componentes que, em síntese, funcionam como um *fetcher*, responsáveis por buscar os dados do canal do YouTube, guias de lições, posts e challenges;
