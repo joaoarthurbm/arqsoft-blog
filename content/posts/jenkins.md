@@ -5,7 +5,7 @@ tags = []
 categories = []
 +++
 
-# Autores
+# Autor
 
 Este documento foi produzido por Cássio Cordeiro.
 
@@ -50,18 +50,18 @@ Quanto à implantação, o Jenkins pode ser instalado em qualquer máquina. Ele 
 
 ### Componentes
 
-Nesta seção eu espero duas coisas: o diagrama de componentes e texto descrevendo os componentes. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada componente, seus relacionamentos, tecnologias, APIs expostas, protocolos, estilos, padrões etc.
+O sistema é composto por 6 componentes principais:
 
-Abaixo um exemplo de diagrama de componente.
+* Componente de segurança: seu principal papel é prover autenticação e controle de acesso aos recursos. Ele recebe do gerenciador de usuários as informações necessárias para prover seus serviços.
+* Gerenciador de usuários: realiza todo o controle de usuário, como cadastro, atualização e controle de permissões. Os dados são lidos e escritos usando o controlador de dados.
+* Gerenciador de plugins: controla tudo relacionado aos plugins.
+* Gerenciador de projetos: responsável pelo gerenciamento das ações relacionadas aos projetos, por conectar com o git e enviar notificações.
+* Controlador de dados: escreve e lê os dados do sistema de arquivos, utilizando o XStream. Fornece dados para outros componentes.
+* Componente de estatísticas: utiliza o histórico das builds dos projetos para criar estatísticas e indicar tendências.
 
-![fig7](c4-componentes.png)
+
+![fig3](componentes.png)
 
 ### Visão de Informação
 
-Aqui você deve descrever as informações importantes que são coletadas, manipuladas, armazenadas e distribuídas pelo sistema. Você não precisa descrever todas as informações, somente uma parte que seja essencial para o sistema. Por exemplo, se eu estivesse tratando do instagram, faria algo relacionado aos posts.
-
-Além da descrição gostaria de ver aqui um diagrama para descrever os estados (ex: máquina de estados) de uma informação de acordo com as ações do sistema.
-
-# Contribuições Concretas
-
-*Descreva* aqui os PRs enviados para o projeto e o status dos mesmos. Forneça os links dos PRs.
+Todas as informações giram em torno dos projetos. Os usuários recebem permissões para visualizar, editar e realizar ações neles. Durante o build são executadas as pipelines, caso ocorra algum erro, a build entra no estado de erro, caso contrário, de sucesso. Cada resultado é armazenado no histórico e utilizado para gerar informações estatísticas dos projetos.
