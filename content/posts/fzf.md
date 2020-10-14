@@ -17,6 +17,8 @@ Este documento foi produzido por Bruno Roberto Silva de Siqueira.
 
 Este documento - feito através de texto e diagramas aos moldes do [modelo c4](https://c4model.com) - descreve o programa para commandline [fzf](https://github.com/junegunn/fzf), sua interação com o shell, outros programas, e até comunicação com plugins.
 
+* Importante destacar que haverá um foco apenas no shell unix.
+
 ## Descrição Geral sobre o fzf
 
 O fzf é um programa utilizado para filtrar informações de um input no shell, de maneira interativa, inclusive com suporte a multiseleção e previews.
@@ -45,9 +47,14 @@ Nesta seção eu espero duas coisas: o diagrama de contexto e um texto curto des
 
 Abaixo estão dois exemplos de diagramas de contexto.
 
-![fig1](c4-context.png)
+O `fzf` é um processo que vive inteiramente no terminal. Este pode ser invocado pelo usuário de diversas formas:
 
-<img class="center" src="parlametria-contexto.png" style="width:60%">
+1. Via um pipe, como método de busca e seleção de output: `$ comando1 args | fzf | comando2`
+2. Diretamente, invocando um comando padrão pré-configurado (por default o `find`): `$ fzf`
+3. Via subprocesso, quando algum outro processo shell quer aproveitar seu mecanismo de busca e seleção (ou diretamente pelo usuário neste modo: `$ comando $(fzf)`): `kill -9 <tab>`
+4. Via integração com o próprio shell, a exemplo do `bash` e `zsh`: `vim **<tab>`
+
+![fig1](./fzf_context.png)
 
 ### Containers
 
