@@ -75,3 +75,11 @@ No diagrama, tem-se a expansão de três containers do sistema:
     * Controlador de Doações: componente que comunica-se com o sistema externo explicitado para que os usuários possam fazer doações, caso desejem;
     * Controlador de envio de emails: Componente que, usando um serviço externo, implementa a lógica para envio dos emails da plataforma;
 * O container search-indexing possui componentes que, em síntese, funcionam como um *fetcher*, responsáveis por buscar os dados do canal do YouTube, guias de lições, posts e challenges;
+
+### Visão de Informação
+
+As lições, juntamente com os desafios que as acompanham, são parte fundamental da aplicação. A partir dessas que os usuários podem ter uma ideia de como estão se saindo no curso e como está a curva de aprendizado. Abaixo, temos uma descrição textual e um diagrama que representa os estados dessa informação.
+
+Após a lição ser postada, ela pode ser selecionada pelo usuário e então, entra em um estado de resolução. Quando o usuário julga que conseguiu resolver o desafio proposto, ele solicita a execução dos testes automáticos, o que leva a lição para um estado de teste. Se o teste falha, o usuário entende que precisa rever a resolução e tentar uma nova abordagem, ou seja, a lição volta para o estado de resolução. Caso a resolução passe pelos testes, a lição é marcada automaticamente como concluída.
+
+![Máquina de estados - freeCodeCamp](informacao.png)
