@@ -86,3 +86,9 @@ Também foram escolhidos os componentes mais relevantes do container, então som
 
 As trocas de mensagens, em companhia dos dados gerados pela interação dos clientes das marcas, exercem um papel primordial para o funcionamento da aplicação. Com eles nós conseguimos gerar relatórios dos comportamentos dos usuários e promover várias campanhas de marketing mais acertivas. Abaixo ilustro os estados de uma email enviado pelo sistema.
 
+Descrição da sequência de estados:
+
+Primeiro o email começa a ser produzido pelo usuário, em seguida ele pode ser enviado ou salvo. Caso o email seja enviado, ele pode ser aberto, ir para span, ser cancelado, ou devolvido. Ao cancelar o envio ele é automaticamente salvo, e ao ser salvo ele pode ser deletado. Quando o email é devolvido ele pode ser reenviado ou editado.
+
+
+![fig1](states.png)
