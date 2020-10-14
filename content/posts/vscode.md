@@ -5,7 +5,7 @@ tags = []
 categories = []
 +++
 
-***
+
 
 <a href="https://code.visualstudio.com/">
 <img src="logo-vscode-2.png" style="border-radius: 80px"/>
@@ -21,7 +21,7 @@ Este documento foi produzido por Gabriel Almeida Azevedo.
 - Contato: gabriel.almeida.azevedo@ccc.ufcg.edu.br
 - Projeto documentado: https://github.com/microsoft/vscode
 
-# Descrição Arquitetural do VSCode
+# Descrição Arquitetural do VS Code
 
 Este documento descreve a arquitetura do projeto [VS Code](https://github.com/microsoft/vscode). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
 
