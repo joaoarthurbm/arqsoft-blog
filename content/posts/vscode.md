@@ -70,11 +70,11 @@ O VS Code é uma aplicação que roda em sistemas windows, macOS e Linux. Esta a
 
 Através da API de extensões é possível customizar todo o VS Code. Os serviços de linguagem e de depuração são tratados como uma classe especial de Extensões. 
 
-O serviço de Linguagens é dividido em 2 partes: o client (entensão VS Code) escrito em JavaScript/TypeScript e o Server (ferramenta de análise de linguagem executada em um processo separado). O Client cria uma instância do Server da linguagem correspondente e se comunica através do LSP. Este serviço permite a experiência de edição para muitas linguagens de programação. Pode-se implementar autocomplete, verificação de erros (diagnóstico), salto para definição e muitos outros recursos de linguagem suportados no VS Code. 
+O serviço de Linguagens é dividido em 2 partes: o client (extensão VS Code) escrito em JavaScript/TypeScript e o Server (ferramenta de análise de linguagem executada em um processo separado). O Client cria uma instância do Server da linguagem correspondente e se comunica através do LSP. Este serviço permite a experiência de edição para muitas linguagens de programação. Pode-se implementar autocomplete, verificação de erros (diagnóstico), salto para definição e muitos outros recursos de linguagem suportados no VS Code. 
 
 Com o serviço de depuração os autores de extensão podem integrar facilmente depuradores ao VS Code. O VS Code provê uma interface de usuário comum à todos eles.
 
-A interface de versionamento de arquivos permite criar/troca de branch, adicionar/remover arquivos à um commit, solucionar conflitos, atualizar a branch remota, entre outras funcionalidades. 
+A interface de versionamento de arquivos permite criar/trocar de branch, adicionar/remover arquivos à um commit, solucionar conflitos, atualizar a branch remota, entre outras funcionalidades. 
 
 ![fig3](c4-containers-vscode-2.png)
 
@@ -98,7 +98,7 @@ implementação. Faremos isso mais adiante.
 ### Visão de Informação
 
 O container responsável pela parte de edições e versionamento de arquivos é o *Editor*.  
-Para o diagrama de estados de um *Arquivo* no VS Code, tem-se 3 possibilidades iniciais: Criar um arquivo, editar um arquivo ou ainda remover um arquivo. 
+Para o diagrama de estados de um *Arquivo* no VS Code, tem-se 3 possibilidades iniciais: criar um arquivo, editar um arquivo ou ainda remover um arquivo. 
    
 Pontos que devem ser mencionados: 
 + Ao criar um arquivo e definir sua extensão o VS Code invoca o Serviço de Linguagens para verificar se já existe em seu ambiente uma conexão com o server da extensão do arquivo criado;
