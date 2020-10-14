@@ -58,18 +58,11 @@ O `fzf` é um processo que vive inteiramente no terminal. Este pode ser invocado
 
 ### Containers
 
-Nesta seção eu espero duas coisas: o diagrama de containers e  texto descrevendo os containers. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada container, suas tecnologias, APIs expostas, protocolos, onde são executados/implantados etc. Você pode criar um diagrama de implantação para dar mais detalhes sobre o ambiente em que os containers são implantados e executam. Essa parte de implantação pode ser uma subseção desta seção.
+Por ser uma aplicação shell auto-contida, o `fzf` não dispõe de muitos containeres. Apenas podemos dividir a parte gráfica da aplicação, a *tui* (*terminal user interface*) e sua parte *core* - o programa de fato.
 
-Importante, se um componente expor, por exemplo, uma API REST. Seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints [deste documento](https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing).
+Funcionalidades como argumentos passados pelo usuário, flags, dentre outros, serão geridas pelo *core*, via a leitura do comando invocado, em interação direta com o *shell*. A *tui* apenas desenha gráficos já enviados pelo *core*, bem como provê ao usuário feedback para seus filtros, aatual opção selecionada e os previews (enviados prontos pelo *core*).
 
-Importante, se um container expuser, por exemplo, uma API REST, seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints [deste documento](https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing).
-
-Abaixo estão exemplos de diagramas de containers e de implantação.
-
-![fig3](c4-containers.png)
-![fig4](parlametria-container.png)
-![fig5](c4-implantacao.png)
-![fig6](parlametria-implantacao.png)
+![fig2](./fzf_containers.png)
 
 ### Componentes
 
