@@ -104,9 +104,24 @@ O diagrama de componentes abaixo ilustra os componentes apresentados e sua comun
 
 ## Visão de Informação
 
+Dentre os vários tipos de dados que o Axios manipula, o que foi escolhido para ser apresentado nessa seção foi o dado que representa uma requisição, desde a chamada ao método de envio ao seu dispacho para o destinatário.
 
+Através do seguinte fluxo de processamento de uma requisição é possível notar os estados que ela assume ao logo do processo:
 
-![Diagrama de Informação](../posts/axios/information-diagram.png)
+  - O método para envio de uma requisição é chamado, e inicia-se o processo de configuração da requisição;
+  - O Axios verifica a existência de cabeçalhos e os manipula, adicionando cabeçalhos necessários;
+  - Os dados (cabeçalhos e informações enviadas no corpo) da requisição são transformados para um formato padrão;
+  - É validado se esses dados são do tipo *string*, *ArrayBuffer*, *Buffer* ou *Stream*:
+    - Se sim, a requisição continua sendo processada;
+    - Se não, seu processo de envio é cancelado;
+  - São definidos dados de autenticação básica HTTP na requisição;
+  - O endereço (URL) do destinatário da requisição é formatado, bem como o protocolo utilizado;
+  - Se foi definido algum *proxy*, a requisição recebe toda a configuração referente a ele, como porta, caminho e nome;
+  - A requisição é então enviada.
+
+O diagrama abaixo ilustra o que foi explanado acima, dando enfoque nos estados assumidos por uma requisição.
+
+![Diagrama de Máquina de Estados](../posts/axios/fsm-diagram.png)
 
 ## Contribuições Concretas
 
