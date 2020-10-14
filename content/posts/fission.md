@@ -71,9 +71,9 @@ o código-fonte da função.
 O diagrama abaixo apresenta os principais sistemas que interagem com o *Core Services*,
 assim como as suas responsabilidades.
 
-![contexto](fission/Fission-Architecture.png)
+![contexto](Fission-Architecture.png)
 
-### Eventos de entrada
+#### Eventos de entrada
 
 Podemos observar que o *Core Services*, como já descrito anteriormente, também funciona
 como o *Back-end* da *Fission*. Os Desenvolvedores e seus Clientes podem interagir 
@@ -85,7 +85,7 @@ disponibiliza um *endpoint* que pode ser acessado para invocar a execução da f
 Assim, a forma mais comum dos Clientes interagirem com a plataforma é 
 pelo disparo de requisições HTTP para invocar funções. 
 
-### Eventos de saída
+#### Eventos de saída
 
 Como o *Core Services* é o ponto de entrada da plataforma, pode ser razoável imaginar
 que todos os recursos sejam resolvidos por esse componente, contudo, diversas tarefas
@@ -103,3 +103,47 @@ encarrega de transformar o código-fonte em uma função implantável. Após o p
 *build*, o *StorageSVC* é o responsável por armazenar os artefatos de 
 implantação resultantes. Dessa forma, quando necessário, o *Kubernetes* pode recuperar
 esses artefatos para criar novas réplicas da função.
+
+Além disso, o *Core Services* também funciona como um *Proxy* para serviços externos
+que pode ser oferecidos por terceiros dentro da plataforma.
+
+### Containers
+
+O diagrama abaixo apresenta os serviços que compõem o *Fission Core Services* assim
+como as suas responsabilidades e interações com outros sistemas.
+
+![containers](Fission-Architecture-Container.png)
+
+Como podemos observar, o *Core Services* é composto pelos serviços: *Controller*,
+*Router*, *Executor*, *Function Pod* e *Builder Manager*. 
+
+O *Controller* expõe uma API que pode ser acessada pelos usuários da plataforma 
+via *Fission CLI* ou *Fission UI*. O *Controller* também funciona como *Gateway*
+para os serviços internos e externos da plataforma.
+
+#### CRUD de funções
+
+Quando o *Controller* recebe uma requisição para realizar o *CRUD* de funções, ela
+é repassada para o *Kubernetes* via 
+[CRDs](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
+que armazena informações sobre a função e o seu código-fonte. O *Builder Manager*
+observa os eventos de *CRUD* e dispara o processo de transformar o código-fonte da
+função em um artefato executável. 
+
+Após o processo de *build* da função, o *Builder Manager* armazena os artefatos
+resultantes no *StorageSVC* para que, posteriormente, possa ser recuperado e usado
+na criação de novas réplicas da função.
+
+#### Invocação de funções
+
+Quando o *Controller* recebe uma requisição HTTP para disparar a execução de uma
+função, ele repassa a responsabilidade para o *Router*. O *Router* em seguida 
+consulta o *Executor* para saber se existe alguma instância/réplica da função 
+disponível para processar a requisição recebida. Se existir, o *Router* apenas
+encaminha a requisição para a réplica. Caso contrário, o *Router* requisita ao 
+*Executor* a criação de novas instâncias da função via *Function Pod*.
+
+*Function Pod* é o serviço responsável por carregar e executar uma função, para isso
+ele realiza o *download* da função executável no *StorageSVC*, cria um processo para
+a função quee aceita requisições via um servidor HTTP. Dessa forma, o *Router* pode 
+encaminhar as requisições para o servidor HTTP associado à função.
