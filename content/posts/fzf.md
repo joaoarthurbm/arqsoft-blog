@@ -66,11 +66,17 @@ Funcionalidades como argumentos passados pelo usuário, flags, dentre outros, se
 
 ### Componentes
 
-Nesta seção eu espero duas coisas: o diagrama de componentes e texto descrevendo os componentes. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada componente, seus relacionamentos, tecnologias, APIs expostas, protocolos, estilos, padrões etc.
+O `fzf` conta com três componentes principais dentro do seu core: o *Terminal*, *Matcher* e o *EventBox*, porém há muitos outros instanciados na sua execução.
 
-Abaixo um exemplo de diagrama de componente.
+Apesar de ser o *Terminal* que interpreterá os comandos do usuário, e irá expor comandos de renderização para a *tui*, estes são intermediados pelo *EventBox*.
 
-![fig7](c4-componentes.png)
+O *EventBox* é um componente utilitário que detecta pressionamento de teclas e cliques do usuário na interface gráfica. Os eventos então são observados pelo *Terminal* (aqui dito como o componente interno do `fzf`), que reage quando algum comando é solicitado por exemplo. Também reage a movimentação do usuário para renderizar novos previews, executar subprocessos, dentre outros.
+
+Detectadas pressionamentos de teclas *char* diretas, é visto que o usuário está executando uma busca, que então é enviada para o *Matcher*.
+
+O *Matcher* é quem de fato faz a comunicação com o algoritmo de busca e devolve resultados para a interface, novamente, via eventos.
+
+![fig3](./fzf_components.png)
 
 ### Código
 
