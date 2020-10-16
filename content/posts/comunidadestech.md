@@ -110,7 +110,7 @@ A seguir está o diagrama de máquina de estados para descrever os estados do pr
 
 Para a realização de contribuições acessei o repositório onde está localizado o projeto Comunidades.tech, fiz o fork do projeto, clonei o reposítório, criei uma branch chamada architectural-documentation. Na raiz do projeto, criei um arquivo Markdown chamado architectural-documentationn e uma pasta (com o mesmo nome) para armazenar as imagens utilizadas no Markdown. Por fim, copiei, colei e salvei o conteúdo desse documento (exceto as seções código e contribuições concretas) no arquivo criado. Fiz o commit, o push e realizei o pull request. O pull request pode ser visualizado [aqui](https://github.com/universoimpulso/comunidadestech/pull/247). 
 
-Após revisão do código enviado, foi solicitado que fosse alterado a forma de contato (que estava com um e-mail acadêmico), para o link do meu perfil no GitHub. Logo depois que a alteração foi concluída e submetida, o **pull request foi aceito** (16/10/2020).
+Após revisão do código enviado, foi solicitado que fosse alterado o modo de contato (que estava com um e-mail acadêmico), para o link do meu perfil no GitHub. Logo depois que a alteração foi concluída e submetida, o **pull request foi aceito** (16/10/2020).
 
 # Referências
 Todo conteúdo desse documento foi baseado no estudo do código do repositório do projeto, juntamente com informações adicionais adquiridas através de integrantes da [comunidade da Impulso Network](https://impulso.network/entrar). 
