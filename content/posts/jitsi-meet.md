@@ -15,21 +15,17 @@ Este documento foi produzido por Daniele Aparecida de Melo Silva.
 
 # Descrição Arquitetural -- Serviço de gravação de uma conferência
 
-Este documento descreve parte da arquitetura do projeto [Jitsi Meet](https://github.com/jitsi/jitsi-meet). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
+Neste documento, é descrito um serviço específico de gravaçãode uma conferenência do projeto [Jitsi Meet](https://github.com/jitsi/jitsi-meet). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
 
-É importante destacar que não será descrita toda a arquitetura do Jitsi Meet. O foco aqui é a descrição de um serviço específico de gravação de uma conferência.
-
-## Descrição Geral sobre o Jitsi Meet
+## Sobre o Jitsi Meet
 
 O Jitsi Meet é uma solução de videoconferência totalmente criptografada e de código aberto disponível todos os dias gratuitamente. O Jitsi Meet é executado no navegador, sem necessidade de criar uma conta ou de instalação.
 
 O Jitsi Meet permite uma colaboração muito eficiente. Os usuários podem transmitir sua área de trabalho ou apenas algumas janelas. Ele também suporta edição de documentos compartilhados com Etherpad. O site oficial é: https://meet.jit.si.
 
-## O Serviço de gravação de uma conferência
+## Sobre o serviço de gravação de uma conferência
 
-### Objetivo
-
-Implementar um serviço para capturar áudio e vídeo de uma conferência e salvar localmente.
+O objetivo desse serviço é capturar áudio e vídeo de uma conferência e salvar localmente.
 
 ### Contexto
 
@@ -69,3 +65,20 @@ As gravações são mantidas no armazenamento local do navegador (local storage)
 Abaixo está o diagrama de componentes.
 
 ![fig3](componentes.png)
+
+### Visão de Informação
+
+Como mencionado, o Jibri entra na conferência como um participante e, em seguida, captura vários fluxos de áudio/vídeo e os envia para arquivos locais.
+
+Em termos gerais, as etapas para gravar uma conferência são:
+
+1. Criar uma sessão com a conferência JitsiMeet;
+2. Receber fluxos de áudio/vídeo;
+3. Receber fluxos de mídia;
+4. Gravar fluxos de áudio/vídeo;
+5. Gravar streams de mídia;
+6. Registrar metadados.
+
+Os metadados são mensagens legíveis por humanos que descrevem todo o procedimento de gravação, por exemplo: gravação iniciada, gravação finalizada e alto-falante alterado.
+
+![fig4](informacao.png)
