@@ -17,7 +17,7 @@ Este documento foi produzido por Natan Macena Ribeiro.
 
 # Descrição Arquitetural -- FarolCovid
 
-Este documento descreve a arquitetura do projeto [Farol Covid](https://github.com/ImpulsoGov/farolcovid). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/), permitindo que diferentes stakeholders possam compreender o funcionamento da ferramenta a partir de algumas visões arquiteturais.
+A fonte utilizada para produção deste documento foi o projeto [Farol Covid](https://github.com/ImpulsoGov/farolcovid). A partir desse projeto ([Farol Covid](https://github.com/ImpulsoGov/farolcovid)), este documento propõe uma descrição arquitetural baseada essencialmente no modelo [C4](https://c4model.com/), pelo qual permite que diferentes stakeholders possam compreender o funcionamento da ferramenta a partir de algumas visões arquiteturais.
 
 ## Descrição Geral sobre o Farol Covid
 
@@ -25,7 +25,7 @@ O Farol Covid é uma ferramenta de monitoramento do risco de colapso no sistema 
 
 ### Objetivo Geral
 
-Implementação de um serviço para coleta e visualização de dados relacionados a COVID-19, apresentando análises e indicadores da situação da doença para uma determinada região.
+O objetivo do projeto é disponibilizar um serviço para coleta e visualização de dados relacionados a COVID-19, apresentando análises e indicadores da situação da doença para uma determinada região.
 
 ### Objetivos Específicos
 
