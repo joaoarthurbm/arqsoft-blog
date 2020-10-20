@@ -15,7 +15,7 @@ Este documento foi produzido por Thaynnara Raiany Uchôa Gonçalves.
 
 # Descrição Arquitetural -- Serviço de downloads de vídeos
 
-Este documento descreve parte da arquitetura do projeto [Youtube-dl](https://github.com/ytdl-org/youtube-dl). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
+Este documento foi produzido para a disciplina de Arquitetura de Software da UFCG, e tem como objetivo descrever parte da arquitetura do projeto [Youtube-dl](https://github.com/ytdl-org/youtube-dl), usando como base, principalmente, o modelo [C4](https://c4model.com/).
 
 ## Descrição Geral sobre o Youtube-dl
 O youtube-dl é um projeto open-source que permite ao usuário, via comandos do terminal, fazer o download de vídeos, a partir da url do mesmo, de alguma plataforma na internet. Sendo, dentre essas, com foco no Youtube. 
