@@ -15,9 +15,9 @@ Este artefato foi elaborado por Felipe de Amorim Ferreira.
 
 # Descrição Arquitetural -- Erxes api
 
-Este documento descreve a arquitetura de uma parte do projeto **Erxes**, repositório disponível clicando **[aqui](https://github.com/erxes/erxes-api)**. Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
+Esta descrição arquitetural é sobre a principal funcionalidade do projeto **Erxes**, repositório disponível clicando **[aqui](https://github.com/erxes/erxes-api)** e foi baseada principalmente no modelo [C4](https://c4model.com/).
 
-É importante salientar que não será abordada toda a descrição arquitetural do projeto. O foco aqui é a descrição de um serviço específico de integração com plataformas de terceiros, que é parte fundamental do projeto.
+Para deixar claro, neste documento não serão abordados todos os aspectos arquiteturais do projeto. Será destacado a descrição de um serviço específico de integração com plataformas de terceiros, que é a funcionalidade principal do projeto.
 
 ## Descrição geral sobre o Erxes
 
