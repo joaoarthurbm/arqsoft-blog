@@ -77,20 +77,3 @@ Detectadas pressionamentos de teclas *char* diretas, é visto que o usuário est
 O *Matcher* é quem de fato faz a comunicação com o algoritmo de busca e devolve resultados para a interface, novamente, via eventos.
 
 ![fig3](./fzf_components.png)
-
-### Código
-
-<pre>
-Nesta etapa não faremos diagramas que apresentam detalhes da
-implementação. Faremos isso mais adiante.
-</pre>
-
-### Visão de Informação
-
-Aqui você deve descrever as informações importantes que são coletadas, manipuladas, armazenadas e distribuídas pelo sistema. Você não precisa descrever todas as informações, somente uma parte que seja essencial para o sistema. Por exemplo, se eu estivesse tratando do instagram, faria algo relacionado aos posts.
-
-Além da descrição gostaria de ver aqui um diagrama para descrever os estados (ex: máquina de estados) de uma informação de acordo com as ações do sistema.
-
-# Contribuições Concretas
-
-*Descreva* aqui os PRs enviados para o projeto e o status dos mesmos. Forneça os links dos PRs.
