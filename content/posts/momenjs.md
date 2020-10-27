@@ -45,13 +45,13 @@ O _Moment_ é um pacote que possui diversas ferramentas para manipulação de da
 
 Na criação de um objeto moment, o construtor extrai a data do sistema operacional na qual está inserido. Deste modo, permite a utilização do moment em sistemas offline e em qualquer plataforma.
 
-![contexto](momentjs/momentjs-context-diagram.png)
+![contexto](momentjs-context-diagram.png)
 
 ### Containers
 
 A principal funcionalidade do Moment Js é a criação e manipulação de datas, mas, além disso, ele também apresenta um módulo para internacionalização e um módulo que é responsável pela criação de objetos de duração, que são representantes de períodos de tempo. Tais containers são mostrados no diagrama de container abaixo.
 
-![container](momentjs/momentjs-container-diagram.png)
+![container](momentjs-container-diagram.png)
 
 ##### Analisador de objetos de data e hora
 
@@ -69,7 +69,7 @@ Já o container representante da análise de objetos do tipo duração possui a 
 
 O principal container do moment é o de análise de objetos de data e hora, por este motivo ele terá um foco maior e seus componentes estão representados na imagem abaixo. Neste container é onde ocorre a criação dos objetos de data e a manipulação dos mesmos. O container de análise de data é composto por 5 módulos, são eles: Parser, Get and Set, Manipulate, Display e Compare. Estes serão descritos a seguir.
 
-![componente](momentjs/momentjs-component-diagram.png)
+![componente](momentjs-component-diagram.png)
 
 ##### Parser
 
@@ -106,4 +106,4 @@ Logo após a análise dos parâmetros o moment vai decidir se os parâmetros inf
 Com o objeto em estado de criado ele pode ser modificado, através dos componentes Setter, Compare e Manipulate. Neste ponto ele se encontra no estado de "Em modificação", caso os parâmetros informados para a sua modificação sejam válidos ele retorna para o estado de Criado e estará disponível para utilização futura, caso contrário ele se tornará inválido e sua vida útil irá acabar.
 Por fim este objeto pode ser formatado, a partir do componente Display, e assim convertido para um objeto do tipo String ou Date, acabando, deste modo, sua vida como objeto moment.
 
-![informacao](momentjs/momentjs-visao-informacao.png)
+![informacao](momentjs-visao-informacao.png)
