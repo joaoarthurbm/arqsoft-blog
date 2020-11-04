@@ -1,0 +1,207 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação Arquitetural do VS Code - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pela turma 2020.3 - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação Arquitetural do VS Code" />
+<meta property="og:description" content="Autores Este documento foi produzido por Gabriel Almeida Azevedo.
+ Matrícula: 116210009 Contato: gabriel.almeida.azevedo@ccc.ufcg.edu.br Projeto documentado: https://github.com/microsoft/vscode  Descrição Arquitetural do VS Code Este documento descreve a arquitetura do projeto VS Code." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft20203/posts/vscode/" />
+<meta property="article:published_time" content="2020-10-06T00:00:00-03:00" />
+<meta property="article:modified_time" content="2020-10-06T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação Arquitetural do VS Code"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Gabriel Almeida Azevedo.
+ Matrícula: 116210009 Contato: gabriel.almeida.azevedo@ccc.ufcg.edu.br Projeto documentado: https://github.com/microsoft/vscode  Descrição Arquitetural do VS Code Este documento descreve a arquitetura do projeto VS Code."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft20203/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft20203/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft20203/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft20203" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Projetos da turma 2020.3 - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação Arquitetural do VS Code</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-10-06T00:00:00-03:00">Oct 6, 2020</time>
+        </li>
+        
+
+        
+
+        <li>5 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <a href="https://code.visualstudio.com/">
+<img src="logo-vscode-2.png" style="border-radius: 80px"/>
+</a>
+<hr>
+<h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Gabriel Almeida Azevedo.</p>
+<ul>
+<li>Matrícula: 116210009</li>
+<li>Contato: <a href="mailto:gabriel.almeida.azevedo@ccc.ufcg.edu.br">gabriel.almeida.azevedo@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/microsoft/vscode">https://github.com/microsoft/vscode</a></li>
+</ul>
+<h1 id="descrição-arquitetural-do-vs-code">Descrição Arquitetural do VS Code</h1>
+<p>Este documento descreve a arquitetura do projeto <a href="https://github.com/microsoft/vscode">VS Code</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<p>É importante destacar que não será descrita toda a arquitetura do VS Code. O foco aqui é a descrição do seu núcleo central, parte fundamental do projeto. Componentes satélites como o Chrome Debug Core, NLS Tools, CSS/LESS/SCSS Language Service e ESLint possuem seu próprio repositório e não serão abordados profundamente neste documento. Para ver a lista completa de projetos relacionados acesse o link <a href="https://github.com/microsoft/vscode/wiki/Related-Projects">Related Projects</a>.</p>
+<h2 id="descrição-geral-sobre-o-vs-code">Descrição Geral sobre o VS Code</h2>
+<p>O Visual Studio Code, ou simplesmente VS Code, é um editor de código que foi lançado em 2015 pela Microsoft. É uma ferramenta de código aberto voltada para o desenvolvimento de aplicações web, mobile e de cloud. O Visual Code se baseia no Electron (framework usada para desenvolver aplicativos Node.js). O seu conjunto de utilitários faz com que ele concorra de igual para igual com ferramentas pagas existentes no mercado.</p>
+<p><strong>Seus pontos de Destaque são:</strong></p>
+<ul>
+<li>É Multiplataforma;</li>
+</ul>
+<p><img src="multiplataforma.png" alt="fig1"></p>
+<ul>
+<li>
+<p>É Multilinguagem: Suporta mais de 30 linguagens de programação além de formatos comuns de arquivos;</p>
+</li>
+<li>
+<p>É Personalizável;</p>
+</li>
+<li>
+<p>É uma aplicação leve;</p>
+</li>
+<li>
+<p>Apresenta uma excelente paleta de atalhos: além da seus atalhos, é possível alterar para os atalhos reconhecidos pelo Sublime e pelo Atom;</p>
+</li>
+<li>
+<p>Permite adicionar extensões;</p>
+</li>
+<li>
+<p>Possui o IntelliSense: Recurso de preenchimento de código que permite listar métodos, obter informações de parâmetros, completar palavras.</p>
+</li>
+</ul>
+<p><img src="intelliSense.gif" alt="intelliSense"></p>
+<h3 id="objetivo-geral-do-vs-code">Objetivo Geral do VS Code</h3>
+<p>Fornecer um editor de código simples que cubra as necessidades dos desenvolvedores nas 3 fases de desenvolvimento: codificação, criação do artefato e depuração.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>Prover uma ferramenta poderosa para o desenvolvedor, que tenha uma edição de código abrangente, navegação e suporte de compreensão, depuração leve, um modelo de extensibilidade rico e integração leve com ferramentas existentes.</p>
+<h3 id="contexto">Contexto</h3>
+<p>O VS Code é uma aplicação que roda em sistemas windows, macOS e Linux. Esta aplicação tem como base para sua UI(interface de usuário), o framework Electron, e interage com o sistema de versionamento do <strong><a href="https://github.com/">GitHub</a></strong>.</p>
+<p><img src="c4-contexto-vscode-plat.png" alt="fig2"></p>
+<h3 id="containers">Containers</h3>
+<p>Através da API de extensões é possível customizar todo o VS Code. Os serviços de linguagem e de depuração são tratados como uma classe especial de Extensões.</p>
+<p>O serviço de Linguagens é dividido em 2 partes: o client (extensão VS Code) escrito em JavaScript/TypeScript e o Server (ferramenta de análise de linguagem executada em um processo separado). O Client cria uma instância do Server da linguagem correspondente e se comunica através do LSP. Este serviço permite a experiência de edição para muitas linguagens de programação. Pode-se implementar autocomplete, verificação de erros (diagnóstico), salto para definição e muitos outros recursos de linguagem suportados no VS Code.</p>
+<p>Com o serviço de depuração os autores de extensão podem integrar facilmente depuradores ao VS Code. O VS Code provê uma interface de usuário comum à todos eles.</p>
+<p>A interface de versionamento de arquivos permite criar/trocar de branch, adicionar/remover arquivos à um commit, solucionar conflitos, atualizar a branch remota, entre outras funcionalidades.</p>
+<p><img src="c4-containers-vscode-2.png" alt="fig3"></p>
+<h3 id="componentes">Componentes</h3>
+<p>Vale salientar que o VS Code é uma aplicação grande. Foi escolhido apenas 2 containers para serem expandidos e, ainda assim, só uma amostra dos seus componentes está no diagrama.</p>
+<p>Abrindo o container de Extensões tem-se como principais componentes o <em>Extension Gallery Service</em> que provê a listagem de extensões disponíveis para usuário juntamente com suas descrições e changelogs. A partir dessa listagem o usuário pode escolher fazer o download de uma extensão. O componente responsável por este papel é o <em>Extension Downloader</em> que baixa a extensão desejada e repassa os arquivos para o <em>Extension Management Service</em> que por sua vez tem a responsabilidade de averiguar se a extensão é confiável, realizar sua instalação e registro.</p>
+<p>O container do Editor possui vários componentes mas sem dúvida o <em>Text Change</em> faz parte do seu núcleo. Ele é responsável por realizar toda e qualquer alteração nos arquivos e interage fortemente com o componente <em>Diff Computer</em>. Ambos componentes são utilizados pelo versionador do VS Code. Existe ainda o <em>Cursor Delete Operations Controller</em> e o <em>Find Controller</em> que invocam o <em>Text Change</em> para realizar as alterações/remoções de código.</p>
+<p><img src="c4-componentes-vscode.png" alt="fig4"></p>
+<h3 id="código">Código</h3>
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p>O container responsável pela parte de edições e versionamento de arquivos é o <em>Editor</em>.<br>
+Para o diagrama de estados de um <em>Arquivo</em> no VS Code, tem-se 3 possibilidades iniciais: criar um arquivo, editar um arquivo ou ainda remover um arquivo.</p>
+<p>Pontos que devem ser mencionados:</p>
+<ul>
+<li>Ao criar um arquivo e definir sua extensão o VS Code invoca o Serviço de Linguagens para verificar se já existe em seu ambiente uma conexão com o server da extensão do arquivo criado;</li>
+<li>Ao editar um arquivo, pode-se alterar o código manualmente, usar atalhos de cursor, o que envolve seus respectivos controllers (ex: Cursor Delete Operations Controller) e o find/replace. Cada um desses modos invocará o componente <em>Text Change</em> para efetivar a mudança;</li>
+<li>Sempre que tenta-se excluir um arquivo que está aberto ou em raschunho, o VS Code pergunta se essa ação deverá ser realmente realizada, se sim, ele exclui o arquivo e fecha sua janela de edição;</li>
+<li>Pode-se, ou não, usar o VS Code para versionar seu arquivo. Isto é feito através do componente <em>Versionador</em> (trata questões de branch, diffs, commits, conflitos, pull/pushs e merges) que se integra ao <strong>GitHub</strong>.</li>
+</ul>
+<p><img src="diagrama-informacao-vscode.png" alt="fig5"></p>
+<h1 id="contribuições-concretas">Contribuições Concretas</h1>
+<p><em>Até o presente momento ainda não foi aberto nenhum pull request desta documentação para o <a href="https://github.com/microsoft/vscode-docs/">repositório</a> de docs do VS Code.</em></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/posts/comunidadestech/"><i class="fa fa-chevron-circle-left"></i> Documentação Arquitetural para o Comunidades.tech</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/posts/okhttp/">Documentação arquitetural do OkHttp <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020 - Turma de Arquitetura de Software 2020.3. |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft20203/js/scripts.js"></script>
+
+</body>
+
+</html>
+

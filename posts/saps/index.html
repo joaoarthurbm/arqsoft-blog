@@ -1,0 +1,214 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação arquitetural para o SAPS - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pela turma 2020.3 - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação arquitetural para o SAPS" />
+<meta property="og:description" content="Projeto SAPS para construção de uma plataforma automatizada que realize o cálculo do método SEBAL utilizando imagens de satélite.  Autores Este documento foi produzido por Thiago Yuri Evaristo de Souza." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft20203/posts/saps/" />
+<meta property="article:published_time" content="2020-10-10T00:00:00-03:00" />
+<meta property="article:modified_time" content="2020-10-10T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação arquitetural para o SAPS"/>
+<meta name="twitter:description" content="Projeto SAPS para construção de uma plataforma automatizada que realize o cálculo do método SEBAL utilizando imagens de satélite.  Autores Este documento foi produzido por Thiago Yuri Evaristo de Souza."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft20203/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft20203/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft20203/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft20203" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Projetos da turma 2020.3 - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação arquitetural para o SAPS</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-10-10T00:00:00-03:00">Oct 10, 2020</time>
+        </li>
+        
+
+        
+
+        <li>7 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <hr>
+<img src="./logo.png" style="width: 50%; display: flex; margin: 0 auto;"/>
+Projeto SAPS para construção de uma plataforma automatizada que realize o cálculo do método SEBAL utilizando imagens de satélite.
+<hr>
+<h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Thiago Yuri Evaristo de Souza.</p>
+<ul>
+<li>Matrícula: 117211156</li>
+<li>Contato: <a href="mailto:thiago.souza@ccc.ufcg.edu.br">thiago.souza@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/ufcg-lsd/saps-engine">https://github.com/ufcg-lsd/saps-engine</a></li>
+</ul>
+<h1 id="descrição-arquitetural">Descrição Arquitetural</h1>
+<p>Este documento descreve parte da arquitetura do projeto <a href="https://github.com/ufcg-lsd/saps-engine">SAPS</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<h2 id="descrição-geral-sobre-o-saps">Descrição Geral sobre o SAPS</h2>
+<p>O SAPS é um projeto que tem como objetivo processar imagens de satélite utilizando o <a href="https://en.wikipedia.org/wiki/SEBAL">método SEBAL</a> de forma a facilitar o usuário (geralmente um pesquisador) que deseja realizar analises sobre os resultados obtidos pelo seu processamento automático. Mais detalhes sobre o projeto podem ser vistos <a href="https://www.sciencedirect.com/science/article/pii/S0098300419302961">neste link</a>.</p>
+<h3 id="imagem-de-satélite">Imagem de satélite</h3>
+<p>Imagem de satélite é um arquivo de imagem (<a href="https://en.wikipedia.org/wiki/TIFF">TIFF</a>) obtido por sensoriamento remoto a partir de um satélite artificial. Existem diferentes satélites de recolha de imagens, os mais conhecidos são QuickBird, Ikonos, Landsat e Spot.</p>
+<p>No contexto do SAPS, a única família de satélite com suporte é a <a href="https://en.wikipedia.org/wiki/Landsat_program">Landsat</a>.</p>
+<h3 id="método-sebal">Método SEBAL</h3>
+<p>SEBAL (Surface Energy Balance Algorithm for Land) é um algoritmo que usa o balanço de energia de superfície para estimar aspectos do ciclo hidrológico, mapeando então informações como evapotranspiração, crescimento de biomassa, déficit hídrico e umidade do solo.</p>
+<p>Essa quantificação do balanço de energia é calculado usando dados de satélite que originam características da superfície terrestre, como albedo da superfície, índice de área foliar, índice de vegetação e temperatura da superfície. Além das imagens de satélite, o modelo SEBAL requer dados meteorológicos, como velocidade do vento, umidade, radiação solar e temperatura do ar relativos a região de analise.</p>
+<h3 id="scripts">Scripts</h3>
+<p>O SAPS é composto de 3 grandes partes para realizar seus processamentos, são eles:</p>
+<ul>
+<li>inputdownloading: responsável pela aquisição dos dados a serem utilizados, como dados de elevação, metereológicos ou até mesmo as próprias imagens de satélite.</li>
+<li>preprocessing: responsável pela preparação dos dados obtidos como por exemplo, extração de pixels de nuvens/sombra de nuvens, <a href="https://docs.qgis.org/2.14/pt_BR/docs/user_manual/working_with_projections/working_with_projections.html">reprojeção de imagens</a> e entre outros.</li>
+<li>processing: responsável pela aplicação do algoritmo final (por exemplo, SEBAL) nos dados preprocessados para geração de novos dados uteis para o usuário a fim de realizar analise e extração de informações.</li>
+</ul>
+<p>Essas fases são selecionadas pelo usuário formando um pipeline de processamento, cada uma dessas fases é implementada e executada utilizando containers Docker configurados e preparados para execução do passo necessitando somente dos dados de entrada.</p>
+<h2 id="saps">SAPS</h2>
+<h3 id="objetivo-geral">Objetivo geral</h3>
+<p>Implementar uma plataforma em que usuários possam requisitar/acompanhar/recuperar processamentos de imagens de satélite em um determinado intervalo de tempo e localização, que serão realizados de forma automática.</p>
+<h3 id="objetivos-específicos">Objetivos específicos</h3>
+<p>Ter uma plataforma abrangente, que possa processar imagens de diversos tipos de familias de satélite (LANDSAT, &hellip;) e computar diversos métodos de processamentos de imagens, além do SEBAL.</p>
+<h3 id="contexto">Contexto</h3>
+<p><img src="contexto.svg" alt="diagrama-contexto"></p>
+<p>No diagrama de contexto é apresentado como se da a interação dos demais elementos com a plataforma SAPS. Primeiramente temos os clientes, que requisitam processamentos de imagens de satélite (em um intervalo de tempo e lugar), depois os mesmos acessam para acompanhar a execução do seu processamento e por fim depois que finalizar, recuperar os dados calculados pelo SAPS a partir das imagens fornecidas na entrada.</p>
+<p>Temos também o serviço de e-mail que é utilizado pelo SAPS para envio de mensagens para o usuário, principalmente dos dados finais de um processamento. Além dos datasets (imagens de satélite, dados de elevação e dados meteorológicos) que são bastante uteis para obtenção de informações para o processamento. O serviço de storage serve para armazenar dados finais ou parciais dos processamentos feitos pelo SAPS, isto é destinado a um serviço externo que possui uma boa tecnologia que lida melhor com questões de segurança e persistência dos dados.</p>
+<p>Por último, o serviço de execução de trabalhos que é responsável por receber um workload e executa-lo, e depois enviar informações sobre a execução. Por exemplo, selecionar uma VM com 2GB ram e 4 CPUs, levantar um container docker X (no caso do SAPS será os algoritmos dos passos de inputdownloading, preprocessing ou processing) e executar os comandos Y e Z com os argumentos A e B. Por fim, o serviço vai acompanhar a execução e coletar os exitcodes de cada comando e concluir se o trabalho foi bem sucedido ou falho. O que é importante nesse serviço é sabe o estado final da execução e manter os resultados em um local acessível e seguro.</p>
+<p>Existe uma coisa complicada associada entre os datasets e o serviço de execução de trabalhos que será abordado na visão de componentes.</p>
+<h3 id="containers">Containers</h3>
+<p><img src="containers.svg" alt="diagrama-containers"></p>
+<p>No diagrama de containers, o sistema SAPS é amplicado em três novos blocos:</p>
+<ul>
+<li>GUI: Responsável por interagir com o usuário de forma facilitada e gerar workload</li>
+<li>API da aplicação: Responsável por interagir com os pedidos da GUI de workload ou obtenção de informação e processa-las</li>
+<li>Database: Responśavel por registrar informações sobre processamentos e usuários</li>
+</ul>
+<h4 id="gui">GUI</h4>
+<p>A GUI possui uma interface com algumas operações simples como:</p>
+<ul>
+<li><strong>Submeter nova requisição de processamento</strong> gerando workload a aplicação do SAPS</li>
+<li><strong>Acompanhar processamento</strong> verificando os estados do processamento fazendo com que a aplicação do SAPS gere uma listagem das informações para o usuário</li>
+<li><strong>Obter resultados</strong> gerando workload a aplicação do SAPS para organização dos dados resultantes e disponibização dos mesmos por meio de um email</li>
+</ul>
+<h4 id="api-da-aplicação">API da aplicação</h4>
+<p>A API possui algumas operações simples como:</p>
+<ul>
+<li>Adicionar nova requisição de processamento</li>
+<li>Adicionar novo usuário</li>
+<li>Recuperar informações sobre processamentos</li>
+<li>Enviar resultados de processamentos</li>
+</ul>
+<h4 id="database">Database</h4>
+<p>O banco de dados é responsável por manter os dados do usuário e processamentos.</p>
+<h3 id="componentes">Componentes</h3>
+<p><img src="componentes.svg" alt="diagrama-componentes"></p>
+<p>No diagram de componentes são apresentados três componentes principais pertencentes a aplicação:</p>
+<ul>
+<li>Dispatcher: Responsável por registrar novos processamentos ou usuários, e obtenção dos mesmos, além de envio de email para o usuário obter os resultados dos processamentos</li>
+<li>Archiver: Responsável por obter processamentos finalizados e prontos para arquivamento dos dados resultantes/parciais no serviço de storage</li>
+<li>Scheduler: Responsável por agendar as execuções dos passos do processamento com o serviço de execução de trabalhos</li>
+</ul>
+<h4 id="por-que-existe-uma-camada-a-mais-entre-os-datasets-e-o-serviço-de-execução-de-trabalhos">Por que existe uma camada a mais entre os datasets e o serviço de execução de trabalhos?</h4>
+<p>Como dito na seção sobre o modelo de contexto, o serviço de execução de trabalhos executa um workload enviado pelo SAPS (Scheduler) que irá ser processado em um ambiente. Esse ambiente por sua vez irá rodar os algoritmos dos passos de inputdownloading, preprocessing e processing que estão em containers Dockers.</p>
+<p>Na execução desses algoritmos (principalmente de fase inputdownloding), irá ser feito a obtenção dos dados presentes nos datasets de imagens de satélite, de dados de elevação e metereológicos, no caso, ainda existe uma pequena camada do SAPS no que está sendo executado representada pelos algoritmos rodados no serviço de execução de jobs para comunicação com esses datasets.</p>
+<p>Importante ressaltar que essa seção é útil para enchar a introdução vista na visão geral com a plataforma SAPS em questões de como o dado é obtido, não sendo feito por nenhum dos componentes, mas por um algoritmo que é executado dentro do serviço de execução de trabalhos.</p>
+<h3 id="visão-da-informação">Visão da informação</h3>
+<img src="./fluxo-informacao.svg" style="width: 50%; display: flex; margin: 0 auto;"/>
+<p>No diagrama de fluxo de informação é descrito os estados que o processamento pode atingir, começando no estado <strong>created</strong> e finalizando (se bem sucedido) em <strong>archived</strong>. Existem alguns pontos de falha nos estados de downloading, preprocessing, processing e archiving, que são originados por:</p>
+<ul>
+<li>downloading: os arquivos relativos ao processamento não foram encontrados nos datasets de imagens de satélite, metereológicos ou dados de elevação, ou estão corrumpidos. Também pode acontecer por uma situação inesperada que ocorreu nessa fase.</li>
+<li>preprocessing/processing: os arquivos baixados não estão como esperado, ou estão ausentes, ou alguma situação inesperada</li>
+<li>archiving: os arquivos a serem armazenados apresentam problemas para enviar ao serviço de storage, ou algum problema inesperado</li>
+</ul>
+<h1 id="contribuições-concretas">Contribuições concretas</h1>
+<p>Não realizei a submissão do PR por questões de idioma, as informações/documentações feitas pelo SAPS são em Inglês. Num futuro próximo, pretendo realizar essa contribuição.</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/posts/fission/"><i class="fa fa-chevron-circle-left"></i> Fission Serverless Platform</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/posts/bypass_paywalls/">Documentação arquitetural do Bypass PayWalls <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020 - Turma de Arquitetura de Software 2020.3. |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft20203/js/scripts.js"></script>
+
+</body>
+
+</html>
+

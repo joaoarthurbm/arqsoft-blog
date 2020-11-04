@@ -1,0 +1,183 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Inkscape - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pela turma 2020.3 - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Inkscape" />
+<meta property="og:description" content="Autores Este documento foi produzido por Gustavo Alves.
+  Matrícula: 117110919
+  Contato: gustavo.daniel.alves@ccc.ufcg.edu.br
+  Projeto documentado: https://gitlab.com/inkscape/inkscape | https://gitlab.com/inkscape/extensions
+  Descrição Arquitetural – InkEx API Este documento descreve parte da arquitetura do projeto Inkscape." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft20203/posts/inkscape/" />
+<meta property="article:published_time" content="2020-10-13T20:00:32-03:00" />
+<meta property="article:modified_time" content="2020-10-13T20:00:32-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Inkscape"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Gustavo Alves.
+  Matrícula: 117110919
+  Contato: gustavo.daniel.alves@ccc.ufcg.edu.br
+  Projeto documentado: https://gitlab.com/inkscape/inkscape | https://gitlab.com/inkscape/extensions
+  Descrição Arquitetural – InkEx API Este documento descreve parte da arquitetura do projeto Inkscape."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft20203/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft20203/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft20203/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft20203" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Projetos da turma 2020.3 - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Inkscape</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-10-13T20:00:32-03:00">Oct 13, 2020</time>
+        </li>
+        
+
+        
+
+        <li>3 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+<div class="featured_image">
+    <a href="https://joaoarthurbm.github.io/arqsoft20203/posts/inkscape/" title="Inkscape">
+        <img src="">
+    </a>
+</div>
+
+
+
+    <h3 id="autores">Autores</h3>
+<p>Este documento foi produzido por Gustavo Alves.</p>
+<ul>
+<li>
+<p>Matrícula: 117110919</p>
+</li>
+<li>
+<p>Contato: <a href="mailto:gustavo.daniel.alves@ccc.ufcg.edu.br">gustavo.daniel.alves@ccc.ufcg.edu.br</a></p>
+</li>
+<li>
+<p>Projeto documentado: <a href="https://gitlab.com/inkscape/inkscape">https://gitlab.com/inkscape/inkscape</a> | <a href="https://gitlab.com/inkscape/extensions">https://gitlab.com/inkscape/extensions</a></p>
+</li>
+</ul>
+<h1 id="descrição-arquitetural--inkex-api">Descrição Arquitetural – InkEx API</h1>
+<p>Este documento descreve parte da arquitetura do projeto Inkscape. Essa descrição foi baseada principalmente no modelo C4.</p>
+<p>É importante destacar que não será escrita toda a arquitetura do Inkscape. O foco principal é descrever a InkEx, API que permite a criação e utilização de extensões no programa.</p>
+<h2 id="descrição-geral-sobre-o-inkscape">Descrição geral sobre o Inkscape</h2>
+<p>O Inkscape se define como um editor de gráficos vetoriais open source. O programa funciona de forma similar a aplicativos famosos como Adobe Illustrator e Corel Draw, com a diferença de utilizar como forma nativa o padrão aberto SVG (Scalable Vector Graphics).</p>
+<h2 id="a-inkex">A InkEx</h2>
+<h4 id="objetivo-geral">Objetivo geral</h4>
+<p>Permitir a extensão por parte dos usuários das funcionalidades do Inkscape a partir de uma API.</p>
+<h4 id="objetivo-específico">Objetivo específico</h4>
+<p>Expor uma API que permita que os usuários adicionem funcionalidades ao Inkscape sem necessitar conhecer C++ e GTK, porém apenas Python e XML, tornando-a mais acessível e sem necessidade de compilação prévia.</p>
+<h4 id="contexto">Contexto</h4>
+<img src="Diagrama de contexto.svg" class="center" style="height: 700px;">
+<p>Por padrão o Inkscape dá suporte a diferentes fluxos de trabalho, desde a sua utilização para a criação de novos vetores como para o processamento dos já pré-existentes. Apesar disto, é sempre interessante permitir que o usuário expanda as funcionalidades do software aumentando a sua produtividade ou abrindo um novo leque de possibilidades de criação.</p>
+<p>Para isto, o Inkscape fornece uma API que permite integrar scripts de funcionalidade ao fluxo de trabalho do programa.</p>
+<h4 id="containers">Containers</h4>
+<img src="Diagrama de contêineres.svg" class="center">
+<p>As extensões do Inkscape são acessados pelo próprio Inkscape, sendo expostas a partir dos front-ends disponíveis (GUI e CLI). Ao aplicar a funcionalidade de uma extensão, o back-end envia o SVG para a extensão que deverá processá-la e retornar o SVG modificado para o back-end.</p>
+<h4 id="componentes">Componentes</h4>
+<img src="Diagrama de componentes.svg" class="center">
+<p>As extensões do Inkscape são compostas de dois componentes:</p>
+<h5 id="descritores">Descritores</h5>
+<p>Os descritores são arquivos Inkscape XML (.inx) que fornecem informações ao Inkscape referentes aos parâmetros, interface, strings para tradução, configuração e identificação da extensão.</p>
+<h5 id="scripts">Scripts</h5>
+<p>Os scripts são os arquivos Python que serão utilizados para realizar o processamento dos arquivos. Eles recebem o SVG a partir de um caminho ou pela entrada padrão. Após finalizar os processamento do arquivo, os scripts podem tanto salvar o arquivo modificado ou reenviá-lo ao Inkscape pela saída padrão. Apesar de não aconselhável, os scripts podem chamar o Inkscape da mesma forma para realizar alguma operação específica.</p>
+<h4 id="implementação">Implementação</h4>
+<blockquote>
+<p>Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.</p>
+</blockquote>
+<h4 id="informação">Informação</h4>
+<p>O fluxo e estados da informação são bastante simples. O SVG é recebido via arquivo ou entrada padrão, é feito uma cópia que se processada corretamente é escrita no arquivo ou na saída padrão.</p>
+<img src="Visão de informação.png" class="center">
+<h3 id="contribuições-concretas">Contribuições concretas</h3>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/posts/jitsi-meet/"><i class="fa fa-chevron-circle-left"></i> Arquitetura do Jitsi Meet</a>
+        </li>
+        
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020 - Turma de Arquitetura de Software 2020.3. |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft20203/js/scripts.js"></script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,207 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação arquitetural do OkHttp - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pela turma 2020.3 - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação arquitetural do OkHttp" />
+<meta property="og:description" content="Este documento descreve parte da arquitetura do projeto OkHttp. É importante destacar que não será descrita toda a arquitetura do OkHttp. O foco é a descrição de como é realizado o processo de criação, inicialização e encerramento de uma requisição de rede utilizando os serviços disponibilizados por este projeto." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft20203/posts/okhttp/" />
+<meta property="article:published_time" content="2020-10-06T00:00:00-03:00" />
+<meta property="article:modified_time" content="2020-10-06T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação arquitetural do OkHttp"/>
+<meta name="twitter:description" content="Este documento descreve parte da arquitetura do projeto OkHttp. É importante destacar que não será descrita toda a arquitetura do OkHttp. O foco é a descrição de como é realizado o processo de criação, inicialização e encerramento de uma requisição de rede utilizando os serviços disponibilizados por este projeto."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft20203/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft20203/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft20203/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft20203" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Projetos da turma 2020.3 - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação arquitetural do OkHttp</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-10-06T00:00:00-03:00">Oct 6, 2020</time>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://joaoarthurbm.github.io/arqsoft20203/tags/android">#android</a>
+                
+                    , 
+                    <a href="https://joaoarthurbm.github.io/arqsoft20203/tags/http">#http</a>
+                
+                    , 
+                    <a href="https://joaoarthurbm.github.io/arqsoft20203/tags/java">#java</a>
+                
+            </em>
+        </li>
+        
+
+        <li>6 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <hr>
+<p>Este documento descreve parte da arquitetura do projeto <a href="https://github.com/square/okhttp">OkHttp</a>. É importante destacar que não será descrita toda a arquitetura do OkHttp. O foco é a descrição de como é realizado o processo de criação, inicialização e encerramento de uma requisição de rede utilizando os serviços disponibilizados por este projeto.</p>
+<hr>
+<h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Adauto Ferreira de Barros Neto.</p>
+<ul>
+<li>Matrícula: 114211302</li>
+<li>Contato: <a href="mailto:adauto.neto@ccc.ufcg.edu.br">adauto.neto@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/square/okhttp">https://github.com/square/okhttp</a></li>
+</ul>
+<h1 id="descrição-arquitetural----cliente-http-para-android">Descrição Arquitetural &ndash; Cliente HTTP para Android</h1>
+<p>Este documento descreve parte da arquitetura do projeto <a href="https://github.com/square/okhttp">OkHttp</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<p>É importante destacar que não será descrita toda a arquitetura do OkHttp. O foco aqui é a descrição de um serviço específico de requisições HTTP, que é parte fundamental do projeto.</p>
+<h2 id="descrição-geral-sobre-o-okhttp">Descrição Geral sobre o OkHttp</h2>
+<p>HTTP é a maneira que aplicações modernas se comunicam entre si para troca de informações, sendo dados e/ou mídias. Fazer essa conexão da maneira mais eficiente requer bastante esforço, mas traz benefícios tanto de velocidade, como de melhor uso dos recursos disponíveis para a aplicação. O OkHttp é um projeto que implementa um cliente HTTP para Android que busca a eficiência como padrão, sua API de requisições e respostas possui construtores fluidos e imutáveis, suportando chamadas síncronas e assíncronas. Mais detalhes sobre o projeto podem ser vistos <a href="https://square.github.io/okhttp/">neste link</a>.</p>
+<h2 id="o-cliente-de-requisições-http">O cliente de requisições HTTP</h2>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Implementar um cliente Android eficiente para requisições e respostas HTTP com o interesse em troca de dados e mídia, provendo carregamentos rápidos e economizando larguda de banda.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>Queremos ter uma forma eficiente de realizar chamadas HTTP em sistemas Android. Além disso, desejamos o suporte para chamadas síncronas bloqueantes e assíncronas com <em>callbacks</em>. Também é de interesse do projeto que haja perseverança quando houver conexões problemáticas, se recuperando silenciosamente de problemas comuns de conexão.</p>
+<h3 id="contexto">Contexto</h3>
+<p>O sistema se resume a um cliente de requisições HTTP, que através de uma URL provida pelo usuário, o cliente Android realiza a conexão com um <em>WebServer</em> que irá conter informações desejadas pela requisição. Essas informações são acessadas por meio da resposta HTTP que pode encapsular diferentes tipos de dados.</p>
+<p><img src="context.jpg" alt="context"></p>
+<p>Para o sistema, todo esse processo é nomeado de <strong>call</strong> e seus estados serão mais detalhados no decorrer deste documento.</p>
+<h3 id="containers">Containers</h3>
+<p>A arquitetura do OkHttp no geral se baseia basicamente na divisão de camadas, onde cada uma é responsável por lidar com uma etapa do processo de requisições HTTP. Sendo essas:</p>
+<ul>
+<li>Interface: A camada de interface é responsável pelo recebimento das requisições fornecidas pelo usuário e realiza a inicialização do processo de requisição de rede;</li>
+<li>Protocolo: Camada que executa o processamento da lógica de protocolos, dando suporte a três tipos: HTTP1, HTTP2 e <em>WebSockets</em>. Definidos dinamicamente através do cliente configurado;</li>
+<li>Conexão: Trata do processo de estabelecimento da conexão com o <em>WebServer</em> a partir da URL provida pelo usuário, recuperando conexões existentes ou criando novas conexões;</li>
+<li>Cache: Essa camada opera sobre o sistema de cache de requisições. Quando a requisição de rede realizada pelo usuário possui um cache local que atende a requisição, o OkHttp retorna imediatamente o resultado encontrado no cache;</li>
+<li>Entrada/Saída: Responsável pela leitura e escrita de dados. Esta camada depende totalmente do <a href="https://github.com/square/okio">Okio</a>, uma biblioteca que iniciou sendo apenas um componente do OkHttp para realizar o processo de acessar, guardar e processar dados;</li>
+<li>Interceptadores:  A camada de interceptadores contém vários componentes que operam sobre o sistema a qualquer momento, realizando operações lógicas relevantes para o ponto da execução em que foi chamado. Funcionando de forma semelhante a um sistema com programação orientada a aspectos (POA).</li>
+</ul>
+<p><img src="container.jpg" alt="container"></p>
+<h3 id="componentes">Componentes</h3>
+<p>Para esta seção nos apronfudaremos nos componentes da camada de Interface e de Conexão, pois são as que mais agem sobre o sistema e também sobre as <strong>calls</strong>.</p>
+<h5 id="interface">Interface</h5>
+<p>Como dito anteriormente, essa camada é quem realiza a interação com o usuário, recebendo as inforamções necessárias para iniciar a requisição. Ela é composta por, principalmente, 4 componentes que serão descritos abaixo:</p>
+<ul>
+<li>Call: A call é uma requisição de rede que foi preparada para execução, cada requisição de rede feita pelo usuário será uma <em>call</em>. Ela pode ser cancelada, mas por se tratar de um par de requisição e resposta, chamado de <strong>stream</strong>, não pode ser executada mais de uma vez;</li>
+<li>Request: Usada para descrever a requisição que será iniciada. De acordo com as informações providas pelo usuário, esse componente irá encapsular a URL, o método utilizado, cabeçalho e corpo. Também nesse componente é realizado o controle da cache, independente se for uma requisição HTTPS ou não;</li>
+<li>Client: Usuários podem configurar este componente de várias maneiras. Todas as requisições de rede são realizadas através do cliente, cada cliente mantém sua fila de tarefas e seu <em>pool</em> de conexões, podendo reutilizar conexões que já foram estabelecidas;</li>
+<li>Dispatcher: Esse é o componente que contém a fila de tarefas utilizada pelo Client, mantendo um pool de <em>threads</em> internamente. Quando uma <em>call</em> é recebida, o Dispatcher é responsável por encontrar <em>threads</em> que estejam ociosas e executar com a nova <em>call</em>.</li>
+</ul>
+<h5 id="conexão">Conexão</h5>
+<p>Essa camada é responsável pela conexão de rede. Aqui também encontramos um <em>pool</em> de conexões, porém que trata apenas as conexões via <em>socket</em>. Quando o usuário inicia o processo de requisição de rede, OkHttp vai primeiramente procurar em seu <em>pool</em> de conexões se existe alguma que atenda aos requisitos. Caso sim, irá enviar requisições diretamente pela conexão que já existe, caso não exista, uma nova conexão é estabelecida para o envio das requisições.</p>
+<p>A partir da introdução de multiplexação completa de solicitação e resposta em HTTP2, o <em>pool</em> de conexões presente nessa camada busca fazer o mesmo com as conexões via <em>socket</em>, mantendo várias <strong>RealConnection</strong> que possibilitam múltiplas requisições de conexões de rede. Com isso, também houve a introdução do <strong>StreamAllocation</strong> para descrever a carga de requisições. Uma RealConnection representa uma ou mais <em>StreamAllocation</em>, podendo ser considerado um contador de conexões, quando esse contador alcançar zero, a <em>StreamAllocation</em> será liberada caso não seja ocupada por novas requisições depois de muito tempo.</p>
+<p>Para a criação de novas conexões, esta camada utiliza o componente de <strong>DNS</strong> para descobrir o endereço IP do servidor e o <strong>Route</strong> para testar e selecionar qual deverá ser usado. Após tudo ser definido, irá utilizar o <strong>ConnectionSpec</strong> para especificar a configuração da conexão <em>socket</em> em que a requisição HTTP irá ser transportada, em caso de conexão HTTPS, isso também irá incluir a versão TLS e o conjunto de criptografia usada para negociação de conexão segura.</p>
+<p><img src="components.jpg" alt="components"></p>
+<h3 id="código">Código</h3>
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p>Uma <strong>call</strong> é o que carrega a requisição HTTP e sua resposta dentro do OkHttp, esse elemento do sistema passa por várias etapas e algumas delas estão descritas abaixo:</p>
+<ol>
+<li>Usa a URL que foi provida pelo Android juntamente com o cliente configurado para criar um <strong>endereço</strong>. Esse endereço é quem especifica como é feita a conexão com o servidor <em>web</em>;</li>
+<li>Tenta recuperar uma conexão com esse endereço que já tenha sido utilizada;</li>
+<li>Se não encontrar uma conexão reutilizável, uma rota é selecionada para a tentativa de conexão. Isso significa fazer uma requisição DNS para obter o endereço de IP do servidor;</li>
+<li>Caso seja uma nova rota, ela será conectada utilizando ou SDP, ou túnel TLS (para requisições HTTPS), ou conexão TLS direta. Também faz um TLS handshake.</li>
+<li>Envia a requisição HTTP e lê a resposta.</li>
+</ol>
+<p><img src="info.jpg" alt="info"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/posts/vscode/"><i class="fa fa-chevron-circle-left"></i> Documentação Arquitetural do VS Code</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/posts/fzf/">fzf - command-line fuzzy finder <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020 - Turma de Arquitetura de Software 2020.3. |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft20203/js/scripts.js"></script>
+
+</body>
+
+</html>
+
