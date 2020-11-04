@@ -42,7 +42,7 @@ Servir uma plataforma administradora para coordenadores de cursos da UFCG. A pri
 
 ### Objetivos Específicos
 
-Queremos implantar os dados obtidos através do eureca-coleta-dados em um banco de dados para que este possar ser acessado por um outro projeto Eureca (eureca-backend), que servirá uma API para ser acessada pelo eureca-frontend, sendo este, responsável por mostrar visualmente todos os serviços disponíveis na plataforma.
+Queremos implantar os dados obtidos através do eureca-coleta-dados em um banco de dados para que este possa ser acessado por um outro projeto Eureca (eureca-backend), que servirá uma API para ser acessada pelo eureca-frontend, sendo este, responsável por mostrar visualmente todos os serviços disponíveis na plataforma.
 
 ### Contexto
 
