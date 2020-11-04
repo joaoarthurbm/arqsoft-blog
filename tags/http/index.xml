@@ -1676,6 +1676,111 @@ implementação. Faremos isso mais adiante.
      </item>
    
      <item>
+       <title>Serenata de Amor - Documentação arquitetural </title>
+       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/serenata-de-amor/</link>
+       <pubDate>Sun, 04 Oct 2020 00:00:00 -0300</pubDate>
+       
+       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/serenata-de-amor/</guid>
+       <description>&lt;hr&gt;
+&lt;img src=&#34;./logo.png&#34; style=&#34;width: 50%; display: flex; margin: 0 auto;&#34;/&gt;
+&lt;p&gt;Projeto de auditoria automática para a cota de auxílio parlamentar de reembolsos para gastos.&lt;/p&gt;
+&lt;h1 id=&#34;autores&#34;&gt;Autores&lt;/h1&gt;
+&lt;p&gt;Este documento foi produzido por Nicácio Oliveira de Sousa.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Matrícula: 115111897&lt;/li&gt;
+&lt;li&gt;Contato: &lt;a href=&#34;mailto:nicacio.sousa@ccc.ufcg.edu.br&#34;&gt;nicacio.sousa@ccc.ufcg.edu.br&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Projeto documentado: &lt;a href=&#34;https://github.com/okfn-brasil/serenata-de-amor&#34;&gt;https://github.com/okfn-brasil/serenata-de-amor&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;descrição-arquitetural&#34;&gt;Descrição Arquitetural&lt;/h1&gt;
+&lt;p&gt;Este documento descreve parte da arquitetura do projeto &lt;a href=&#34;https://github.com/okfn-brasil/serenata-de-amor&#34;&gt;Serenata de Amor&lt;/a&gt; e tem como base o modelo &lt;a href=&#34;https://c4model.com/&#34;&gt;C4&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;É importante destacar que este documento visa expor de forma mais abstrata como funciona o conjunto de ferramentas da aplicação e não necessariamente explicará em detalhes a sua implementação.&lt;/p&gt;
+&lt;h2 id=&#34;descrição-geral-sobre-o-serenata-de-amor&#34;&gt;Descrição Geral sobre o Serenata de Amor&lt;/h2&gt;
+&lt;p&gt;O serenata de amor é um projeto que visa &lt;a href=&#34;https://brasil.elpais.com/brasil/2017/01/23/politica/1485199109_260961.html&#34;&gt;auditar gastos públicos&lt;/a&gt; relacionados a cota de auxílio parlamentar a qual é utilizada pelos parlamentares para requerirem reembolsos dos gastos que são relacionados a função parlamentar. Um reembolso pela cota parlamentar pode ser requerido para qualquer tipo de atividade do parlamentar como o gasto com alimentação, passagens aéreas, combustível, aluguéis, assinaturas etc.&lt;/p&gt;
+&lt;p&gt;A função de auditar a veracidade dos pedidos de reembolso pode ser uma tarefa inumana pela quantidade de pedidos todos os meses e a quantidade de variáveis envolvidas. O Serenata de Amor automatiza esse procedimento de auditoria para criar alertas sobre notas fiscais com valores duvidosos e auxiliar esse trabalho de forma muito mais barata e rápida.&lt;/p&gt;
+&lt;h4 id=&#34;mas-como-isso-é-feito&#34;&gt;Mas como isso é feito?&lt;/h4&gt;
+&lt;p&gt;O projeto possui dois grandes módulos. Um &lt;a href=&#34;https://twitter.com/RosieDaSerenata&#34;&gt;(Rosie)&lt;/a&gt; para auditar notas fiscais de pedidos de reembolsos e outro &lt;a href=&#34;https://jarbas.serenata.ai/&#34;&gt;(Jarbas)&lt;/a&gt; para listar os dados auditados de forma fácil.&lt;/p&gt;
+&lt;p&gt;Em geral, um usuário precisa acionar a Rosie para que, com base em dados anteriores e já avaliados, ela classifique dados entregues pelo governo federal a cada mês e em seguida insira o conjunto de dados classificados no banco de dados do Jarbas para que ele exiba-os e também crie alertas no twitter sobre casos suspeitos.&lt;/p&gt;
+&lt;h4 id=&#34;rosie&#34;&gt;Rosie&lt;/h4&gt;
+&lt;p&gt;Robô que tem sua construção baseada na &lt;a href=&#34;https://github.com/okfn-brasil/serenata-toolbox&#34;&gt;toolbox do serenata de amor&lt;/a&gt;.
+A Rosie faz auditoria em notas fiscais que são cadastradas na base de dados do governo federal e classifica cada nota com uma flag de suspeita ou não.&lt;/p&gt;
+&lt;p&gt;A classificação das notas é feita com base em diversas de variáveis como:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Gastos exagerados com alimentação, combustível, passagens etc&lt;/li&gt;
+&lt;li&gt;Estar em dois lugares ao mesmo tempo&lt;/li&gt;
+&lt;li&gt;Valores exorbitantes em localidades que cobram um valor diferente do que a nota fiscal diz&lt;/li&gt;
+&lt;li&gt;Valores superfaturados&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;O processo, em uma visão modular, é simples. A Rosie é alimentada com dados previamente classificados em mêses e anos anteriores, é feito um treinamento em um modelo para que ele seja utilizado para classificar dados futuros.&lt;/p&gt;
+&lt;h4 id=&#34;jarbas&#34;&gt;Jarbas&lt;/h4&gt;
+&lt;p&gt;Painel de controle que exibe os dados auditados pela Rosie de forma organizada.
+O Jabas também é responsável por criar posts de alerta no twitter, indicando pedidos de reembolso suspeitos.&lt;/p&gt;
+&lt;h2 id=&#34;serviço-de-auditoria-de-cotas-parlamentares&#34;&gt;Serviço de auditoria de cotas parlamentares&lt;/h2&gt;
+&lt;h3 id=&#34;objetivo&#34;&gt;Objetivo&lt;/h3&gt;
+&lt;p&gt;Implementar um serviço que possa auditar notas fiscais cadastradas na base de dados do governo federal que sejam relacionadas a cota de gastos parlamentares e relacionar cada nota à variáveis que indiquem se cada uma delas é suspeita de fraude ou não.&lt;/p&gt;
+&lt;h3 id=&#34;objetivos-específicos&#34;&gt;Objetivos Específicos&lt;/h3&gt;
+&lt;p&gt;Treinar modelos, com base em dados auditados anteriormente, para classificação de cada nota fiscal que for utilizada para pedidos de reembolso para indicar se cada nota pode ser considerada suspeita e interagir em rede social criando alertas sobre gastos suspeitos através do módulo Jarbas.&lt;/p&gt;
+&lt;h3 id=&#34;contexto&#34;&gt;Contexto&lt;/h3&gt;
+&lt;p&gt;A comunicação e contexto gerais dos sitema acontecem entre os dois elementos principais (Rosie e Jarbas) em conjunto com a publicação de mensagens com alertas no twitter.&lt;/p&gt;
+&lt;p&gt;Os dados devem ser lidos da base de dados do governo federal referente a dados de cota parlamentar. Em seguida, a Rosie deve ser ativada para classificar os dados de acordo com as regras que conhece e indicar se a nota fiscal atrelada ao pedido de reenbolso é suspeita. Por fim, o banco de dados do Jarbas deve ser alimentado com os novos dados classificados pela Rosie e então o Jarbas irá lista-los e criar posts de tempos em tempos para todas as suspeitas encontradas.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;contexto.svg&#34; alt=&#34;fig1&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;containers&#34;&gt;Containers&lt;/h3&gt;
+&lt;p&gt;A Rosie é constituída por um conjunto de classificadores de notas fiscais de pedidos de reembolso. É basicamente um módulo python que utiliza Scikit para criar classificadores.&lt;/p&gt;
+&lt;p&gt;Classificadores:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Despesas eleitorais&lt;/li&gt;
+&lt;li&gt;Empresas irregulares no lançamento das notas fiscais&lt;/li&gt;
+&lt;li&gt;Despesas com refeições&lt;/li&gt;
+&lt;li&gt;Limite de subcota parlamentar mensal&lt;/li&gt;
+&lt;li&gt;Gastos com combustível&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Em uma visão mais detalhada dos containers, podemos entender como se dá a comunicação dos dois módulos.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;containers-rosie-jarbas.svg&#34; alt=&#34;fig2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;A implantação do sistema é feita em &lt;a href=&#34;https://www.digitalocean.com/products/droplets/&#34;&gt;Droplets da Digital Ocean&lt;/a&gt; e não há muitos detalhes aqui a não ser observar os arquivos de configuração docker-compose que definem quais serviços serão instanciados no Droplet da Digital Ocean.&lt;/p&gt;
+&lt;p&gt;Apenas o jarbas deve permanece online 24 horas por dia. Por simplicidade, a Rosie é acionada apenas algumas vezes ao mês de forma manual e a base de dados do Jarbas é atualizada com os dados novos também manualmente.&lt;/p&gt;
+&lt;p&gt;O Jarbas é apenas um dashboard que expõe os dados classificados e que não chegam na casa dos milhões. Logo, a arquitetura de implantação deve-se manter simples pois traz baixo custo e facilidade de implantação.&lt;/p&gt;
+&lt;h3 id=&#34;componentes&#34;&gt;Componentes&lt;/h3&gt;
+&lt;p&gt;A Rosie utiliza como base o conjunto de ferramentas da Toolbox e é organizada em pacotes relativos a cada tipo de classificação que será feita.
+No momento atual, a câmara dos deputados é o principal ponto de análise e todos os outros módulos que venham a ser criados devem seguir o mesmo padrão, então vamos focar apenas no módulo de classificação da câmara dos deputados.&lt;/p&gt;
+&lt;p&gt;Cada pacote de classificadores utiliza o sklearn para treinar um modelo utilizando como base dados que foram classificados e resolvidos anteriormente. Assim, quanot mais o tempo passar, cada vez mais a Rosie irá criar modelos para classificação mais aprimorados.&lt;/p&gt;
+&lt;p&gt;A Visão mais abstrata dos componentes da Rosie pode ser visualizada em seguida:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;componentes-rosie.svg&#34; alt=&#34;fig3&#34;&gt;&lt;/p&gt;
+&lt;p&gt;O Jarbas, por simplicidade é apenas um serviço Python-Django que lê a lista de dados de reembolso e expõe uma ai simples para busca e filtro dessa listagem.
+Além de sua função de listagem e filtro, o jarbas cria posts no twitter para denunciar pedidos que estejam classificados como suspeitos e marca-os como denunciados.&lt;/p&gt;
+&lt;p&gt;O único caso particular que teremos aqui é a limitação da quantidade de posts por hora da api do Twitter que é utilizada pelo jarbas. Há um &lt;a href=&#34;https://developer.twitter.com/en/docs/twitter-api/v1/rate-limits#:~:text=Standard%20API%20v1.&amp;amp;text=You%20can%20only%20post%20300,id%20endpoint%20during%20that%20period.&#34;&gt;limite&lt;/a&gt; e ele é considerado na criação dos posts.&lt;/p&gt;
+&lt;p&gt;Cada dado de reembolso carrega a informação do ID do requerente e links para detalhes que são apontados para o sistema do governo federal.&lt;/p&gt;
+&lt;p&gt;A API exposta pelo Jarbas é apenas uma rota com opcionais de filtragem para visualização dos dados:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GET /api/chamber_of_deputies/reimbursement/&amp;lt;document_id&amp;gt;/receipt/&lt;/li&gt;
+&lt;li&gt;GET /api/chamber_of_deputies/reimbursement/&amp;lt;document_id&amp;gt;?&lt;filtros&gt;&lt;/li&gt;
+&lt;li&gt;GET /api/chamber_of_deputies/reimbursement&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Os filtros em forma de query que podem ser utilizados podem ser visualizados no &lt;a href=&#34;https://github.com/okfn-brasil/serenata-de-amor/tree/main/jarbas#json-api-endpoints&#34;&gt;repositório oficial do projeto&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Os componentes do jarbas são os seguintes:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;componentes-jarbas.svg&#34; alt=&#34;fig4&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;visão-de-informação&#34;&gt;Visão de Informação&lt;/h3&gt;
+&lt;p&gt;As informações mais importantes para o funcionamento do Serenata de Amor são basicamente todas as informações ligadas à um pedido de reembolso:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pedido de Reembolso&lt;/li&gt;
+&lt;li&gt;Nota Fiscal&lt;/li&gt;
+&lt;li&gt;Empresa (CNPJ, Endereço etc)&lt;/li&gt;
+&lt;li&gt;Parlamentares&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Abaixo podemos entender alguns pontos idispensáveis para a compreensão do uso da informação no sistema.&lt;/p&gt;
+&lt;h4 id=&#34;dados-de-estabelecimentos-com-localização-e-dados-relacionados-ao-cadastro-de-pessoa-jurídica-no-governo-federal&#34;&gt;Dados de estabelecimentos com localização e dados relacionados ao cadastro de pessoa jurídica no governo federal.&lt;/h4&gt;
+&lt;p&gt;A Rosie precisa entender qual tipo de estabelecimento, se ele está cadastrado na base de dados do governo federal e qual a região onde se localiza para aprender sobre qual valor de despesa é considerado normal.&lt;/p&gt;
+&lt;h4 id=&#34;dados-de-cada-parlamentar-ligado-a-cada-pedido-de-reembolso&#34;&gt;Dados de cada parlamentar ligado a cada pedido de reembolso&lt;/h4&gt;
+&lt;p&gt;Além da importâcia de entender qual o parlamentar requerente, é interessante que o Jarbas conheça esse dado para criar alertas e faça associação ao parlamentar no twitter.&lt;/p&gt;
+&lt;h4 id=&#34;dados-que-foram-auditados-anteriormente&#34;&gt;Dados que foram auditados anteriormente&lt;/h4&gt;
+&lt;p&gt;Para o passo inicial do sistema a Rosie necessita de um conjunto de dados previamente classificados/auditados que indique os dois estados de um pedido de reembols. Logo, os dados gerados até o momento do iníio da rosie servem de base de treinamento para o modelo de classificação e posteriormente serão somados a esse conjunto de dados os dados auditados pela prória Rosie para continuar aumentando a acurácia das classificações da Rosie.&lt;/p&gt;
+&lt;h4 id=&#34;fluxo-da-informação-no-jarbas-para-postagem-de-alertas-no-twitter&#34;&gt;Fluxo da informação no Jarbas para postagem de alertas no twitter&lt;/h4&gt;
+&lt;p&gt;Por mais que seja simples, um diagrama de estados nos ajuda a manter claro como isso deve ser feito no twitter.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;fluxo-de-alerta-jarbas.svg&#34; alt=&#34;fig5&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;contribuições-concretas&#34;&gt;Contribuições Concretas&lt;/h1&gt;
+</description>
+     </item>
+   
+     <item>
        <title>Documentação arquitetural do Jenkins</title>
        <link>https://joaoarthurbm.github.io/arqsoft20203/posts/jenkins/</link>
        <pubDate>Fri, 02 Oct 2020 00:00:00 -0300</pubDate>
