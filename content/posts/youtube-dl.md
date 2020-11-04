@@ -1,6 +1,8 @@
 +++
 title = "Youtube-dl documentação"
 date = 2020-10-13
+title = "Documentação arquitetural para o Youtube-dl"
+date = 2019-10-12
 tags = []
 categories = []
 +++
@@ -96,4 +98,3 @@ implementação. Faremos isso mais adiante.
 A url é primeiramente passada pelo usuário, que primeiramente é validada, em seguida é destinada a um InfoExtractor responsável por aquele domínio, o qual ira extrair as informações adequadas da url, estas então são dadas a um File Downloader, adequada para as mesmas, que irá usa-la para fazer o download do vídeo.
 
 ![fig5](infromation_view.png)
-
