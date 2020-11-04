@@ -1,11 +1,11 @@
 +++
-title = "Youtube-dl documentação"
 date = 2020-10-13
 title = "Documentação arquitetural para o Youtube-dl"
-date = 2019-10-12
 tags = []
 categories = []
 +++
+
+--
 
 # Autores
 
