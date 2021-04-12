@@ -1,0 +1,170 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação arquitetural do Leggo Painel - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pela turma 2020.3 - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação arquitetural do Leggo Painel" />
+<meta property="og:description" content="Autor Este documento foi produzido por João Lucas Galvão Menezes.
+ Matrícula: 116110464 Contato: joao.menezes@ccc.ufcg.edu.br Projeto documentado: https://github.com/parlametria/leggo-painel  Descrição Arquitetural &ndash; Site Leggo Painel Este documento descreve parte da arquitetura do projeto Leggo Painel." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft20203/posts/leggo/" />
+<meta property="article:published_time" content="2020-10-13T00:00:00-03:00" />
+<meta property="article:modified_time" content="2020-10-13T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação arquitetural do Leggo Painel"/>
+<meta name="twitter:description" content="Autor Este documento foi produzido por João Lucas Galvão Menezes.
+ Matrícula: 116110464 Contato: joao.menezes@ccc.ufcg.edu.br Projeto documentado: https://github.com/parlametria/leggo-painel  Descrição Arquitetural &ndash; Site Leggo Painel Este documento descreve parte da arquitetura do projeto Leggo Painel."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft20203/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft20203/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft20203/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft20203" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Projetos da turma 2020.3 - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação arquitetural do Leggo Painel</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-10-13T00:00:00-03:00">Oct 13, 2020</time>
+        </li>
+        
+
+        
+
+        <li>4 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <hr>
+<h1 id="autor">Autor</h1>
+<p>Este documento foi produzido por João Lucas Galvão Menezes.</p>
+<ul>
+<li>Matrícula: 116110464</li>
+<li>Contato: <a href="mailto:joao.menezes@ccc.ufcg.edu.br">joao.menezes@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/parlametria/leggo-painel">https://github.com/parlametria/leggo-painel</a></li>
+</ul>
+<h1 id="descrição-arquitetural----site-leggo-painel">Descrição Arquitetural &ndash; Site Leggo Painel</h1>
+<p>Este documento descreve parte da arquitetura do projeto <a href="https://github.com/parlametria/leggo-painel">Leggo Painel</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<p>É importante destacar não será descrita toda a arquitetura do Leggo. O foco aqui é a descrição da página específica de análise de atividade parlamentar, que é parte fundamental do projeto.</p>
+<h2 id="descrição-geral-sobre-o-leggo">Descrição Geral sobre o Leggo</h2>
+<p>O leggo é um projeto que tem como objetivo permitir o acompanhamento das atividades realizadas por cada deputado e senador no congresso, quais as suas principais áreas de atuação e sua relevância, a partir de ações feitas, dentro do congresso.</p>
+<h2 id="a-página-leggo-painel">A página Leggo Painel</h2>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Implementar um serviço para permitir a fácil visualização das atividades de cada parlamentar no Congresso.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>Queremos mostrar a atividade dos parlamentares através de seus documentos apresentados na Câmara ou Senado. Fazemos isso com contagens e avaliações dos pesos de participação que o parlamentar teve em cada documento, sendo esses autorias, emendas, proposições, apensamentos ou requisições. Mostramos também ordenações dos mais ativos em documentos, em redes social e por peso político.</p>
+<h3 id="contexto">Contexto</h3>
+<p>O Leggo Painel recebe os dados de um outro serviço de coleta de dados do Congresso, o <a href="https://github.com/analytics-ufcg/rcongresso">r-congresso</a>, e também direto da API do Congresso e pré-processa todos os dados antes de armazena-los. Nosso back-end prepara rotas e reorganiza os dados de acordo com o necessário para o uso.Com os dados adequados, produzimos as visualizações para que o usuário final consiga ler as informações passadas com naturalidade.</p>
+<p><img src="leggo-painel-contexto.png" alt="fig1"></p>
+<h3 id="containers">Containers</h3>
+<p>Temos quatro containers para abordar aqui.
+O container que faz obtenção dos dados, a partir da API externa do Congresso e da biblioteca r-congresso, é implementado em R e faz um pré-processamento dos dados para serem armazenados. Esse container funciona via docker em máquina virtual do LSD;
+O container de armazenamento de dados é implementado em postgres, implatado em um heroku próprio, e serve os dados ao back-end;
+O container do back-end, também implantado em heroku separado, é implementado em Django e cria as rotas que vão servir o front-end da aplicação, expondo a API e modelando ainda mais os dados;
+O container do front-end, que se encontra implantado no heroku próprio para ele, é implementado em Angular e faz requisições HTTP através de seus services para consumir as rotas da API.</p>
+<p><img src="leggo-painel-container.png" alt="fig2"></p>
+<h3 id="componentes">Componentes</h3>
+<p>Temos dois componentes na parte dos dados, o fetcher e o transformador. O fetcher realiza a captura dos dados dos parlamentares da câmara e senado através das API&rsquo;s externas e direciona para o transformador, onde os dados são analisados e pré-processados para seguirem para o armazenamento no banco de dados.
+No back-end temos mais três componentes, models, views e controllers (segunido modelo MVC). O controller é o responsável por receber as requisições do front-end e se comunicar com o model apresentando a demanda. O model responde ao controller com os dados necessários para responder a demanda e o controller envia os dados para a view. Na view acontece a formatação dos dados para o modelo e tipo aguardado na resposta da requisição.
+E no front-end, temos dois grandes componentes, os services e os components. Os components são de fato onde as funcionalidades do site são implementadas (filtragem de parlamentares, ordenações, criação de visualizações, normalizador de atividades, entre outras) e também o responsável por receber da interface da aplicação (site) as requisições. Já os services são a camada de contato entre front-end e back-end, ela que faz as requisições necessárias para a API.</p>
+<p><img src="leggo-painel-componente.png" alt="fig3"></p>
+<h3 id="código">Código</h3>
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p>O Leggo Painel começa a obtenção de seus dados a partir de API&rsquo;s externas. O Congresso, por exemplo, disponibiliza todas as ações, oficializadas através de um documento, de um parlamentar. Capturamos essas informações, em XML, e tratamos, para que facilite a usabilidade mais adiante no sistema, criando ID&rsquo;s únicos para os parlamentares, por exemplo. Com os dados armazenados já de maneira organizada e coesa, o sistema consegue utilizar esses para suas diversas requisições e funcionalidades. Por exemplo, exibir para cada parlamentar uma badge mostrando quantos documentos autorais ele possui.</p>
+<p><img src="leggo-painel-info.png" alt="fig4"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/posts/osmand/"><i class="fa fa-chevron-circle-left"></i> Documentação arquitetural para o OsmAnd</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/posts/zulip/">Descrição arquitetural do Zulip <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020 - Turma de Arquitetura de Software 2020.3. |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft20203/js/scripts.js"></script>
+
+</body>
+
+</html>
+

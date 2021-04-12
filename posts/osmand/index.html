@@ -1,0 +1,170 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação arquitetural para o OsmAnd - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pela turma 2020.3 - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação arquitetural para o OsmAnd" />
+<meta property="og:description" content="Este documento descreve parte da arquitetura do OsmAnd
+ Autores Este documento foi produzido por Débora Ferreira de Barros.
+ Matrícula: 116211210 Contato: debora.barros@ccc.ufcg.edu.br Projeto documentado: https://github.com/osmandapp/OsmAnd  Descrição Arquitetural &ndash; Mapas e rotas de navegação do OsmAnd Este documento descreve parte da arquitetura do projeto OsmAnd." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft20203/posts/osmand/" />
+<meta property="article:published_time" content="2020-10-13T00:00:00-03:00" />
+<meta property="article:modified_time" content="2020-10-13T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação arquitetural para o OsmAnd"/>
+<meta name="twitter:description" content="Este documento descreve parte da arquitetura do OsmAnd
+ Autores Este documento foi produzido por Débora Ferreira de Barros.
+ Matrícula: 116211210 Contato: debora.barros@ccc.ufcg.edu.br Projeto documentado: https://github.com/osmandapp/OsmAnd  Descrição Arquitetural &ndash; Mapas e rotas de navegação do OsmAnd Este documento descreve parte da arquitetura do projeto OsmAnd."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft20203/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft20203/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft20203/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft20203" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Projetos da turma 2020.3 - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação arquitetural para o OsmAnd</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-10-13T00:00:00-03:00">Oct 13, 2020</time>
+        </li>
+        
+
+        
+
+        <li>3 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <hr>
+<p>Este documento descreve parte da arquitetura do OsmAnd</p>
+<hr>
+<h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Débora Ferreira de Barros.</p>
+<ul>
+<li>Matrícula: 116211210</li>
+<li>Contato: <a href="mailto:debora.barros@ccc.ufcg.edu.br">debora.barros@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/osmandapp/OsmAnd">https://github.com/osmandapp/OsmAnd</a></li>
+</ul>
+<h1 id="descrição-arquitetural----mapas-e-rotas-de-navegação-do-osmand">Descrição Arquitetural &ndash; Mapas e rotas de navegação do OsmAnd</h1>
+<p>Este documento descreve parte da arquitetura do projeto <a href="https://github.com/osmandapp/OsmAnd">OsmAnd</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<p>É importante destacar não será descrita toda a arquitetura do OsmAnd. O foco é a descrição do serviço que fornece mapas e rotas de navegação do OsmAnd, que é parte fundamental do projeto.</p>
+<h2 id="descrição-geral-sobre-o-osmand">Descrição Geral sobre o Osmand</h2>
+<p>OsmAnd (OSM Automated Navigation Directions) é um projeto que tem como objetivo permitir a visualização de mapas bem como oferecer rotas de navegação para carros, bicicletas, transportes públicos e pedestres a partir do uso de dispositivos móveis de forma online e offline. Mais detalhes sobre o projeto podem ser vistos <a href="https://osmand.net/">neste link</a>.</p>
+<h2 id="o-serviço-de-mapas-de-navegação-do-osmand">O Serviço de mapas de navegação do OsmAnd</h2>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Implementar um serviço que oferece mapas e rotas de navegação disponíveis para diversos tipos de transporte e para pedestres.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>Utilizando-se de um serviço de mapeamento é desejado criar rotas de navegação que guiem os usuários pelo mapa para o destino escolhido a partir de sua localização atual e disponibilizar mapas que funcionem de forma online e offline.</p>
+<h3 id="contexto">Contexto</h3>
+<p>A partir de um dispositivo móvel o usuário do OsmAnd consegue visualizar mapas de lugares específicos e traçar rotas de navegação. O OsmAnd por sua vez se utiliza do mapeamento de lugares feitos pelo OpenStreetMap, que é um projeto colaborativo que cria mapas livres e editáveis do mundo com dados abertos, para fornecer a visualização de mapas e rotas.</p>
+<p> </p>
+<img class="center" src="osmand-context.jpg" style="width:25%">
+<h3 id="containers">Containers</h3>
+<p>O meio de acesso ao OsmAnd é feito exclusivamente a partir de um aplicativo móvel que acessa todas as suas funcionalidades. O aplicativo móvel se utiliza de uma API que faz chamadas XML/HTTPS  para a API da aplicação que por sua vez faz uso dos dados dos mapas oferecidos pelo OpenStreetMap utilizando-se de chamadas de API XML/HTTPS. Todas as informações necessárias são armazenadas em um banco de dados SQLite.</p>
+<p> </p>
+<p><img src="osmand-container.jpg" alt="fig2"></p>
+<h3 id="componentes">Componentes</h3>
+<p>O Connection Service tem todos os métodos necessários para fazer a comunicação entre os os dados armazenados e a aplicação. Para isso ele faz chamadas ao Maps Component que por sua vez é o responsável por requisitar dados, estes que são obtidos no OpenStreetMap ou que são passadas pelo Data Component. O Data Component é responsável por manipular o armazenamento, exclusão e modificação de todos os dados no banco de dados da aplicação. Em sua maioria as informações manipuladas são do tipo XML e seguem protocolos do tipo HTTPS.</p>
+<p> </p>
+<p><img src="osmand-componentes.jpg" alt="fig3"></p>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p>Os principais dados manipulados, armazenados, distribuídos e coletados são arquivos do tipo GPX que usam um esquema XML para transferir dados GPS entre aplicações. Eles são usados para descrever rotas, trilhas ou pontos de passagem em mapas.</p>
+<p> </p>
+<p><img src="GPX-maquina-de-estados.jpg" alt="fig4"></p>
+<h1 id="contribuições-concretas">Contribuições Concretas</h1>
+<p>Adicionando diagramas: Enviado para análise</p>
+<p><a href="https://github.com/osmandapp/OsmAnd/pull/10019">Link</a> do Pull Request.</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/posts/teammates/"><i class="fa fa-chevron-circle-left"></i> Documentação arquitetural para o TEAMMATES</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/posts/leggo/">Documentação arquitetural do Leggo Painel <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020 - Turma de Arquitetura de Software 2020.3. |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft20203/js/scripts.js"></script>
+
+</body>
+
+</html>
+

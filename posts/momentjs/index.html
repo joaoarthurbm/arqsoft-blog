@@ -1,0 +1,182 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Moment Js - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pela turma 2020.3 - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Moment Js" />
+<meta property="og:description" content="Este é um documento explica aspectos da arquitetura de uma das mais conhecidas bibliotecas JavaScript para manipulação de data e hora. O Moment torna a tarefa de manipulçação de data mais simples para o desenvolvedor." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft20203/posts/momentjs/" />
+<meta property="article:published_time" content="2019-10-10T00:00:00-03:00" />
+<meta property="article:modified_time" content="2019-10-10T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Moment Js"/>
+<meta name="twitter:description" content="Este é um documento explica aspectos da arquitetura de uma das mais conhecidas bibliotecas JavaScript para manipulação de data e hora. O Moment torna a tarefa de manipulçação de data mais simples para o desenvolvedor."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft20203/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft20203/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft20203/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft20203" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Projetos da turma 2020.3 - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Moment Js</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2019-10-10T00:00:00-03:00">Oct 10, 2019</time>
+        </li>
+        
+
+        
+
+        <li>5 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <hr>
+<p>Este é um documento explica aspectos da arquitetura de uma das mais conhecidas bibliotecas JavaScript para manipulação de data e hora. O Moment
+torna a tarefa de manipulçação de data mais simples para o desenvolvedor.</p>
+<hr>
+<h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Paulo Dantas.</p>
+<ul>
+<li>Matrícula: 115211312</li>
+<li>Contato: <a href="mailto:paulo.dantas@ccc.ufcg.edu.br">paulo.dantas@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/moment/moment/">https://github.com/moment/moment/</a></li>
+</ul>
+<h1 id="descrição-arquitetural----moment">Descrição Arquitetural &ndash; Moment</h1>
+<p>Este documento descreve parte da arquitetura do projeto <a href="https://github.com/moment/moment/">Moment</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<h2 id="descrição-geral-sobre-o-moment">Descrição Geral sobre o Moment</h2>
+<p>O <em>Moment</em> tem como objetivo disponibilizar ao desenvolvedor ferramentas para a criação e manipulação de datas em projetos JavaScript.
+Ele dispõe de um conjunto de funções que tem como objetivo auxiliar o trabalho do desenvolvedor, fazendo com que o trabalho com objetos do tipo Date se torne mais simples.</p>
+<h2 id="o-serviço-de-manipulação-de-datas-do-moment">O Serviço de manipulação de datas do Moment</h2>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Criar objetos do tipo Date que são facilmente convertidos, formatados e manipulados. Proporcionando, deste modo, que o desenvolvedor escreva códigos mais simples e concisos.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>Auxiliar no desenvolvimento de projetos que manipulam datas, a partir da criação de objetos mutáveis que são simples de serem trabalhados.</p>
+<h3 id="contexto">Contexto</h3>
+<p>O <em>Moment</em> é um pacote que possui diversas ferramentas para manipulação de datas. Tornando mais simples a construção de datas e a sua conversão para diferentes formatos. Deste modo, ele não utiliza nenhuma API externa, fazendo utilização apenas do sistema operacional na qual está sendo utilizado.</p>
+<p>Na criação de um objeto moment, o construtor extrai a data do sistema operacional na qual está inserido. Deste modo, permite a utilização do moment em sistemas offline e em qualquer plataforma.</p>
+<p><img src="momentjs-context-diagram.png" alt="contexto"></p>
+<h3 id="containers">Containers</h3>
+<p>A principal funcionalidade do Moment Js é a criação e manipulação de datas, mas, além disso, ele também apresenta um módulo para internacionalização e um módulo que é responsável pela criação de objetos de duração, que são representantes de períodos de tempo. Tais containers são mostrados no diagrama de container abaixo.</p>
+<p><img src="momentjs-container-diagram.png" alt="container"></p>
+<h5 id="analisador-de-objetos-de-data-e-hora">Analisador de objetos de data e hora</h5>
+<p>O container analisador de objetos de data e hora é responsável por criar um objeto que empacota uma data. Além disso, ele possui diversas ferramentas para incrementar, decrementar ou converter este objeto, tendo em vista que estes objetos do moment são mutáveis.</p>
+<h5 id="i18n">i18n</h5>
+<p>O container de internacionalização é responsável por configurar o ambiente para a qual o moment será utilizado. Com ele é possível estabelecer qual a localização geográfica do sistema e o idioma default utilizado, além de permitir a visualização de meses e dias da semana no idioma estabelecido.</p>
+<h5 id="analisador-de-objetos-de-duração">Analisador de objetos de duração</h5>
+<p>Já o container representante da análise de objetos do tipo duração possui a função de criar objetos que representam períodos de tempo. Com eles é possível realizar conversões entre diferentes unidades de tempo (exemplo: minutos, segundos, horas) e manipular estes objetos.</p>
+<h3 id="componentes">Componentes</h3>
+<p>O principal container do moment é o de análise de objetos de data e hora, por este motivo ele terá um foco maior e seus componentes estão representados na imagem abaixo. Neste container é onde ocorre a criação dos objetos de data e a manipulação dos mesmos. O container de análise de data é composto por 5 módulos, são eles: Parser, Get and Set, Manipulate, Display e Compare. Estes serão descritos a seguir.</p>
+<p><img src="momentjs-component-diagram.png" alt="componente"></p>
+<h5 id="parser">Parser</h5>
+<p>O componente de Parser é responsável por criar os objetos que representam data e hora. A partir dele que os métodos de manipulação e conversão são disponibilizados.</p>
+<h5 id="get-and-set">Get and Set</h5>
+<p>O componente Get and Set é composto por um conjunto de métodos que possibilita a modificação e obtenção de parâmetros pontuais de um objeto. Por exemplo, é através deste componente que pode-se modificar data ou hora de um objeto moment, assim como obter essas informações do mesmo objeto.</p>
+<h5 id="manipulate">Manipulate</h5>
+<p>Semelhante ao componente de Get and Set, o componente Manipulate também é responsável por realizar modificações em objetos criados pelo Parser. A diferença é que os métodos disponibilizados pelo Manipulate não realizam modificações nos objetos de forma direta. O Manipulate pode adicionar ou remover horas, minutos, dias, meses, de forma muito mais prática. O desenvolvedor pode deixar a cargo do componente o cálculo de conversão de data ao ser retirado 1 mês, por exemplo, do dia informado.</p>
+<h5 id="display">Display</h5>
+<p>O componente Display é responsável pelas conversões dos objetos moment para diferentes formatos, como por exemplo: String, JSON, Date, dentre outros. Com ele o moment pode converter seus objetos para o formato Date, para assim serem salvos em um banco de dados. Além disso, pode converter datas para o formato String, para ser apresentado ao usuário.</p>
+<h5 id="compare">Compare</h5>
+<p>Por fim, o componente Compare é responsável por fazer comparações entre diferentes datas. Assim, ele disponibiliza mecanismos para informar se uma data está a frente de outra e se duas datas, construídas a partir de diferentes formatos, são iguais. Além disso, é com esse componente que é possível verificar se uma String pode ser utilizada para construir um objeto moment.</p>
+<h3 id="código">Código</h3>
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p>Como mencionado anteriormente os objetos de data moment são mutáveis, e é este princípio que o diagrama de estados abaixo apresenta.
+Inicialmente o objeto moment recebe como parâmetro uma String ou uma data, e a partir deste ponto ele se encontra em estado de análise.
+Logo após a análise dos parâmetros o moment vai decidir se os parâmetros informados podem representar uma data, se sim o objeto vai para o estado de criado, caso contrário ele se torna inválido e não poderá mais ser utilizado.
+Com o objeto em estado de criado ele pode ser modificado, através dos componentes Setter, Compare e Manipulate. Neste ponto ele se encontra no estado de &ldquo;Em modificação&rdquo;, caso os parâmetros informados para a sua modificação sejam válidos ele retorna para o estado de Criado e estará disponível para utilização futura, caso contrário ele se tornará inválido e sua vida útil irá acabar.
+Por fim este objeto pode ser formatado, a partir do componente Display, e assim convertido para um objeto do tipo String ou Date, acabando, deste modo, sua vida como objeto moment.</p>
+<p><img src="momentjs-visao-informacao.png" alt="informacao"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/posts/monitor-cidadao/">Mini-projeto 1 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020 - Turma de Arquitetura de Software 2020.3. |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft20203/js/scripts.js"></script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,204 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação Arquitetural ORY Oathkeeper - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pela turma 2020.3 - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação Arquitetural ORY Oathkeeper" />
+<meta property="og:description" content="Autor Este documento foi produzido por Hemillainy Santos.
+ Matrícula: 116210802 Contato: hemillainy.santos@ccc.ufcg.edu.br Projeto documentado: https://github.com/ory/oathkeeper  Descrição Arquitetural &ndash; ORY Oathkeeper Nesse documento será descrita a arquitetura base do projeto ORY Oathkeeper, utilizando o modelo C4." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft20203/posts/oathkeeper/" />
+<meta property="article:published_time" content="2020-12-09T00:00:00-03:00" />
+<meta property="article:modified_time" content="2020-12-09T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação Arquitetural ORY Oathkeeper"/>
+<meta name="twitter:description" content="Autor Este documento foi produzido por Hemillainy Santos.
+ Matrícula: 116210802 Contato: hemillainy.santos@ccc.ufcg.edu.br Projeto documentado: https://github.com/ory/oathkeeper  Descrição Arquitetural &ndash; ORY Oathkeeper Nesse documento será descrita a arquitetura base do projeto ORY Oathkeeper, utilizando o modelo C4."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft20203/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft20203/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft20203/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft20203" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Projetos da turma 2020.3 - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação Arquitetural ORY Oathkeeper</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-12-09T00:00:00-03:00">Dec 9, 2020</time>
+        </li>
+        
+
+        
+
+        <li>4 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autor">Autor</h1>
+<p>Este documento foi produzido por Hemillainy Santos.</p>
+<ul>
+<li>Matrícula: 116210802</li>
+<li>Contato: <a href="mailto:hemillainy.santos@ccc.ufcg.edu.br">hemillainy.santos@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/ory/oathkeeper">https://github.com/ory/oathkeeper</a></li>
+</ul>
+<h1 id="descrição-arquitetural----ory-oathkeeper">Descrição Arquitetural &ndash; ORY Oathkeeper</h1>
+<p>Nesse documento será descrita a arquitetura base do projeto <a href="https://github.com/ory/oathkeeper">ORY Oathkeeper</a>, utilizando o modelo <a href="https://c4model.com/">C4</a>.</p>
+<h2 id="descrição-geral-sobre-o-ory-oathkeeper">Descrição Geral sobre o ORY Oathkeeper</h2>
+<p>O ORY Oathkeeper é um serviço cuja função é analisar as requisições recebidas pelo servidor a fim de validá-las. Caso a requisição seja válida, ela é encaminhada para o servidor final; caso seja inválida, o fluxo de validações é encerrado e o Oathkeeper retorna uma mensagem de erro para o cliente.</p>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Implementação de um serviço, altamente configurável, que valida toda requisição que chega no servidor. A partir dessa validação, é possível filtrar requisições inválidas, impedindo assim que elas cheguem ao serviço final. Além disso, é possível também fazer alterações em requisições válidas antes de encaminhá-las.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>Permitir que a aplicação possa configurar todas as regras de acesso que serão utilizadas pelo Oathkeeper no pipeline de validação. Essa configuração pode ser feita em dois formatos: JSON e YAML. Segue abaixo exemplos dessa configuração:</p>
+<h4 id="heading"></h4>
+<p>JSON</p>
+<pre><code>{
+    &quot;id&quot;: &quot;some-id&quot;,
+    &quot;version&quot;: &quot;v0.36.0-beta.4&quot;,
+    &quot;upstream&quot;: {
+    &quot;url&quot;: &quot;http://my-backend-service&quot;,
+    &quot;preserve_host&quot;: true,
+    &quot;strip_path&quot;: &quot;/api/v1&quot;
+    },
+    &quot;match&quot;: {
+    &quot;url&quot;: &quot;http://my-app/some-route/&lt;.\*&gt;&quot;,
+    &quot;methods&quot;: [&quot;GET&quot;, &quot;POST&quot;]
+    },
+    &quot;authenticators&quot;: [{ &quot;handler&quot;: &quot;noop&quot; }],
+    &quot;authorizer&quot;: { &quot;handler&quot;: &quot;allow&quot; },
+    &quot;mutators&quot;: [{ &quot;handler&quot;: &quot;noop&quot; }],
+    &quot;errors&quot;: [{ &quot;handler&quot;: &quot;json&quot; }]
+}
+</code></pre><h4 id="heading-1"></h4>
+<p>YAML</p>
+<pre><code>id: some-id
+version: v0.36.0-beta.4
+upstream:
+url: http://my-backend-service
+preserve_host: true
+strip_path: /api/v1
+match:
+url: http://my-app/some-route/&lt;.\*&gt;
+methods: - GET - POST
+authenticators:
+
+- handler: noop
+  authorizer:
+  handler: allow
+  mutators:
+- handler: noop
+  errors:
+- handler: json
+</code></pre><p>Para mais detalhes à respeito da configuração, acesse <a href="https://www.ory.sh/oathkeeper/docs/api-access-rules">esse link</a></p>
+<h3 id="contexto">Contexto</h3>
+<p>O Oathkeeper funciona como uma camada intermediária entre o cliente e o servidor, camada esta que é responsável por fazer a validação das requisições, validando desde o formato da URL chamada até a presença ou não de tokens de acesso, escopos, etc. Desse modo, quando o usuário solicita algo ao cliente, ele enviará a requisição para o servidor, porém antes de chegar ao destino final a requisição será tratada pelo Oathkeeper, caso a requisição atenda às regras de acesso definidas no arquivo de configuração ela será encaminhada para o servidor final; se não, o Oathkeeper não fará o encaminhamento e uma mensagem de erro será retornada para o cliente.</p>
+<p><img src="c4-contexto.png" alt="fig1"></p>
+<h3 id="containers">Containers</h3>
+<p>Devido à sua implementação ser escrita em GO, torna-se bastante fácil sua utilização ou integração com outros sistemas, uma vez que para utilizá-lo basta instalar o binário GO ou executar sua imagem Docker.</p>
+<p><img src="c4-container.png" alt="fig2"></p>
+<h3 id="componentes">Componentes</h3>
+<p>Para lidar com as requisições, o Oathkeeper implementa o Access Rule Pipeline que é composto pelos quatro componentes descritos a seguir:</p>
+<ul>
+<li>Authentication: valida se a requisição contém as credenciais ou tokens necessários.</li>
+<li>Authorization: valida de o usuário possui as permissões necessárias.</li>
+<li>Mutation: altera as credenciais enviadas na requisição para um formato que o servidor entenda; isso permite que o servidor lide apenas com um único tipo de credencial, visto que independente do tipo que for enviado na requisição, o mutator irá transformá-la em um tipo que é compreendido pelo serviço.</li>
+<li>Error handlers: caso ocorra um erro em um dos steps de validação (authentication ou authorization), esse componente define como o erro será apresentado para o cliente.</li>
+</ul>
+<p><img src="c4-componentes.png" alt="fig4"></p>
+<h3 id="código">Código</h3>
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p>O diagrama abaixo apresenta o fluxo de uma requisição no Oathkeeper.
+Ao ser enviada pelo cliente para o servidor, a requisição entrará no pipeline de regras de acesso, onde o primeiro step será a verificação por parte do Authentication. Em seguida, caso validada, ela será verificada pelo Authorization. Conforme mostra o diagrama, caso a verificação falhe em um dos steps anteriores, o Error Handler é acionado e enviará uma resposta de erro para o cliente, mas caso a requisição seja válida ela é enviada para o Mutator, onde poderá sofrer algumas alterações antes de ser encaminhada para o servidor final.</p>
+<p><img src="c4-info.png" alt="fig5"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/posts/gimp/"><i class="fa fa-chevron-circle-left"></i> Documentação arquitetural para o GIMP</a>
+        </li>
+        
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020 - Turma de Arquitetura de Software 2020.3. |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft20203/js/scripts.js"></script>
+
+</body>
+
+</html>
+

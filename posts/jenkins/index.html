@@ -1,0 +1,185 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação arquitetural do Jenkins - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pela turma 2020.3 - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação arquitetural do Jenkins" />
+<meta property="og:description" content="Autor Este documento foi produzido por Cássio Cordeiro.
+ Matrícula: 116210038 Contato: cassio.cordeiro@ccc.ufcg.edu.br Projeto documentado: https://github.com/jenkinsci/jenkins  Jenkins Este documento descreve parte da arquitetura do Jenkins. Essa descrição foi baseada principalmente no modelo C4." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft20203/posts/jenkins/" />
+<meta property="article:published_time" content="2020-10-02T00:00:00-03:00" />
+<meta property="article:modified_time" content="2020-10-02T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação arquitetural do Jenkins"/>
+<meta name="twitter:description" content="Autor Este documento foi produzido por Cássio Cordeiro.
+ Matrícula: 116210038 Contato: cassio.cordeiro@ccc.ufcg.edu.br Projeto documentado: https://github.com/jenkinsci/jenkins  Jenkins Este documento descreve parte da arquitetura do Jenkins. Essa descrição foi baseada principalmente no modelo C4."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft20203/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft20203/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft20203/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft20203" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Projetos da turma 2020.3 - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação arquitetural do Jenkins</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-10-02T00:00:00-03:00">Oct 2, 2020</time>
+        </li>
+        
+
+        
+
+        <li>3 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autor">Autor</h1>
+<p>Este documento foi produzido por Cássio Cordeiro.</p>
+<ul>
+<li>Matrícula: 116210038</li>
+<li>Contato: <a href="mailto:cassio.cordeiro@ccc.ufcg.edu.br">cassio.cordeiro@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/jenkinsci/jenkins">https://github.com/jenkinsci/jenkins</a></li>
+</ul>
+<h1 id="jenkins">Jenkins</h1>
+<p>Este documento descreve parte da arquitetura do <a href="https://github.com/jenkinsci/jenkins">Jenkins</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<h2 id="descrição">Descrição</h2>
+<p>O Jenkins é projeto focado em ser expansível às necessidades dos usuários, contendo um vasto acervo de plugins criados e permitindo configurações personalizadas, suas principais usos são para atividades de  CI (continuous integration) e CD (continuous delivery). Ele automatiza as partes do processo de desenvolvimento de software relacionadas ao build, testes, deploy e entrega. Outras informações podem ser encontradas no site oficial do sistema.</p>
+<h3 id="objetivos">Objetivos</h3>
+<p>Oferecer um serviço que seja customizável e expansível aos requisitos dos projetos e de cada usuário, automatizando tarefas repetitivas no processo de desenvolvimento de software.</p>
+<h3 id="contexto">Contexto</h3>
+<p>Os principais sistemas que o Jenkins se comunica são seus plugins, que quando instalados, acrescentam mais funcionalidades ao sistema e a possibilidade de comunicação com outros sistemas; o Git, podendo realizar processos com projetos hospedados nele; e serviços de comunicação, sendo capaz de enviar mensagens, contento, principalmente, o resultado de operações de build.</p>
+<p><img src="contexto.png" alt="fig1"></p>
+<h3 id="containers">Containers</h3>
+<p>O sistema é composto basicamente por dois containers: a interface web e a aplicação (API). O primeiro, possibilita interação com o usuário, é feito usando Jelly e renderizado do lado do servidor. Já o segundo, gerencia toda a parte de projetos, de dados e comunicação externa.</p>
+<p><img src="containers.png" alt="fig2"></p>
+<p>Abaixo estão alguns exemplos de como são processados os paths:</p>
+<ul>
+<li>Get: /log/… → Jenkins#getLog()
+<ul>
+<li>Busca o arquivo log do sistema.</li>
+</ul>
+</li>
+<li>Get com argumentos: /job/foo/… → Hudson#getJob(“foo”)
+<ul>
+<li>Busca um job chamado foo.</li>
+</ul>
+</li>
+<li>Get dinâmico: /job/foo/1/… → Job#getDynamic(“1” &hellip;)
+<ul>
+<li>Busca o build 1 do job foo.</li>
+</ul>
+</li>
+<li>Método de ação: /job/foo/1/artifact → Run#doArtifact(&hellip;)
+<ul>
+<li>Executa o método doArtifact no build 1 do job foo.</li>
+</ul>
+</li>
+</ul>
+<p>Quanto à implantação, o Jenkins pode ser instalado em qualquer máquina. Ele possui compatibilidade com os principais sistemas operacionais, Linux, MacOS e Windows, além de poder ser instalado usando o Docker ou na nuvem.</p>
+<h3 id="componentes">Componentes</h3>
+<p>O sistema é composto por 6 componentes principais:</p>
+<ul>
+<li>Componente de segurança: seu principal papel é prover autenticação e controle de acesso aos recursos. Ele recebe do gerenciador de usuários as informações necessárias para prover seus serviços.</li>
+<li>Gerenciador de usuários: realiza todo o controle de usuário, como cadastro, atualização e controle de permissões. Os dados são lidos e escritos usando o controlador de dados.</li>
+<li>Gerenciador de plugins: controla tudo relacionado aos plugins.</li>
+<li>Gerenciador de projetos: responsável pelo gerenciamento das ações relacionadas aos projetos, por conectar com o git e enviar notificações.</li>
+<li>Controlador de dados: escreve e lê os dados do sistema de arquivos, utilizando o XStream. Fornece dados para outros componentes.</li>
+<li>Componente de estatísticas: utiliza o histórico das builds dos projetos para criar estatísticas e indicar tendências.</li>
+</ul>
+<p><img src="componentes.png" alt="fig3"></p>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p>Todas as informações giram em torno dos projetos. Os usuários recebem permissões para visualizar, editar e realizar ações neles. Durante o build são executadas as pipelines, caso ocorra algum erro, a build entra no estado de erro, caso contrário, de sucesso. Cada resultado é armazenado no histórico e utilizado para gerar informações estatísticas dos projetos.</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/posts/free-code-camp/"><i class="fa fa-chevron-circle-left"></i> Documentação arquitetural para a plataforma freeCodeCamp</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/posts/serenata-de-amor/">Serenata de Amor - Documentação arquitetural  <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020 - Turma de Arquitetura de Software 2020.3. |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft20203/js/scripts.js"></script>
+
+</body>
+
+</html>
+

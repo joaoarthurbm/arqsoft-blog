@@ -1,0 +1,172 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação da arquitetura do navegador Brave - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pela turma 2020.3 - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação da arquitetura do navegador Brave" />
+<meta property="og:description" content="Autores Este documento foi produzido por Luiggy Ferreira Dias Silva.
+ Matrícula: 117211159 Contato: luiggy.silva@ccc.ufcg.edu.br Projeto documentado: https://github.com/brave/brave-core  Descrição Arquitetural &ndash; Navegador Brave Este documento descreve parte da arquitetura do navegador Brave." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft20203/posts/brave-browser/" />
+<meta property="article:published_time" content="2020-10-04T00:00:00-03:00" />
+<meta property="article:modified_time" content="2020-10-04T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação da arquitetura do navegador Brave"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Luiggy Ferreira Dias Silva.
+ Matrícula: 117211159 Contato: luiggy.silva@ccc.ufcg.edu.br Projeto documentado: https://github.com/brave/brave-core  Descrição Arquitetural &ndash; Navegador Brave Este documento descreve parte da arquitetura do navegador Brave."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft20203/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft20203/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft20203/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft20203" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Projetos da turma 2020.3 - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação da arquitetura do navegador Brave</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-10-04T00:00:00-03:00">Oct 4, 2020</time>
+        </li>
+        
+
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Luiggy Ferreira Dias Silva.</p>
+<ul>
+<li>Matrícula: 117211159</li>
+<li>Contato: <a href="mailto:luiggy.silva@ccc.ufcg.edu.br">luiggy.silva@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/brave/brave-core">https://github.com/brave/brave-core</a></li>
+</ul>
+<h1 id="descrição-arquitetural----navegador-brave">Descrição Arquitetural &ndash; Navegador Brave</h1>
+<p>Este documento descreve parte da arquitetura do navegador <a href="https://github.com/brave/brave-core">Brave</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<h2 id="descrição-geral-sobre-o-navegador-brave">Descrição Geral sobre o navegador Brave</h2>
+<p>O Brave é um navegador que tem como principal diferencial o pagamento de tokens aos usuários que visualizam as propagandas definidas pelo navegador utilizando uma moeda própria por meio da blockchain, além disso, possui um bloqueador de anúncios e rastreadores nativos que propõem mais privacidade ao usuário.</p>
+<h3 id="contexto">Contexto</h3>
+<p><img src="brave-diagrama-contexto.png" alt="fig1"></p>
+<p>O Brave é um navegador de internet que conta com um bloqueador de rastreadores e anúncios integrados e um sistema de recompensa para os usuários que visualizam suas propragandas (privadas). Essa recompensa é entregue via uma <a href="https://basicattentiontoken.org/">moeda virtual</a> própia do navegador, e para armazenar essa moeda o navegador oferece uma conta no sistema financeiro da <a href="https://uphold.com/pt/homepage">Uphold</a> que trabalha com criptomoedas e as principais moedas do mundo. O Brave também tem integrado o sitema da exchange <a href="https://www.binance.com/en">Binance</a>, permitindo compra, venda de ativos e a verificação de saldos diretamente de um widget oficial dentro do navegador. O Brave também oferece nativamente a opção de usar o buscador <a href="https://duckduckgo.com/about">DuckDuckGo</a> fruto de uma parceria com o sistema.</p>
+<h3 id="containers">Containers</h3>
+<p><img src="brave-diagrama-containers.png" alt="fig2"></p>
+<p>O Brave pode ser utilizado na sua versão Desktop e também em sua versão Mobile, compartilhando das principais funcionalidades. Ambas versões possuem um database para armazenar os dados do navegador.</p>
+<h3 id="componentes">Componentes</h3>
+<p><img src="brave-diagrama-componentes.png" alt="fig3"></p>
+<p>O diagrama acima contém os principais componentes do sistema:</p>
+<ul>
+<li>
+<p><em>Browser:</em> Responsável pela funcionalidade principal de possibilitar o acesso a internet.</p>
+</li>
+<li>
+<p><em>Search_Engines:</em> Responsável por disponibilizar os buscadores para o Brave. Esse componente que se relaciona com o buscador parceiro do Brave, o <a href="https://duckduckgo.com/about">DuckDuckGo</a>.</p>
+</li>
+<li>
+<p><em>Binance:</em> Responsável por se conectar com o sistema externo da Exchange <a href="https://www.binance.com/en">Binance</a>.</p>
+</li>
+<li>
+<p><em>Brave_Ads:</em> Responsável por gerenciar as propagandas do navegador.</p>
+</li>
+<li>
+<p><em>Brave_Rewards:</em> Responável por gerenciar as recompensas pelas visualizações das propagandas do Brave. Esse componente se relaciona com o sistema da <a href="https://uphold.com/pt/homepage">Uphold</a>.</p>
+</li>
+<li>
+<p><em>Brave_Shields:</em> Responsável por bloquear anúncios e rastreadores dos sites que o usuário visita.</p>
+</li>
+</ul>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p><img src="brave-diagrama-maquina_de_estados_extens%C3%B5es.png" alt="fig4"></p>
+<p>A máquina de estados acima representa os possíveis estados que as <em>extensões</em> do navegador podem assumir. Uma <em>extensão</em>, após ser instalada, é automaticamente habilitada e o usuário pode desabilitar ou desinstalar a extensão.</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/posts/serenata-de-amor/"><i class="fa fa-chevron-circle-left"></i> Serenata de Amor - Documentação arquitetural </a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/posts/comunidadestech/">Documentação Arquitetural para o Comunidades.tech <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020 - Turma de Arquitetura de Software 2020.3. |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft20203/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft20203/js/scripts.js"></script>
+
+</body>
+
+</html>
+
