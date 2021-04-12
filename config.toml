@@ -1,10 +1,10 @@
-baseurl = "https://joaoarthurbm.github.io/arqsoft20203/"
+baseurl = "https://joaoarthurbm.github.io/arqsoft-blog"
 title = "Arquitetura de Software"
-copyright = "Copyright &copy; 2020 - Turma de Arquitetura de Software 2020.3."
+copyright = "Copyright &copy; Turma de Arquitetura de Software UFCG"
 canonifyurls = true
 theme = "hugo-kiera"
 
-paginate = 3
+paginate = 100
 
 summaryLength = 30
 enableEmoji = true
@@ -15,7 +15,7 @@ pygmentsCodeFences = true
 # Note: to disable a social network icon delete or comment out the corresponding line
 [author]
     name = "Example"
-    github = "joaoarthurbm/arqsoft20203"
+    github = "joaoarthurbm/arqsoft-blog"
     #gitlab = "username"
     #linkedin = "username"
     #facebook = "username"
@@ -26,8 +26,8 @@ pygmentsCodeFences = true
     #devto = "username"
 
 [params]
-    tagline = "Projetos da turma 2020.3 - Computação @ UFCG"
-    description = "Documentação arquitetural produzida pela turma 2020.3 - Computação @ UFCG."
+    tagline = "Computação @ UFCG"
+    description = "Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG."
     #images = [""] #This is used for opengraph/twitter cards.
     customCSS = []  #Optional Customised CSS
     #favicon = ""
