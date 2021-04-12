@@ -3,212 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/</loc>
-    <lastmod>2020-12-07T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/gimp/</loc>
-    <lastmod>2020-12-07T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/</loc>
-    <lastmod>2020-12-07T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/inkscape/</loc>
-    <lastmod>2020-10-13T20:00:32-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/jitsi-meet/</loc>
-    <lastmod>2020-10-13T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/zulip/</loc>
-    <lastmod>2020-10-13T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/leggo/</loc>
-    <lastmod>2020-10-13T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/osmand/</loc>
-    <lastmod>2020-10-13T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/teammates/</loc>
-    <lastmod>2020-10-13T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/youtube-dl/</loc>
-    <lastmod>2020-10-13T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/typeorm/</loc>
-    <lastmod>2020-10-13T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/eureca__front_deploy/</loc>
-    <lastmod>2020-10-13T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/erxes/</loc>
-    <lastmod>2020-10-13T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/ofwatchdog/</loc>
-    <lastmod>2020-10-13T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/farolcovid/</loc>
-    <lastmod>2020-10-12T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/querido-diario/</loc>
-    <lastmod>2020-10-12T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/eureca-da_coleta_de_dados_ao_backend/</loc>
-    <lastmod>2020-10-12T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/axios/</loc>
-    <lastmod>2020-10-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/matheusaraujo/</loc>
-    <lastmod>2020-10-11T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/bypass_paywalls/</loc>
-    <lastmod>2020-10-10T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/saps/</loc>
-    <lastmod>2020-10-10T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/fission/</loc>
-    <lastmod>2020-10-10T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/fzf/</loc>
-    <lastmod>2020-10-07T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/tags/android/</loc>
-    <lastmod>2020-10-06T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/okhttp/</loc>
-    <lastmod>2020-10-06T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/vscode/</loc>
-    <lastmod>2020-10-06T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/tags/http/</loc>
-    <lastmod>2020-10-06T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/tags/java/</loc>
-    <lastmod>2020-10-06T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/tags/</loc>
-    <lastmod>2020-10-06T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/comunidadestech/</loc>
-    <lastmod>2020-10-05T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/tags/auditoria/</loc>
-    <lastmod>2020-10-04T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/tags/corrupcao/</loc>
-    <lastmod>2020-10-04T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/brave-browser/</loc>
-    <lastmod>2020-10-04T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/tags/governo/</loc>
-    <lastmod>2020-10-04T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/serenata-de-amor/</loc>
-    <lastmod>2020-10-04T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/jenkins/</loc>
-    <lastmod>2020-10-02T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/free-code-camp/</loc>
-    <lastmod>2019-10-29T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/instrucoes/</loc>
-    <lastmod>2019-10-29T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/beats/</loc>
+    <loc>https://joaoarthurbm.github.io/arqsoft20201e/</loc>
     <lastmod>2019-10-22T00:00:00-03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/documento-guia/</loc>
+    <loc>https://joaoarthurbm.github.io/arqsoft20201e/posts/documento-guia/</loc>
     <lastmod>2019-10-22T00:00:00-03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/posts/monitor-cidadao/</loc>
+    <loc>https://joaoarthurbm.github.io/arqsoft20201e/posts/</loc>
     <lastmod>2019-10-22T00:00:00-03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft20203/categories/</loc>
+    <loc>https://joaoarthurbm.github.io/arqsoft20201e/posts/instrucoes/</loc>
+    <lastmod>2019-04-12T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft20201e/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft20201e/tags/</loc>
   </url>
   
 </urlset>
