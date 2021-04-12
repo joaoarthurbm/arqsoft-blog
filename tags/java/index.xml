@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
  <channel>
    <title>java on Arquitetura de Software</title>
-   <link>https://joaoarthurbm.github.io/arqsoft20203/tags/java/</link>
+   <link>https://joaoarthurbm.github.io/arqsoft-blog/tags/java/</link>
    <description>Recent content in java on Arquitetura de Software</description>
    <generator>Hugo -- gohugo.io</generator>
-   <copyright>Copyright &amp;copy; 2020 - Turma de Arquitetura de Software 2020.3.</copyright>
+   <copyright>Copyright &amp;copy; Turma de Arquitetura de Software UFCG</copyright>
    <lastBuildDate>Tue, 06 Oct 2020 00:00:00 -0300</lastBuildDate>
    
-       <atom:link href="https://joaoarthurbm.github.io/arqsoft20203/tags/java/index.xml" rel="self" type="application/rss+xml" />
+       <atom:link href="https://joaoarthurbm.github.io/arqsoft-blog/tags/java/index.xml" rel="self" type="application/rss+xml" />
    
    
      <item>
        <title>Documentação Arquitetural ORY Oathkeeper</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/oathkeeper/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/oathkeeper/</link>
        <pubDate>Wed, 09 Dec 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/oathkeeper/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/oathkeeper/</guid>
        <description>&lt;h1 id=&#34;autor&#34;&gt;Autor&lt;/h1&gt;
 &lt;p&gt;Este documento foi produzido por Hemillainy Santos.&lt;/p&gt;
 &lt;ul&gt;
@@ -101,10 +101,10 @@ Ao ser enviada pelo cliente para o servidor, a requisição entrará no pipeline
    
      <item>
        <title>Documentação arquitetural para o GIMP</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/gimp/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/gimp/</link>
        <pubDate>Mon, 07 Dec 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/gimp/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/gimp/</guid>
        <description>&lt;hr&gt;
 &lt;p&gt;Este documento descreve a arquitetura do projeto GIMP.&lt;/p&gt;
 &lt;hr&gt;
@@ -161,10 +161,10 @@ implementação. Faremos isso mais adiante.
    
      <item>
        <title>Inkscape</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/inkscape/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/inkscape/</link>
        <pubDate>Tue, 13 Oct 2020 20:00:32 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/inkscape/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/inkscape/</guid>
        <description>&lt;h3 id=&#34;autores&#34;&gt;Autores&lt;/h3&gt;
 &lt;p&gt;Este documento foi produzido por Gustavo Alves.&lt;/p&gt;
 &lt;ul&gt;
@@ -216,10 +216,10 @@ implementação. Faremos isso mais adiante.&lt;/p&gt;
    
      <item>
        <title>Arquitetura do Jitsi Meet</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/jitsi-meet/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/jitsi-meet/</link>
        <pubDate>Tue, 13 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/jitsi-meet/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/jitsi-meet/</guid>
        <description>&lt;h1 id=&#34;autores&#34;&gt;Autores&lt;/h1&gt;
 &lt;p&gt;Este documento foi produzido por Daniele Aparecida de Melo Silva.&lt;/p&gt;
 &lt;ul&gt;
@@ -278,10 +278,10 @@ implementação. Faremos isso mais adiante.&lt;/p&gt;
    
      <item>
        <title>Descrição arquitetural do Zulip</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/zulip/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/zulip/</link>
        <pubDate>Tue, 13 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/zulip/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/zulip/</guid>
        <description>&lt;hr&gt;
 &lt;img src=&#34;./logo.png&#34; style=&#34;width:75%; display: flex; margin: 0 auto&#34;/&gt;
 Zulip é uma ferramenta de chat em grupo open-source que combina a eficiência de um chat em tempo real com a produtividade de conversas em thread.
@@ -389,10 +389,10 @@ Zulip é uma ferramenta de chat em grupo open-source que combina a eficiência d
    
      <item>
        <title>Documentação arquitetural do Leggo Painel</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/leggo/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/leggo/</link>
        <pubDate>Tue, 13 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/leggo/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/leggo/</guid>
        <description>&lt;hr&gt;
 &lt;h1 id=&#34;autor&#34;&gt;Autor&lt;/h1&gt;
 &lt;p&gt;Este documento foi produzido por João Lucas Galvão Menezes.&lt;/p&gt;
@@ -439,10 +439,10 @@ implementação. Faremos isso mais adiante.
    
      <item>
        <title>Documentação arquitetural para o OsmAnd</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/osmand/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/osmand/</link>
        <pubDate>Tue, 13 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/osmand/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/osmand/</guid>
        <description>&lt;hr&gt;
 &lt;p&gt;Este documento descreve parte da arquitetura do OsmAnd&lt;/p&gt;
 &lt;hr&gt;
@@ -487,10 +487,10 @@ implementação. Faremos isso mais adiante.
    
      <item>
        <title>Documentação arquitetural para o TEAMMATES</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/teammates/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/teammates/</link>
        <pubDate>Tue, 13 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/teammates/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/teammates/</guid>
        <description>&lt;hr&gt;
 &lt;h1 id=&#34;autores&#34;&gt;Autores&lt;/h1&gt;
 &lt;p&gt;Este documento foi produzido por Jonas Gomes Aguiar.&lt;/p&gt;
@@ -530,10 +530,10 @@ implementação. Faremos isso mais adiante.
    
      <item>
        <title>Documentação arquitetural para o Youtube-dl</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/youtube-dl/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/youtube-dl/</link>
        <pubDate>Tue, 13 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/youtube-dl/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/youtube-dl/</guid>
        <description>&lt;p&gt;&amp;ndash;&lt;/p&gt;
 &lt;h1 id=&#34;autores&#34;&gt;Autores&lt;/h1&gt;
 &lt;p&gt;Este documento foi produzido por Thaynnara Raiany Uchôa Gonçalves.&lt;/p&gt;
@@ -604,10 +604,10 @@ implementação. Faremos isso mais adiante.
    
      <item>
        <title>Documento arquitetural do TypeORM</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/typeorm/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/typeorm/</link>
        <pubDate>Tue, 13 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/typeorm/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/typeorm/</guid>
        <description>&lt;hr&gt;
 &lt;h1 id=&#34;autor&#34;&gt;Autor&lt;/h1&gt;
 &lt;p&gt;Este documento foi produzido por Lucas Henrique de Lima e Silva.&lt;/p&gt;
@@ -679,10 +679,10 @@ implementação. Faremos isso mais adiante.
    
      <item>
        <title>Documento referente à arquitetura do Frontend e Deploy do projeto Eureca</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/eureca__front_deploy/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/eureca__front_deploy/</link>
        <pubDate>Tue, 13 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/eureca__front_deploy/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/eureca__front_deploy/</guid>
        <description>&lt;hr&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;autores&#34;&gt;Autores&lt;/h1&gt;
@@ -757,10 +757,10 @@ O Container Scripts Deploy é responsável por fazer o deploy dos containers do 
    
      <item>
        <title>Erxes - Documento arquitetural</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/erxes/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/erxes/</link>
        <pubDate>Tue, 13 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/erxes/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/erxes/</guid>
        <description>&lt;h1 id=&#34;autor&#34;&gt;Autor&lt;/h1&gt;
 &lt;p&gt;Este artefato foi elaborado por Felipe de Amorim Ferreira.&lt;/p&gt;
 &lt;ul&gt;
@@ -813,10 +813,10 @@ Também foram escolhidos os componentes mais relevantes do container, então som
    
      <item>
        <title>OpenFaaS Of-Watchdog</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/ofwatchdog/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/ofwatchdog/</link>
        <pubDate>Tue, 13 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/ofwatchdog/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/ofwatchdog/</guid>
        <description>&lt;h1 id=&#34;autores&#34;&gt;Autores&lt;/h1&gt;
 &lt;p&gt;Este documento foi produzido por David Ferreira Quaresma.&lt;/p&gt;
 &lt;ul&gt;
@@ -850,10 +850,10 @@ Também foram escolhidos os componentes mais relevantes do container, então som
    
      <item>
        <title>Documentação arquitetural para o projeto Farol Covid</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/farolcovid/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/farolcovid/</link>
        <pubDate>Mon, 12 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/farolcovid/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/farolcovid/</guid>
        <description>&lt;hr&gt;
 &lt;h1 id=&#34;autor&#34;&gt;Autor&lt;/h1&gt;
 &lt;p&gt;Este documento foi produzido por Natan Macena Ribeiro.&lt;/p&gt;
@@ -916,10 +916,10 @@ implementação. Faremos isso mais adiante.
    
      <item>
        <title>Documento arquitetural do Querido Diário</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/querido-diario/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/querido-diario/</link>
        <pubDate>Mon, 12 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/querido-diario/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/querido-diario/</guid>
        <description>&lt;hr&gt;
 &lt;h1 id=&#34;autor&#34;&gt;Autor&lt;/h1&gt;
 &lt;p&gt;Este documento foi produzido por Matheus Alves dos Santos.&lt;/p&gt;
@@ -1047,10 +1047,10 @@ implementação. Faremos isso mais adiante.
    
      <item>
        <title>Projeto Eureca - Da coleta de dados ao backend</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/eureca-da_coleta_de_dados_ao_backend/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/eureca-da_coleta_de_dados_ao_backend/</link>
        <pubDate>Mon, 12 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/eureca-da_coleta_de_dados_ao_backend/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/eureca-da_coleta_de_dados_ao_backend/</guid>
        <description>&lt;h1 id=&#34;autor&#34;&gt;Autor&lt;/h1&gt;
 &lt;p&gt;Este documento foi produzido por Paulo Mendes da Silva Júnior.&lt;/p&gt;
 &lt;ul&gt;
@@ -1113,10 +1113,10 @@ Com o banco de dados populado, o eureca-backend (API REST) o acessa através de 
    
      <item>
        <title>Documento Arquitetural do Axios</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/axios/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/axios/</link>
        <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/axios/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/axios/</guid>
        <description>&lt;h1 id=&#34;autores&#34;&gt;Autores&lt;/h1&gt;
 &lt;p&gt;Este documento foi produzido por Marcus Vinícius de Farias Barbosa.&lt;/p&gt;
 &lt;ul&gt;
@@ -1228,10 +1228,10 @@ produzida e produzir uma versão em inglês.&lt;/p&gt;
    
      <item>
        <title>UFCGPro</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/matheusaraujo/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/matheusaraujo/</link>
        <pubDate>Sun, 11 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/matheusaraujo/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/matheusaraujo/</guid>
        <description>&lt;h1 id=&#34;autores&#34;&gt;Autores&lt;/h1&gt;
 &lt;p&gt;Este documento foi produzido por Matheus Silva Araújo.&lt;/p&gt;
 &lt;ul&gt;
@@ -1272,10 +1272,10 @@ implementação. Faremos isso mais adiante.
    
      <item>
        <title>Documentação arquitetural do Bypass PayWalls</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/bypass_paywalls/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/bypass_paywalls/</link>
        <pubDate>Sat, 10 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/bypass_paywalls/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/bypass_paywalls/</guid>
        <description>&lt;hr&gt;
 &lt;h1 id=&#34;autores&#34;&gt;Autores&lt;/h1&gt;
 &lt;p&gt;Este documento foi produzido por Sammara Beserra Nunes.&lt;/p&gt;
@@ -1317,10 +1317,10 @@ implementação. Faremos isso mais adiante.
    
      <item>
        <title>Documentação arquitetural para o SAPS</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/saps/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/saps/</link>
        <pubDate>Sat, 10 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/saps/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/saps/</guid>
        <description>&lt;hr&gt;
 &lt;img src=&#34;./logo.png&#34; style=&#34;width: 50%; display: flex; margin: 0 auto;&#34;/&gt;
 Projeto SAPS para construção de uma plataforma automatizada que realize o cálculo do método SEBAL utilizando imagens de satélite.
@@ -1413,10 +1413,10 @@ Projeto SAPS para construção de uma plataforma automatizada que realize o cál
    
      <item>
        <title>Fission Serverless Platform</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/fission/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/fission/</link>
        <pubDate>Sat, 10 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/fission/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/fission/</guid>
        <description>&lt;hr&gt;
 &lt;p&gt;Este documento descreve diversos aspectos arquiteturais da plataforma de
 computação &lt;em&gt;serverless&lt;/em&gt; para funções-como-serviço - &lt;em&gt;Fission&lt;/em&gt;.
@@ -1555,10 +1555,10 @@ implantada e existe pelo menos uma réplica da função em execução, então a 
    
      <item>
        <title>fzf - command-line fuzzy finder</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/fzf/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/fzf/</link>
        <pubDate>Wed, 07 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/fzf/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/fzf/</guid>
        <description>&lt;h1 id=&#34;autores&#34;&gt;Autores&lt;/h1&gt;
 &lt;p&gt;Este documento foi produzido por Bruno Roberto Silva de Siqueira.&lt;/p&gt;
 &lt;ul&gt;
@@ -1609,10 +1609,10 @@ implantada e existe pelo menos uma réplica da função em execução, então a 
    
      <item>
        <title>Documentação arquitetural do OkHttp</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/okhttp/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/okhttp/</link>
        <pubDate>Tue, 06 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/okhttp/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/okhttp/</guid>
        <description>&lt;hr&gt;
 &lt;p&gt;Este documento descreve parte da arquitetura do projeto &lt;a href=&#34;https://github.com/square/okhttp&#34;&gt;OkHttp&lt;/a&gt;. É importante destacar que não será descrita toda a arquitetura do OkHttp. O foco é a descrição de como é realizado o processo de criação, inicialização e encerramento de uma requisição de rede utilizando os serviços disponibilizados por este projeto.&lt;/p&gt;
 &lt;hr&gt;
@@ -1683,10 +1683,10 @@ implementação. Faremos isso mais adiante.
    
      <item>
        <title>Documentação Arquitetural do VS Code</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/vscode/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/vscode/</link>
        <pubDate>Tue, 06 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/vscode/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/vscode/</guid>
        <description>&lt;a href=&#34;https://code.visualstudio.com/&#34;&gt;
 &lt;img src=&#34;logo-vscode-2.png&#34; style=&#34;border-radius: 80px&#34;/&gt;
 &lt;/a&gt;
@@ -1770,10 +1770,10 @@ Para o diagrama de estados de um &lt;em&gt;Arquivo&lt;/em&gt; no VS Code, tem-se
    
      <item>
        <title>Documentação Arquitetural para o Comunidades.tech</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/comunidadestech/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/comunidadestech/</link>
        <pubDate>Mon, 05 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/comunidadestech/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/comunidadestech/</guid>
        <description>&lt;hr&gt;
 &lt;h1 id=&#34;autora&#34;&gt;Autora&lt;/h1&gt;
 &lt;p&gt;Este documento foi produzido por Raquel Ambrozio da Fonseca.&lt;/p&gt;
@@ -1851,10 +1851,10 @@ implementação. Faremos isso mais adiante.
    
      <item>
        <title>Documentação da arquitetura do navegador Brave</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/brave-browser/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/brave-browser/</link>
        <pubDate>Sun, 04 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/brave-browser/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/brave-browser/</guid>
        <description>&lt;h1 id=&#34;autores&#34;&gt;Autores&lt;/h1&gt;
 &lt;p&gt;Este documento foi produzido por Luiggy Ferreira Dias Silva.&lt;/p&gt;
 &lt;ul&gt;
@@ -1903,10 +1903,10 @@ implementação. Faremos isso mais adiante.
    
      <item>
        <title>Serenata de Amor - Documentação arquitetural </title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/serenata-de-amor/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/serenata-de-amor/</link>
        <pubDate>Sun, 04 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/serenata-de-amor/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/serenata-de-amor/</guid>
        <description>&lt;hr&gt;
 &lt;img src=&#34;./logo.png&#34; style=&#34;width: 50%; display: flex; margin: 0 auto;&#34;/&gt;
 &lt;p&gt;Projeto de auditoria automática para a cota de auxílio parlamentar de reembolsos para gastos.&lt;/p&gt;
@@ -2008,10 +2008,10 @@ Além de sua função de listagem e filtro, o jarbas cria posts no twitter para 
    
      <item>
        <title>Documentação arquitetural do Jenkins</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/jenkins/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/jenkins/</link>
        <pubDate>Fri, 02 Oct 2020 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/jenkins/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/jenkins/</guid>
        <description>&lt;h1 id=&#34;autor&#34;&gt;Autor&lt;/h1&gt;
 &lt;p&gt;Este documento foi produzido por Cássio Cordeiro.&lt;/p&gt;
 &lt;ul&gt;
@@ -2073,10 +2073,10 @@ Além de sua função de listagem e filtro, o jarbas cria posts no twitter para 
    
      <item>
        <title>Documentação arquitetural para a plataforma freeCodeCamp</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/free-code-camp/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/free-code-camp/</link>
        <pubDate>Tue, 29 Oct 2019 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/free-code-camp/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/free-code-camp/</guid>
        <description>&lt;hr&gt;
 &lt;h1 id=&#34;autor&#34;&gt;Autor&lt;/h1&gt;
 &lt;p&gt;Este documento foi produzido por Arthur Silva Lima Guedes.&lt;/p&gt;
@@ -2140,10 +2140,10 @@ Além de sua função de listagem e filtro, o jarbas cria posts no twitter para 
    
      <item>
        <title>Instruções para escrever o post</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/instrucoes/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/instrucoes/</link>
        <pubDate>Tue, 29 Oct 2019 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/instrucoes/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/instrucoes/</guid>
        <description>&lt;hr&gt;
 &lt;p&gt;Por favor, leia com cuidado as instruções abaixo.&lt;/p&gt;
 &lt;h1 id=&#34;o-que-você-deve-produzir&#34;&gt;O que você deve produzir?&lt;/h1&gt;
@@ -2211,10 +2211,10 @@ Use o nome do projeto que você está documentando. Por exemplo: &lt;code&gt;ins
    
      <item>
        <title>Documentação Arquitetural - Beats</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/beats/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/beats/</link>
        <pubDate>Tue, 22 Oct 2019 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/beats/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/beats/</guid>
        <description>&lt;hr&gt;
 &lt;p&gt;Este documento tem por finalidade descrever a plataforma &lt;a href=&#34;https://www.elastic.co/pt/beats/&#34;&gt;&lt;em&gt;Beats&lt;/em&gt;&lt;/a&gt; sob diversos níveis (visões) arquiteturais. Em verdade, &lt;em&gt;Beats&lt;/em&gt; descreve um conjunto de serviços ou &lt;em&gt;agentes&lt;/em&gt; para exportação de dados em alta escala de fontes heterogêneas.&lt;/p&gt;
 &lt;hr&gt;
@@ -2260,10 +2260,10 @@ Após a especificação dos arquivos de logs no Input, o Filebeat vai manter seu
    
      <item>
        <title>Exemplo de documento a ser produzido</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/documento-guia/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/documento-guia/</link>
        <pubDate>Tue, 22 Oct 2019 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/documento-guia/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/documento-guia/</guid>
        <description>&lt;hr&gt;
 &lt;p&gt;Este é um documento guia para os alunos de Arquitetura de Software. A ideia é apresentar o modelo de documentação arquitetural que espero que seja produzido por eles. Esse guia foi baseado em um projeto chamado Parlametria, cujos detalhes arquiteturais estão descritos &lt;a href=&#34;https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;O documento que você, aluno, deve produzir, deve seguir às diretrizes abaixo. Naturalmente, você pode adicionar, remover e alterar o formato, mas minha sugestão é que você mantenha o padrão que estou apresentando, inclusive, a mesma ordem e nomes de seções. Isso facilitará não só a padronização da documentação produzida por vocês.&lt;/p&gt;
@@ -2318,10 +2318,10 @@ implementação. Faremos isso mais adiante.
    
      <item>
        <title>Mini-projeto 1</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/monitor-cidadao/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/monitor-cidadao/</link>
        <pubDate>Tue, 22 Oct 2019 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/monitor-cidadao/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/monitor-cidadao/</guid>
        <description>&lt;hr&gt;
 &lt;h1 id=&#34;autor&#34;&gt;Autor&lt;/h1&gt;
 &lt;p&gt;Este documento foi produzido por Beatriz Bezerra de Souza.&lt;/p&gt;
@@ -2374,10 +2374,10 @@ implementação. Faremos isso mais adiante.
    
      <item>
        <title>Moment Js</title>
-       <link>https://joaoarthurbm.github.io/arqsoft20203/posts/momentjs/</link>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/momentjs/</link>
        <pubDate>Thu, 10 Oct 2019 00:00:00 -0300</pubDate>
        
-       <guid>https://joaoarthurbm.github.io/arqsoft20203/posts/momentjs/</guid>
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/momentjs/</guid>
        <description>&lt;hr&gt;
 &lt;p&gt;Este é um documento explica aspectos da arquitetura de uma das mais conhecidas bibliotecas JavaScript para manipulação de data e hora. O Moment
 torna a tarefa de manipulçação de data mais simples para o desenvolvedor.&lt;/p&gt;
