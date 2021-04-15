@@ -69,7 +69,7 @@ Use o nome do projeto que você está documentando. Por exemplo: `instagram.md`.
 
 	2.1 Vá para a raiz do projeto.
 	
-	2.2 execute `hugo server`
+	2.2 execute `hugo server` ou `docker compose up -d`. A versão do hugo que uso é a v0.75.1.
 	
 	2.3 Verifique o seu post em `http://localhost:1313/arqsoft-blog/`
 
