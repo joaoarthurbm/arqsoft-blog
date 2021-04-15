@@ -9,8 +9,7 @@ categories = []
 
 Este documento descreve a arquitetura de uma parte do projeto VLC.
 
-![vlc](vlc/vlc.gif)
-
+![vlc](vlc.gif)
 ***
 
 # Autores
