@@ -2131,7 +2131,7 @@ Use o nome do projeto que você está documentando. Por exemplo: &lt;code&gt;ins
 &lt;li&gt;
 &lt;p&gt;Verifique se o seu post está bem formatado.&lt;/p&gt;
 &lt;p&gt;2.1 Vá para a raiz do projeto.&lt;/p&gt;
-&lt;p&gt;2.2 execute &lt;code&gt;hugo server&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;2.2 execute &lt;code&gt;hugo server&lt;/code&gt; ou &lt;code&gt;docker compose up -d&lt;/code&gt;. A versão do hugo que uso é a v0.75.1.&lt;/p&gt;
 &lt;p&gt;2.3 Verifique o seu post em &lt;code&gt;http://localhost:1313/arqsoft-blog/&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
