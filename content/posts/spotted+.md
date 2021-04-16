@@ -4,7 +4,7 @@ Este documento foi produzido por Vítor Alves Correia Lima de Aquino.
 
 - Matrícula: 116211457
 - Contato: vitor.aquino@ccc.ufcg.edu.br
-- Projeto documentado: 
+- Projeto documentado: https://github.com/caiosbl/spotted 
 
 ## Descrição Geral sobre o Spotted
 
