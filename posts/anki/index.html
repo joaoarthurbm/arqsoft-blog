@@ -1,0 +1,142 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação arquitetural - Anki - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação arquitetural - Anki" />
+<meta property="og:description" content="Autor Este documento foi produzido por Igor Seabra.
+ Matrícula: 117210304 Contato: igor.seabra@ccc.ufcg.edu.br Projeto documentado: https://github.com/ankitects/anki  Descrição arquitetural &ndash; Anki Este documento descreve a arquitetura do aplicativo Anki. Essa descrição foi baseada principalmente no modelo C4." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/anki/" />
+<meta property="article:published_time" content="2021-04-16T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-04-16T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação arquitetural - Anki"/>
+<meta name="twitter:description" content="Autor Este documento foi produzido por Igor Seabra.
+ Matrícula: 117210304 Contato: igor.seabra@ccc.ufcg.edu.br Projeto documentado: https://github.com/ankitects/anki  Descrição arquitetural &ndash; Anki Este documento descreve a arquitetura do aplicativo Anki. Essa descrição foi baseada principalmente no modelo C4."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação arquitetural - Anki</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-04-16T00:00:00-03:00">Apr 16, 2021</time>
+        </li>
+        
+
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autor">Autor</h1>
+<p>Este documento foi produzido por Igor Seabra.</p>
+<ul>
+<li>Matrícula: 117210304</li>
+<li>Contato: <a href="mailto:igor.seabra@ccc.ufcg.edu.br">igor.seabra@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/ankitects/anki">https://github.com/ankitects/anki</a></li>
+</ul>
+<h1 id="descrição-arquitetural----anki">Descrição arquitetural &ndash; Anki</h1>
+<p>Este documento descreve a arquitetura do aplicativo <a href="https://github.com/ankitects/anki">Anki</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<h2 id="sobre-o-anki">Sobre o Anki</h2>
+<p><a href="https://apps.ankiweb.net/">Anki</a> é um serviço open source para auxiliar na memorização de conteúdos de forma eficiente, automática e customizável.</p>
+<p>Ele permite ao usuário estudar cartões (compostos geralmente por uma pergunta na frente e sua resposta no verso) através de um sistema de repetição espaçada, ou seja, mostrando os cartões novamente em intervalos de tempo baseados no quão bem o usuário sabe o conteúdo daquele cartão. Os cartões podem possuir texto, imagens, áudio e vídeo, permitindo que o Anki seja usado para estudar praticamente qualquer tipo de conteúdo, como idiomas, conteúdo acadêmico ou artístico.</p>
+<p>Os usuários podem criar seus próprios baralhos com qualquer conteúdo nos cartões ou usar baralhos prontos criados por outros usuários, disponíveis na plataforma <a href="https://ankiweb.net/shared/decks/">AnkiWeb</a>.</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/mysql-workbench/"><i class="fa fa-chevron-circle-left"></i> Documentação arquitetural para o MySQL Workbench</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/chakra-ui/">Chakra UI <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

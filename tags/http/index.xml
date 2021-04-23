@@ -12,6 +12,94 @@
    
    
      <item>
+       <title>Chakra UI</title>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/chakra-ui/</link>
+       <pubDate>Fri, 16 Apr 2021 00:00:00 -0300</pubDate>
+       
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/chakra-ui/</guid>
+       <description>&lt;h1 id=&#34;autores&#34;&gt;Autores&lt;/h1&gt;
+&lt;p&gt;Este documento foi produzido por Lucas Arcoverde do Nascimento.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Matrícula: 115211049&lt;/li&gt;
+&lt;li&gt;Contato: &lt;a href=&#34;mailto:lucas.arcoverde.nascimento@ccc.ufcg.edu.br&#34;&gt;lucas.arcoverde.nascimento@ccc.ufcg.edu.br&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Projeto documentado: &lt;a href=&#34;https://github.com/chakra-ui/chakra-ui&#34;&gt;https://github.com/chakra-ui/chakra-ui&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;descrição-arquitetural----chakra-ui&#34;&gt;Descrição Arquitetural &amp;ndash; Chakra UI&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Nome: Chakra UI&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/chakra-ui/chakra-ui&#34;&gt;Chakra UI&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Chakra é um framework React que implementa um design system buscando facilitar o desenvolvimento de aplicativos ou sites provendo diversas funcionalidades, como por exemplo: Biblioteca de componentes, tema opnionado e adição de estilos utilizando css-in-js.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+     </item>
+   
+     <item>
+       <title>Documentação arquitetural - Anki</title>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/anki/</link>
+       <pubDate>Fri, 16 Apr 2021 00:00:00 -0300</pubDate>
+       
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/anki/</guid>
+       <description>&lt;h1 id=&#34;autor&#34;&gt;Autor&lt;/h1&gt;
+&lt;p&gt;Este documento foi produzido por Igor Seabra.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Matrícula: 117210304&lt;/li&gt;
+&lt;li&gt;Contato: &lt;a href=&#34;mailto:igor.seabra@ccc.ufcg.edu.br&#34;&gt;igor.seabra@ccc.ufcg.edu.br&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Projeto documentado: &lt;a href=&#34;https://github.com/ankitects/anki&#34;&gt;https://github.com/ankitects/anki&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;descrição-arquitetural----anki&#34;&gt;Descrição arquitetural &amp;ndash; Anki&lt;/h1&gt;
+&lt;p&gt;Este documento descreve a arquitetura do aplicativo &lt;a href=&#34;https://github.com/ankitects/anki&#34;&gt;Anki&lt;/a&gt;. Essa descrição foi baseada principalmente no modelo &lt;a href=&#34;https://c4model.com/&#34;&gt;C4&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;sobre-o-anki&#34;&gt;Sobre o Anki&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://apps.ankiweb.net/&#34;&gt;Anki&lt;/a&gt; é um serviço open source para auxiliar na memorização de conteúdos de forma eficiente, automática e customizável.&lt;/p&gt;
+&lt;p&gt;Ele permite ao usuário estudar cartões (compostos geralmente por uma pergunta na frente e sua resposta no verso) através de um sistema de repetição espaçada, ou seja, mostrando os cartões novamente em intervalos de tempo baseados no quão bem o usuário sabe o conteúdo daquele cartão. Os cartões podem possuir texto, imagens, áudio e vídeo, permitindo que o Anki seja usado para estudar praticamente qualquer tipo de conteúdo, como idiomas, conteúdo acadêmico ou artístico.&lt;/p&gt;
+&lt;p&gt;Os usuários podem criar seus próprios baralhos com qualquer conteúdo nos cartões ou usar baralhos prontos criados por outros usuários, disponíveis na plataforma &lt;a href=&#34;https://ankiweb.net/shared/decks/&#34;&gt;AnkiWeb&lt;/a&gt;.&lt;/p&gt;
+</description>
+     </item>
+   
+     <item>
+       <title>Documentação arquitetural para o MySQL Workbench</title>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/mysql-workbench/</link>
+       <pubDate>Wed, 14 Apr 2021 00:00:00 -0300</pubDate>
+       
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/mysql-workbench/</guid>
+       <description>&lt;hr&gt;
+&lt;p&gt;Este documento descreve a arquitetura do projeto MySql-Workbench&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;autores&#34;&gt;Autores&lt;/h1&gt;
+&lt;p&gt;Este documento foi produzido por Thalys Menezes Cunha Gadelha.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Matrícula: 115210271&lt;/li&gt;
+&lt;li&gt;Contato: &lt;a href=&#34;mailto:thalys.gadelha@ccc.ufcg.edu.br&#34;&gt;thalys.gadelha@ccc.ufcg.edu.br&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Projeto documentado: &lt;a href=&#34;https://github.com/mysql/mysql-workbench&#34;&gt;https://github.com/mysql/mysql-workbench&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;descrição-arquitetural----mysql-workbench&#34;&gt;Descrição Arquitetural &amp;ndash; MySQL Workbench&lt;/h1&gt;
+&lt;p&gt;Este documento foi produzido para a disciplina de Arquitetura de Software da UFCG, e tem como objetivo descrever parte da arquitetura do projeto &lt;a href=&#34;https://github.com/mysql/mysql-workbench&#34;&gt;MySQL Workbench&lt;/a&gt;. Essa descrição foi baseada principalmente no modelo &lt;a href=&#34;https://c4model.com/&#34;&gt;C4&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;descrição-geral-sobre-o-mysql-workbench&#34;&gt;Descrição Geral sobre o MySQL-Workbench&lt;/h2&gt;
+&lt;p&gt;O MySQL Workbench é uma ferramenta visual unificada para arquitetos de banco de dados, desenvolvedores e DBAs. O MySQL-Workbench provê modelagem de dados, desenvolvimento SQL, e ferramentas administrativasde fácil compreensão para configuração de servidores, administração de usuários, backup, entre várias outras funcionalidades.&lt;/p&gt;
+</description>
+     </item>
+   
+     <item>
+       <title>Grafana</title>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/grafana/</link>
+       <pubDate>Wed, 14 Apr 2021 00:00:00 -0300</pubDate>
+       
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/grafana/</guid>
+       <description>&lt;h1 id=&#34;autores&#34;&gt;Autores&lt;/h1&gt;
+&lt;p&gt;Este documento foi produzido por Áxel Crispim e Medeiros.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Matrícula: 117111889&lt;/li&gt;
+&lt;li&gt;Contato: &lt;a href=&#34;mailto:axel.medeiros@ccc.ufcg.edu.br&#34;&gt;axel.medeiros@ccc.ufcg.edu.br&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Projeto documentado: &lt;a href=&#34;https://github.com/grafana/grafana&#34;&gt;https://github.com/grafana/grafana&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;descrição-arquitetural----grafana&#34;&gt;Descrição Arquitetural &amp;ndash; Grafana&lt;/h1&gt;
+&lt;p&gt;Este documento descreve parte da arquitetura do projeto &lt;a href=&#34;https://github.com/grafana/grafana&#34;&gt;Grafana&lt;/a&gt;. Essa descrição foi baseada principalmente no modelo &lt;a href=&#34;https://c4model.com/&#34;&gt;C4&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;É importante destacar não será descrita toda a arquitetura do Grafana. O foco aqui é a descrição de um serviço específico de análise do GRafana, que é parte fundamental do projeto.&lt;/p&gt;
+&lt;h2 id=&#34;descrição-geral-sobre-o-grafana&#34;&gt;Descrição Geral sobre o Grafana&lt;/h2&gt;
+&lt;p&gt;O Grafana é um projeto que tem como objetivo ser uma plataforma para visualização e monitoramento de dados, possibilitando com a construção de &amp;ldquo;dashboards&amp;rdquo; dinâmicos e reutilizáveis. Portanto, a ferramenta possui integração os principais bancos de dados disponíveis no mercado, como descrito &lt;a href=&#34;https://grafana.com/docs/grafana/latest/datasources/&#34;&gt;neste link&lt;/a&gt;, além disso, é possível adicionar múltiplos “datasources” para o mesmo “dashboard”.&lt;/p&gt;
+</description>
+     </item>
+   
+     <item>
        <title>Documentação Arquitetural ORY Oathkeeper</title>
        <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/oathkeeper/</link>
        <pubDate>Wed, 09 Dec 2020 00:00:00 -0300</pubDate>
