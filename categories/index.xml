@@ -55,6 +55,75 @@
      </item>
    
      <item>
+       <title>Documentação arquitetural do Meu Menu</title>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/meu-menu/</link>
+       <pubDate>Fri, 16 Apr 2021 00:00:00 -0300</pubDate>
+       
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/meu-menu/</guid>
+       <description>&lt;h1 id=&#34;autor&#34;&gt;Autor&lt;/h1&gt;
+&lt;p&gt;Este documento foi produzido por Vitória Heliane.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Matrícula: 117110666&lt;/li&gt;
+&lt;li&gt;Contato: &lt;a href=&#34;mailto:vitoria.sobrinha@ccc.ufcg.edu.br&#34;&gt;vitoria.sobrinha@ccc.ufcg.edu.br&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Projeto documentado: &lt;a href=&#34;https://github.com/proj-comp-20201e&#34;&gt;https://github.com/proj-comp-20201e&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;descrição-arquitetural----meu-menu&#34;&gt;Descrição Arquitetural &amp;ndash; Meu Menu&lt;/h1&gt;
+&lt;p&gt;Este documento descreve parte da arquitetura do &lt;a href=&#34;https://github.com/proj-comp-20201e&#34;&gt;Meu Menu&lt;/a&gt;. Essa descrição foi baseada principalmente no modelo &lt;a href=&#34;https://c4model.com/&#34;&gt;C4&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;É importante destacar não será descrita toda a arquitetura do Meu Menu. O foco aqui é a descrição de um serviço específico desse sistema, que é parte de geração estática da página do menu.&lt;/p&gt;
+&lt;h2 id=&#34;descrição-geral-sobre-o-meu-menu&#34;&gt;Descrição Geral sobre o Meu Menu&lt;/h2&gt;
+&lt;p&gt;A proposta do Meu Menu é possibilitar aos pequenos empreendedores a criação do seu menu de serviços e/ou produtos disponibilizados para os seus clientes. Esse menu ficará hospedado na plataforma, podendo ser acessado por todos os clientes do estabelecimento através de uma URL. Além disso, também há a opção de gerar um QRCode que redireciona para essa URL, o qual pode ser impresso ou compartilhado. Outra possibilidade é a de exportar o menu no formato de PDF ou PNG, assim ele pode imprimir e disponibilizar no seu estabelecimento ou compartilhar nas suas redes sociais.&lt;/p&gt;
+&lt;h3 id=&#34;serviço-de-geração-de-páginas-estáticas-para-o-menu&#34;&gt;Serviço de Geração de Páginas Estáticas para o Menu&lt;/h3&gt;
+&lt;h3 id=&#34;objetivo-geral&#34;&gt;Objetivo Geral&lt;/h3&gt;
+&lt;p&gt;Implementar um serviço de criação de páginas web estáticas a partir das configurações de menu e seus produtos/serviços cadastrados.&lt;/p&gt;
+&lt;h3 id=&#34;objetivos-específicos&#34;&gt;Objetivos Específicos&lt;/h3&gt;
+&lt;p&gt;A partir da criação de um menu e a adição dos seus produtos/serviços, é desejado que seja criada um página web com essas informações e com as configurações de estilo feitas pelo usuário. Essa página deve ser estática para que os clientes dos usuários tenham uma boa experiência de uso e que seja rebuildada sempre que houver alguma mudança nas informações do menu a fim de manter a consistência das informações na página.&lt;/p&gt;
+</description>
+     </item>
+   
+     <item>
+       <title>Documentação arquitetural Leaflet</title>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/leaflet/</link>
+       <pubDate>Fri, 16 Apr 2021 00:00:00 -0300</pubDate>
+       
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/leaflet/</guid>
+       <description>&lt;hr&gt;
+&lt;h1 id=&#34;autores&#34;&gt;Autores&lt;/h1&gt;
+&lt;p&gt;Este documento foi produzido por Gabriel de Oliveira Meira Nóbrega.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Matrícula: 118110276&lt;/li&gt;
+&lt;li&gt;Contato: &lt;a href=&#34;mailto:gabriel.nobrega@ccc.ufcg.edu.br&#34;&gt;gabriel.nobrega@ccc.ufcg.edu.br&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Projeto documentado: &lt;a href=&#34;https://github.com/Leaflet/Leaflet&#34;&gt;https://github.com/Leaflet/Leaflet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;descrição-arquitetural----documentação-arquitetural-leaflet&#34;&gt;Descrição Arquitetural &amp;ndash; Documentação arquitetural Leaflet&lt;/h1&gt;
+&lt;p&gt;Este documento descreve parte da arquitetura do projeto &lt;a href=&#34;https://github.com/Leaflet/Leaflet&#34;&gt;Leaflet&lt;/a&gt;. Essa descrição foi baseada principalmente no modelo &lt;a href=&#34;https://c4model.com/&#34;&gt;C4&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;descrição-geral-sobre-o-leaflet&#34;&gt;Descrição Geral sobre o Leaflet&lt;/h2&gt;
+&lt;p&gt;O leaflet é uma biblioteca leve em javascript que permite o uso de mapas de interativos compatíveis com mobile. Permite o uso de plugins para extender as funcionalidades e tem como objetivo oferecer todas as funcionalidades que podem vir a serem necessárias em mapas. Mais informações podem ser encontradas &lt;a href=&#34;https://leafletjs.com/&#34;&gt;neste link&lt;/a&gt;.&lt;/p&gt;
+</description>
+     </item>
+   
+     <item>
+       <title>Documentação da arquitetura do navegador Pale Moon</title>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/palemoon/</link>
+       <pubDate>Fri, 16 Apr 2021 00:00:00 -0300</pubDate>
+       
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/palemoon/</guid>
+       <description>&lt;h1 id=&#34;autores&#34;&gt;Autores&lt;/h1&gt;
+&lt;p&gt;Este documento foi produzido por Amanda Vivian Alves de Luna e Costa.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Matrícula: 116210896&lt;/li&gt;
+&lt;li&gt;Contato: &lt;a href=&#34;mailto:amanda.costa@ccc.ufcg.edu.br&#34;&gt;amanda.costa@ccc.ufcg.edu.br&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Projeto documentado: &lt;a href=&#34;https://repo.palemoon.org/MoonchildProductions/Pale-Moon&#34;&gt;https://repo.palemoon.org/MoonchildProductions/Pale-Moon&lt;/a&gt; e &lt;a href=&#34;http://www.palemoon.org/&#34;&gt;http://www.palemoon.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;descrição-arquitetural----navegador-pale-moon&#34;&gt;Descrição Arquitetural &amp;ndash; Navegador Pale Moon&lt;/h1&gt;
+&lt;p&gt;Este documento descreve parte da arquitetura do navegador &lt;a href=&#34;http://www.palemoon.org/&#34;&gt;Pale Moon&lt;/a&gt;. Essa descrição foi baseada principalmente no modelo &lt;a href=&#34;https://c4model.com/&#34;&gt;C4&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;descrição-geral-sobre-o-navegador-pale-moon&#34;&gt;Descrição Geral sobre o navegador Pale Moon&lt;/h2&gt;
+&lt;p&gt;Pale Moon é um navegador de código aberto Goanna-based disponível para Microsoft Windows e Linux (com outros sistemas operacionais em desenvolvimento), com foco em eficiência e personalização.&lt;/p&gt;
+&lt;p&gt;Pale Moon oferece a você uma experiência de navegação em um navegador totalmente construído a partir de sua própria fonte desenvolvida de forma independente, que foi bifurcada do código do Firefox / Mozilla há alguns anos, com recursos e otimizações cuidadosamente selecionados para melhorar a estabilidade do navegador e a experiência do usuário.&lt;/p&gt;
+&lt;p&gt;Um dos seus maiores diferenciais é não expor seus dados de maneira nativa. Para tal, alguns recursos padrão dos browsers foram simplesmente eliminados e, o principal motivo das pessoas o utilizarem é a sua garantia de mais segurança dos dados pessoais durante o uso, uma das features que asseguram isso é não possuir telemetria, um recurso que tem acesso a quase todos os dados do seu computador, como por exemplo, qual seu hardware,sistema operacional,entre várias outras coisas.&lt;/p&gt;
+</description>
+     </item>
+   
+     <item>
        <title>Documentação arquitetural para o MySQL Workbench</title>
        <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/mysql-workbench/</link>
        <pubDate>Wed, 14 Apr 2021 00:00:00 -0300</pubDate>
@@ -95,6 +164,25 @@
 &lt;p&gt;É importante destacar não será descrita toda a arquitetura do Grafana. O foco aqui é a descrição de um serviço específico de análise do GRafana, que é parte fundamental do projeto.&lt;/p&gt;
 &lt;h2 id=&#34;descrição-geral-sobre-o-grafana&#34;&gt;Descrição Geral sobre o Grafana&lt;/h2&gt;
 &lt;p&gt;O Grafana é um projeto que tem como objetivo ser uma plataforma para visualização e monitoramento de dados, possibilitando com a construção de &amp;ldquo;dashboards&amp;rdquo; dinâmicos e reutilizáveis. Portanto, a ferramenta possui integração os principais bancos de dados disponíveis no mercado, como descrito &lt;a href=&#34;https://grafana.com/docs/grafana/latest/datasources/&#34;&gt;neste link&lt;/a&gt;, além disso, é possível adicionar múltiplos “datasources” para o mesmo “dashboard”.&lt;/p&gt;
+</description>
+     </item>
+   
+     <item>
+       <title>React Intl</title>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/react-intl/</link>
+       <pubDate>Wed, 14 Apr 2021 00:00:00 -0300</pubDate>
+       
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/react-intl/</guid>
+       <description>&lt;h1 id=&#34;autores&#34;&gt;Autores&lt;/h1&gt;
+&lt;p&gt;Este documento foi produzido por Rayla Medeiros Araújo.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Matrícula: 117110383&lt;/li&gt;
+&lt;li&gt;Contato: &lt;a href=&#34;mailto:rayla.araujo@ccc.ufcg.edu.br&#34;&gt;rayla.araujo@ccc.ufcg.edu.br&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Projeto documentado: &lt;a href=&#34;https://github.com/formatjs/formatjs/tree/main/packages/react-intl&#34;&gt;https://github.com/formatjs/formatjs/tree/main/packages/react-intl&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;descrição-arquitetural----react-intl&#34;&gt;Descrição Arquitetural &amp;ndash; React Intl&lt;/h1&gt;
+&lt;h2 id=&#34;descrição-geral-sobre-o-react-intl&#34;&gt;Descrição Geral sobre o React Intl&lt;/h2&gt;
+&lt;p&gt;O React Intl é uma das várias bibliotecas oferecidas pelo FormatJS, coleção de bibliotecas JavaScript, que segue os padrões do JavaScript Intl e do i18n, para internacionalização de números, datas e strings. Sendo essa biblioteca específica utlizada na internacionalização e formatação de componentes React.&lt;/p&gt;
 </description>
      </item>
    
