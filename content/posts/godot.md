@@ -16,4 +16,4 @@ Este documento foi produzido por Thomaz Morais.
 
 ## Descrição Geral sobre o GODOT
 
-O Godot é uma engine de criação de jogos 2d e 3d gratuita e de código aberto. Ela é capaz de exportar jogos para a maior parte das plataformas disponíveis na atualidade (video games, mobile, desktop e web) e ela traz uma série de ferramentas que facilitam na hora de desenvolver jogos. Mais detalhes sobre o projeto podem ser vistos [neste link](https://godotengine.org/).
+O Godot é uma engine de criação de jogos 2d e 3d gratuita e de código aberto. Ela é capaz de exportar jogos para a maior parte das plataformas disponíveis na atualidade (video games, mobile, desktop e web) e ela traz uma série de ferramentas que facilitam na hora de desenvolver jogos. O objetivo deste projeto é fazer uma descrição arquitetural desta engine. Mais detalhes sobre o projeto podem ser vistos [neste link](https://godotengine.org/).
