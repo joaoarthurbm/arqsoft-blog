@@ -1,6 +1,6 @@
 +++
 title = "Documentação de Arquitetura da Engine de Jogos: GODOT"
-date = 2021-24-15
+date = 2021-04-24
 tags = []
 categories = []
 +++
