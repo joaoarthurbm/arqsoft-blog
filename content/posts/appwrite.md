@@ -18,7 +18,7 @@ Este documento foi produzido por Jessé Souza Cavalcanti Neto.
 Este documento descreve a arquitetura do serviço [Appwrite](https://github.com/appwrite/appwrite).
 As descrições e diagramas aqui presentes foram produzidos usando como base o modelo [C4](https://c4model.com/).
 
-É importante destacar que o foco principal da análise será o serviço de _Users_ do Appwrite, entretanto, será possível entender como funciona a estrutura monolítica + microserviços adotado pelo projeto, uma vez que os outros serviços seguem a mesma lógica.
+É importante destacar que o foco principal da análise será o serviço de _Users_ do Appwrite, entretanto, será possível entender como funciona a estrutura monolítica + microserviços adotado pelo projeto, uma vez que os outros serviços seguem a mesma lógica. É importante ressaltar que a documentação chama de microserviço por considerar que cada container (serviço ou worker) é um processo independente e pode ser escalado sem depender de outros serviços.
 
 ## Descrição Geral sobre o Appwrite
 
