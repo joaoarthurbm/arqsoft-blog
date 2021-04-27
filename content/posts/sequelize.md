@@ -42,3 +42,35 @@ Os ORM surgiram para facilitar e aumentar a produtividade do desenvolvimento, pr
 O Node.js, ambiente para executar código JavaScript, pode ser utilizado para a criação de CLIs (_Command Line Interface_), aplicações desktop e até mesmo de redes neurais, no entanto, ele se tornou bastante popular nos últimos anos pricinpalmente no desenvolvimento de aplicações web. Diante disso, o Sequelize surge para servir de ponte entre o Node.js e banco de dados relacionais como o PostgreSQL, MySQL, MariaDB, SQLite e MS SQL Server.
 
 O diagrama de contexto do Sequelize pode ser visto abaixo.
+
+## Containers
+
+Por se tratar de uma biblioteca, o Sequelize, tem  uma implantação bem mais simples que aplicações web, pois não precisam se preocupar com coisa como: persistir dados, rodar o serviço em várias maquinas para uma maior escalabilidade, se comunicar com outras aplicações entres outros fatores. A implantação do Sequelize, é composta por um uníco container, que servirá de ponte da aplicação Node.js, que está usando a biblioteca, com o banco de dados. Esse container possui todos os componentes da biblioteca.
+
+Na imagem abaixo poder visto o diagrama de container  com as informações de implantação.
+## Componentes
+
+O Sequelize tem vários componentes que se conectam para formar a biblioteca, os principais são:
+
+__Sequelize__ - Fornece a instância da biblioteca com os métodos e atributos necessários. Responsável também por acomplar e gerenciar os outros componentes.
+
+__Models__ - Responsável pelas operações básicas do sequelize que vão manipular os dados como: findAll, create, delete, update entre outros. Além disso, pode ser utilizado para definir a estrutura do banco de dados, como também definir os objetos da linguagem.
+
+__Associations__ - Define como os *models* se relacionam entre si. As associações são do tipo: *belongsToMany*, *belongsToOne*, *hasOne* e *hasMany*.
+
+__Query__ - Uma opção para realizar a query na linguagem de banco de dados direta.
+
+__Validator__ - Faz as validações se os atributos e as instâncias estão sendo definidas corretamente.
+
+__Operator__ - Componente que auxília definindo os símbolos que são utilizados para construir as *queries*.
+
+__Dialects__ - Faz a conexão direta com o banco de dados criando as consultas de acordo com o detalhe de cada linguagem. É nesse componente que o resultado das consultas serão mapeados para json, um objeto conhecido da linguagem.
+
+Segue a imagem com a relação entre os componentes.
+## Código
+
+Dentre todas as funcionalidades do Sequelize, foi escolhido para demonstrar o fluxo de informação da biblioteca a seguinte função:
+
+`const foos = await foo.findAll()`
+
+O fluxo pode ser visto na seguinte imagem.
