@@ -43,7 +43,19 @@ Como vemos no diagrama de contexto, o Horários UFCG utiliza-se de uma API exter
 
 ### Containers
 
+O Horários UFCG é basicamente uma aplicação [Vue.js](https://vuejs.org/) e faz uso do LocalStorage para armazenar as disciplinas selecionadas, mantendo-as salvas mesmo após o fechamento da página.
+
+![fig1](container.png)
+
 ### Componentes
+
+O Horários UFCG é composto, basicamente, em três tipos de componentes:
+
+- Visualização: Horário, Dia, Aula, Tabela e Model
+- Filtragem e Pesquisa (contém visualização): NavBar e Filtro
+- Serviços: Store e Services
+
+![fig1](componente.png)
 
 
 ### Código
@@ -54,6 +66,11 @@ implementação. Faremos isso mais adiante.
 </pre>
 
 ### Visão de Informação
+
+O fluxo de informação é bem simples. O usuário escolhe suas disciplinas e em seguida remove os choques de horário, isso se repete até o usuário achar um horário adequado.
+
+![fig1](informacao.png)
+
 
 # Contribuições Concretas
 
