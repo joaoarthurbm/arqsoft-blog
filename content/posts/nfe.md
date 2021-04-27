@@ -5,7 +5,7 @@ tags = []
 categories = []
 +++
 
-# Autores
+# Autor
 
 Este documento foi produzido por Eddie Kaleb Lopes Fernandes.
 
@@ -13,7 +13,7 @@ Este documento foi produzido por Eddie Kaleb Lopes Fernandes.
 - Contato: eddie.fernandes@ccc.ufcg.edu.br
 - Projeto documentado: https://github.com/Samuel-Oliveira/Java_NFe
 
-# Descrição Arquitetural -- Java NF-e/NFC-e
+# Descrição arquitetural - Java NF-e/NFC-e
 
 Este documento descreve parte da arquitetura do projeto [Java NF-e](https://github.com/Samuel-Oliveira/Java_NFe). O modelo [C4](https://c4model.com/) será utilizado como base.
 
