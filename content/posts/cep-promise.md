@@ -105,7 +105,7 @@ cep('99999999')
 ```
 ## Implantação
 
-Para implantar essa biblioteca é necessário ter um ambiente node.js instalando-o através de : gerenciador de pacote (npm, yarn, bower) ou um browser usando CDN, em seguida serão demonstrados exemplos:
+Para implantar essa biblioteca é necessário ter um ambiente node.js, instalando-o através de : gerenciador de pacote (npm, yarn, bower) ou um browser usando CDN, em seguida serão demonstrados exemplos:
 
 ```js
 <script src="https://cdn.jsdelivr.net/npm/cep-promise/dist/cep-promise.min.js"></script>
@@ -124,3 +124,44 @@ yarn
 ```js
 $ yarn add cep-promise
 ```
+
+## Componentes
+
+O Cep promise é composto por 3 componentes :
+
+- **Cep-promise**:  Responsável por:
+  1. receber o cep e os possíveis providers 
+  2. validar a entrada 
+  3. Capturar possíveis erros 
+
+  Se tudo der certo é chamado componente service se não, é chamado o errors para retornar a resposta de erro.
+
+- **Service**: É  responsável por fazer as requisições http em cada serviço que a plataforma está integrada, colocando a resposta de cada endpoint no padrão especificado abaixo:
+```js
+{
+    cep: string,
+    state: string,
+    city: string,
+    neighborhood: string,
+    street: string,
+    service: string,
+  }
+```
+- **Errors**: É responsável em padronizar as respostas de erro para os outros 2 componentes já listados (cep-promise,service);
+
+![Diagrama de Componentes](cep-promise-components.png)
+
+## Visão da informação
+
+Nessa sessão vamos tratar do fluxo da informação do cep que é dado para a biblioteca.
+
+1. Primeiramente após o cep ser enviado é chamado uma função que verifica se o cep é do tipo int ou string, diferente de muitos sistemas que só aceitam em string;
+2. Após verificar o tipo, é verificado se foram enviados os providers, caso não sejam enviados a função responsável retorna uma lista vazia se existe a lista dada é chamado o componente service para verificar se os providers dados são válidos.
+3. Agora é verificado se o tamanho do cep é 8 pois é padrão que o cep tenha tamanho de 8 caracteres;
+4. São removidos caracteres especiais e zeros à esquerda do cep;
+5. Agora são feitos os request em todos os serviços ou nos serviços que foram selecionados.
+
+obs: no passo 1,2,3,5 caso ocorra erro é chamado p error handler para tratar o erro e ser passado pro Application error Handler como descrito no diagrama de estados abaixo.
+
+![Diagrama de visão da informação](cep-promise-information.png)
+
