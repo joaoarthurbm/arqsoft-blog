@@ -23,23 +23,3 @@ As descrições e diagramas aqui presentes foram produzidos usando como base o m
 Unform é uma API focada em desempenho para criar experiências de formulários para React e React Native. Projetado para ter um design zero, extensível e poder lidar com dados e relacionamentos complexos. Ele é disponibilizado como um pacote npm.
 
 Mais informações podem ser encontradas [aqui](https://unform.dev/).
-
-## Objetivos
-
-## Contexto
-
-## Objetivo Geral
-
-## Objetivos Específicos
-
-## Contexto
-
-## Containers
-
-## Componentes
-
-## Código
-
-## Visão de Informação
-
-## Contribuições Concretas
