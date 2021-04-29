@@ -35,4 +35,14 @@ Como o unForm se trata de uma biblioteca, os usuários finais são os desenvolve
 Em relação à comunicação com sistemas externos, a principal interação realizada é com outras bibliotecas definido pelo usuário. Essas bibliotecas podem ser de estilos ou que provem alguma API para interação.
 
 O diagrama de contexto abaixo ilustra quais entidades interagem com o unForm.
- 
+
+![Diagrama de Contexto](un-form/contexto.png)
+
+## Implantação
+
+A sua implantação é bem simples, pois é instalado no projeto através de algum gerenciador de pacotes (como npm e yarn), é preciso apenas se atentar para os requisitos de ambiente, como, por exemplo, a versão do React.
+
+O diagrama de implantação abaixo ilustra como é feita a implantação do unForm. Nele é possível observar que bibliotecas de terceiros podem ser adicionadas para interagir com o unForm.
+
+
+![Diagrama de Implantação](un-form/implantacao.png)
