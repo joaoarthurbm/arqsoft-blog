@@ -45,6 +45,7 @@ O diagrama de contexto do Sequelize pode ser visto abaixo.
 
 <div align="center" style="margin:1rem 0;">
     <img class="center" src="sequelize/Context Diagram.png" style="margin:3rem 0;"/>
+    <br>
     <span style="display:block;font-weight:bold;">
         Figura 1 - Diagrama de contexto do Sequelize.
     </span>
@@ -57,6 +58,7 @@ Na imagem abaixo poder visto o diagrama de container  com as informações de im
 
 <div align="center" style="margin:1rem 0;">
     <img class="center" src="sequelize/Container Diagram.png" style="margin:3rem 0;"/>
+    <br>
     <span style="display:block;font-weight:bold;">
         Figura 2 - Diagrama de containers com detalhes da implantação do Sequelize.
     </span>
@@ -84,6 +86,7 @@ Segue a imagem com a relação entre os componentes.
 
 <div align="center" style="margin:1rem 0;">
     <img class="center" src="sequelize/Components Diagram.png" style="margin:3rem 0;"/>
+    <br>
     <span style="display:block;font-weight:bold;">
         Figura 3 - Diagrama de componentes do Sequelize.
     </span>
@@ -99,6 +102,7 @@ O fluxo pode ser visto na seguinte imagem.
 
 <div align="center" style="margin:1rem 0;">
     <img class="center" src="sequelize/Code Diagram.png" style="margin:3rem 0;"/>
+    <br>
     <span style="display:block;font-weight:bold;">
         Figura 4 - Máquina de estados com o fluxo da informação ao realizar uma chamada.
     </span>
