@@ -32,17 +32,40 @@ Oferecer uma biblioteca baseada em hooks para expor suas configurações sem que
 
 Como o unForm se trata de uma biblioteca, os usuários finais são os desenvolvedores de *software*, que a importam em seus projetos e assim fazem uso de suas funcionalidades.
 
-Em relação à comunicação com sistemas externos, a principal interação realizada é com outras bibliotecas definido pelo usuário. Essas bibliotecas podem ser de estilos ou que provem alguma API para interação.
+Em relação à comunicação com sistemas externos, a principal interação realizada é com outras bibliotecas definido pelo usuário. Essas bibliotecas podem ser de estilos ou que provem alguma API para interação com o formulários.
 
 O diagrama de contexto abaixo ilustra quais entidades interagem com o unForm.
 
 ![Diagrama de Contexto](un-form/contexto.png)
 
-## Implantação
+### Implantação
 
-A sua implantação é bem simples, pois é instalado no projeto através de algum gerenciador de pacotes (como npm e yarn), é preciso apenas se atentar para os requisitos de ambiente, como, por exemplo, a versão do React.
+A sua implantação é bem simples, pois é instalado no projeto através de algum gerenciador de pacotes (como npm e yarn), é preciso apenas se atentar para os requisitos de ambiente, como, por exemplo, a versão do React. Logo após importa seu hook principal, o useField, basta criar um componente de entrada customizado que sera usado para cada entrada no projeto e depois criar o formulário.
 
 O diagrama de implantação abaixo ilustra como é feita a implantação do unForm. Nele é possível observar que bibliotecas de terceiros podem ser adicionadas para interagir com o unForm.
 
 
 ![Diagrama de Implantação](un-form/implantacao.png)
+
+## Containers
+
+O unForm é uma biblioteca que possui todos os modulos de codigo necessários para seu funcionamento e implementação de suas funcionalidades, porém pode-se introduzir novas bibliotecas que auxiliam e agregam no seu uso, como, por exemplo, o yup, que introduz uma validação aos campos de formularios, já que o unForm não inclui validação em seu núcleo.
+
+O sua API disponibiliza os seguintes recursos:
+
+#### fieldName
+O fieldName um nome de campo único, sendo seu valor do tipo string.
+
+#### registerField
+O registerField é o método usado para registrar um campo no Unform, é que possui os seguintes argumentos: nome, ref, setValue, clearValue, getValue, caminho
+
+#### defaultValue
+O defaultValue é o valor inicial que o campo do formulário ira iniciar ao renderizar no ReactDOM.
+
+#### clearError
+O clearError Limpa a mensagem de erro, quando o campo possui validação, quando essa validação é disparada e depois é digitado uma entrada que satisfaça a condição.
+
+#### error
+O error retorna a mensagem de erro do campo, caso este tenha alguma validação.
+
+Mais detalhes sobre a API podem ser encontrados [aqui](https://unform.dev/api/use-field).
