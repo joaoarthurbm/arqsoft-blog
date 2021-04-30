@@ -80,3 +80,7 @@ O componente de unForm, após instalação, criação de um componente para usar
 O diagrama abaixo ilustra o que foi falado acima.
 
 ![Diagrama de Máquina de Estados](vissao-informacao.png)
+
+## Contribuições Concretas
+
+Ainda não foram abertas PRs para o repositório oficial do unForm.
