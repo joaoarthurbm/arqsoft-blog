@@ -25,18 +25,24 @@ acontece de bom nos finais de semana da região.
 Em linhas gerais, é um app de integração, onde tenta otimizar o que a pagina @spottedUFCG no instagram faz.
 
 
-## Objetivo Geral
+### Objetivo Geral
 
 O objetivo do projeto é disponibilizar um serviço para divulgação e facilidade de informar aos estudantes acontecimentos internos da instituição, sobre o que acontece na cidade e região, além de conhecer novas pessoas, tirar duvidas, buscar necessidades pontuais.
 
-## Objetivo Específicos
+### Objetivo Específicos
 
 A ideia é, principalmente, facilitar e interagir os estudantes da UFCG, fazendo com que os estudantes possam fazer publicações, seja de duvidas ou informativas, possam ter mais entreterimento e algumas outras diversidades. Podemos concluir que o APP tem a intenção de captar todo "tipo" de estudante, com quaisquer finalidade.
 
-## Contexto
+### Contexto
 
 Como o Spotted+ é uma aplicativo que podemos equipará-lo a uma rede social, os usuários serão alunos da graduação. Onde eles fazem o login e a API retorna as requisições.
 
 [fig1](diagramaContexto.png)
 
 Diante do que foi exposto no diagrama de contexto, o SPOTTED+ utiliza de uma API interna que fornece todas as rotas para as funcionalidades.
+
+### Containers
+
+### Visão de informação
+
+O usuário através do frontend solicita para realizar o login na aplicanão, quando feita, essa solicitação é enviada ao backend e é validada a autenticação. 
