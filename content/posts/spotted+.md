@@ -34,3 +34,9 @@ O objetivo do projeto é disponibilizar um serviço para divulgação e facilida
 A ideia é, principalmente, facilitar e interagir os estudantes da UFCG, fazendo com que os estudantes possam fazer publicações, seja de duvidas ou informativas, possam ter mais entreterimento e algumas outras diversidades. Podemos concluir que o APP tem a intenção de captar todo "tipo" de estudante, com quaisquer finalidade.
 
 ## Contexto
+
+Como o Spotted+ é uma aplicativo que podemos equipará-lo a uma rede social, os usuários serão alunos da graduação. Onde eles fazem o login e a API retorna as requisições.
+
+[fig1](diagramaContexto.png)
+
+Diante do que foi exposto no diagrama de contexto, o SPOTTED+ utiliza de uma API interna que fornece todas as rotas para as funcionalidades.
