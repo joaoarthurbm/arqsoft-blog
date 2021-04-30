@@ -51,7 +51,7 @@ O diagrama de implantação abaixo ilustra como é feita a implantação do unFo
 
 O unForm é uma biblioteca que possui todos os modulos de codigo necessários para seu funcionamento e implementação de suas funcionalidades, porém pode-se introduzir novas bibliotecas que auxiliam e agregam no seu uso, como, por exemplo, o yup, que introduz uma validação aos campos de formularios, já que o unForm não inclui validação em seu núcleo.
 
-O sua API disponibiliza os seguintes recursos:
+O seu hook principal use-field disponibiliza os seguintes recursos:
 
 #### fieldName
 O fieldName um nome de campo único, sendo seu valor do tipo string.
@@ -69,3 +69,14 @@ O clearError Limpa a mensagem de erro, quando o campo possui validação, quando
 O error retorna a mensagem de erro do campo, caso este tenha alguma validação.
 
 Mais detalhes sobre a API podem ser encontrados [aqui](https://unform.dev/api/use-field).
+
+## Componentes
+
+
+## Visão de Informação
+
+O componente de unForm, após instalação, criação de um componente para usar em cada campo de input, e configuração useField que é um hook exposto pelo unForm, basta criar o formulário, chamando o componente criado, com as configurações de cada campo do formulário, além da criação da função que vai receber a submissão. Caso seja necessário um formulário mais elaborado, pode-se incorporar outras bibliotecas para compor o unForm, como, por exemplo: de layout, como o Material-UI, de bibliotecas que trazem novas funcionalidades, como o yup, que traz validação dos dados enviados, pois o unform é capaz que receber e exibir os erros, além da introdução de bibliotecas que possuem um tipo diferente de input, como o React DatePicker.
+
+O diagrama abaixo ilustra o que foi falado acima.
+
+![Diagrama de Máquina de Estados](un-form/vissao-informacao.png)
