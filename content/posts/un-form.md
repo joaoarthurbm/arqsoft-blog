@@ -44,7 +44,6 @@ A sua implantação é bem simples, pois é instalado no projeto através de alg
 
 O diagrama de implantação abaixo ilustra como é feita a implantação do unForm. Nele é possível observar que bibliotecas de terceiros podem ser adicionadas para interagir com o unForm.
 
-
 ![Diagrama de Implantação](implantacao.png)
 
 ## Containers
@@ -72,6 +71,11 @@ Mais detalhes sobre a API podem ser encontrados [aqui](https://unform.dev/api/us
 
 ## Componentes
 
+O unForm é composto basicamente pelo componente principal que gerencia e configura a manipulação de campos de formulários, essas configurações são herdadas pelas interfaces web e mobile, pois, cada uma tem diferenças de versão do React e de bibliotecas.
+
+O diagrama de componentes abaixo ilustra os componentes apresentados e sua comunicação.
+
+![Diagrama de Componentes](componente.png)
 
 ## Visão de Informação
 
