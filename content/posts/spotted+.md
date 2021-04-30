@@ -11,7 +11,8 @@ Este documento foi produzido por Vítor Alves Correia Lima de Aquino.
 
 - Matrícula: 116211457
 - Contato: vitor.aquino@ccc.ufcg.edu.br
-- Projeto documentado: https://github.com/caiosbl/spotted 
+- Projeto documentado: https://github.com/caiosbl/spotted
+- backend do projeto: https://github.com/osuniversitarios/spotted
 
 ## Descrição Arquitetural - APP Spotted+
 
@@ -37,12 +38,19 @@ A ideia é, principalmente, facilitar e interagir os estudantes da UFCG, fazendo
 
 Como o Spotted+ é uma aplicativo que podemos equipará-lo a uma rede social, os usuários serão alunos da graduação. Onde eles fazem o login e a API retorna as requisições.
 
-[fig1](diagramaContexto.png)
+![fig1](diagramaContexto.png)
 
 Diante do que foi exposto no diagrama de contexto, o SPOTTED+ utiliza de uma API interna que fornece todas as rotas para as funcionalidades.
 
 ### Containers
 
+### Componentes
+
+O sistema é composto pelo frontend, backend e um banco de dados do postgres. Em resumo:
+- Frontend possibilita a interação com o usuário,  realizada através de uma interface desenvolvida em javaScript puro.
+- Backend responsável pela por enviar as informações do login, cadastro, avisos, listar, entre outras funcionalidades através de códigos desenvoldidos em JAVA.
+- O banco de dados do postgres é onde fica salvo todas as informações do usuário
+
 ### Visão de informação
 
-O usuário através do frontend solicita para realizar o login na aplicanão, quando feita, essa solicitação é enviada ao backend e é validada a autenticação. 
+O usuário através do frontend solicita para realizar o login na aplicação, quando feita, essa solicitação é enviada ao backend e é validada a autenticação. 
