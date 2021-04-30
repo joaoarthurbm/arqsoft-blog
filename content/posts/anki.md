@@ -1,6 +1,6 @@
 +++
 title = "Documentação arquitetural - Anki"
-date = 2021-04-16
+date = 2021-04-29
 tags = []
 categories = []
 +++
