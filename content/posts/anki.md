@@ -89,3 +89,12 @@ O Anki já vem com alguns tipos de nota padrão, para que não seja necessário 
 Nesta etapa não faremos diagramas que apresentam detalhes da
 implementação. Faremos isso mais adiante.
 </pre>
+
+
+### Visão de Informação
+
+![fig5](anki_informacao.png)
+
+**Obs.**: no diagrama de informação, as setas e contornos pontilhados roxos indicam que aquele fluxo ou etapa é opcional.
+
+O objetivo do usuário do Anki é estudar seus baralhos; para isso, ele precisa criá-los, tendo a opção de buscar um pronto no AnkiWeb (Shared) ou criar um novo, seguindo o fluxo de informação indicado. Já tendo baralhos com cartões, o usuário sincroniza sua coleção com o AnkiWeb antes e depois de estudá-los.
