@@ -36,7 +36,7 @@ Em relação à comunicação com sistemas externos, a principal interação rea
 
 O diagrama de contexto abaixo ilustra quais entidades interagem com o unForm.
 
-![Diagrama de Contexto](un-form/contexto.png)
+![Diagrama de Contexto](contexto.png)
 
 ### Implantação
 
@@ -45,7 +45,7 @@ A sua implantação é bem simples, pois é instalado no projeto através de alg
 O diagrama de implantação abaixo ilustra como é feita a implantação do unForm. Nele é possível observar que bibliotecas de terceiros podem ser adicionadas para interagir com o unForm.
 
 
-![Diagrama de Implantação](un-form/implantacao.png)
+![Diagrama de Implantação](implantacao.png)
 
 ## Containers
 
@@ -79,4 +79,4 @@ O componente de unForm, após instalação, criação de um componente para usar
 
 O diagrama abaixo ilustra o que foi falado acima.
 
-![Diagrama de Máquina de Estados](un-form/vissao-informacao.png)
+![Diagrama de Máquina de Estados](vissao-informacao.png)
