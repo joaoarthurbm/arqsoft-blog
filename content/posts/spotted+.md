@@ -38,11 +38,15 @@ A ideia é, principalmente, facilitar e interagir os estudantes da UFCG, fazendo
 
 Como o Spotted+ é uma aplicativo que podemos equipará-lo a uma rede social, os usuários serão alunos da graduação. Onde eles fazem o login e a API retorna as requisições.
 
-![fig1](diagramaContexto.png)
+![fig1](DiagramaContexto.png)
 
 Diante do que foi exposto no diagrama de contexto, o SPOTTED+ utiliza de uma API interna que fornece todas as rotas para as funcionalidades.
 
 ### Containers
+
+O sistema é composto basicamente por dois containers: a interface web e a aplicação (API). O primeiro, possibilita interação com o usuário, é feito usando javaScript puto e renderizado do lado do servidor. Já o segundo, gerencia toda a parte do app, de dados e comunicação externa.
+
+![fig2](DiagramaContainer.png)
 
 ### Componentes
 
