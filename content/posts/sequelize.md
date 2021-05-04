@@ -43,26 +43,15 @@ O Node.js, ambiente para executar código JavaScript, pode ser utilizado para a 
 
 O diagrama de contexto do Sequelize pode ser visto abaixo.
 
-<div align="center" style="margin:1rem 0;">
-    <img class="center" src="sequelize/Context Diagram.png" style="margin:2rem 0;"/>
-    <br>
-    <span style="margin:1rem 0;display:block;font-weight:bold;">
-        Figura 1 - Diagrama de contexto do Sequelize.
-    </span>
-</div>
+
+![fig1](Context_Diagram.png)
 ## Containers
 
 Por se tratar de uma biblioteca, o Sequelize, tem  uma implantação bem mais simples que aplicações web, pois não precisam se preocupar com coisa como: persistir dados, rodar o serviço em várias maquinas para uma maior escalabilidade, se comunicar com outras aplicações entres outros fatores. A implantação do Sequelize, é composta por um uníco container, que servirá de ponte da aplicação Node.js, que está usando a biblioteca, com o banco de dados. Esse container possui todos os componentes da biblioteca.
 
 Na imagem abaixo poder visto o diagrama de container  com as informações de implantação.
 
-<div align="center" style="margin:1rem 0;">
-    <img class="center" src="sequelize/Container Diagram.png" style="margin:2rem 0;"/>
-    <br>
-    <span style="margin:1rem 0;display:block;font-weight:bold;">
-        Figura 2 - Diagrama de containers com detalhes da implantação do Sequelize.
-    </span>
-</div>
+![fig2](Container_Diagram.png)
 
 ## Componentes
 
@@ -84,13 +73,7 @@ __Dialects__ - Faz a conexão direta com o banco de dados criando as consultas d
 
 Segue a imagem com a relação entre os componentes.
 
-<div align="center" style="margin:1rem 0;">
-    <img class="center" src="sequelize/Components Diagram.png" style="margin:2rem 0;"/>
-    <br>
-    <span style="margin:1rem 0;display:block;font-weight:bold;">
-        Figura 3 - Diagrama de componentes do Sequelize.
-    </span>
-</div>
+![fig3](Components_Diagram.png)
 
 ## Código
 
@@ -100,10 +83,4 @@ Dentre todas as funcionalidades do Sequelize, foi escolhido para demonstrar o fl
 
 O fluxo pode ser visto na seguinte imagem.
 
-<div align="center" style="margin:1rem 0;">
-    <img class="center" src="sequelize/Code Diagram.png" style="margin:2rem 0;"/>
-    <br>
-    <span style="margin:1rem 0;display:block;font-weight:bold;">
-        Figura 4 - Máquina de estados com o fluxo da informação ao realizar uma chamada.
-    </span>
-</div>
+![fig4](Code_Diagram.png)
