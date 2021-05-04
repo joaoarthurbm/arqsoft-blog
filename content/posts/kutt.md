@@ -15,7 +15,9 @@ Este documento foi produzido por Hebert Morais.
 - Contato: hebert.morais@ccc.ufcg.edu.br
 - Projeto documentado: https://github.com/thedevs-network/kutt
 
-![Logo Kutt](kutt.png)
+<div style="display: flex; align-items:center; flex-direction: column">
+  <img src="kutt.png" alt="Kutt Logo" style="width: 200px"/>
+<div>
 
 # Descrição Arquitetural -- Kutt
 
