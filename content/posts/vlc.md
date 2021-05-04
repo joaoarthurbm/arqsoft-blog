@@ -1,6 +1,6 @@
 +++
 title = "Documentação Arquitetural do VLC"
-date = 2021-04-25
+date = 2021-04-30
 tags = []
 categories = []
 +++
@@ -21,13 +21,13 @@ Este documento foi produzido por Higor Santos de Brito Dantas.
 - Projeto documentado: https://github.com/videolan/vlc
 
 <div style="display: flex; flex-direction: row; align-items: center;">
-  <img src="icon2.png" style="width: 60px; box-shadow: none; margin-right: 30px">
+  <img src="icon.png" style="width: 60px; box-shadow: none; margin-right: 30px">
   <h1>Descrição Arquitetural – VLC</h1>
 </div>
 
 Este documento descreve parte da arquitetura do projeto [VLC](https://github.com/videolan/vlc). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
 
-É importante destacar não será descrita toda a arquitetura do VLC. O foco será dado no módulo responsável por realizar a saída de vídeo, que é uma das partes mais importantes do programa.
+É importante destacar não será descrita toda a arquitetura do VLC. Apenas suas partes principais, e com um foco maior dado no módulo responsável por realizar a saída de vídeo, que é uma das partes mais importantes do programa.
 
 ## Descrição Geral sobre o VLC
 
@@ -54,14 +54,18 @@ Além disso, o VLC, por ser um reprodutor de áudios/vídeos, necessita conversa
 ### Containers
 
 Inicialmente, o usuário interage diretamente com a interface do VLC que dependendo o sistema operacional utilizado a tecnologia pode variar. Por exemplo, desde a versão `0.9.0`, as interfaces do aplicativo para Windows e Linux utilizam a biblioteca [Qt](https://pt.wikipedia.org/wiki/Qt), antes era utilizado a [wxWidgets](https://pt.wikipedia.org/wiki/WxWidgets). Além disso, é possível adicionar temas que podem ser baixados e adicionados para personalizar a interface (não disponível para MacOS).  
-A GUI vai se comunicar com o libVLCcore que é o núcleo da aplicação, ele quem realiza os gerenciamentos de threads, os módulos, como os codecs, os relógios etc. Inclusive, um exemplo dado pela própria documentação, é o núcleo que realiza a sincronização das faixas de áudio, vídeo e legenda. Além disso, existe a libVLC que é uma biblioteca que dá suporte a muitas das funcionalidades do aplicativo e que pode ser utilizada por terceiros para utilizar as mesmas funções empregadas no núcleo, que a utiliza para dar suporte e modularizar as funcionalidades da melhor maneira possível.  
-A modularização foi uma técnica bastante aplicada no desenvolvimento da ferramenta, tanto que o container Módulos é onde se localizam as principais funcionalidades, e os módulos necessitam interagir com a libVLCcore para acessar o núcleo da aplicação e conseguir realizar suas funções.
+A GUI se comunica com o libVLCcore que é o núcleo da aplicação, ele quem realiza os gerenciamentos de threads, os módulos, como os codecs, os relógios etc. Inclusive, utilizando um exemplo dado pela própria documentação, é o núcleo que realiza a sincronização das faixas de áudio, vídeo e legenda. Além disso, existe a libVLC que é uma biblioteca que dá suporte a muitas das funcionalidades do aplicativo e que pode ser utilizada por terceiros para utilizar as mesmas funções empregadas no núcleo, que a utiliza para dar suporte e modularizar as funcionalidades da melhor maneira possível.  
 
 ![Diagrama de Containers](diagrama-de-container.jpg)
 
 ### Componentes
 
-> TODO
+Por simplicidade, foi aberto apenas o componente do núcleo do VLC, chamada de libVLCcore, e nem todos os componentes estão mostrados já que são muitos. Então, estão representados apenas os componentes de demultiplexação, playlist, saida de áudio, internet, saída de vídeo, streaming.
+O componente de demultiplexação é o responsável por receber o arquivo do módulo de `input` e separar em vários fluxos, um para cada elemento: áudio, vídeo e legenda; em seguida, envia cada um para o decodificador.  
+Os componentes de saída de áudio e de vídeo são responsáveis por pegar quadros de áudio e de vídeo, respectivamente, decodificados e passar para o componente do hardware que irá realizar a operação de saída de dados.  
+O componente Playlist é responsável por controlar a lista de arquivos de mídia, já o de Internet fornece uma interface que permite aos demais se comunicar com a rede que, inclusive, é utilizado pelo componente de Streaming, que realiza as operações necessárias para a saída da transmissão de vídeos via internet.
+
+![Diagrama de Componentes](diagrama-de-componentes.jpg)
 
 ### Código
 
@@ -72,8 +76,11 @@ implementação. Faremos isso mais adiante.
 
 ### Visão de Informação
 
-> TODO
+Assim que é definido qual o arquivo de mídia irá ser aberto e o abre com o VLC, o primeiro passo será buscar o demultiplexador para o formato do arquivo, caso seja um formato não aceito pelo programa é impossível prosseguir com o processo e, portanto, será encerrado.  
+Caso contrário, o demultiplexador é encontrado, separa o arquivo em fluxos elementares e repassa cada um para o `codec` responsável. Após toda a operação realizada pelo codec, o fluxo de dados é levado ao componente de saída de vídeo, que irá repassar a solicitação para os drivers e, enfim, mostrar na tela.
+
+![Visão de Informação](visao-da-informacao.jpg)
 
 # Contribuições Concretas
 
-> TODO
+_Até o momento, não foi realizada nenhuma contribuição no repositório do software estudado ao longo deste documento._
