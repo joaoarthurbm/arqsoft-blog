@@ -25,7 +25,7 @@ Kolibri é um aplicativo offline que disponibiliza tecnologia educacional de alt
 
 ### Contexto
 
-![fig1](contexto.jpg)
+![fig1](contexto.png)
 
 O sistema do Kolibri é utilizado por usuários que estão interessados em aprender, porém possuem poucos recursos para acessar a internet. Ele também pode ser utilizado por instrutores, que podem criar turmas para organizar o conteúdo que será ministrado. Os usuários interagem com a plataforma do Kolibri, que deve ser instalada localmente. Os materiais e os exercícios disponíveis na plataforma podem ser baixados para serem usados de forma offline, e são provenientes do sistema Kolibri Studio, uma ferramenta onde produtores de conteúdo educacional publicam os materiais que serão deisponibilizados.
 
@@ -49,9 +49,9 @@ Em breve.
 
 ### Visão de Informação
 
-A máquina de estados representa um possível fluxo que o usuário pode fazer ao usar o Kolibri. Um usuário primeiramente faz o login (ou cria uma conta caso não possua) e, em seguida, busca por algum canal (um canal disponibiliza conteúdos e atividades sobre uma ou várias áreas) que ache mais interessante ou necessário para estudar.
+A máquina de estados representa um possível fluxo de um canal (um canal disponibiliza conteúdos e atividades sobre uma ou várias áreas) ao ser utilizado por um usuário que está interessado em usar os seus conteúdos para aprender.
 
-![fig4](visao-informacao.png)
+![fig4](visao-da-informacao.png)
 
 ## Contribuições Concretas
 
