@@ -44,15 +44,15 @@ O Insomnia é um projeto que tem como objetivo "facilitar o teste de requisiçõ
 
 ### Contexto
 
-![insomnia-context](insomnia-context.png)
+![context](insomnia-context.png)
 
 ### Containers
 
-![insomnia-container](insomnia-container.png)
+![container](insomnia-container.png)
 
 ### Componentes
 
-![insomnia-component](insomnia-component.png)
+![component](insomnia-component.png)
 
 ### Código
 
@@ -63,3 +63,4 @@ implementação. Faremos isso mais adiante.
 
 ### Visão de informação
 
+![estados](insomnia-estados.png)
