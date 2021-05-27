@@ -21,6 +21,7 @@ Este documento descreve parte da arquitetura do projeto [OpenDev](https://github
 
 ## Descrição Geral sobre o OpenDev
 
+<<<<<<< HEAD
 O Open Dev é um projeto que tem como objetivo "incentivar a cultura open source" principalmente no curso de Ciencia da Computação da UFCG, reunindo varios projetos open source, na sua plataforma.
 
 Como os mesmos se apresentam, eles estão desenvolvendo para a UFCG, para os estudantes, e pra você interessado a aprender e a contribuir.
@@ -70,3 +71,6 @@ implementação. Faremos isso mais adiante.
 Página Web com redirecionamento para outras páginas web ou projetos no github
 
 ![fig4](diagramaInformativo.png)
+=======
+O Open Dev é um projeto que tem como objetivo "incentivar a cultura open source" principalmente no curso de Ciencia da Computação da UFCG, reunindo varios projetos open source.
+>>>>>>> 1b6c42a0e5d62dd3bb93c3056266de5c9653c79c
