@@ -10,7 +10,7 @@ summaryLength = 30
 enableEmoji = true
 pygmentsCodeFences = true
 
-#disqusShortname = "myShortName"
+#disqusShortname = "myShortNam"
 
 # Note: to disable a social network icon delete or comment out the corresponding line
 [author]
@@ -26,7 +26,7 @@ pygmentsCodeFences = true
     #devto = "username"
 
 [params]
-    tagline = "Computação @ UFCG"
+    tagline = "Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG"
     description = "Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG."
     #images = [""] #This is used for opengraph/twitter cards.
     customCSS = []  #Optional Customised CSS
