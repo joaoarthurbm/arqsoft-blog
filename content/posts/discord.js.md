@@ -20,6 +20,6 @@ Este documento foi produzido por Gabriel de Oliveira Meira Nóbrega.
 Este documento descreve parte da arquitetura do projeto [Discord.js](https://github.com/discordjs/discord.js). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
 
 
-## Descrição Geral sobre o Leaflet
+## Descrição Geral sobre o Discord.js
 
 O leaflet é uma biblioteca completa em javascript que permite interagir com a api do discord. Mais informações podem ser encontradas [neste link](https://discord.com/developers/docs/intro).
