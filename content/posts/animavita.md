@@ -20,5 +20,5 @@ Este documento foi produzido por Arthur Stevam de Azevêdo Costa
 
 O Animavita é um aplicativo mobile, criado com o objetivo de ajudar seus usuários 
 a adotarem um pet. O aplicativo permite o cadastro de animais para adoção, especificando
-nome, raça, porte, dentre outras características que ajudem os usuários que desejam 
-adotar um pet a realizar a sua escolha.
+nome, raça, porte, dentre outras características que ajudem na escolha do pet pelos
+usuários que desejarem adotar.
