@@ -12,7 +12,7 @@ categories = []
 - **Contato**: anderson.vidal@ccc.ufcg.edu.br
 - **Projeto a ser documentado**: [Keycloak](https://github.com/keycloak/keycloak)
 
-# Análise da biblioteca Keycloak
+# Análise da aplicação Keycloak
 
 Este documento descreve parte da arquitetura do projeto [Keycloak](https://github.com/keycloak/keycloak) baseado no padrão do [modelo C4](https://c4model.com/)
 
