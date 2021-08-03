@@ -1,6 +1,6 @@
 +++
 title = "Documento Arquitetural do Express"
-date = 2021-07-30
+date = 2021-08-02
 tags = []
 categories = []
 +++
@@ -19,3 +19,4 @@ Este documento descreve a arquitetura do projeto [Express](https://github.com/ex
 
 ## Descrição Geral sobre o Express
 
+O Express é um framework de código aberto, utilizado em conjunto com o Node.js, tem objetivo de prover o ferramental necessário para a criação de servidores web, de maneira simples e robusta.
