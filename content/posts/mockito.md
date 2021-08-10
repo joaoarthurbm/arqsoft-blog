@@ -28,6 +28,12 @@ No desenvolvimento de softwares, os testes de unidade são fundamentais para ind
 Em testes de unidade, é desejável validar a funcionalidade de um objeto em específico. Porém, na maioria dos casos esses objetos possuem dependência de outros objetos externos, e é neste ponto que os mocks são fundamentais. Com os mocks, podemos simular o comportamento das dependências segundo a regra de negócio do sistema, e testar se a classe em questão tem a funcionalidade adequada ao contexto na qual está inserida.
 
 ## Contexto
-`Descrever o contexto no qual o mockito está inserido`
+Por ser um framework de testes em Java, o Mockito é direcionado para o uso de desenvolvedores de software que trabalham nesta linguagem. O Mockito atua em cooperação com o JUnit, que é um dos frameworks para a construção de testes automatizados mais frequentemente utilizado em projetos Java.
+
+Com o JUnit, o desenvolvedor consegue construir os testes que visam verificar o funcionamento de um determinado escopo (em geral, uma classe) e com o auxílio do Mockito é possível isolar o comportamento daquela classe de suas dependências, definindo de forma dinâmica como essas dependências externas se comportam em cenários de teste variados.
 
 ![Diagrama de Contexto](context.png)
+
+## Containers
+`Fazer descrição do diagrama de containers`
+![Diagrama de Containers](containers.png)
