@@ -11,4 +11,4 @@ Este documento foi produzido por Vinicius Barbosa da Silva.
 
 - Matrícula: 117210708
 - Contato: vinicius.barbosa.silva@ccc.ufcg.edu.br
-- Projeto documentado: https://github.com/nextcloud/docker
+- Projeto documentado: https://github.com/docker/docker-ce
