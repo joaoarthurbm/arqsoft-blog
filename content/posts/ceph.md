@@ -78,4 +78,7 @@ implementação. Faremos isso mais adiante.
 </pre>
 
 ### Visão de Informação
-...
+
+Temos um fluxo de estados bem simples, onde o arquivo é criado, e será dividido em vários pedaços pelo Data Striping. Em seguida, ele é enviado ao Algoritmo CRUSH para ser mapeado em algum Placement Group, e replicado em várias das OSDs, onde ele chegará ao seu estado final.
+
+![informacao](informacao.png)
