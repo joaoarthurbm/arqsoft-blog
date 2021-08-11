@@ -15,8 +15,8 @@ Este documento foi produzido por Luiz Bonfim Vieira Costa Neto
 - Projeto documentado: https://github.com/mockito/mockito
 
 # Descrição Arquitetural -- Mockito
-
-Este documento descreve parte da arquitetura do projeto [Mockito](https://github.com/mockito/mockito). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
+![Logo Mockito](mockito-logo.png)
+Este documento descreve parte da arquitetura do projeto [Mockito](https://github.com/mockito/mockito). As descrições e diagramas aqui presentes foram produzidos usando como base o modelo [C4](https://c4model.com/).
 
 ## Descrição Geral sobre o Mockito
 
@@ -35,5 +35,15 @@ Com o JUnit, o desenvolvedor consegue construir os testes que visam verificar o 
 ![Diagrama de Contexto](context.png)
 
 ## Containers
-`Fazer descrição do diagrama de containers`
+Por se tratar de um framework que auxilia no complemento dos testes, o Mockito é adicionado como dependência na aplicação Java que está em desenvolvimento. O desenvolvedor define na classe de teste o Runner de acordo com o framework de testes a ser utilizado (por exemplo, o JUnit) e, então, o módulo de integração irá realizar a configuração para integrar o Mockito ao framework de testes.
+
+Já no escopo dessa classe de testes, o desenvolvedor irá definir quais dependências da classe em questão terão seu comportamento simulado através do Mockito. Em geral, essa definição se dá através de anotações que se encontram no módulo core do Mockito. O Desenvolvedor também irá definir o comportamento em si dos métodos das dependências mockadas.
+
+Na execução do teste, o Core do mockito invoca o módulo de Stubbing, que irá executar os comportamentos definidos pelo desenvolvedor, no momento em que o método simulado for executado. O Módulo de Listener do Mockito monitora a invocação dos métodos para fazer a chamada do Stubbing.
 ![Diagrama de Containers](containers.png)
+
+## Componentes
+`Fazer descrição do módulo de componentes`
+
+## Visão de Informação
+`Fazer a descrição da informação do mockito`
