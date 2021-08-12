@@ -82,7 +82,7 @@ Os endpoints do controller são estes abaixo:
 * `/setup`, **POST** com JSON contendo as restrições de recursos que as réplicas da aplicação do cliente podem usar.
 * `/scailing/:app_id`, **POST** com JSON de configurações para que o controller atue no Job com aquele id.
 * `/scailing/:app_id/stop`, **PUT** para que o controller pare de atuar naquele Job com aquele id.
-* `/scalinig`, **GET** que retorna o status atual detalhado do controller.
+* `/scaling`, **GET** que retorna o status atual detalhado do controller.
 
 #### Visualizer
 
@@ -93,3 +93,20 @@ Os endpoints do visualizer são estes abaixo:
 * `/visualizing`, **POST** com JSON contendo configurações para que o visualizer inicie a visualização de um Job.
 * `/visualizing/:id/stop`, **PUT** para que o visualizer pare a visualização no Job com aquele id.
 * `/visualizing/:id`, **GET** que retorna a URL do Dashboard.
+
+
+### Visão de Informação
+
+O Asperathos tem consigo diversas informações que trafegam. Desde as configurações iniciais em JSON, até as métricas lidas pelos componentes. O essencial de se entender para um usuário do sistema, entretanto, é sobre o processamento do Job.
+
+Uma vez que o Job é submetido, a carga de trabalho é preparada na Fila de Mensagens. Nesse componente estão três filas: fila *main*, *processing* e *results*. Essas filas representam os estados de cada item alocado nela, explicremos mais adiante. 
+
+Inicialmente, se o Job for do modo *batch* toda a carga é submetida para a fila *main* de uma única vez. Caso o Job seja do tipo *streaming*, o software cliente é quem tem responsabilidade de enviar os itens de trabalho à Fila de Mensagens, e então a fila *main* recebe itens indefinidamente enquanto o Job não for finalizado.
+
+Assim que o Job inicia e a aplicação do cliente está pronta para processar itens, ela começa a ler itens da fila *main*. O item é lido e passado para a fila *processing*, onde ficará até ser finalizado. Uma vez que o item é finalizado, ele é removido, e o output do processamento é salvo na fila *results*. 
+
+Após se passar um tempo, determinado pelo cliente, com um item parado na fila *processing* ocorre um timeout. É então considerado que essa réplica da aplicação do cliente bloqueou em alguma das suas tarefas. O item é então retornado para o começo da fila *main*, e quando o cliente bloqueado finalizar ele não será capaz de publicar seus resultados à fila *results*, sendo forçado a passar para um próximo item na fila *main*.
+
+O diagrama de informação abaixo ilustra essa mudança de estado de um item conforme ele muda de fila.
+
+![fig1](containers_asperathos.png)
