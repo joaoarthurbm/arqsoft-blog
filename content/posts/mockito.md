@@ -1,7 +1,7 @@
 +++
 title = "Documentação Arquitetural do Mockito"
-date = 2021-07-28
-tags = []
+date = 2021-08-13
+tags = ["Java", "Testes"]
 categories = []
 +++
 
@@ -39,11 +39,19 @@ Por se tratar de um framework que auxilia no complemento dos testes, o Mockito �
 
 Já no escopo dessa classe de testes, o desenvolvedor irá definir quais dependências da classe em questão terão seu comportamento simulado através do Mockito. Em geral, essa definição se dá através de anotações que se encontram no módulo core do Mockito. O Desenvolvedor também irá definir o comportamento em si dos métodos das dependências mockadas.
 
-Na execução do teste, o Core do mockito invoca o módulo de Stubbing, que irá executar os comportamentos definidos pelo desenvolvedor, no momento em que o método simulado for executado. O Módulo de Listener do Mockito monitora a invocação dos métodos para fazer a chamada do Stubbing.
-![Diagrama de Containers](containers.png)
+Na execução do teste, o Core do mockito invoca o módulo de Invocation, que irá monitorar a invocação dos métodos das dependências mocadas, bem como irá executar os comportamentos pré-definidos pelo desenvolvedor na chamada desses métodos, ou, a depender do caso, executar o método real daquela dependência. Este módulo também é responsável por realizar a verificação dos argumentos e retornos dos métodos mocados.
+
+![Diagrama de Containers](containers-mockito.png)
 
 ## Componentes
-`Fazer descrição do módulo de componentes`
+Em termos de configuração, o módulo de integração com o JUnit possui basicamente o JUnitRunner, que configura o runner do mockito para se integrar ao JUnit, e o JUnitRuler, que define rules de atuação para o Mockito.
+
+No Mockito Core, podem-se definir basicamente se temos um Mock ou um Spy. Ambos são mocks implementados pelo Mockito, porém, diferem na invocação dos métodos. Para um Mock, todos os métodos utilizados pela unidade de teste devem ter seu comportamento descrito explicitamente. Já pra os Spys, caso este comportamento não seja definido explicitamente pelo desenvolvedor, será considerado a chamada do método real daquela classe. Em geral, definimos como Spy a classe foco dos testes, e todas as suas dependências são definidas como Mock. O componente responsável pela instanciação e criação dos mocks em tempo de execução é o Mock Creator.
+
+O Mockito core notifica o módulo de Invocation através de um Listener, que monitora a chamada dos métodos das dependências. Esse Listener faz uso de um Handler, que lida de fato com a chamada dos métodos, utilizando o componente Verifier para verificar se, logicamente, os argumentos e retornos dos métodos estão de acordo com o que está definido na classe, e invoca o componente de Stubbing, que de fato irá executar o comportamento pré-definido pelo desenvolvedor para os métodos, ou, em caso de ser um Spy, irá executar a implementação real daquele método.
+
+
+![Diagrama de Componentes](components.png)
 
 ## Visão de Informação
 `Fazer a descrição da informação do mockito`
