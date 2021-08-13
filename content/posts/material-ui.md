@@ -44,7 +44,9 @@ que utilizam o framework ReactJS. A linguagem de programação é indiferente, p
 ser tanto javascript, quanto typescript. Ao adicionar o Material UI em um projeto,
 o desenvolvedor ou a empresa tem alinhado em mente que essa decisão arquitetural
 irá impactar, principalmente, a agilidade na construção das interfaces e uma padronização
-e reutilizalção de código em todo o projeto.
+e reutilizalção de código em todo o projeto. Isso de deve ao fato de que os componentes
+do Material-UI funcionam isoladamente. Eles são independentes, e só irão injetar os
+estilos que eles precisam para exibir.
 
 ![fig1](context-diagram.png)
 
