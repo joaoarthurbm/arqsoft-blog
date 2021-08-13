@@ -54,4 +54,6 @@ O Mockito core notifica o módulo de Invocation através de um Listener, que mon
 ![Diagrama de Componentes](components.png)
 
 ## Visão de Informação
-`Fazer a descrição da informação do mockito`
+O Diagrama de informação abaixo demonstra o ciclo de vida de um Mock na execução de um teste. Primeiramente, esse mock é pré-configurado pelo desenvolvedor. Durante a execução dos testes, as dependências mocadas são isntanciadas e, no fluxo de execução do teste, têm seus métodos invocados. São verificados então se há Stubbings definidos para aqueles métodos, para realizar a execução simulada definida pelo desenvolvedor. Caso não haja um Stubbing definido para o método, existe a possibilidade de ser um Spy mock, e, dessa forma, realizar a execução real do método. Caso contrário, o mockito lançará uma exceção. Após a execução de todos os passos e verificação das assertivas, o teste é finalizado.
+
+![Máquina de estados do mock](info.png)
