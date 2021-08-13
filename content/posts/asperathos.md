@@ -1,6 +1,6 @@
 +++
 title = "Documento Arquitetural do Asperathos"
-date = 2021-07-27
+date = 2021-07-13
 tags = []
 categories = []
 +++
@@ -17,7 +17,6 @@ Este documento foi produzido por Diego Alves Gama.
 
 Este documento descreve a arquitetura do projeto [Asperathos](https://github.com/ufcg-lsd/asperathos). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
 
-#TODO.
 
 ## Descrição Geral sobre o Asperathos
 
@@ -109,4 +108,4 @@ Após se passar um tempo, determinado pelo cliente, com um item parado na fila *
 
 O diagrama de informação abaixo ilustra essa mudança de estado de um item conforme ele muda de fila.
 
-![fig1](containers_asperathos.png)
+![fig1](informacao_asperathos.png)
