@@ -1,66 +1,36 @@
 # Autor
 
-Este documento foi produzido por Italo Pereira.
+Este documento foi produzido por Italo Modesto Pereira.
 
 - Matrícula: 116211154
 - Contato: italo.pereira@ccc.ufcg.edu.br
 - Projeto documentado: https://github.com/torvalds/linux
 
-# Descrição arquitetural -- Anki
+# Descrição arquitetural - Kernel do Linux
 
-![fig1](anki_icon.png)
+Este documento descreve a arquitetura do [kernel do Linux](https://github.com/torvalds/linux). E esta descrição segue o modelo [C4](https://c4model.com/).
 
-(Imagem: Alex Fraser/Anki)
+## Sobre o Kernel do Linux
 
-Este documento descreve a arquitetura do aplicativo [Anki](https://github.com/ankitects/anki). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
-
-## Sobre o Anki
-
-[Anki](https://apps.ankiweb.net/) é um serviço open source e gratuito para auxiliar na memorização de conteúdos de forma eficiente, automática e customizável.
-
-Ele permite ao usuário estudar cartões (compostos geralmente por uma pergunta na frente e sua resposta no verso) através de um sistema de repetição espaçada, ou seja, mostrando os cartões novamente em intervalos de tempo baseados no quão bem o usuário sabe o conteúdo daquele cartão. Os cartões podem possuir texto, imagens, áudio e vídeo, permitindo que o Anki seja usado para estudar praticamente qualquer tipo de conteúdo, como idiomas, conteúdo acadêmico ou artístico.
-
-Os usuários podem criar seus próprios baralhos com qualquer conteúdo nos cartões ou usar baralhos prontos criados por outros usuários, disponíveis na plataforma [AnkiWeb](https://ankiweb.net/shared/decks/).
-
-## O Serviço de monitoramento do twitter
-
-### Objetivo Geral
-
-Disponibilizar um serviço para aprendizagem através de repetição espaçada.
-
-### Objetivos Específicos
-
-- Promoção de um serviço de repetição espaçada com cartões que automatiza e abstrai do usuário o que for possível, para que ele foque no estudo dos cartões.
-- Flexibilidade na customização da apresentação dos cartões (como apresentação de cartões novos e intervalos de repetições)
-- Formatação dos cartões com diversos tipos de mídia, como texto, imagens, áudio e vídeo
-- Disponibilizade do serviço em plataforma web e aplicativos para Windows, Linux, Mac OS X, Android e iOS
-- Acesso do estado mais recente da coleção do usuário em qualquer dispositivo, através da sincronização com o servidor
-- Visualização de métricas de utilização, como índice de acertos, previsão de revisões, dificuldade dos cartões e tempo necessário para estudo
-- Biblioteca de baralhos disponíveis para uso construída pela comunidade no serviço AnkiWeb
-- Extensão da funcionalidade através de add-ons que podem ser desenvolvidos e instalados pelo usuário
+O Kernel, ou núcleo, do linux é a parte do sistema operacional (SO) responsável por gerenciar os recursos de hardware do sistema computacional e também é responsável pela sincronização dos processos que executam nesse SO. 
 
 ### Contexto
 
-![fig2](anki_contexto.png)
+<img src="linux/kernel_contexto.png"></img>
 
-- **Usuário**: O usuário deseja usar o Anki para criar e estudar baralhos com os cartões que contém as informações. Para isso, ele interage com a interface principal do Anki e com o AnkiWeb (Shared).
-- **Anki**: Na interface principal, o usuário pode ver seus baralhos, adicionar, editar ou estudar cartões, ver informações estatísticas e editar configurações. O Anki sincroniza todo seu estado com o AnkiWeb.
-- **AnkiWeb**: No servidor AnkiWeb, ficam armazenados os dados e baralhos dos usuários. O Anki sincroniza os dados com o AnkiWeb para que o usuário não os perca e possa acessá-los de qualquer dispositivo.
-- **AnkiWeb (Shared)**: Essa é a plataforma na web na qual o usuário pode pesquisar e baixar baralhos feitos por outros usuários e fazer upload de seus baralhos para a plataforma pública.
+Quando as aplicações que estão em execução no linux precisam de uma operação do hardware, como por exemplo buscar dados no disco ou simplesmente processar algum comando, essas aplicações não têm permissão para acessar o hardware diretamente. Para intermediar essa comunicação, e fazer muito mais do que isso, existe o kernel, que estende a interface de programação do hardware provendo a sua pŕopria interface para as aplicações, a system call interface (interface de chamadas ao sistema).
+Uma vez que o kernel recebe as chamadas ao sistema das aplicações, ele gerenciará todos os recursos de hardware necessários para atender àquela chamada. 
 
 ### Containers
 
-![fig3](anki_containers.png)
+<img src="linux/kernel_containers.png"></img>
 
-- **Versões da interface do Anki**: O Anki está disponível em diversas plataformas.
-  - **Anki (Windows, Linux, Mac OS X)**: versões do aplicativo desktop do Anki. Possuem todas as funcionalidades.
-  - **AnkiWeb (Decks)**: aplicativo do Anki no navegador. Permite apenas adicionar e editar notas e estudar baralhos, sem componentes como gerenciador de configurações, editor de tipos de nota, visualização de métricas de utilização e add-ons (mais informações abaixo).
-  - **AnkiMobile**: aplicativo do Anki para iOS. Possui todas as funcionalidades da versão desktop, exceto add-ons. Com o objetivo de apoiar a equipe de desenolvimento, é a única versão paga do Anki.
-  - **AnkiDroid**: aplicativo do Anki para Android. Possui todas as funcionalidades da versão desktop, exceto add-ons.
-- **Add-ons**: o usuário pode buscar add-ons desenvolvidos pela comunidade que complementam a funcionalidade do Anki. Os add-ons são visualizados através do AnkiWeb (Shared), mas o próprio aplicativo do Anki se encarrega de baixar e instalar. Exemplos de add-ons: dicionário embutido, assistente de foco, edição de cartões em massa, leitor de tela.
-- **Banco de Dados SQLite**: um banco de dados completo é criado para armazenar a coleção de cada usuário. Cada instalação local do aplicativo do Anki, além do próprio servidor AnkiWeb, possui uma cópia do banco. As mudanças são sincronizadas com o AnkiWeb automaticamente pelo aplicativo ao início e final de cada sessão ou a pedido do usuário. O Anki resolve conflitos automaticamente, mas algumas mudanças, como a adição de um estilo novo de cartão, requerem que a cópia do banco no AnkiWeb seja apagada e substituída completamente.
-
-**Obs.**: o usuário que deseja usar o serviço do Anki em um dispositivo iOS sem comprar o aplicativo pode fazer isso através do AnkiWeb (Decks) no navegador, mas precisará de acesso ao aplicativo em outro dispositivo, pois o aplicativo no navegador não possui todas as funções necessárias.
+**Applications**: representa as aplicações que executam no linux e se comunicam com o kernel através de chamadas ao sistema.
+<br>
+**System Call Interface:** representa a interface de chamadas ao sistema que é provida pelo kernel e consumida pelas aplicações que executam no SO.
+<br>
+**Kernel Subsystems:** Nesse módulo estão contidos os subsistemas do kernel que recebem as chamadas ao sistema das aplicações, por meio da interface de chamadas ao sistema, e gerenciam os recursos de hardware necessários para atender a essas chamadas.
+<br>
 
 ### Componentes
 
