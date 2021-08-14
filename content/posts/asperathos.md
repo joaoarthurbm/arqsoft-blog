@@ -1,6 +1,6 @@
 +++
 title = "Documento Arquitetural do Asperathos"
-date = 2021-07-13
+date = 2021-08-13
 tags = []
 categories = []
 +++
@@ -94,6 +94,44 @@ Os endpoints do visualizer são estes abaixo:
 * `/visualizing/:id`, **GET** que retorna a URL do Dashboard.
 
 
+### Componentes
+
+Todos os containers do Asperathos seguem uma arquitetura de plugin. A maior implicação disso, é que não há detalhes muito minunciosos de implementação para cada um, visto que são feitos para comportar diversas possibilidades de plugin. Eles, entretanto, devem seguir responsabilidades bem definidas, como falamos na seção anterior, mas que separaremos aqui componente a componente de cada container.
+
+Cada container tem dois componentes em comum: a **API REST** (como discutimos) e o **gerente de plugins**. A API REST já foi explicada e não há mais detalhes do que isso, mas o gerente de plugins é o responsável por instalar as opcões de plugin e decidir qual usar de acordo com a configuração do Job. Abaixo, estão os componentes diferenciais de cada um.
+
+#### Manager
+
+O Manager coordena os outros containers e também o Job. Ele consegue fazer isso dividindo suas responsabilidades entre três componentes: o **executor de Job**, o **gerente** e o **componente de persistência**.
+
+O **executor de Job** é o responsável por se comunicar com a API da infraestrutura (e.g. Kubernetes) para poder criar e configurar as aplicações auxiliares e a aplicação do cliente no cluster, bem como inicializar a carga de trabalho na Fila de Mensagens para que o Job possa começar.
+
+#### Monitor
+
+Como vimos, o Monitor tem responsabilidade de coletar as métricas e publicá-las no BD. Isso é dividido de maneira simples entre três componentes: o **coletor**, o **processador** e o **publicador**. Cada um deles é um plugin que pode ser substituído.
+
+O **coletor** é responsável pela coleta. Não só pegar as métricas, como também decidir de onde elas vêm. Por padrão utilizamos apenas a Fila de Mensagens, mas outras fontes podem ser utilizadas. Por exemplo: uso de CPU/RAM dos nós do cluster, coletados através da API do Kubernetes.
+
+O **processador** utiliza as métricas para produzir novas ou refiná-las. Enquanto o coletor lê a quantidade de itens produzida, o processador é o responsável por utilizar isso e produzir a métrica de fluxo de itens por segundo. Ele pode também deduzir as distâncias de tempo entre cada item.
+
+O **publicador** utiliza as métricas refinadas do processador para publicá-las no Banco de Dados de Série Temporal. Essa função é simples, e só precisa ser reimplementada quando o Banco de Dados é diferente. Por padrão, é o InfluxDB.
+
+![fig1](componente_monitor_asperathos.png)
+
+#### Controller
+
+O Controller é responsável por decidir quando, como e com qual intensidade atuar no escalonamento das réplicas, baseado em métrias lidas no BD, e também aplicar a decisão. Ele divide essas tarefas em três componentes: o **controlador**, o **atuador** e o **coletor**.
+
+O **controlador** é o componente de inteligência, e é responsável por decidir baseado nas métricas. Esse é o plugin de maior impacto do container e talvez da aplicação, pois afeta diretamente o progresso do job.
+
+O **atuador** é responsável por se conectar com a interface da estrutura (i.e. API do Kubernetes) e aplicar as decisões do controlador. Essa função é simples, e só precisa ser reimplementada quando a Infraestrutura é diferente.
+
+O **coletor** é quem lê as métricas do Banco de Dados de Série Temporal. Essa função é simples, e só precisa ser reimplementada quando o Banco de Dados é diferente.
+
+#### Visualizer
+
+O Visualizer, sendo responsável por gerir o Dashboard Analítico, é bem separado da lógica normal. Ele não possui componentes bem definidos, tendo apenas um plugin, que é o responsável por tudo.
+
 ### Visão de Informação
 
 O Asperathos tem consigo diversas informações que trafegam. Desde as configurações iniciais em JSON, até as métricas lidas pelos componentes. O essencial de se entender para um usuário do sistema, entretanto, é sobre o processamento do Job.
@@ -109,3 +147,9 @@ Após se passar um tempo, determinado pelo cliente, com um item parado na fila *
 O diagrama de informação abaixo ilustra essa mudança de estado de um item conforme ele muda de fila.
 
 ![fig1](informacao_asperathos.png)
+
+# Contribuições Concretas
+
+Foi feito um PR contendo os diagramas realizados aqui. Como o repositório já possui documentação, a adição foi pouca para que os diagramas coubessem de maneira a agregar informação. Além disso, visto que a documentação foi produzida em Inglês no repositório, os diagramas tiveram de ser traduzidos.
+
+https://github.com/ufcg-lsd/asperathos/pull/11
