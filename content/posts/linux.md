@@ -25,26 +25,15 @@ Uma vez que o kernel recebe as chamadas ao sistema das aplicações, ele gerenci
 
 <img src="linux/kernel_containers.png"></img>
 
-**Applications**: representa as aplicações que executam no linux e se comunicam com o kernel através de chamadas ao sistema.
-<br>
-**System Call Interface:** representa a interface de chamadas ao sistema que é provida pelo kernel e consumida pelas aplicações que executam no SO.
-<br>
-**Kernel Subsystems:** Nesse módulo estão contidos os subsistemas do kernel que recebem as chamadas ao sistema das aplicações, por meio da interface de chamadas ao sistema, e gerenciam os recursos de hardware necessários para atender a essas chamadas.
+Abrindo o kernel para analisar os componentes que o compõem, aqui chamados de containers, encontramos os seguintes componentes:
+*Applications*, que representa as aplicações que executam no linux e se comunicam com o kernel através de chamadas ao sistema. *System Call Interface*, que representa a interface de chamadas ao sistema que é provida pelo kernel e consumida pelas aplicações que executam no SO. E por fim, os *Kernel Subsystems*, que representa os subsistemas do kernel que recebem as chamadas ao sistema das aplicações, por meio da interface de chamadas ao sistema, e gerenciam os recursos de hardware necessários para atender a essas chamadas.
 <br>
 
 ### Componentes
 
-![fig4](anki_componentes.png)
+<img src="linux/kernel_components.png"></img>
 
-**Obs.**: os componentes com contorno em **vermelho** não estão disponíveis na plataforma **AnkiWeb (Decks)** no navegador, apenas nos aplicativos para desktop e celular.
-
-Há uma relação próxima entre os gerenciadores de configurações, baralhos, tipos de cartões, notas e cartões:
-- Uma **configuração** é um conjunto de parâmetros que define quantos cartões novos serão mostrados por dia, o fator de multiplicação para o tempo em que o cartão será mostrado novamente de acordo com a resposta, a quantidade diária máxima de revisões etc. Pode ser criado qualquer número de configurações e uma configuração pode ser usada por qualquer quantidade de baralhos.
-- Um **tipo de nota** é um esquema que define quais campos uma nota terá. O padrão são dois campos (frente e verso), mas podem ser adicionados mais tipos com outros campos (como mídia e informações adicionais). Um tipo de nota possui um ou mais **tipos de cartão**. O tipo padrão possui o campo da frente na frente e o campo do verso no verso, mas isso pode ser customizado (e deve, caso campos além da frente e verso sejam adicionados). Os cartões são escritos em HTML.
-- Uma **nota** é uma instância de um tipo de nota, com as informações a serem inseridas nos campos daquele tipo. Uma nota representa uma quantidade de cartões igual à quantidade de tipos de cartão naquele tipo de nota.
-- Um **baralho** é um conjunto de notas. As notas de um baralho não precisam ser todas do mesmo tipo. O conjunto de cartões de um baralho é a união dos cartões de cada nota. Permitir ao usuário estudar os cartões de um baralho é o principal objetivo do Anki.
-
-O Anki já vem com alguns tipos de nota padrão, para que não seja necessário que o usuário saiba gerenciá-los ou precise criar as formatações para os cartões em HTML.
+Abindo o container *Kernel Subsystems*, podemos encontras os seguintes componentes: *Architecture-dependent code*, que é o componente no qual estão os códigos dependentes da arquitetura do hardware que compõe a máquina. Ele é responsável por organizar o esquema de diretórios e se comunica diretamente com a unidade central de processamento (do inglês, CPU). *Memory Manager*, que é o componente responsável pela alocação, relocação e proteção da memória. É esse componente que gerencia o consumo da memória entre os diversos processos que executam no linux. Como é de se esperar, ele se comunica diretamente com a memória RAM para antender às demandas solicitadas pelas aplicações, via system calls. *File System Types*, que é o componente responsável pela manipulação de arquivos, quando operações como essa são requisitadas pelas aplicações. E se comunica diretamente com o *Block Devices*, que por sua vez é responsável pelo acesso (escrita e leitura) aos dados em disco. *Character Devices*, que é o componetne responsável pelo acesso (escrita e leitura) aos dados dos consoles. *Network Subsystem*, que no envio de dados pela rede, esse componente é responsável por porcessar os pacotes que chegam na camada de transporte e entregam-nos para a camada de rede. No recebimento de dados da internet, esse componente faz o caminnho inverso, processando esses pacotes da camada de rede para a camada de transporte. Além disso, existem componentes externos ao kernel, que são os hardwares. Sendo eles, a *CPU*, que é o hardware responsável por processar as instruções de máquina e se comunica diretamente com o Architecture-dependent code. A *Memory*, que é responsável pelo armazenamento volátil dos processos em execução e arquivos necessários para a execução dos mesmos. Este componente se comunica diretamente como  *Manager Memory*, que é o componente responsável por gerenciar esse recurso de hardware, como foi dito acima. Os *Disks and CDs*, que representam os dispositivos de armazenamento persistentes e se comunicam com o *Block Devices*, para armezar ou fornecer dados.
 
 ### Código
 
