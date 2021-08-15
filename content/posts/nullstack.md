@@ -34,6 +34,8 @@ O objetivo do serviço de criação de SPA´s provido pelo Nullstack é de facil
 
 Com o Nullstack instalado na máquina do desenvolvedor a escrita de código segue um padrão apresentado na documentação do framework. O desenvolvedor pode escolher o tipo de renderização escolhida para o framework gerar as Views da aplicação. Para criar a View de Single Page Application, o framework utiliza 3 etapas para renderização das páginas criadas: pre-render(pelo servidor NodeJs do Framework), re-render(mudanças em Views do Client) e render(Criação de novas Views no Client).
 
+Abaixo se encontra o diagrama de contexto.
+
 ![fig1](Diagrama de Contexto.png)
 
 ### Containers
@@ -42,7 +44,7 @@ O serviço de SPA do Nullstack é composto de 3 containers: aplicação client-s
 
 As aplicações se comunicam com o servidor via HTTPS. As SPA´s conversam com o framework atráves de virtual pipeline, para poder ser produzidas em paralelo.
 
-Abaixo se encontra o diagrama de containers.
+Abaixo encontra-se o diagrama de containers.
 
 ![fig2](Diagrama de Container.png)
 
@@ -59,5 +61,7 @@ Abaixo está o diagrama de componentes.
 ### Visão de Informação
 
 Na Visão de informação é descrito o(s) estado(s) que uma dado pode atingir no decorrer do processamento das funcionalidades do sistema, ao iniciarmos o processo de criação de SPA pelo framework o prerender.js é acionado e inicia a processar a parte do servidor do framework para construir o fluxo de renderização daquela View, após o estado anterior ter sido finalizado o dado é modificado pelo prerender.js com o intuito de mitigar os erros nas informacoes das SPA´s que irão ser renderizadas pelo client-side do framework. Finalizando, o render.js cria novos galhos na árvore principal com as novas visualizações de páginas únicas na aplicação, sendo renderizadas onde quiser.
+
+Abaixo temos o diagrama de visão de informação.
 
 ![fig4](Diagrama de Visao.png)
