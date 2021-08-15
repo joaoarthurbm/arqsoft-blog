@@ -44,14 +44,14 @@ dos servidores, já que são executados pelo mesmo kernel de um sistema operacio
 ótima alternativa a virtualização tradicional com máquinas virtuais que levantam o SO inteiro
 e acabam desperdiçando recursos.
 
-Os containers são inicializados com uma Imagem base que pode vir de registro privados ou públicos
-como o [docker hub](https://hub.docker.com/). As imagens são construídas por camadas e podem vir 
-pre-configuradas com um software de interesse da aplicação que rodará no container. exemplos de imanges: mysql, ubuntu, alpine, nginx, apache, etc. 
+Os containers são inicializados através de uma [Imagem](https://searchitoperations.techtarget.com/definition/Docker-image) base que pode vir de registros privados ou públicos
+como o [docker hub](https://hub.docker.com/), por exemplo. As imagens são construídas por camadas e podem vir
+pre-configuradas com um software de interesse da aplicação que rodará no container. Exemplos de imagens: mysql, ubuntu, alpine, nginx, apache, etc.
 Mais detalhes sobre o projeto Docker e sobre containers podem ser vistos [aqui](https://www.docker.com/resources/what-container).
 
 ![docker-multilayer](docker-filesystems-multilayer.png)
 
-###### Imagem retirada de [[3](https://ragin.medium.com/docker-what-it-is-how-images-are-structured-docker-vs-vm-and-some-tips-part-1-d9686303590f)]. Nela, podemos ver que o container roda em cima de uma imagem composta por diversas camadas, onde cada uma possui um software específico. É importante mencionar que na base existe um "mini sistema operacional", nesse caso do exemplo o alpine linux
+###### Imagem retirada de [[3](https://ragin.medium.com/docker-what-it-is-how-images-are-structured-docker-vs-vm-and-some-tips-part-1-d9686303590f)]. Nela, podemos ver que o container roda em cima de uma imagem composta por diversas camadas, onde cada uma possui um software específico. É importante mencionar que na base existe um "mini sistema operacional", que no caso desse exemplo é o alpine linux
 
 ## Diagrama de Contexto
 
@@ -73,7 +73,7 @@ A **CLI** é implementada em golang e [usa a biblioteca Cobra](https://github.co
 A RESTful **API application** fornece seus serviços por meio do protocolo HTTP ([ver mais](https://docs.docker.com/engine/api/)). Essa api faz a conexão entre a CLI ou aplicação que usa a api diretamente com o deamon do Docker (chamado [Docker Engine API](https://docs.docker.com/engine/api/v1.41/#)), que é o core do Docker e que será melhor descrito no diagrama de componentes.
 
 O **Docker storage directory** é responsável por armazenar os dados dos containers (o filesystem e seus volumes) e as imagens que foram baixadas do registro. Por default, o repositório se encontra em `/var/lib/docker`, mas pode ser trocado para qualquer outro diretório
-no sistema de arquivos do servidor, por ex, em um disco externo: `/mnt/disk3/docker`.
+do sistema de arquivos, por exemplo, em um disco externo: `/mnt/disk3/docker`.
 
 ![container_diagram](diagrama-container.png)
 
@@ -87,7 +87,7 @@ O **Kernel Component** existe para lidar com o sistema operacional linux e pedir
 
 O **Container Component** lida com o gerenciamento dos containers.
 
-O **Image Component** lida com o gerenciamento, criação de imagens localmente e download/envio de imagens para o registro.
+O **Image Component** lida com o gerenciamento, criação de imagens e download/envio de imagens para o registro.
 
 ![components_diagram](diagrama-componentes.png)
 
