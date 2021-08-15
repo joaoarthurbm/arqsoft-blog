@@ -46,7 +46,7 @@ O objetivo do Banco de Dados é armazenar métricas sensíveis ao tempo; o da Fi
 
 Esses containers são importantes para gerenciar dados e métricas que serão posteriormente utilizados pelos containers principais do Asperathos. O diagrama a seguir ilustra como os containers se relacionam.
 
-![fig1](containers_asperathos.png)
+![fig2](containers_asperathos.png)
 
 #### Manager
 
@@ -110,7 +110,7 @@ O **gerente** é o responsável por gerenciar os outros containers em si. Ele re
 
 O **componente de persistência** não tem um nome específico, mas é responsável por persistir dados do Job em um banco local SQLite. Dessa maneira além de salvar dados sobre o Job atual, o Manager consegue manter histórico dos Jobs anteriores.
 
-![fig1](componente_manager_asperathos.png)
+![fig3](componente_manager_asperathos.png)
 
 #### Monitor
 
@@ -124,7 +124,7 @@ O **processador** utiliza as métricas para produzir novas ou refiná-las. Enqua
 
 O **publicador** utiliza as métricas refinadas do processador para publicá-las no Banco de Dados de Série Temporal. Essa função é simples, e só precisa ser reimplementada quando o Banco de Dados é diferente. Por padrão, é o InfluxDB.
 
-![fig1](componente_monitor_asperathos.png)
+![fig4](componente_monitor_asperathos.png)
 
 #### Controller
 
@@ -136,7 +136,7 @@ O **atuador** é responsável por se conectar com a interface da estrutura (i.e.
 
 O **coletor** é quem lê as métricas do Banco de Dados de Série Temporal. Essa função é simples, e só precisa ser reimplementada quando o Banco de Dados é diferente.
 
-![fig1](componente_controller_asperathos.png)
+![fig5](componente_controller_asperathos.png)
 
 #### Visualizer
 
@@ -156,7 +156,7 @@ Após se passar um tempo, determinado pelo cliente, com um item parado na fila *
 
 O diagrama de informação abaixo ilustra essa mudança de estado de um item conforme ele muda de fila.
 
-![fig1](informacao_asperathos.png)
+![fig6](informacao_asperathos.png)
 
 # Contribuições Concretas
 
