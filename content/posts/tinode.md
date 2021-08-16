@@ -32,58 +32,146 @@ O Tinode chat é um aplicativo multiplataforma de mensagens instantâneas, com �
 
 ### Objetivo Geral
 
-Implementar um serviço para capturar automaticamente o que é dito no twitter sobre as proposições que acompanhamos e prover indicadores sobre as publicações para serem usados no parlametria.
+Criar uma plataforma de serviço de chat que seja descentralizada, se tornando muito mais difícil de ser rastreada e bloqueada (por exemplo, por governos).
 
 ### Objetivos Específicos
 
-Queremos ter acesso ao grau de atividade no twitter de parlamentares e de influenciadores do debate no twitter. Além disso, queremos saber quanto essas pessoas tuítam sobre cada proposição ou tema e a indicadores sobre sua atividade. Para parlamentares também queremos indicadores a partir dos léxicos de discurso desenvolvidos pelos nossos parceiros.
+Além de oferecer as funcionalidades básicas de um mensageiro, a ideia é também oferecer liberdade de suporte a diferentes tipos de conexão (pelo usuário) e liberdade de suporte a backends de autenticação personalizados (pelo implantador do sistema). O sistema oferece três abstrações que servem de base em toda a sua implementação, são elas:
+
+- Sessão: conexão entre um client e o servidor (conexão pode ser via gRPC, websocket ou long polling)
+
+- Tópico: canal de comunicação que roteia conteúdo entre sessões. Tópicos podem ser do tipo peer-to-peer (para conversas entre duas pessoas) ou do tipo grupo (para conversas com mais de 2 participantes);
+
+- Usuário: uma pessoa que se conecta ao servidor por meio de uma sessão. Usuários se inscrevem em tópicos para receber mensagens.
 
 ### Contexto
 
-Nesta seção eu espero duas coisas: o diagrama de contexto e um texto curto descrevendo em mais detalhes o contexto do sistema. Isso inclui as fronteiras do sistema, os sistemas/serviços externos com os quais ele se comunica etc.
+O Tinode Chat é uma aplicação de mensageria multiplataforma, em que usuários podem utilizar o serviço uma vez que tenham uma conta no mesmo, existindo a possibilidade de criação de contas anônimas. Usuários podem enviar mensagens para outros usuários ou para grupos compostos por usuários. O Tinode Chat faz uso de um outro serviço da Tinode, chamado Tinode Push Gateway, para fazer o envio e o recebimento de notificações do tipo push.
 
-Abaixo estão dois exemplos de diagramas de contexto.
-
-![fig1](c4-context.png)
-
-<img class="center" src="parlametria-contexto.png" style="width:60%">
+<img src="./context.jpg" style="width:115%; display: flex; margin: 0 auto"/>
 
 ### Containers
 
-Nesta seção eu espero duas coisas: o diagrama de containers e texto descrevendo os containers. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada container, suas tecnologias, APIs expostas, protocolos, onde são executados/implantados etc. Você pode criar um diagrama de implantação para dar mais detalhes sobre o ambiente em que os containers são implantados e executam. Essa parte de implantação pode ser uma subseção desta seção.
+<img src="./container2.jpg" style="width:175%; display: flex; margin: 0 auto"/>
 
-Importante, se um componente expor, por exemplo, uma API REST. Seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints [deste documento](https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing).
+##### Clients
 
-Importante, se um container expuser, por exemplo, uma API REST, seria importante descrever os principais serviços. Talvez até com exemplos de payloads (jsons) para os serviços mais importantes. Ver seção endpoints [deste documento](https://docs.google.com/document/d/1OGPN7crENY5u9AiR_AE7Cb9rT92T-U-YppZL0m4TT2s/edit?usp=sharing).
+Proveem a interação do usuário com o servidor do Tinode Chat, por meio de três tipos de conexão, sendo eles: HTTPS (método long polling), WebSocket e gRPC (por meio de sockets TCP ou Unix). As principais funcionalidades fornecidas são:
 
-Abaixo estão exemplos de diagramas de containers e de implantação.
+- Possibilidade de uso multiplataforma, oferencendo opções de uso via Android, iOS, Web ou linha de comando;
+- Conversas particulares ou em grupo;
+- Pesquisa por usuários específicos;
+- Formatação de mensagens estilo markdown;
+- Envio de arquivos;
+- Formulários e mensagens com template, facilitando o uso de chatbots;
+- Possibilidade de checar o status de uma mensagem, que pode ser: entregue ao servidor, recebida, lida ou sendo digitada;
+- Usuários anônimos;
+- Opção de utilizar plugins para estender funcionalidades do sistema.
 
-![fig3](c4-containers.png)
-![fig4](parlametria-container.png)
-![fig5](c4-implantacao.png)
-![fig6](parlametria-implantacao.png)
+##### Authentication Service
+
+Responsável pela autenticação de usuários no servidor. Além de já possuir uma implementação própria, também provê interfaces que possibilitam a integração com soluções de autenticações customizadas.
+
+##### Database
+
+Responsável por armazenar informações de usuários, tópicos e mensagens.
+
+##### Tinode Chat Server
+
+Responsável por responder a todas as requisições dos clientes, bem como manter a aplicação atualizada em tempo real. Aceita conexões via HTTPS (método long polling), WebSocket e gRPC (por meio de sockets TCP ou Unix). Os endpoints oferecidos são:
+
+- /v0/channels para conectar-se ao servidor via websocket
+- /v0/channels/lp para conectar-se ao servidor via long polling
+- /v0/file/u para realizar upload de arquivos
+- /v0/file/s para realizar download de arquivos
+
+Uma vez realizada a conexão entre cliente e servidor, a comunicação entre eles se dá pelo envio de mensagens. Mensagens possuem tipos específicos e bem definidos, como por exemplo:
+
+- Mensagem do tipo {pub}:
+
+```
+pub: {
+  id: "1a2b3", // id da mensagem
+  topic: "grp1XUtEhjv6HND", // tópico ao qual a mensagem está endereçada
+  head: { key: "value", ... }, // configurações
+  content: { ... }  // conteúdo a ser publicado no tópico (textos, arquivos, etc)
+}
+```
+
+Esse tipo de mensagem é utilizado por usuários para publicar conteúdo em um tópico. Ao publicar o conteúdo em um tópico, todos os usuários cadastrados naquele tópico irão receber aquele conteúdo.
+
+- Mensagem do tipo {leave}:
+
+```
+leave: {
+  id: "1a2b3",  // id da mensagem
+  topic: "grp1XUtEhjv6HND",   // nome do tópico a ser deixado
+}
+```
+
+Esse tipo de mensagem é utilizada quando um usuário quer deixar de participar de um tópico em específico. Ao fazer isso, o usuário deixa de receber mensagens entregues àquele tópico.
+
+- Mensagem do tipo {login}:
+
+```
+login: {
+  id: "1a2b3",     // id da mensagem
+  scheme: "basic", // esquema de autenticação
+  secret: base64encode("username:password"), // senha criptografada
+  cred: [
+    {
+      meth: "email", // método de verificação (como email, celular, captcha, etc)
+      resp: "178307" // resposta da verificação
+    },
+  ...
+  ],
+}
+```
+
+Esse tipo de mensagem é utilizada quando um usuário quer fazer login no servidor.
 
 ### Componentes
 
 Nesta seção eu espero duas coisas: o diagrama de componentes e texto descrevendo os componentes. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada componente, seus relacionamentos, tecnologias, APIs expostas, protocolos, estilos, padrões etc.
 
-Abaixo um exemplo de diagrama de componente.
+<img src="./component.jpg" style="width:175%; display: flex; margin: 0 auto"/>
 
-![fig7](c4-componentes.png)
+##### Session Module
 
-### Código
+Responsável por requisitar o envio de mensagens e também receber mensagens. Além disso, também faz as requisições para subscrição em tópicos pelos usuários.
 
-<pre>
-Nesta etapa não faremos diagramas que apresentam detalhes da
-implementação. Faremos isso mais adiante.
-</pre>
+##### Database Adapter
+
+Provê a interface responsável pela comunicação com o banco de dados da aplicação. A partir desse componente, é possível coletar e atualizar dados do banco da aplicação.
+
+##### Topic Module
+
+Responsável por lidar com a lógica relacionada a tópicos, como por exemplo, receber mensagens e também fazer o envio (broadcast) de mensagens para todos os usuários que estão inscritos em um tópico.
+
+##### Push Module
+
+Provê a interface responsável pela comunicação com o Tinode Push Gateway, que é o serviço de envio de notificações do tipo push feito pela Tinode. A partir desse componente, é possível fazer requisições para o envio de notificações do tipo push para clientes específicos.
+
+##### User Module
+
+Responsável por lidar com a lógica relacionada a usuários, como por exemplo, realizar a criação de contas de usuários, realizar login e realizar requisição para envio de mensagens a um tópico.
+
+##### Authentication Module
+
+Provê a interface responsável pela comunicação com o serviço de autenticação utilizado pela aplicação. Por meio desse componente, é possível fazer requisições relacionadas à autenticação de usuários, como por exemplo: login, logout, criação de conta de usuário e deleção de conta de usuário.
 
 ### Visão de Informação
 
-Aqui você deve descrever as informações importantes que são coletadas, manipuladas, armazenadas e distribuídas pelo sistema. Você não precisa descrever todas as informações, somente uma parte que seja essencial para o sistema. Por exemplo, se eu estivesse tratando do instagram, faria algo relacionado aos posts.
+<img src="./info.jpg" style="width:115%; display: flex; margin: 0 auto"/>
 
-Além da descrição gostaria de ver aqui um diagrama para descrever os estados (ex: máquina de estados) de uma informação de acordo com as ações do sistema.
+Mensagens são as informações mais importantes na aplicação do Tinode. Ao utilizar o Tinode Chat, é possível visualizar determinados estados em que uma mensagem pode se encontrar, são eles:
 
-# Contribuições Concretas
+- Em digitação: enquanto um usuário está digitando uma mensagem, pessoas inscritas no tópico em que aquela mensagem será enviada poderão visualizar que uma mensagem está sendo escrita;
 
-_Descreva_ aqui os PRs enviados para o projeto e o status dos mesmos. Forneça os links dos PRs.
+- Enviada: a mensagem, após escrita, é enviada ao servidor;
+
+- Recebida: a mensagem enviada ao servidor chega ao tópico destino com sucesso. Esse estado é alcançado quando todos os usuários inscritos no tópico recebem a mensagem;
+
+- Perdida: em casos de problema de conexão, uma mensagem pode não ser enviada e um erro é mostrado ao usuário que fez a tentativa de envio;
+
+- Lida: esse estado é alcançado quando todos os usuários inscritos no tópico leem a mensagem.
