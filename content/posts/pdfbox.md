@@ -40,7 +40,7 @@ Após a interação, o programa imprime o pdf no sistema de arquivos ou na impre
 
 Abaixo, observamos o diagrama de container para a aplicação Signal:
 
-![Diagrama de container - Signal-Android](conteiners.png)
+![Diagrama de container - PDFBox](conteiners.png)
 
 É possível identificar a utilização do terminal para permitir a inserção dos dados pelo usuário e realizar as requisições de sistema para a api. 
 
