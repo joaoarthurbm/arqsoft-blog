@@ -48,18 +48,37 @@ e reutilizalção de código em todo o projeto. Isso de deve ao fato de que os c
 do Material-UI funcionam isoladamente. Eles são independentes, e só irão injetar os
 estilos que eles precisam para exibir.
 
+Abaixo segue o diagrama de contexto do Material UI:
+
 ![fig1](context-diagram.png)
 
 ### Containers
 
-Analisando a documentação do projeto dessa biblioteca, identificamos pelo menos cinco
-containers no projeto principal: componentes, api de componentes, estilos, sistema e customização.
+Analisando a documentação do projeto dessa biblioteca, identificamos pelo menos quatro
+containers no projeto principal: componentes, estilos, sistema e customização.
+
+**COMPONENTES:** Os componentes são todos os elementos que são utilizados na criação
+das interfaces dos usuários. Este container divide-se em algumas categorias, em cada uma delas iremos encontrar componentes do Material UI que lidam especificamente com aquela
+parte do desenvolvimento da interface.
+
+**ESTILOS:** É o container responsável pela forma como são adicionados estilos adicionais
+e costumizáveis aos componentes do Material UI.
+
+**SISTEMA:** Este container refere-se aos aspectos gerais da interface, como: exibição,
+dimensionamento, espaçamento e tipografia.
+
+**CUSTOMIZAÇÃO:** Essa é a parte do Material UI que lida com os temas e as paletas de cores do projeto, bem como também a densidade dos componentes e estilos globais.
 
 No diagrama de containers abaixo podemos identificá-los dentro do Material UI.
 
 ![fig1](containers-diagram.png)
 
 ### Componentes
+
+Ampliando a visualização em cada um dos containers e em cada uma das categorias dos
+componentes, podemos visualizar os componentes únicos do Material UI. Esses componentes
+que estão sendo mostrados são a nível de código, ou seja, existe um componente *Box* no
+Material UI que pode ser adicionado em um componente do ReactJS, por exemplo.
 
 ![fig1](components-diagram.png)
 
@@ -71,3 +90,19 @@ implementação. Faremos isso mais adiante.
 </pre>
 
 ### Visão de Informação
+
+Como foi explicado anteriormente, o objetivo do Material UI é facilitar o desenvolvimento
+de interfaces web que utilizam ReactJS. Portanto, não há um fluxo complexo de informação entre os componentes. A comunicação entre os componentes é feita apenas a partir de passar e/ou receber propriedades como parâmetro do componente.
+
+Vejamos o exemplo de código abaixo:
+
+```
+import React from 'react';
+import { Button } from '@material-ui/core';
+
+function App() {
+  return <Button color="primary">Hello World</Button>;
+}
+```
+
+Este é um exemplo extremamente simples, temos o componente *App* que possui apenas um componente dentro dele, o *Button*. A propriedade *color* é definida dentro do componente ao qual o *Button* pertence. Em projetos complexos, o que acontece é que componentes como o *App*, constituem-se a partir de diversos outros componentes complexos. A comunicação entre cada um deles é feita exclusivamente dessa forma, recebendo como parâmetro alguma propriedade, que pode ser um número, uma string, uma função, ou até mesmo um outro componente.
