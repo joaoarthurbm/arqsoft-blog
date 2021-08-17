@@ -23,23 +23,23 @@ Este documento descreve parte da arquitetura do projeto [Mockito](https://github
 O Mockito é um framework bastante popular para a criação de mocks em testes de unidade de projetos  desenvolvidos em Java. O uso de mocks adiciona funcionalidades interessantes aos testes de unidade, por ser possível simular a execução de uma implementação de uma dependência externa, para vários cenários distintos e de forma dinâmica, mantendo assim os testes com a agilidade e modularidade de um teste de unidade.
 
 ## Objetivo
-No desenvolvimento de softwares, os testes de unidade são fundamentais para indicar se pequenas seções de código são adequadas às necessidades, bem como tornar os sistemas mais manuteníveis e menos susceptíveis a inserção de bugs durante expansões ou refatorações do sistema. Em projetos Java, a unidade de código que buscamos testar é geralmente uma Classe, ou apenas um simples método.
+No desenvolvimento de softwares, os testes de unidade são fundamentais para indicar se pequenas seções de código são adequadas às necessidades, bem como tornar os sistemas mais manuteníveis e menos susceptíveis a inserção de bugs durante expansões ou refatorações. Em projetos Java, a unidade de código que buscamos testar é geralmente uma Classe.
 
 Em testes de unidade, é desejável validar a funcionalidade de um objeto em específico. Porém, na maioria dos casos esses objetos possuem dependência de outros objetos externos, e é neste ponto que os mocks são fundamentais. Com os mocks, podemos simular o comportamento das dependências segundo a regra de negócio do sistema, e testar se a classe em questão tem a funcionalidade adequada ao contexto na qual está inserida.
 
 ## Contexto
 Por ser um framework de testes em Java, o Mockito é direcionado para o uso de desenvolvedores de software que trabalham nesta linguagem. O Mockito atua em cooperação com o JUnit, que é um dos frameworks para a construção de testes automatizados mais frequentemente utilizado em projetos Java.
 
-Com o JUnit, o desenvolvedor consegue construir os testes que visam verificar o funcionamento de um determinado escopo (em geral, uma classe) e com o auxílio do Mockito é possível isolar o comportamento daquela classe de suas dependências, definindo de forma dinâmica como essas dependências externas se comportam em cenários de teste variados.
+Com o JUnit, o desenvolvedor consegue construir os testes que visam verificar o funcionamento de um determinado escopo, e com o auxílio do Mockito é possível isolar o comportamento daquela classe de suas dependências, definindo de forma dinâmica como essas dependências externas se comportam em cenários de teste variados.
 
 ![Diagrama de Contexto](context.png)
 
 ## Containers
-Por se tratar de um framework que auxilia no complemento dos testes, o Mockito é adicionado como dependência na aplicação Java que está em desenvolvimento. O desenvolvedor define na classe de teste o Runner de acordo com o framework de testes a ser utilizado (por exemplo, o JUnit) e, então, o módulo de integração irá realizar a configuração para integrar o Mockito ao framework de testes.
+Por se tratar de um framework que auxilia no desenvolvimento dos testes, o Mockito é adicionado como dependência na aplicação Java que está em construção. O desenvolvedor define na classe de teste o Runner de acordo com o framework de testes a ser utilizado (por exemplo, o JUnit) e, então, o módulo de integração irá realizar a configuração para integrar o Mockito ao framework de testes.
 
 Já no escopo dessa classe de testes, o desenvolvedor irá definir quais dependências da classe em questão terão seu comportamento simulado através do Mockito. Em geral, essa definição se dá através de anotações que se encontram no módulo core do Mockito. O Desenvolvedor também irá definir o comportamento em si dos métodos das dependências mockadas.
 
-Na execução do teste, o Core do mockito invoca o módulo de Invocation, que irá monitorar a invocação dos métodos das dependências mocadas, bem como irá executar os comportamentos pré-definidos pelo desenvolvedor na chamada desses métodos, ou, a depender do caso, executar o método real daquela dependência. Este módulo também é responsável por realizar a verificação dos argumentos e retornos dos métodos mocados.
+Na execução do teste, o Core do mockito notifica o módulo de Invocation, que irá monitorar a invocação dos métodos das dependências mocadas, bem como irá executar os comportamentos pré-definidos pelo desenvolvedor na chamada desses métodos, ou, a depender do caso, executar o método real daquela dependência. Este módulo também é responsável por realizar a verificação dos argumentos e retornos dos métodos mocados.
 
 ![Diagrama de Containers](containers-mockito.png)
 
