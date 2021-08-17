@@ -44,9 +44,9 @@ Temos as configurações no cache local também de sistemas como o Babel que tra
 ## Componentes
 
 Na criação dos arquivos temos o gitignore que trabalha juntamente com o git para definir que extensões de arquivos e pastas não vão ser salvos nos commits. Também o node_modules que é outro arquivo que é criado muito importante, ele contém os modulos feitos por outras pessoas , eles são projeto do github e do npm.js que são pegos através do protocolo http e o usuário pode importar para utilizar em seu projeto pessoal. E um detalhamento a mais no react-script.
-![create-react-app](cra-component.png)
+![create-react-app](cra-components.png)
 
 ## Visão de informação
 
-A informação começa quando o usuário digita o comando na linha de comando, a partir dai o CRA vai verificar os argumentos que foram passados e criar o package.json para iniciar o download das dependências.
+A informação começa quando o usuário digita o comando na linha de comando, a partir dai o CRA vai verificar os argumentos que foram passados e criar o package.json para iniciar o download das dependências e seguir com as configurações esperadas.
 ![create-react-app](cra-information.png)
