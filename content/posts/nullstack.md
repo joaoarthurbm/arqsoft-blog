@@ -36,7 +36,7 @@ Com o Nullstack instalado na máquina do desenvolvedor a escrita de código segu
 
 Abaixo se encontra o diagrama de contexto.
 
-![fig1](Diagrama de Contexto.png)
+![fig1](diagrama-contexto.png)
 
 ### Containers
 
@@ -46,7 +46,7 @@ As aplicações se comunicam com o servidor via HTTPS. As SPA´s conversam com o
 
 Abaixo encontra-se o diagrama de containers.
 
-![fig2](Diagrama de Container.png)
+![fig2](diagrama-container.png)
 
 ### Componentes
 
@@ -54,9 +54,9 @@ No Nullstack, existem três componentes principais para o processo de criação 
 
 prerender.js, que lida com a criação de uma árvore com a instância principal de criação da View. O rerender.jsr, que engloba a API de tratamento de problemas nos galhos da árvore principal, nele possui uma interface que facilita alternar entre diferentes pages e serve como um ponto de partida para o último componente que é o rerender.js, ele tem a funcionalidade de criar, por meio dos parâmetros setados no momento da configuração do framework, as SPA´s da aplicação web. Por fim, as Views são mantidas no armazenamento AWS do framework e renderizadas quando necessárias.
 
-Abaixo está o diagrama de componentes.
+Abaixo está o diagrama de componente.
 
-![fig3](Diagrama de Componente.png)
+![fig3](diagrama-componente.png)
 
 ### Visão de Informação
 
@@ -64,4 +64,4 @@ Na Visão de informação é descrito o(s) estado(s) que uma dado pode atingir n
 
 Abaixo temos o diagrama de visão de informação.
 
-![fig4](Diagrama de Visao.png)
+![fig4](diagrama-visao.png)
