@@ -50,7 +50,7 @@ Todas as informações de parâmetros de impressão são armazenadas em memória
 
 Abaixo, é possível observar o diagrama de componentes do sistema:
 
-![Diagrama de componentes - PDFBox](componentes.png)
+![Diagrama de componentes - PDFBox](components.png)
 
 No diagrama, tem-se alguns dos principais componentes do sistema:
 
