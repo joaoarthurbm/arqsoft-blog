@@ -48,11 +48,11 @@ Além de oferecer as funcionalidades básicas de um mensageiro, a ideia é tamb�
 
 O Tinode Chat é uma aplicação de mensageria multiplataforma, em que usuários podem utilizar o serviço uma vez que tenham uma conta no mesmo, existindo a possibilidade de criação de contas anônimas. Usuários podem enviar mensagens para outros usuários ou para grupos compostos por usuários. O Tinode Chat faz uso de um outro serviço da Tinode, chamado Tinode Push Gateway, para fazer o envio e o recebimento de notificações do tipo push.
 
-<img src="./context.jpg" style="width:115%; display: flex; margin: 0 auto"/>
+<img src="./context.png" style="width:115%; display: flex; margin: 0 auto"/>
 
 ### Containers
 
-<img src="./container2.jpg" style="width:175%; display: flex; margin: 0 auto"/>
+<img src="./containers.png" style="width:175%; display: flex; margin: 0 auto"/>
 
 ##### Clients
 
@@ -134,7 +134,7 @@ Esse tipo de mensagem é utilizada quando um usuário quer fazer login no servid
 
 Nesta seção eu espero duas coisas: o diagrama de componentes e texto descrevendo os componentes. Detalhe no nível que achar necessário, mas é importante saber do que se trata cada componente, seus relacionamentos, tecnologias, APIs expostas, protocolos, estilos, padrões etc.
 
-<img src="./component.jpg" style="width:175%; display: flex; margin: 0 auto"/>
+<img src="./components.png" style="width:175%; display: flex; margin: 0 auto"/>
 
 ##### Session Module
 
@@ -162,7 +162,7 @@ Provê a interface responsável pela comunicação com o serviço de autenticaç
 
 ### Visão de Informação
 
-<img src="./info.jpg" style="width:115%; display: flex; margin: 0 auto"/>
+<img src="./info.png" style="width:115%; display: flex; margin: 0 auto"/>
 
 Mensagens são as informações mais importantes na aplicação do Tinode. Ao utilizar o Tinode Chat, é possível visualizar determinados estados em que uma mensagem pode se encontrar, são eles:
 
