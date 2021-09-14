@@ -30,10 +30,6 @@ arquitetura de software que encontramos na literatura.
 
 - 4 categorias: conceitual, módulo, execução e código
 
-"Os autores observaram que a separação de preocupações usando diferentes tipos de arquitetura tem uma série de vantagens quando se desenvolve sistemas complexos."
-
-- fale um pouco sobre isso.
-
 > "Os autores observaram que a separação de preocupações usando diferentes tipos de arquitetura tem uma série de vantagens quando se desenvolve sistemas complexos."
 
 - Aqui tem um conceito interessante que é a evolução da teoria a partir da prática, né? estudos etnográficos, grounded theory etc.
@@ -96,14 +92,14 @@ Separação da arquitetura de módulo e execução."
 
 # Yure
 
-> M. Shaw and P. Clements, "The golden age of software architecture" in IEEE Software, vol. 23, no. 2, pp. 31-39, March-April 2006, doi: 10.1109/MS.2006.58.
+`M. Shaw and P. Clements, "The golden age of software architecture" in IEEE Software, vol. 23, no. 2, pp. 31-39, March-April 2006, doi: 10.1109/MS.2006.58.`
 
 - Trata-se de uma meta-pesquisa, certo?
 
-> "se basearam no modelo Redwine-Riddle (de maturação da tecnologia)"
+> se basearam no modelo Redwine-Riddle (de maturação da tecnologia).
 
 - Não conhecia/lembrava. Pode falar um pouco mais.
-- pode ser algo que vocês queiram usar quando estiverem fazendo revisão sistemática, por exemplo.
+- Pode ser algo que vocês queiram usar quando estiverem fazendo revisão sistemática, por exemplo [link](https://www.cs.utexas.edu/users/software/1998/pfleeger-19981203/sld005.htm).
 
 > "A figura mostra a maturação do campo de Arquitetura de Software, excluindo as obras fundamentais das décadas de 1960 a 1970.
 "
