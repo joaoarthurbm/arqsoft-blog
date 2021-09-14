@@ -1,0 +1,174 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação arquitetural do BrasilAPI - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação arquitetural do BrasilAPI" />
+<meta property="og:description" content="Autores Este documento foi produzido por Izaquiel Nunes do Nascimento.
+ Matrícula: 117111446 Contato: izaquiel.nascimento@ccc.ufcg.edu.br Projeto documentado: https://github.com/BrasilAPI/BrasilAPI  Descrição Arquitetural &ndash; BrasilAPI Este documento descreve a arquitetura do projeto BrasilAPI." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/brasil-api/" />
+<meta property="article:published_time" content="2021-04-16T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-04-16T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação arquitetural do BrasilAPI"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Izaquiel Nunes do Nascimento.
+ Matrícula: 117111446 Contato: izaquiel.nascimento@ccc.ufcg.edu.br Projeto documentado: https://github.com/BrasilAPI/BrasilAPI  Descrição Arquitetural &ndash; BrasilAPI Este documento descreve a arquitetura do projeto BrasilAPI."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação arquitetural do BrasilAPI</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-04-16T00:00:00-03:00">Apr 16, 2021</time>
+        </li>
+        
+
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Izaquiel Nunes do Nascimento.</p>
+<ul>
+<li>Matrícula: 117111446</li>
+<li>Contato: <a href="mailto:izaquiel.nascimento@ccc.ufcg.edu.br">izaquiel.nascimento@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/BrasilAPI/BrasilAPI">https://github.com/BrasilAPI/BrasilAPI</a></li>
+</ul>
+<h1 id="descrição-arquitetural----brasilapi">Descrição Arquitetural &ndash; BrasilAPI</h1>
+<p>Este documento descreve a arquitetura do projeto <a href="https://github.com/BrasilAPI/BrasilAPI">BrasilAPI</a>. Essa descrição, assim como a produção de seus diagramas, foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<h2 id="descrição-geral-sobre-o-brasilapi">Descrição Geral sobre o BrasilAPI</h2>
+<p>O BrasilAPI tem como objetivo disponibilizar de forma rápida e prática informações públicas como CEP, DDD, feriados nacionais, dados do IBGE, entre outros. Esse projeto centraliza e disponibiliza endpoints modernos com baixíssima latência utilizando tecnologias como Vercel Smart CDN responsável por fazer o cache das informações em atualmente 23 regiões distribuídas ao longo do mundo (incluindo Brasil).</p>
+<h2 id="a-api">A API</h2>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Implementar uma api rest com alta disponibilidade para dados relacionados ao Brasil.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>Se tornar uma plataforma onde qualquer possa contribuir e integrar serviços, aumentando assim a diversidade de dados fornecida pela api.</p>
+<p>Atualmente a API conta com esses endpoints:</p>
+<ul>
+<li>cnpj/v1/{cnpj}</li>
+<li>cep/v1/{cep}</li>
+<li>ddd/v1/{ddd}</li>
+<li>banks/v1</li>
+<li>banks/v1/{code}</li>
+<li>veriados/v1/{ano}</li>
+<li>ibge/uf/v1</li>
+<li>ibge/uf/v1/{code}</li>
+</ul>
+<h3 id="contexto">Contexto</h3>
+<p>Logo abaixo temos um diagrama que mostra toda a simplicidade da api. O cliente é qualquer pessoa que deseja obter alguma informação que a api disponibiliza. É feita uma requisição HTTP e o BrasilAPI se responsabiliza por verificar se a informação está em cache ou então requisita a diversas fontes externas.</p>
+<p><img src="contexto.png" alt="Diagrama de contexto"></p>
+<h3 id="containers">Containers</h3>
+<p>Temos apenas um container para a api, ele se encontra implantadado na Vercel.
+OBS: cada serviço que a api disponibiliza pode ter seus próprios containers, mas por se tratar de elementos externos não será retratado aqui.</p>
+<p><img src="container.png" alt="Diagrama de containers"></p>
+<h3 id="componentes">Componentes</h3>
+<p>A API divide-se basicamente em três componentes:</p>
+<ol>
+<li>Os Middlewares, responsáveis por tratamento de cache, tratamento dos erros nas requisições e registro de logs da aplicação.</li>
+<li>A api propriamente dita, responsável pelo tratamento e retorno dos dados. Esse componente faz uso do componente de Services para buscar os dados.</li>
+<li>Services, responsável pela busca do dado requisitado nas mais variadas fontes de dados.</li>
+</ol>
+<p><img src="components.png" alt="Diagrama de components"></p>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p>Abaixo temos um diagrama que mostra como a informação trafega na api. Primeiro o usuário faz uma requisição, ela é validada pelos middlewares, se tiver tudo ok, é verificado se o que foi pedido já se encontra em cache, se for encontrado algum erro é retornado pro usuário com alguma mensagem. Se a informação estiver em cache, é retornada imediatamente pro usuário, senão a api vai processar, pedindo para o serviço responsável buscar das fontes externas e retornando a informação requerida. Durante esse processo pode ocorrer algum erro e então o mesmo é retornado.</p>
+<p><img src="info.png" alt="Diagrama de informação"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/meu-menu/"><i class="fa fa-chevron-circle-left"></i> Documentação arquitetural do Meu Menu</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/chakra-ui/">Chakra UI <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,142 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Arquitetura do cep-promise - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Arquitetura do cep-promise" />
+<meta property="og:description" content="Autores Este documento foi produzido por Diego Amancio Pereira.
+ Matrícula: 116210716 Contato: diego.pereira@ccc.ufcg.edu.br Projeto documentado: https://github.com/BrasilAPI/cep-promise  Descrição Arquitetural - cep-promise Neste documento, é descrito um serviço de consulta de cep, o cep-promise." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/cep-promise/" />
+<meta property="article:published_time" content="2021-04-16T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-04-16T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Arquitetura do cep-promise"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Diego Amancio Pereira.
+ Matrícula: 116210716 Contato: diego.pereira@ccc.ufcg.edu.br Projeto documentado: https://github.com/BrasilAPI/cep-promise  Descrição Arquitetural - cep-promise Neste documento, é descrito um serviço de consulta de cep, o cep-promise."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Arquitetura do cep-promise</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-04-16T00:00:00-03:00">Apr 16, 2021</time>
+        </li>
+        
+
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Diego Amancio Pereira.</p>
+<ul>
+<li>Matrícula: 116210716</li>
+<li>Contato: <a href="mailto:diego.pereira@ccc.ufcg.edu.br">diego.pereira@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/BrasilAPI/cep-promise">https://github.com/BrasilAPI/cep-promise</a></li>
+</ul>
+<h1 id="descrição-arquitetural---cep-promise">Descrição Arquitetural - cep-promise</h1>
+<p>Neste documento, é descrito um serviço de consulta de cep, o <a href="https://github.com/BrasilAPI/cep-promise">cep-promise</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<h2 id="descrição-geral-sobre-o-cep-promise">Descrição geral sobre o cep-promise</h2>
+<p>O cep-promise é uma biblioteca de busca por cep de forma concorrente  com alta disponibilidade integrado com 3 serviços (Correios, ViaCEP e WideNet).</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>Disponibilizar uma busca por cep rápida , eficiente sem depender totalmente de um serviço de busca de cep e ter fácil de utilização;</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/chakra-ui/"><i class="fa fa-chevron-circle-left"></i> Chakra UI</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/godot/">Documentação de Arquitetura da Engine de Jogos: GODOT <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

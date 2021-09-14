@@ -1,0 +1,204 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação Arquitetural do Apache Airflow - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação Arquitetural do Apache Airflow" />
+<meta property="og:description" content="Nesse documento será descrita a arquitetura do projeto Apache Airflow, utilizando o modelo C4.
+ Autores Este documento foi produzido por Débora Lêda de Lucena Souza.
+ Matrícula: 119111051 Contato: debora." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/airflow/" />
+<meta property="article:published_time" content="2021-08-15T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-08-15T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação Arquitetural do Apache Airflow"/>
+<meta name="twitter:description" content="Nesse documento será descrita a arquitetura do projeto Apache Airflow, utilizando o modelo C4.
+ Autores Este documento foi produzido por Débora Lêda de Lucena Souza.
+ Matrícula: 119111051 Contato: debora."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação Arquitetural do Apache Airflow</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-08-15T00:00:00-03:00">Aug 15, 2021</time>
+        </li>
+        
+
+        
+
+        <li>8 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <hr>
+<p>Nesse documento será descrita a arquitetura do projeto <a href="https://airflow.apache.org">Apache Airflow</a>, utilizando o modelo <a href="https://c4model.com/">C4</a>.</p>
+<hr>
+<h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Débora Lêda de Lucena Souza.</p>
+<ul>
+<li>Matrícula: 119111051</li>
+<li>Contato: <a href="mailto:debora.souza@ccc.ufcg.edu.br">debora.souza@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/apache/airflow">https://github.com/apache/airflow</a></li>
+</ul>
+<h1 id="descrição-arquitetural---apache-airflow">Descrição Arquitetural - Apache Airflow</h1>
+<p>Apache airflow é uma plataforma que permite programaticamente a criação, execução e monitoramento de scripts de processamento de dados. Um script de processamento de dados é a unidade básica de execução no Airflow e é denominado <code>Task</code>. No Airflow, as <code>tasks</code> são organizadas em uma estrutura de dados chamada <code>DAG</code> (Directed Acyclic Graph).</p>
+<p><code>DAG</code> é o conceito central do sistema, essa estrutura armazena um conjunto de <code>tasks</code> organizadas com suas dependências e relacionamentos que informam como e em qual ordem elas devem ser executadas.</p>
+<p>Abaixo segue um exemplo de <code>DAG</code></p>
+<img class="center" src="basic-dag.png" style="width:40%">
+<p>No diagrama estão definidas 4 <code>tasks</code>, A, B, C e D, as arestas informam a ordem em que devem ser executadas e as dependências entre elas.</p>
+<p><code>DAG</code> em si não se importa com qual é a responsabilidade de cada <code>task</code>, trata-se apenas de como exectuá-las, a ordem de execução, frequência de execução, tempo limite para execução, etc. Em contrapartida, o corpo de uma <code>task</code> descreve o que deve ser feito, seja buscar dados em um sistema externo, executar análises de dados, despertar ações em outros sistemas, etc.</p>
+<h2 id="contexto">Contexto</h2>
+<p><img src="diagrama-contexto.png"
+alt="diagrama contexto img" /></p>
+<p>No diagrama de contexto é apresentado como se dá a interação dos demais elementos com o Airflow.</p>
+<p>Primeiramente temos o usuário do sistema, ele é responsável por criar e cadastrar os <code>DAGs</code> de seu interesse, além de agendar e monitorar a execução deles quando necessário. O Airlow disponibiliza diversas funcionalidades para que o usuário monitore a execução de <code>DAGs</code>, sendo assim, é possível visualizar desde o código de cada <code>task</code>, até o diagrama de Gantt com a duração do seu tempo de execução.</p>
+<p>Como é exibido no diagrama, o Aiflow também se comunica com o sistema de e-mail. Acontece que o usuário pode solicitar o recebimento de notificações a respeito das execuções dos seus <code>DAGs</code> ou especificamente de uma <code>task</code>, esses e-mails podem, por exemplo, ser enviados quando a execução de uma <code>task</code> falha inúmeras vezes ou a execução de um <code>DAG</code> por completo não foi bem sucedida.</p>
+<p>Por fim, existem os plugins para permitir a integração de funcionalidades ao Airflow. Desde <code>macros</code> até <code>web views</code> podem ser integrados e disponibilizados para o uso. Uma vez que o Airflow é um sistema muito generalista, utilizar plugins é uma maneira de personalizar e especificar as funcionalidades da ferramenta, além disso, ela possui vários componentes que podem ser reutilizados na construção de outros aplicativos.</p>
+<h2 id="containers">Containers</h2>
+<p>O Airflow é uma plataforma gerenalista e por isso foi desenvolvida para se adequar aos diversos cenários de uso. Sendo assim, o Airflow pode ser executado de forma simples com seus módulos e configurações padrões, mas essa opção não proporciona todo o poder de processamento. No entanto, é possível utilizar configurações de maior complexidade para suportar subsistemas mais robustos, com maior capacidade de processamento e suporte a paralelismo.</p>
+<p>A documentação do sistema deixa explícito que o setup de execução deve depender das necessidades do usuário, mas também disponibiliza um setup default que entrega ao usuário todas as funcionalidades da ferramenta mas que ainda pode ser escalado se for necessário. Sendo assim, os containers do setup default serão explorados nesse post.</p>
+<img class="center" src="diagrama-containers.png" style="width:100%">
+<p>Como é possível visualizar no diagrama, o Airflow é composto por vários containers que executam de forma independente.</p>
+<p>O primeiro deles, é o <code>Web Server</code>, construído em <code>Python</code> utilizando o frameworker <code>Flask</code> e o servidor web <code>Gunicorn</code>. Esse container tem a responsabilidade de servir tanto as <code>views</code> da interface web, como a <code>API</code> que se comunica com o banco de dados.</p>
+<p>A interface web disponibiliza uma série de funcionalidades pra gerenciar as <code>tasks</code>, solicitar dados do BD, monitorar e até iniciar a execução de <code>tasks</code>.</p>
+<p>As funcionalidades de monitoramento são atualizadas em tempo real de acordo com a execução das <code>tasks</code>. A partir da interface é possível visualizar todos os <code>DAGs</code> registrados, a representação em forma de árvore de um <code>DAG</code> ao longo do tempo de execução, estado de execução atual de um <code>DAG</code>, estatísticas do tempo de execução de uma <code>task</code>, etc. Além disso, o usuário pode ativar o recebimento de notificações a respeito das execuções de <code>tasks</code> por email, como dito no tópico Contexto.</p>
+<p>Algumas das principais operações que a API disponibiliza são:</p>
+<p>Recupera a lista de metadados das execuções de um <code>DAG</code> específico</p>
+<pre><code>GET /dags/&lt;dag_id&gt;/dag_runs
+</code></pre><p>Inicia a execução de um <code>DAG</code></p>
+<pre><code>POST /dags/&lt;dag_id&gt;/dag_runs
+</code></pre><p>Recupera um JSON com todas as variávies de uma task</p>
+<pre><code>GET /dags/&lt;dag_id&gt;/tasks/&lt;task_id&gt;
+</code></pre><p>Exclui todos os metadados do BD relacionados à um <code>DAG</code></p>
+<pre><code>DELETE /dags/&lt;dag_id&gt;
+</code></pre><p><code>Scheduler</code> é outro container presente no Airflow, tem como responsabilidade principal monitorar todas as <code>tasks</code> e <code>DAGs</code>, e enviá-las para a fila de execução quando suas dependências são concluídas. No setup padrão, também tem a responsabilidade de executar <code>tasks</code>.</p>
+<p>Mais especificamente, o <code>Scheduler</code> é um processo multi-thread iniciado via CLI que monitora e permanece sincronizado com o BD, ou seja, periodicamente checa o BD e altera o estado daquelas tarefas que possuem suas dependências concluídas, essa mudança de estado informa que as tarefas estão prontas para serem executadas. O intervalo de checagem do BD é setado pelo usuário nas configurações de um <code>DAG</code>, podendo ser completamente personalizado.</p>
+<p>Apesar do <code>Scheduler</code> existir, o usuário também pode alterar o estado de uma tarefa via interface gráfica.</p>
+<p>Observe que o <code>Scheduler</code> tem como responsabilidade principal apenas alocar as tarefas para serem executadas mas não por executá-las diretamente. No setup default do Aiflow, o módulo de execução de tarefas, chamado <code>Executor</code>, é um subcomponente do <code>Scheduler</code> e por isso ele e suas funcionalidades serão abordadas no tópico Componentes.</p>
+<p>Esses dois componentes, <code>Scheduler</code> e <code>Executor</code>, têm responsabilidades distintas e bem definidas, mas no setup default convivem no mesmo container como um único serviço apenas para simplificar o sistema. No entanto, em contextos mais complexos, o <code>Executor</code> pode ser implantado como outro serviço.</p>
+<p>Por fim, existe o container <code>Database</code>, ou como é chamado na documentação, <code>Metadata Database</code>, é utilizado pelo <code>Web Server</code> e <code>Scheduler</code> para armazenar todos os metadados das <code>tasks</code> e <code>DAGs</code>. Como é exibido no diagrama, é um banco de dados relacional e além de armazenar metadados, também armazena dados dos usuários, variáveis de conexões e variáveis do sistema.</p>
+<h2 id="componentes">Componentes</h2>
+<img class="center" src="diagrama-componentes.png" style="width:100%">
+<p>Como é possível visualizar no diagrama de componentes, cada container tem seus componentes com responsabilidades bem definidas.</p>
+<p>Começando com o container <code>Web Server</code>, ele possui 7 componentes independentes que interagem entre si para fornecer suas funcionalidades ao usuário.</p>
+<p>O usuário interage diretamente com o componente <code>Web page API</code>, que tem como responsabilidade servir as páginas da interface web.</p>
+<p>O Airflow é conhecido por possuir uma rica interface, com suporte a diversas visualizações gráficas de seus <code>DAGs</code>, por isso, <code>Web Page API</code> se comunica diretamente com o <code>Componente de charts</code>, responsável por criar os gráficos que integram as páginas web, os gráficos são gerados utilizando a biblioteca nvD3.</p>
+<p>Além disso, para que a <code>Web Page API</code> acesse o banco de dados, ele utiliza a <code>API Rest</code>, que em conjunto com o <code>Controlador de dados</code>, é responsável por buscar e criar dados a respeito das <code>tasks</code> e <code>DAGs</code>.</p>
+<p>Existe também o componente <code>Gerenciador de segurança</code>, que em conjunto com <code>Gerenciador de usuário</code>, é responsável por gerenciar todas as autenticações e autorizações da aplicação.</p>
+<p>Para finalizar, o <code>Gerenciador de plugins</code> é responsável por adicionar novas funcionalidades à aplicação.</p>
+<p>O outro container, <code>Scheduler</code>, possui 3 componentes. O principal deles, o <code>Escalonador de tasks</code>, em conjunto com o <code>Controlador de dados</code>, é responsável por monitorar o Banco de Dados e alterar o estado de <code>tasks</code> quando elas estão prontas para serem executadas. Além disso, é responsabilidade desse componente enviar um sinal para que o <code>Executor</code> inicie seu trabalho.</p>
+<p>O <code>Executor</code> tem como responsabilidade executar <code>tasks</code>. Esse componente, também utiliza o <code>Controlador de dados</code>, pois é sua responsabilidade ao finalizar a execução de uma <code>task</code> alterar o estado da mesma, seja este <code>failed</code>, <code>success</code>, <code>retry</code>, etc.</p>
+<h2 id="código">Código</h2>
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
+<h2 id="visão-de-informação">Visão de informação</h2>
+<p>Como já foi abordado nesse post, o Airflow possui dois dados principais, <code>DAGs</code> e <code>Tasks</code>, nesse tópico será abordado o diagrama dinâmico de uma <code>task</code>, uma vez que os estados de um <code>DAG</code> gira em torno dos estados de suas <code>tasks</code>.</p>
+<img class="center" src="diagrama-info.png" style="width:100%">
+<p>O diagrama ilustra os principais estados que uma <code>task</code> pode atingir. Uma vez que tanto o <code>Web server</code> como o <code>Scheduler</code> podem alterar o estado de uma <code>task</code>, é importante detalhar qual módulo é reponsável pela transição de cada estado.</p>
+<p>Ao ser criado um <code>DAG</code>, o <code>Web server</code> é responsável por alterar o estado de todas as suas <code>tasks</code> para <code>None</code>.</p>
+<p>O <code>Scheduler</code> é responsável por alterar o estado das <code>tasks</code> que estão prontas para serem executadas para <code>Scheduled</code>. Além disso, ao enviá-las para fila de execução, realiza outra alteração para <code>Queued</code>.</p>
+<p>O <code>Executor</code> ao receber uma <code>task</code> altera seu estado para <code>Running</code> e finalmente, ao finalizar sua execução altera para <code>Success</code> ou <code>Failed</code>.</p>
+<p>Existem outros estados a depender da configuração do usuário, é possível por exemplo, configurar que a execução de uma <code>task</code> seja repetida em caso de falha, utilizando o estado <code>Retry</code>, eles estão descritos na <a href="https://airflow.apache.org/docs/apache-airflow/stable/index.html">documentação</a> do Airflow.</p>
+<h1 id="contribuições-concretas">Contribuições Concretas</h1>
+<p>Essa descrição arquitetural não foi submetida ao Github do projeto devido ao idioma utilizado, pois a documentação do Airflow é feita em inglês.</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/mockito/"><i class="fa fa-chevron-circle-left"></i> Documentação Arquitetural do Mockito</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/discussao-intro-arquitetura/">Discussão sobre definições de arquitetura de software <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

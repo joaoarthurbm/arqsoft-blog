@@ -1,0 +1,168 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Grafana - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Grafana" />
+<meta property="og:description" content="Autores Este documento foi produzido por Áxel Crispim e Medeiros.
+ Matrícula: 117111889 Contato: axel.medeiros@ccc.ufcg.edu.br Projeto documentado: https://github.com/grafana/grafana  Descrição Arquitetural &ndash; Grafana Este documento descreve parte da arquitetura do projeto Grafana." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/grafana/" />
+<meta property="article:published_time" content="2021-04-30T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-04-30T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Grafana"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Áxel Crispim e Medeiros.
+ Matrícula: 117111889 Contato: axel.medeiros@ccc.ufcg.edu.br Projeto documentado: https://github.com/grafana/grafana  Descrição Arquitetural &ndash; Grafana Este documento descreve parte da arquitetura do projeto Grafana."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Grafana</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-04-30T00:00:00-03:00">Apr 30, 2021</time>
+        </li>
+        
+
+        
+
+        <li>3 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Áxel Crispim e Medeiros.</p>
+<ul>
+<li>Matrícula: 117111889</li>
+<li>Contato: <a href="mailto:axel.medeiros@ccc.ufcg.edu.br">axel.medeiros@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/grafana/grafana">https://github.com/grafana/grafana</a></li>
+</ul>
+<h1 id="descrição-arquitetural----grafana">Descrição Arquitetural &ndash; Grafana</h1>
+<p>Este documento descreve parte da arquitetura do projeto <a href="https://github.com/grafana/grafana">Grafana</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<p>É importante destacar que não será descrita toda a arquitetura do Grafana. O foco aqui é a descrição de um serviço específico de análise do Grafana(Dashboard), que é parte fundamental do projeto.</p>
+<h2 id="descrição-geral-sobre-o-grafana">Descrição Geral sobre o Grafana</h2>
+<p>O Grafana é um projeto que tem como objetivo ser uma plataforma para visualização e monitoramento de dados, possibilitando com a construção de &ldquo;dashboards&rdquo; dinâmicos e reutilizáveis. Portanto, a ferramenta possui integração os principais bancos de dados disponíveis no mercado, como descrito <a href="https://grafana.com/docs/grafana/latest/datasources/">neste link</a>, além disso, é possível adicionar múltiplos “datasources” para o mesmo “dashboard”.</p>
+<h2 id="objetivo">Objetivo</h2>
+<p>Ser uma plataforma open-source para visualização e monitoramento de dados, atuando em CLI, plugins e outras ferramentas para o suporte para os usuários.</p>
+<h2 id="contexto">Contexto</h2>
+<p>Como o Grafana se trata de uma plataforma, os usuários finais devem ser o mais diversos possíveis, sendo esses divididos em: administradores e comuns. Para os administradores, é necessário um conhecimento da <strong>linguagem de consulta</strong> da sua fonte de dados, e os comuns, apenas acesso a um navegador Web moderno.</p>
+<p>A comunicação com a fonte pode ser local ou externa, geralmente, utilizando o protocolo TCP e uma porta para o acesso, com o SGBD previamente configurado para o acesso remoto. Sendo essa consulta diferenciada para cada banco de dados.</p>
+<p>O diagrama de contexto abaixo ilustra quais entidades interagem com o Grafana.</p>
+<p><img src="contexto.png" alt="Diagrama de Contexto"></p>
+<h2 id="containers">Containers</h2>
+<p>A plataforma Grafana é dividida em três grandes containers, sendo eles: Frontend, GrafaInfra e Backend. Apesar que o Backend não sendo o foco dessa documentação.</p>
+<p>O Frontend é a parte visual do projeto, com CoreModule responsável pelo inicialização do AngularJS e serviços básicos, como cards, forms e configurações globais. Tornando o domínio das  funcionalidades responsáveis por todas as Features do projeto, como adição de Datasource, Dashboard, painéis, etc. Com a utilização do Redux a principal comunicação no proejto.</p>
+<p>O GrafanaInfra(ou pacotes)possui o mesmo objetivo da infra do <strong>Clean Architecture</strong>, cujo objetivo é isolar o projeto de bibliotecas externas. Além dos containers mencionados abaixo, possui também  umresponsável por testes end-to-end e uma CLI para criação de plugins, facilitando o desenvolvimento da plataforma.</p>
+<p><img src="containers.png" alt="Diagrama de Containers"></p>
+<h2 id="componentes">Componentes</h2>
+<p>A maioria das funcionalidade dos sistema estão presentes no pacote <code>features</code>, com esssas funções seguindo a padronização definida no <a href="https://github.com/grafana/grafana/blob/master/contribute/style-guides/frontend.md">style-guide</a>. Assim, os componentes do sistema seguem:</p>
+<ul>
+<li><code>feature/state</code>: todo código responsável pela lógica de domínio e estado da funcionalidade. Seguindo a arquitetura Redux, com stores, actions e reducers.</li>
+<li><code>feature/containers/ExamplePage.tsx</code>: Página ou componente central da sua funcionalidade, onde vai carregar todos os componentes presentes na feature.</li>
+<li><code>feature/componets</code>: todos os componentes React que estão compondo sua funcionalidade, geralmente, divididos por pastas por componente, sendo essas pastas possuindo a lógica, estilização e testes de componentes.</li>
+</ul>
+<p>Para a utilização de bibliotecas externas, é necessário adicionar código no GrafaInfra, sendo esses:</p>
+<ul>
+<li><code>@grafana/ui</code>: para componentes e tipos relacionados a UI.</li>
+<li><code>@grafana/data</code>: para modelo de dados e utilitários utilizados.</li>
+<li><code>@grafana/runtime</code>: para acesso a serviços da plataforma Grafana.</li>
+</ul>
+<p>Segue um diagrama contendo apenas a parte da layout dos componenes</p>
+<p><img src="components.png" alt="Diagrama de Containers"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/anki/"><i class="fa fa-chevron-circle-left"></i> Documentação arquitetural - Anki</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/perfil-politico/">Documentação arquitetural do Perfil Político <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

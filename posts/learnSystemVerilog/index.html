@@ -1,0 +1,212 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação arquitetural para o Simulador Didático de SystemVerilog - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação arquitetural para o Simulador Didático de SystemVerilog" />
+<meta property="og:description" content="Esse documento descreve a arquitetura do projeto Simulador Didático de SystemVerilog
+ Autores Este documento foi produzido por Matheus de Souza Coutinho
+ Matrícula: 116111247 Contato: Matheus.coutinho@ccc.ufcg.edu.br Projeto documentado: https://github." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/learnsystemverilog/" />
+<meta property="article:published_time" content="2021-04-15T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-04-15T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação arquitetural para o Simulador Didático de SystemVerilog"/>
+<meta name="twitter:description" content="Esse documento descreve a arquitetura do projeto Simulador Didático de SystemVerilog
+ Autores Este documento foi produzido por Matheus de Souza Coutinho
+ Matrícula: 116111247 Contato: Matheus.coutinho@ccc.ufcg.edu.br Projeto documentado: https://github."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação arquitetural para o Simulador Didático de SystemVerilog</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-04-15T00:00:00-03:00">Apr 15, 2021</time>
+        </li>
+        
+
+        
+
+        <li>6 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <hr>
+<p>Esse documento descreve a arquitetura do projeto Simulador Didático de SystemVerilog</p>
+<hr>
+<h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Matheus de Souza Coutinho</p>
+<ul>
+<li>Matrícula: 116111247</li>
+<li>Contato: <a href="mailto:Matheus.coutinho@ccc.ufcg.edu.br">Matheus.coutinho@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/learn-systemverilog/learn-systemverilog.github.io">https://github.com/learn-systemverilog/learn-systemverilog.github.io</a></li>
+</ul>
+<h1 id="descrição-arquiteturial">Descrição Arquiteturial</h1>
+<p>        Este documento foi produzido para a disciplina de Arquitetura de Software da UFCG, descreve a arquitetura do projeto [Simulador Didático de SystemVerilog] (<a href="https://github.com/learn-systemverilog/learn-systemverilog.github.io">https://github.com/learn-systemverilog/learn-systemverilog.github.io</a>) e usando como descrição principalmente o modelo <a href="https://c4model.com/">C4</a></p>
+<h2 id="descrição-geral-sobre-o-projeto">Descrição Geral sobre o Projeto</h2>
+<p>        O LearnSystemVerilog tem como principal objetivo tornar o aprendizado e a prática da programação em SystemVeriLog em placas FPGA mais acessível e de forma mais intuitiva, de forma a simular os mesmo resultados e a mesma execução de uma placa física real, obtendo a vantagem de ter a compilação mais rápida em relação as placas físicas e poder ser acessada de qualquer lugar, a qualquer momento utilizando dispositivos móveis.</p>
+<h2 id="o-simulador-didático">O Simulador Didático</h2>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>        Implementar um sistema que compile código em SystemVerilog e execute as operações em um modelo de placa FPGA virtual, mantendo todas as funcionalidades de uma placa física de mesmo aspecto.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>        Simular códigos de SystemVerilog em uma placa FPGA virtual com qualidade e eficiência, buscando um melhor desempenho e um tempo de compilação menor que as placas físicas(frequentemente tendem a demorar minutos para realizar a compilação do código).  Além disso, buscar ampliar a acessibilidade ao aprendizado dessa linguagem através de uma aplicação Web, podendo ser acessada em qualquer lugar do mundo com um computador ou celular.</p>
+<h3 id="contexto">Contexto</h3>
+<p><img src="../learnSystemVerilog/contexto.png" alt="Diagrama de contexto" ></img></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O Learn System Verilog é um sistema simples porém bastante eficiente na coleta e transmissão de dados. Na Single Page principal são realizadas todas as funções do sistema que os usuários podem acessar a qualquer momento. </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Na página do sistema, existe como foco principal o simulador virtual da placa FPGA, logo em seguida os mecanismos de edição de código no Code Editor e a verificação de execução do código em Console. </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A transmissão de dados entre os componentes do <i>Frontend</i> e API é realizada através da tecnologia <i>Server Sent Event</i> (SSE), essa tecnologia permite que dados sejam transmitidos ao ponto de <i>Real-Time</i> e isso contribui para a eficiência e torna vantajosa a utilização dessa
+placa virtual em relação às físicas.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Os dados que são transmitidos na comunicação com a API são basicamente: código System Verilog escrito pelo usuário no Code Editor e código JavaScript. </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A API é responsável por converter o código em SystemVerilog para um código JavaScript que será responsável por manipular os componentes do <i>Frontend</i> no simulador virtual FPGA. 
+</p>
+<h3 id="containers">Containers</h3>
+<p><img src="../learnSystemVerilog/container.png" alt="Containers" ></img></p>
+<p>Conforme o diagrama acima, pode-se analisar que o Learn SystemVerilog é um sistema bem simples e robusto, não possuindo banco de dados e portanto sendo dividido em dois subsistemas: A parte do client que é onde os usuários acessam o sistema, portanto o <i>Frontend</i>, e a parte do <i>WebServer</i> que é onde o client realizará requisições para transmitir e receber dados.</p>
+<p>Descrevendo os containers apresentados no diagrama, vamos ter:</p>
+<ul>
+<li>
+<p><strong>External API(Google API)</strong>: É o Container que dá acesso a uma API externa para que o usuário possa realizar login com uma conta do Google, e assim que ele consiga logar o sistema ficará disponível para que as funcionalidades possam ser acessadas pelo mesmo.</p>
+</li>
+<li>
+<p><strong>User Web(React JS)</strong>: Container que compõe todas as funcionalidades do sistema que o usuário pode visualizar e interagir, nesse container também é realizado as funções solicitadas pelo usuário.  Além disso, realiza a comunicação com a parte Server do sistema, transmitindo e recebendo dados.  A comunicação é realizada através do Protocolo <em>HTTP</em> utilizando a tecnologia <em>Server Sent Events</em>.</p>
+</li>
+<li>
+<p><strong>API(transpile)</strong>: Este container é responsável por receber os dados enviados para o Server, e a partir dos dados recebidos realizar os procedimentos internos designados. É a partir desse container que os mecanismos essenciais propostos no sistema são executados.</p>
+</li>
+<li>
+<p><strong>Export Logs(Server Send Events)</strong>: Container responsável por enviar dados para o Client sobre os status do código System Verilog enviado para o Server para ser compilado, os dados são do tipo <em>txt</em> e seu conteúdo é de acordo com a situação de cada etapa de compilação e execução do código enviado. O protocolo de comunicação utilizado é o <em>HTTP</em> utilizando a tecnologia <em>Server Sent Events</em>.</p>
+</li>
+<li>
+<p><strong>Response API transpile(Server Send Events)</strong>: Este container tem como objetivo enviar o código traduzido em System Verilog para JavaScript de forma que sejam utilizados nos componentes do container <em>User Web</em>(JavaScript). Então esse container é responsável por compilar, checar falhas, traduzir e enviar os novos dados para outro container. Para a execução de compilação e tradução foi utilizada a tecnologia <em>transpile</em>, implementada no próprio sistema. O protocolo de comunicação utilizado é o <em>HTTP</em> utilizando a tecnologia <em>Server Sent Event</em>.</p>
+</li>
+</ul>
+<h3 id="componentes">Componentes</h3>
+<p />
+<img src="../learnSystemVerilog/componentes.png" alt="Diagrama de componentes" ></img>
+<p /><p />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Os componentes que estão sendo apresentados no Diagrama de Componentes englobam todas as funcionalidades que o sistema propõe, e serão descritos a seguir:
+<ul>
+<li>
+<p><strong>Single Page Application</strong>: É nesse componente que estão os outros quatro componentes que interagem diretamente com o usuário, é nesse componente que o usuário realiza as funções disponíveis no sistema e é onde os outros componentes que estão nele são renderizados.</p>
+</li>
+<li>
+<p><strong>Sign in Google Account</strong>: É o componente externo ao sistema que tem como responsabilidade solicitar ao usuário que realize login com um email válido do Gmail, caso essa ação seja realizada com sucesso, então as funcionalidades do sistema ficarão disponíveis para que o usuário as utilize, caso contrário, o sistema não permitirá que o usuário manipule outros componentes.</p>
+</li>
+<li>
+<p><strong>Simulator FPGA</strong>: É o componente principal em questão de visualização do usuário, este componente receberá um código JavaScript convertido pelo <em>Server</em> e o atribuirá em seus componentes JavaScript de forma que simulem o funcionamento de uma placa FPGA física, por ser um simulador a visualização dos componentes base desse componente se assemelha a uma placa FPGA real, o mesmo pode ser dito para o comportamento desses componentes quando executados. O usuário também poderá manipular os objetos e de acordo com o código passado terá diferentes ações.</p>
+</li>
+<li>
+<p><strong>Code Editor</strong>: É o componente responsável por iniciar o processo de compilação e execução do simulador proposto no sistema. É a partir desse componente que o usuário pode escrever um código em SystemVerilog, compilar e verificar sua execução no componente do Simulador FPGA. O código escrito é enviado para o componente Learn-SystemVerilog API para ser convertido e compilado.</p>
+</li>
+<li>
+<p><strong>Console</strong>: É o componente intermediário de execução do sistema, após o usuário ter escrito e compilado o código, o console mostrará em formato <em>txt</em> os status do código que está sendo compilado, informando ao usuário onde existe erro no código, se foi compilado com sucesso, entre outras coisas. Se não houver erros no código, o simulador FPGA começará a simular a execução do código. As informações são recebidas através do componente Learn-SystemVerilog API.</p>
+</li>
+<li>
+<p><strong>Learn-SystemVerilog API</strong>: Componente da parte do <em>Server</em> que recebe requisições e transmite dados. Esse componente é responsável por receber o código System Verilog, compilar, gerar os resultados da compilação, convertê-lo em código JavaScript e transferi-lo para os componentes Console e Simulator FPGA do <em>Client</em>. Utiliza a API <em>transpile</em> para conversão dos códigos.</p>
+</li>
+</ul>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p><img src="../learnSystemVerilog/Fluxo de Informacoes.png" alt="Visão de Informações" ></img></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O sistema caracteriza-se por ser bastante simples de utilizar, basta que o usuário logue em qualquer conta do Google, e após isso pode estudar, implementar e testar seus códigos em um simulador eficiente, rápido e sofisticado, capaz de realizar todas as funcionalidades que uma placa FPGA física real. O sistema possui apenas um campo para escrever o código System Verilog e um botao para compilar, a parte principal é de fato o simulador que execurá os comandos passados no código após ser compilado, e além disso, o usuário poderá verificar os status de compilação e possíveis erros, tornando-se uma ferramenta bastante didática e intuitiva para todos os níveis de usuários.</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/valheim/"><i class="fa fa-chevron-circle-left"></i> Documentação arquitetural para o Valheim</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/dialetus/">Documentação arquitetural para o Dialetus <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

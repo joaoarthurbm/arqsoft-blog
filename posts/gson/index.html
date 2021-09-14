@@ -1,0 +1,205 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documento arquitetural - Biblioteca Gson - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documento arquitetural - Biblioteca Gson" />
+<meta property="og:description" content="Autores Este documento foi produzido por Jerônimo Jairo Silva de Araújo.
+ Matrícula: 117211387 Contato: jeronimo.araujo@ccc.ufcg.edu.br Projeto documentado: https://github.com/google/gson  Descrição Geral O Gson é uma biblioteca Java que é usada para serializar objetos Java em suas representações JSON e para deserializar uma string JSON em um equivalente objeto Java." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/gson/" />
+<meta property="article:published_time" content="2021-07-29T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-07-29T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documento arquitetural - Biblioteca Gson"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Jerônimo Jairo Silva de Araújo.
+ Matrícula: 117211387 Contato: jeronimo.araujo@ccc.ufcg.edu.br Projeto documentado: https://github.com/google/gson  Descrição Geral O Gson é uma biblioteca Java que é usada para serializar objetos Java em suas representações JSON e para deserializar uma string JSON em um equivalente objeto Java."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documento arquitetural - Biblioteca Gson</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-07-29T00:00:00-03:00">Jul 29, 2021</time>
+        </li>
+        
+
+        
+
+        <li>3 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Jerônimo Jairo Silva de Araújo.</p>
+<ul>
+<li><strong>Matrícula</strong>: 117211387</li>
+<li><strong>Contato</strong>: <a href="mailto:jeronimo.araujo@ccc.ufcg.edu.br">jeronimo.araujo@ccc.ufcg.edu.br</a></li>
+<li><strong>Projeto documentado</strong>: <a href="https://github.com/google/gson">https://github.com/google/gson</a></li>
+</ul>
+<h2 id="descrição-geral">Descrição Geral</h2>
+<p>O <a href="https://github.com/google/gson">Gson</a> é uma biblioteca Java que é usada para <em>serializar</em> objetos Java em suas representações JSON e para <em>deserializar</em> uma string JSON em um equivalente objeto Java.</p>
+<h2 id="objetivo-geral">Objetivo geral</h2>
+<ul>
+<li>Prover uma interface simples, onde o usuário consiga serializar/deserializar objetos em JSON (e vice-versa), facilmente, sem a necessidade de anotações (pois quando não se tem acesso ao código se torna um problema).</li>
+</ul>
+<h2 id="objetivos-específicos">Objetivos específicos</h2>
+<ul>
+<li>Prover uma interface simples para realizar a serialização de objetos e deserialização de strings JSON através dos métodos toJson() e fromJson(), respectivamente.</li>
+<li>Trabalhar com objetos que não se tem acesso ao código.</li>
+<li>Permitir que objetos não modificáveis sejam serializáveis e deserializáveis.</li>
+<li>Dar suporte à Java Generics e objetos arbitrariamente complexos (que contém alto nível de herança e uso extensivo de Generics Types).</li>
+<li>Permitir representações customizáveis de objetos.</li>
+</ul>
+<p>Agora será dada uma visão do projeto utilizando o modelo C4.</p>
+<h2 id="contexto">Contexto</h2>
+<p>O Gson é uma biblioteca Java, que é comente utilizado em programas que tem necessidade de fazer conversões de objetos para JSON, ou vice-versa.</p>
+<p>Um das suas principais utilizações (e onde tive contato), são em aplicações RESTApi que recebem e enviam JSON em seus endpoints. Assim, é comum fazer a deserialização de um JSON que chega na requisição e, posteriormente, uma serialização para a criação de um JSON que será enviado como resposta.</p>
+<p>Abaixo, um simples exemplo de contexto que pode ser encontrado o Gson:</p>
+<center>
+  <img src="gson-context.png" alt="Diagrama de contexto do Gson" style="width:65%;">
+</center>
+<h2 id="containers">Containers</h2>
+<p>Para essa parte, serão considerados como obtemos um objeto Gson para realizar as chamadas toJson e fromJson. Para isso, temos dois métodos de criação de um objeto Gson:</p>
+<ul>
+<li>Através da <strong>instanciação direta</strong> de um objeto Gson, que tem as configurações padrões de um objeto Gson. A sua instanciação é feita da seguinte forma:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Gson gson <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Gson<span style="color:#f92672">();</span>
+</code></pre></div></li>
+<li>Através de um <strong>GsonBuilder</strong>, que ajuda a fazer uma criação customizável do objeto Gson, configurando coisas como: versionamento, impressão bonita e customizáveis dos JsonSerializers, JsonDeserializers e InstancesCreators. A criação através do builder pode ser feita da seguinte maneira:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Gson gson <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> GsonBuilder<span style="color:#f92672">()</span>
+   <span style="color:#f92672">.</span><span style="color:#a6e22e">registerTypeAdapter</span><span style="color:#f92672">(</span>Id<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> IdTypeAdapter<span style="color:#f92672">())</span>
+   <span style="color:#f92672">.</span><span style="color:#a6e22e">enableComplexMapKeySerialization</span><span style="color:#f92672">()</span>
+   <span style="color:#f92672">.</span><span style="color:#a6e22e">serializeNulls</span><span style="color:#f92672">()</span>
+   <span style="color:#f92672">.</span><span style="color:#a6e22e">setDateFormat</span><span style="color:#f92672">(</span>DateFormat<span style="color:#f92672">.</span><span style="color:#a6e22e">LONG</span><span style="color:#f92672">)</span>
+   <span style="color:#f92672">.</span><span style="color:#a6e22e">setFieldNamingPolicy</span><span style="color:#f92672">(</span>FieldNamingPolicy<span style="color:#f92672">.</span><span style="color:#a6e22e">UPPER_CAMEL_CASE</span><span style="color:#f92672">)</span>
+   <span style="color:#f92672">.</span><span style="color:#a6e22e">setPrettyPrinting</span><span style="color:#f92672">()</span>
+   <span style="color:#f92672">.</span><span style="color:#a6e22e">setVersion</span><span style="color:#f92672">(</span>1<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">)</span>
+   <span style="color:#75715e">// creates a Gson instance with the configurations 
+</span><span style="color:#75715e"></span>   <span style="color:#75715e">// set into the GsonBuilder
+</span><span style="color:#75715e"></span>   <span style="color:#f92672">.</span><span style="color:#a6e22e">create</span><span style="color:#f92672">();</span>
+</code></pre></div></li>
+</ul>
+<p>Assim, podemos ter dois &ldquo;containers&rdquo;, que dão acesso a criação de Gson e sua utilização futura:</p>
+<center>
+  <img src="gson-containers.png" alt="Diagrama de containers do Gson" style="width:65%;">
+</center>
+<h2 id="componentes">Componentes</h2>
+<p>Agora, o container que será &ldquo;aberto&rdquo; é do Gson. Nele que há todas as chamadas que fazer acontecer as serializações e deserializações, respectivamente, através dos métodos toJson e fromJson.</p>
+<p>A seguir, uma exemplo de como um serialização/deserialização pode ser feita:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Também pode ser utilizado new GsonBuilder().create();
+</span><span style="color:#75715e"></span>Gson gson <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Gson<span style="color:#f92672">();</span>
+<span style="color:#75715e">// O objeto que será serializado
+</span><span style="color:#75715e"></span>MyType target <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MyType<span style="color:#f92672">();</span>
+<span style="color:#75715e">// Serializa o target para um Json
+</span><span style="color:#75715e"></span>String json <span style="color:#f92672">=</span> gson<span style="color:#f92672">.</span><span style="color:#a6e22e">toJson</span><span style="color:#f92672">(</span>target<span style="color:#f92672">);</span>
+<span style="color:#75715e">// Deserializa o Json para um objeto do tipo passado
+</span><span style="color:#75715e"></span>MyType target2 <span style="color:#f92672">=</span> gson<span style="color:#f92672">.</span><span style="color:#a6e22e">fromJson</span><span style="color:#f92672">(</span>json<span style="color:#f92672">,</span> MyType<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+</code></pre></div><p>A partir do objeto MyType, é feita a serialização chamando o método toJson do Gson, que ao final returna uma JSON string. Depois é o processo contrário, pois iremos deserializar a string JSON de volta para um objeto do tipo MyType. Para isso, é chamado o método fromJson com a string JSON e o tipo que se espera que o JSON seja. Ao final, será retornado um objeto do tipo MyType.</p>
+<p>Dentro do Gson são feitas várias coisas quando chamamos cada um desses métodos, e abaixo temos uma representação disso:</p>
+<center>
+  <img src="gson-component.png" alt="Diagrama de componentes do Gson"/>
+</center>
+<h2 id="código">Código</h2>
+<pre><code>Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</code></pre><h2 id="visão-de-informação">Visão de informação</h2>
+<p>A seguir, será apresentado como acontece a serialização (toJson) de um objeto, para uma string Json. Será apresentado, desde a criação de um objeto Gson, até o retorno de uma string Json.</p>
+<center>
+  <img src="gson-information.png" alt="Diagrama de informação do Gson">
+</center>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/ceph/"><i class="fa fa-chevron-circle-left"></i> Documentação arquitetural do Ceph</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/signal-android/">Documentação da arquitetura do aplicativo para Android Signal <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

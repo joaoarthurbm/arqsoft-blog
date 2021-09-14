@@ -1,0 +1,206 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Descrição Arquitetural do Locust - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Descrição Arquitetural do Locust" />
+<meta property="og:description" content="Autores Este documento foi produzido por Guilherme de Melo Carneiro.
+ Matrícula: 118210938 Contato: guilherme.carneiro@ccc.ufcg.edu.br Projeto documentado: https://github.com/locustio/locust  Descrição Arquitetural &ndash; Locust Este documento descreve parte da arquitetura do projeto Locust." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/locust/" />
+<meta property="article:published_time" content="2021-08-02T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-08-02T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Descrição Arquitetural do Locust"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Guilherme de Melo Carneiro.
+ Matrícula: 118210938 Contato: guilherme.carneiro@ccc.ufcg.edu.br Projeto documentado: https://github.com/locustio/locust  Descrição Arquitetural &ndash; Locust Este documento descreve parte da arquitetura do projeto Locust."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Descrição Arquitetural do Locust</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-08-02T00:00:00-03:00">Aug 2, 2021</time>
+        </li>
+        
+
+        
+
+        <li>5 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Guilherme de Melo Carneiro.</p>
+<ul>
+<li>Matrícula: 118210938</li>
+<li>Contato: <a href="mailto:guilherme.carneiro@ccc.ufcg.edu.br">guilherme.carneiro@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/locustio/locust">https://github.com/locustio/locust</a></li>
+</ul>
+<h1 id="descrição-arquitetural----locust">Descrição Arquitetural &ndash; Locust</h1>
+<p>Este documento descreve parte da arquitetura do projeto <a href="https://github.com/locustio/locust">Locust</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<h2 id="descrição-geral-sobre-locust">Descrição Geral sobre Locust</h2>
+<p>O <a href="https://locust.io">Locust</a> é uma solução open-source para testes de performance de aplicações. Com ele é possível estressar sistemas através da implementação(em python) de comportamento de &ldquo;usuários-fantasmas&rdquo;, que interagem com a aplicação levando-a ao limite, extraindo assim suas métricas de desempenho.</p>
+<h2 id="testes-de-carga-utilizando-locust">Testes de Carga utilizando Locust</h2>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Possibilitar a testagem de requisitos de performance fora de ambiente de produção, para que os requisitos não-funcionais relacionados a desempenho sejam garantidos.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>O Locust tem como objetivo permitir a extração de métricas de performance de uma API(ou serviço) nos mais diversos cenários. Cenários estes que podem ser programados via script e executados até o limite, com intuito de extrair informações importantes de desempenho sobre cada endpoint, por exemplo, aumentando a confiança na estabilidade do sistema. Algumas das métricas obtidas são os tempos mínimo e máximo de resposta obtidos sobre uma determinada carga, e também o número de requisições falhas sobre a mesma carga.</p>
+<h3 id="contexto">Contexto</h3>
+<p>O Locust é utilizado por profissionais da área de desenvolvimento, infraestrutura ou QA para testar a performance de uma aplicação quanto a carga que ela suporta até se tornar instável, isto é, até quantos usuários simultâneos executando requisições sucessivas ela atende, admitindo certo limite de falhas. Sabendo disso, é possível compreender o papel das três entidades do diagrama de contexto: o Programador é aquele que deseja testar a performance da aplicação e visualizar os resultados; A biblioteca Locust é aquela que interage com a aplicação, carregando-a de acordo com a rotina definida; A Aplicação é o objeto a ser testado, que responde às interações(requisições) feitas pelo Locust.</p>
+<p><img src="contexto.png" alt="Diagrama de Contexto"></p>
+<h3 id="containers">Containers</h3>
+<p>Como o Locust se trata de uma biblioteca, considerou-se um Container como sendo uma entidade de objetivo bem-definido e sentido completo dentro do contexto interno.</p>
+<p>Aqui se descreve o objetivo de cada container, assim como as tecnologias utilizadas por eles:</p>
+<ul>
+<li><strong>Locustfile</strong>: é implementado pelo utilizador para definir a rotina da unidade de teste que será executada nos testes de carga. Se trata de um script Python que utiliza tratativas específicas da biblioteca do Locust.</li>
+</ul>
+<p>Segue uma amostra de como se programa uma rotina de teste que será executada pelo Locust:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> time
+<span style="color:#f92672">from</span> locust <span style="color:#f92672">import</span> HttpUser, task, between
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QuickstartUser</span>(HttpUser):
+    wait_time <span style="color:#f92672">=</span> between(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>)
+
+    <span style="color:#a6e22e">@task</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hello_world</span>(self):
+        self<span style="color:#f92672">.</span>client<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;/hello&#34;</span>)
+        self<span style="color:#f92672">.</span>client<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;/world&#34;</span>)
+
+    <span style="color:#a6e22e">@task</span>(<span style="color:#ae81ff">3</span>)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">view_items</span>(self):
+        <span style="color:#66d9ef">for</span> item_id <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
+            self<span style="color:#f92672">.</span>client<span style="color:#f92672">.</span>get(f<span style="color:#e6db74">&#34;/item?id={item_id}&#34;</span>, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/item&#34;</span>)
+            time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_start</span>(self):
+        self<span style="color:#f92672">.</span>client<span style="color:#f92672">.</span>post(<span style="color:#e6db74">&#34;/login&#34;</span>, json<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;username&#34;</span>:<span style="color:#e6db74">&#34;foo&#34;</span>, <span style="color:#e6db74">&#34;password&#34;</span>:<span style="color:#e6db74">&#34;bar&#34;</span>})
+</code></pre></div><ul>
+<li><strong>Locust-plugins</strong>: é uma biblioteca secundária do ecossistema do Locust que pode ser utilizada como Helper para acelerar o desenvolvimento da rotina da unidade de teste. O uso dela é opcional. É implementada em Python.</li>
+<li><strong>Web App</strong>: se trata do servidor Web local levantado pelo Locust junto com a execução dos testes de carga. Ele serve para o utilizador visualizar o andamento dos testes em tempo real e ajustar parâmetros de cenário de teste. Usa Flask para subir o servidor Web, e retorna páginas HTML estáticas, com Javascript e CSS.</li>
+<li><strong>CLI</strong>: é a interface de linha de comando que pode ser utilizada pelo utilizador. Possui funções semelhantes ao Web App, mas sem o servidor Web e visualização gráfica. Também desenvolvida em Python.</li>
+<li><strong>Environment</strong>: cérebro do Locust. Responsável por criar todo o ambiente de testagem e carregar as requisições para o serviço especificado, de acordo com o locustfile e parâmetros de cenário de teste.</li>
+</ul>
+<p>É importante considerar o meio de comunicação entre esses Containers, que acontece principalmente via API de Sockets, utilizando a biblioteca Python <em>gevent</em> e seu conceito de <em>Greenlet</em>, que é orientada à programação assíncrona, comunicando-se via eventos.</p>
+<p>As requisições feitas ao objeto de teste geralmente utilizam o protocolo HTTP, mas podem ser utilizado outros, a depender do tipo de serviço em questão.</p>
+<p><img src="containers.png" alt="Diagrama de Containers"></p>
+<h3 id="componentes">Componentes</h3>
+<p>Seguindo a ordem do mais geral ao mais específico, zoom é dado no Container Environment.</p>
+<p>Esse Container é considerado o cérebro do Locust, pois executa as requisições ao objeto de teste de maneira controlada. Como componentes dele, tem-se:</p>
+<ul>
+<li>
+<p><strong>Runner</strong>: responsável por orquestrar os testes de acordo com o perfil dos usuários configurados. Faz o balanceamento desses perfis para distribuir as requisições que devem feitas por eles. Consome a rotina definida pelo usuário no Locustfile e tem seus parâmetros de cenário de teste controlados pelo Web App ou pelo CLI.</p>
+</li>
+<li>
+<p><strong>Stats</strong>: responsável por receber informações do Runner sobre os testes sendo executados e calcular as métricas de performance desejadas. Essas métricas são consumidas pelo Web App e/ou pelo CLI para que sejam visualizadas pelo utilizador.</p>
+</li>
+<li>
+<p><strong>Dispatcher</strong>: utilizado pelo Runner para organizar as requisições e dispará-las de maneira parametrizada em relação a carga, como quantidade de requisições por usuário, e também por espaço de tempo.</p>
+</li>
+</ul>
+<p><img src="componentes.png" alt="Diagrama de Componentes"></p>
+<h3 id="código">Código</h3>
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
+<h3 id="visão-da-informação">Visão da Informação</h3>
+<p>O Locust inicia seu fluxo de informação recebendo do utilizador o arquivo locustfile.py devidamente implementado com a rotina de teste que será carregada no sistema objeto de teste. Após isso, os parâmetros relacionados ao cenário dos testes de carga, como quantidade de requisições por usuário, são definidos, podendo ser alterados pelo utilizador via Web App ou CLI antes ou durante a execução. Com os testes acontecendo, é possível acompanhar os resultados obtidos em tempo real, e também ter acesso aos resultados finais, com o fim da bateria de testes. Essas métricas, a medida que vão sendo obtidas, são transmitidas para o canal desejado pelo utilizador, seja o terminal ou a aplicação Web.</p>
+<p><img src="informacao.png" alt="Diagrama de Informação"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/deno/"><i class="fa fa-chevron-circle-left"></i> Documentação Arquitetural - Deno</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/animavita/">Descrição Arquitetural Animavita <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

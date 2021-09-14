@@ -1,0 +1,175 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação arquitetural para a plataforma insomnia-inso - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação arquitetural para a plataforma insomnia-inso" />
+<meta property="og:description" content="Autor Este documento foi produzido por Dacio Silva Bezerra.
+ Matrícula: 118210572 Contato: dacio.bezerra@ccc.ufcg.edu.br Projeto documentado: https://github.com/Kong/insomnia/blob/develop/packages/insomnia-inso  Descrição Arquitetural - Inso(CLI) by Insomnia Este documento descreve a arquitetura da plataforma insomnia-cli." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/insomnia-inso/" />
+<meta property="article:published_time" content="2021-04-14T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-04-14T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação arquitetural para a plataforma insomnia-inso"/>
+<meta name="twitter:description" content="Autor Este documento foi produzido por Dacio Silva Bezerra.
+ Matrícula: 118210572 Contato: dacio.bezerra@ccc.ufcg.edu.br Projeto documentado: https://github.com/Kong/insomnia/blob/develop/packages/insomnia-inso  Descrição Arquitetural - Inso(CLI) by Insomnia Este documento descreve a arquitetura da plataforma insomnia-cli."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação arquitetural para a plataforma insomnia-inso</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-04-14T00:00:00-03:00">Apr 14, 2021</time>
+        </li>
+        
+
+        
+
+        <li>4 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <hr>
+<h1 id="autor">Autor</h1>
+<p>Este documento foi produzido por Dacio Silva Bezerra.</p>
+<ul>
+<li>Matrícula: 118210572</li>
+<li>Contato: <a href="mailto:dacio.bezerra@ccc.ufcg.edu.br">dacio.bezerra@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/Kong/insomnia/blob/develop/packages/insomnia-inso">https://github.com/Kong/insomnia/blob/develop/packages/insomnia-inso</a></li>
+</ul>
+<h1 id="descrição-arquitetural---insocli-by-insomnia">Descrição Arquitetural - Inso(CLI) by Insomnia</h1>
+<p>Este documento descreve a arquitetura da plataforma <a href="https://insomnia.rest/">insomnia-cli</a>. Esta descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<p>Há de se notar que esta representação da arquitetura do projeto supracitado, engloba um módulo - o módulo de CLI - específico da aplicação de integração CI/CD, chamado de <strong>insomnia-inso</strong> que se trata do <em>main</em> da aplicação CLI utilizando o TypeScript.</p>
+<h2 id="descrição-geral-sobre-o-insocli-by-insomnia">Descrição Geral sobre o Inso(CLI) by Insomnia</h2>
+<p>A aplicação tem por objetivo implantação e publicação de especificações com confiança garantir que elas sejam válidas durante a fase de teste e implantação de um pipeline de CI / CD.</p>
+<p>Facilita o teste ou a implantação de produção gerando a configuração Kong Declarative ou Kong For Kubernetes com plug-ins diretamente das especificações OpenAPI em qualquer lugar em um pipeline de CI / CD.</p>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Acelerar o deploy de APIs e suas principais funcionalidades.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>Integrar facilmente com provedores Git como Github, Gitlab e Bitbucket para construir pipelines de API CI / CD personalizados que funcionam com os fluxos de trabalho existentes.</p>
+<h3 id="contexto">Contexto</h3>
+<p>Abaixo, é possível observar o diagrama de contexto do sistema. Nele temos um usuário que pode interagir com o Inso (a aplicação de automação de pipeline CI/CD para APIs) seja em sua máquina utilizando-o diretamente como forma de automatizar seu fluxo localmente, ou da forma mais comum, a qual seria a interação pelo gitlab, por exemplo, por meio da ferramenta de configuração de pipeline do Git. Essa ferramenta processaria todo o ferramental provido pelo Inso possibilitando ao usuário, a criação de seu pipeline personalizado para sua API. O Inso utiliza um commander, um módulo externo que disponibiliza para ele toda a base de interpretação de linha de comando. Além disso, o Inso exporta consigurações, para kubernetes, por exemplo. Para tal, ele utiliza o openapi-2-kong que faz todo o &ldquo;trabalho sujo&rdquo; pra ele no que diz respeito a essa <em>task</em>.</p>
+<p><img src="context.png" alt="context"></p>
+<h3 id="containers">Containers</h3>
+<p>Abaixo, observamos o diagrama de container para a plataforma insomnia-inso:</p>
+<p><img src="container.png" alt="container"></p>
+<p>Vamos detalhar cada container e seu papel dentro do sistema:</p>
+<ul>
+<li>Cli: Este seria o nosso principal container. Ele processa os comando pré-processados pelo commander, utiliza outro módulo importante da aplicação que seriam o <em>Commands</em> para realizar o comando em questão. A ferramenta do Git pode utilizar sua exportação de configurações para realizar o pipeline CI/CD bem como o usuário pode utilizá-lo diretamente/localmente. O Cli também é responsável por persistir informações relevantes num banco de dados <em>in-memory</em>.</li>
+<li>Commands: Responsável pelo processamento e validação individual dos comandos. Por exemplo, em um contexto de comando de teste, este módulo recebe as opções, valida as opções, roda os testes, encontra suites, gera relatório e devolve tudo para o Cli.</li>
+<li>Database: Armazena informações relevantes dos pipelines utilizados no disco, localmente e para uso futuro ou log.</li>
+</ul>
+<h3 id="componentes">Componentes</h3>
+<p>Abaixo, é possível observar o diagrama de componentes do sistema:</p>
+<p><img src="component.png" alt="component"></p>
+<p>Extraindo os componentes do container Cli, temos:</p>
+<ul>
+<li>Git Component: Módulo responsável por receber requisições do Git e chamar o componente Go para realizar os passos necessários.</li>
+<li>Inso generate-config: Componente responsável por gerar configuração utilizando o openapi-kong.</li>
+<li>Inso lint: Componente responsável por executar ações referente ao lint de código da API. Assim como a maioria dos componentes, utiliza o container Commands para processamento.</li>
+<li>Inso test: Componente responsável por executar e produzir relatórios sobre os testes da API.</li>
+<li>Inso export: Esse componente extrai e exporta as informações geradas no Inso generate-config. As configurações ficam guardadas no Database, o componente Go recebe a requisição e repassa para o Inso export para ele gerar um exportável a partir das informações de configuração.</li>
+<li>Go: Componente mais importante da stack. Ele compila todas as requisições e então redireciona para seus devidos responsáveis. Recebe as respostas de volta e recompila todas as respostas, processa tudo em batch e retorna para o cliente uma resposta.</li>
+</ul>
+<h3 id="visão-de-informação">Visão de informação</h3>
+<p>Neste exemplo de máquina de estados temos um exemplo bem simples de como funcionaria o fluxo em um pipeline no Inso-Cli. Não é nada de outro mundo.</p>
+<p>Temos um fluxo simples no contexto de execução de um pipeline no Git CI/CD. Temos apenas dois comandos sendo executados: Lint e test. Após o Git iniciar o pipeline o documento gerado pelo componente do Git deve possibilitar, logo em seguida, o build do Node na máquina virtual, se essa instalação der erro, o pipeline encerra com erro. Após a instalação, o npm pode estar disponível e então o Lint pode ser executado, após o Lint ser executado o comando de Teste é executado. Se os testes falharem o pipeline encerra com falha, do contrário, o pipeline se encerra com sucesso.</p>
+<p><img src="informacao.png" alt="informacao"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/mysql-workbench/"><i class="fa fa-chevron-circle-left"></i> Documentação arquitetural para o MySQL Workbench</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/vlc/">Documentação Arquitetural do VLC <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

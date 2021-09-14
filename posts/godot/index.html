@@ -1,0 +1,160 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação de Arquitetura da Engine de Jogos: GODOT - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação de Arquitetura da Engine de Jogos: GODOT" />
+<meta property="og:description" content="Autores Este documento foi produzido por Thomaz Morais.
+ Matrícula: 117211053 Contato: thomaz.morais@computacao.ufcg.edu.br Projeto documentado: https://github.com/godotengine/godot  Descrição Geral sobre o GODOT O Godot é uma engine de criação de jogos 2d e 3d gratuita e de código aberto." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/godot/" />
+<meta property="article:published_time" content="2021-04-24T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-04-24T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação de Arquitetura da Engine de Jogos: GODOT"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Thomaz Morais.
+ Matrícula: 117211053 Contato: thomaz.morais@computacao.ufcg.edu.br Projeto documentado: https://github.com/godotengine/godot  Descrição Geral sobre o GODOT O Godot é uma engine de criação de jogos 2d e 3d gratuita e de código aberto."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação de Arquitetura da Engine de Jogos: GODOT</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-04-24T00:00:00-03:00">Apr 24, 2021</time>
+        </li>
+        
+
+        
+
+        <li>3 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Thomaz Morais.</p>
+<ul>
+<li>Matrícula: 117211053</li>
+<li>Contato: <a href="mailto:thomaz.morais@computacao.ufcg.edu.br">thomaz.morais@computacao.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/godotengine/godot">https://github.com/godotengine/godot</a></li>
+</ul>
+<h2 id="descrição-geral-sobre-o-godot">Descrição Geral sobre o GODOT</h2>
+<p>O Godot é uma engine de criação de jogos 2d e 3d gratuita e de código aberto. Ela é capaz de exportar jogos para a maior parte das plataformas disponíveis na atualidade (video games, mobile, desktop e web) e ela traz uma série de ferramentas que facilitam na hora de desenvolver jogos. O objetivo deste projeto é fazer uma descrição arquitetural desta engine. Mais detalhes sobre o projeto podem ser vistos <a href="https://godotengine.org/">neste link</a>.</p>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Criar jogos multiplataforma através de sistemas de scriptagem e programação visual que sejam intuitivos para os desenvolvedores e competitivo com outras engines de jogos.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>Compilar, utilizando os arquivos estruturados pelo programa (sons, imagens, scripts e nodes), jogos. Nesta documentação em específico será feito um panorama geral de como funciona o GODOT na questão dos arquivos, compilação e desenvolvimento de um projeto.</p>
+<h3 id="contexto">Contexto</h3>
+<p>O GODOT é uma aplicação que não possui muitos serviços ao redor dele. A engine de desenvolvimento de jogos está dividida basicamente na própria aplicação de desenvolvimento e nos compiladores de plataformas específicas. Ilustrados na Figura 1 temos a demonstração do diagrama de contexto da aplicação onde há um usuário que utiliza o GODOT para desenvolvimento, e neste caso específico temos o GODOT se utilizando das ferramentas do visual studio para gerar uma aplicação executável que poderá ser testada pelo próprio desenvolvedor.</p>
+<p><img src="context.png" alt="fig1">
+Figura 1 - Diagrama de contexto do GODOT</p>
+<h3 id="containers">Containers</h3>
+<p>O GODOT é composto por um único container que contém todas as ferramentas dentro dele próprio.</p>
+<p>Ele é composto pelo editor de nodes. Nodes são a únidade básica do projeto. Tudo que existe dentro de um projeto é uma node. O personagem, a fase, objetos físicos, estáticos, objetos que reproduzem som, tudo isto é chamado de node dentro de um projeto do godot. O editor de nodes por sua vez possui um sistema de edição de scripts para adicionar funcionalidades a determinados nodes. Além disso o GODOT conta com um sistema de importação de arquivos para administrar os arquivos que serão utilizados nos projetos (e.g. música, modelos, imagens, etc) e esse sistema de arquivo é composto por diretórios e arquivos que estão apenas organizados por pastas dentro de um projeto do GODOT.</p>
+<p>Por fora, o GODOT utiliza das ferramentas do visual studio community 2017 para executar a compilação do projeto para windows, criando assim um arquivo executável do projeto.</p>
+<p><img src="containers.png" alt="fig1">
+Figura 2 - Diagrama de Containers</p>
+<h3 id="componentes">Componentes</h3>
+<p>O GODOT roda dentro da máquina do usuário, na aplicação o usuário é capaz de editar configurações do projeto, nodes, scripts e importar arquivos. Temos também a parte de configuração de projeto que pode alterar para qual plataformas queremos exportar o projeto que (neste caso para desktop) utiliza as ferramentas do visual studio community para compilar o projeto para a plataforma windows.</p>
+<p><img src="components.png" alt="fig1">
+Figura 3 - Diagrama de Componentes</p>
+<h3 id="visão-da-informação">Visão da Informação</h3>
+<p>A informação que o GODOT lida em si é o projeto do jogo. O projeto do jogo é um conjunto de arquivos de nodes, sons, imagens, vídeos, modelos 3d, etc que compõem um projeto de jogo. Na Figura 4 é demonstrado um diagrama de visão da informação que mostra os possíveis estados de um projeto. A princípio temos a criação do projeto, em seguida temos o projeto em desenvolvimento (onde o usuário poderá editar o projeto adicionando imagens, códigos e implementando features), depois desta etapa temos a compilação. A compilação pode resultar em erro (e o projeto vai retornar ao desenvolvimento) ou na geração de um arquivo executável do projeto. Se no projeto estiver faltando features ele volta ao desenvolvimento. Se não o projeto está pronto para lançamento ou compartilhamento em uma plataforma qualquer que o desenvolvedor decidir lançar.</p>
+<p><img src="visao.png" alt="fig1">
+Figura 4 - Diagrama da Informação</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/cep-promise/"><i class="fa fa-chevron-circle-left"></i> Arquitetura do cep-promise</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/popcorn/">Documentação arquitetural para o PopCorn <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

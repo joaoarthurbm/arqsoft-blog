@@ -1,0 +1,164 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Arquitetura do pdf-box - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Arquitetura do pdf-box" />
+<meta property="og:description" content="Autores Este documento foi produzido por Marcelo Gabriel dos Santos Queiroz Vitorino.
+ Matrícula: 116211290 Contato: marcelo.vitorino@ccc.ufcg.edu.br Projeto documentado: https://github.com/apache/pdfbox  Descrição Arquitetural - pdf-box Essa descrição foi baseada principalmente no modelo C4." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/pdfbox/" />
+<meta property="article:published_time" content="2021-08-02T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-08-02T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Arquitetura do pdf-box"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Marcelo Gabriel dos Santos Queiroz Vitorino.
+ Matrícula: 116211290 Contato: marcelo.vitorino@ccc.ufcg.edu.br Projeto documentado: https://github.com/apache/pdfbox  Descrição Arquitetural - pdf-box Essa descrição foi baseada principalmente no modelo C4."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Arquitetura do pdf-box</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-08-02T00:00:00-03:00">Aug 2, 2021</time>
+        </li>
+        
+
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Marcelo Gabriel dos Santos Queiroz Vitorino.</p>
+<ul>
+<li>Matrícula: 116211290</li>
+<li>Contato: <a href="mailto:marcelo.vitorino@ccc.ufcg.edu.br">marcelo.vitorino@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/apache/pdfbox">https://github.com/apache/pdfbox</a></li>
+</ul>
+<h1 id="descrição-arquitetural---pdf-box">Descrição Arquitetural - pdf-box</h1>
+<p>Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<h2 id="descrição-geral-sobre-o-pdf-box">Descrição geral sobre o pdf-box</h2>
+<p>O pdf-box é uma biblioteca java para trabalhar com documentos PDF. O Projeto permite a criação de novos PDF documentos e a manipulação de documentos existentes.</p>
+<h2 id="o-módulo-apache-pdfbox---printpdf">O módulo Apache PDFBox - PrintPDF</h2>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Essa descrição se propõe em apresentar uma especificação da manipulação de arquivos PDF através da opção de imprimir um PDF com o PDFBox.</p>
+<h3 id="contexto">Contexto</h3>
+<p>Abaixo, é apresentado o diagrama de contexto do sistema. Nele, é possível analisar a interação entre o (<a href="https://picocli.info/apidocs/picocli/CommandLine.html">Picocli</a>, <a href="https://docs.oracle.com/javase/7/docs/api/java/awt/print/PrinterJob.html">JavaPrint</a>) e o programa de linha de comando para impressão em pdf.</p>
+<p>Após a interação, o programa imprime o pdf no sistema de arquivos ou na impressora setada pelo usuário padrão.</p>
+<p><img src="contexto.png" alt="Diagrama de contexto - PDFBox"></p>
+<h3 id="containers">Containers</h3>
+<p>Abaixo, observamos o diagrama de container para a aplicação Signal:</p>
+<p><img src="conteiners.png" alt="Diagrama de container - PDFBox"></p>
+<p>É possível identificar a utilização do terminal para permitir a inserção dos dados pelo usuário e realizar as requisições de sistema para a api.</p>
+<p>Todas as informações de parâmetros de impressão são armazenadas em memória.</p>
+<h3 id="componentes">Componentes</h3>
+<p>Abaixo, é possível observar o diagrama de componentes do sistema:</p>
+<p><img src="components.png" alt="Diagrama de componentes - PDFBox"></p>
+<p>No diagrama, tem-se alguns dos principais componentes do sistema:</p>
+<ul>
+<li><em>AccessPermission:</em> Responsável por descriptografar os arquivos pdf e permitir privilégios de acesso;</li>
+<li><em>PrintJob:</em> Responsável por gerenciar as ações de impressão de arquivos;</li>
+<li><em>PDFPageable:</em> Responsável por setar as propriedades de impressão, tais como nome de impressora e rotação da página;</li>
+</ul>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p>Aqui é possível observar as interações que a in-memory representação do PDF document faz. Apresentando que este pode ter uma impressão associada, tem exatamente uma PDFPageable configurada e pelo menos uma permissão de acesso.</p>
+<p><img src="informacao.png" alt="Diagrama ER - PDFBox"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/animavita/"><i class="fa fa-chevron-circle-left"></i> Descrição Arquitetural Animavita</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/jupyter-lab/">Arquitetura do JupyterLab <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

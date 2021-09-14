@@ -1,0 +1,158 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Website de e-commerce com Django - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Website de e-commerce com Django" />
+<meta property="og:description" content="Esta é uma documentação arquitetural de um site de e-commerce chamado Fashe desenvolvido com o framework web Django. Django foi desenvolvido para permitir a construção de aplicativos web rapidamente e de maneira muito fácil, com foco no backend." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/ecommerce/" />
+<meta property="article:published_time" content="2021-07-27T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-07-27T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Website de e-commerce com Django"/>
+<meta name="twitter:description" content="Esta é uma documentação arquitetural de um site de e-commerce chamado Fashe desenvolvido com o framework web Django. Django foi desenvolvido para permitir a construção de aplicativos web rapidamente e de maneira muito fácil, com foco no backend."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Website de e-commerce com Django</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-07-27T00:00:00-03:00">Jul 27, 2021</time>
+        </li>
+        
+
+        
+
+        <li>4 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <hr>
+<p>Esta é uma documentação arquitetural de um site de e-commerce chamado Fashe desenvolvido com o framework web Django. Django foi desenvolvido para permitir a construção de aplicativos web rapidamente e de maneira muito fácil, com foco no backend. Este é um site de demonstração, não um site real. O objetivo do projeto é mostrar o que se é possível fazer usando um framework tão simples e eficiente como Django. O site tem todas as funcionalidades esperadas de um e-commerce moderno, como contas de usuários que mantém carrinhos e fecham compras, por exemplo. Link para o site: <a href="https://colorlib.com/etc/fashe/index.html">https://colorlib.com/etc/fashe/index.html</a></p>
+<hr>
+<h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Vinícius Abner Pereira de Souza.</p>
+<ul>
+<li>Matrícula: 118110384</li>
+<li>Contato: <a href="mailto:vinicius.souza@ccc.ufcg.edu.br">vinicius.souza@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/zinmyoswe/Django-Ecommerce">https://github.com/zinmyoswe/Django-Ecommerce</a></li>
+</ul>
+<h1 id="descrição-arquitetural---site-fashe-feito-com-framework-django">Descrição Arquitetural - Site Fashe feito com framework Django</h1>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Implementar um website demonstrativo que usa o framework web Django.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>Apresentar um website de e-commerce que contém todas as funcionalidades esperadas num e-commerce moderno, como carrinho de compras, operação de pagamentos online, um blog, etc. Por se tratar de uma demonstração, obviamente algumas funcionalidades não estão completamente implementadas, como o fechamento real de compras, por exemplo. Este documento objetiva mostrar como um website  construído com Django é relativamente arquiteturalmente simples.</p>
+<h3 id="contexto">Contexto</h3>
+<p>O sistema do Fashe é bem simples até contextualmente. Basicamente, só há três entidades envolvidas: os usuários (sejam eles clientes com conta ou não), o próprio sistema e o banco de dados. Os usuários visualizam os produtos nas páginas, adicionam ou removem produtos do carrinho, fecham compras, realizam pagamentos, e pedem reembolso. O sistema Fashe faz o serviço esperado de e-commerce. E o banco de dados é o banco de dados.</p>
+<p><img src="contexto.png" alt="fig1"></p>
+<h3 id="containers">Containers</h3>
+<p>Como toda aplicação web, o Fashe pode ser dividido em dois containers: de frontend e backend, respectivamente. O frontend do Fashe apresenta as páginas com os produtos organizados em categorias, e também oferece uma interface  para as operações do usuário (atualizar carrinho e fechar compra, por exemplo)  por meio de formulários Django. Já o backend é responsável por realizar as operações que o usuário fez nas páginas, que envolvem (quase) sempre modificações ou consultas ao banco de dados. Também controla a renderização de páginas e roteamento.
+<img src="containers.png" alt="fig2"></p>
+<h3 id="componentes">Componentes</h3>
+<p>O frontend pode ser subdivido em duas partes principais: as páginas HTML (o container TEMPLATES) e os scripts CSS e JavaScript (o container SCRIPTS). Há outros componentes adicionais e acessórios, como arquivos de imagens, fontes, etc&hellip; que, pela simplicidade, foram contidos num container chamados OUTROS.</p>
+<p>Já o backend é mais complexo. Há um componente de roteamento, que neste documento foi chamado de Controlador de Redirecionamento que serve como ponte entre o frontend e o backend. Esse componente mapeia urls em views, que por sua vez, realizam alguma operação requisitada pelo usuário e/ou requisita um redirecionamento ao componente de redirecionamento. Há também um componente para lidar com as operações pertinentes ao carrinho (controlador de carrinho), um para lidar com renderização de páginas (Renderizador de páginas), um para a realização de pagamentos (controlador de pagamentos), aplicação de cupons (controlador de cupons), e fechamento de compras (controlador de checkout). Por fim, há um componente que serve como interface para que os controladores possam acessar e/ou modificar dados do banco.</p>
+<p><img src="components.png" alt="fig3"></p>
+<h3 id="código">Código</h3>
+<p>O código do frontend pode ser resumido a páginas HTML e scripts JavaScript e CSS. Também há outros códigos que são dos componentes acessórios descritos na seção anterior.
+<img src="code_frontend.png" alt="fig4"></p>
+<p>Em projetos Django, o controlador de roteamento fica todo num arquivo chamado urls.py. Dá pra se notar que em todos os componentes além do controlador de roteamento aparece o mesmo arquivo views.py. Isso se dá porque é bastante comum num projeto Django todas as views  estarem  no mesmo arquivo. Daria para organizador o código dos controladores em arquivos específicos, sim, mas a decisão do arquiteto desse projeto foi manter a tradição. O arquivo forms.py é onde estão reunidos todos os formulários que o usuário utiliza no frontend. Em Django, os formulários podem ser definidos em python para facilitar a manipulação dos dados deles no backend. A interface com o banco de dados é feita no arquivo models.py. O framework Django permite definir tabelas do banco como classes, de maneira a ser possível os controladores acessarem dados da tabela como se acessaria um objeto qualquer num program OO.  Mais uma vez, é muito comum todas as tabelas (ou modelos) serem definidas num só arquivo, como foi feito aqui.</p>
+<p><img src="code_backend.png" alt="fig5"></p>
+<p>Arquivos adicionais para o funcionamento do Django foram contidos no container ARQUIVOS DJANGO.</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/whitelabel-compcult-mobile/"><i class="fa fa-chevron-circle-left"></i> CompCult Mobile - Documentação arquitetural</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/docker/">Docker - Documentação arquitetural usando o modelo C4 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

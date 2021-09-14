@@ -1,0 +1,178 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação arquitetural do Perfil Político - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação arquitetural do Perfil Político" />
+<meta property="og:description" content="Autores Este documento foi produzido por Marcella Medeiros Siqueira Coutinho de Almeida.
+ Matrícula: 117110492 Contato: marcella.almeida@ccc.ufcg.edu.br Projeto documentado: https://github.com/okfn-brasil/perfil-politico  Descrição Arquitetural Este documento descreve parte da arquitetura do projeto Perfil Político da Open Knowledge Brasil, sendo essa descrição baseada principalmente no modelo C4." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/perfil-politico/" />
+<meta property="article:published_time" content="2021-04-30T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-04-30T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação arquitetural do Perfil Político"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Marcella Medeiros Siqueira Coutinho de Almeida.
+ Matrícula: 117110492 Contato: marcella.almeida@ccc.ufcg.edu.br Projeto documentado: https://github.com/okfn-brasil/perfil-politico  Descrição Arquitetural Este documento descreve parte da arquitetura do projeto Perfil Político da Open Knowledge Brasil, sendo essa descrição baseada principalmente no modelo C4."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação arquitetural do Perfil Político</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-04-30T00:00:00-03:00">Apr 30, 2021</time>
+        </li>
+        
+
+        
+
+        <li>4 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <hr>
+<h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Marcella Medeiros Siqueira Coutinho de Almeida.</p>
+<ul>
+<li>Matrícula: 117110492</li>
+<li>Contato: <a href="mailto:marcella.almeida@ccc.ufcg.edu.br">marcella.almeida@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/okfn-brasil/perfil-politico">https://github.com/okfn-brasil/perfil-politico</a></li>
+</ul>
+<h1 id="descrição-arquitetural">Descrição Arquitetural</h1>
+<p>Este documento descreve parte da arquitetura do projeto Perfil Político da Open Knowledge Brasil, sendo essa descrição baseada principalmente no modelo C4.</p>
+<p>É importante destacar que não será descrita toda a arquitetura do Perfil Político, dado que existem features que, apesar de já estarem no repositório, ainda não se encontram na versão final do projeto, a exemplo da função de apresentar os tweets dos candidatos.</p>
+<p>Também é válido ressaltar que a interface do projeto, feita em JavaScript, HTML e CSS se encontra em outro <a href="https://github.com/okfn-brasil/perfil-politico-frontend/">repositório</a> e não entra diretamente na descrição arquitetural (apesar de ser citada).</p>
+<h2 id="descrição-geral-e-objetivos">Descrição Geral e Objetivos</h2>
+<p>Perfil Político é uma plataforma criada para comparar e conhecer o histórico dos candidatos às eleições, nos cargos de: Deputado Federal, Deputado Estadual, Deputado Distrital, Senador, Governador e Presidente. O perfil de cada candidato traz informações de idade, sexo, escolaridade e ocupação, como também de histórico partidário e patrimônio declarado.</p>
+<p>O objetivo é de trazer à sociedade civil uma maneira acessível de se visualizar informações dos candidatos às eleições e permitir uma maior transparência, dado que o Portal do TSE disponibiliza esses dados de forma bruta. Para mais informações a respeito do projeto, clique neste <a href="https://perfilpolitico.serenata.ai/sobre.html">link</a>.</p>
+<h2 id="contexto">Contexto</h2>
+<p>Considerando o objetivo do projeto, tem-se então como usuário a própria sociedade civil — cidadãos brasileiros buscando informações sobre os candidatos às eleições do país.</p>
+<p>Para tornar essas informações fáceis de visualizar ao usuário, o sistema do Perfil Político coleta os dados disponibilizados através da plataforma <a href="https://brasil.io/home/">Brasil.io</a>, o qual reúne dados públicos de diferentes portais do país na forma de datasets. Para esse processamento, os dados foram coletados do repositório do Portal do TSE, com as informações ainda brutas.</p>
+<p><img src="contexto.png" alt="fig1"></p>
+<h2 id="containers">Containers</h2>
+<p>Para a seção de Containers, é importante considerarmos 3 (três) para a arquitetura do Perfil Político: sua API, o Banco de Dados e o Pré-processador de Dados. O primeiro é um conjunto de rotinas e padrões de programação para acessar a base de dados, desenvolvido em Python através do framework Django.</p>
+<p>A API tem os seguintes endpoints:</p>
+<h4 id="get-apicandidateyearstatepost"><code>GET /api/candidate/&lt;year&gt;/&lt;state&gt;/&lt;post&gt;/</code></h4>
+<ul>
+<li>Lista todos os candidatos de um determinado estado para um posto específico.</li>
+</ul>
+<h4 id="get-apicandidatepk"><code>GET /api/candidate/&lt;pk&gt;/</code></h4>
+<ul>
+<li>Retorna os detalhes de um determinado candidato.</li>
+</ul>
+<h4 id="get-apistatsyearpostcharacteristic"><code>GET /api/stats/&lt;year&gt;/&lt;post&gt;/&lt;characteristic&gt;/</code></h4>
+<ul>
+<li>Apresenta as estatísticas nacionais para uma determinada característica num posto selecionado.</li>
+</ul>
+<h4 id="get-apistatsstateyearpostcharacteristic"><code>GET /api/stats/&lt;state&gt;/&lt;year&gt;/&lt;post&gt;/&lt;characteristic&gt;/</code></h4>
+<ul>
+<li>O mesmo que o anterior, mas agrega por estado.</li>
+</ul>
+<p>O Pré-processador de Dados é o que possibilita que os dados estejam limpos e organizados de maneira compreensível, que permita a construção dos gráficos. Para que esse pré-processamento ocorra, faz-se uso de Python e do Jupyter. Por fim, o Banco de Dados foi implementado em PostgreSQL e tem por objetivo armazenar todas as informações coletadas da plataforma do Brasil.io já pré-processadas.</p>
+<p><img src="containers.png" alt="fig2"></p>
+<h2 id="componentes">Componentes</h2>
+<p>Dos containers apresentados, agora faz-se necessário destacar os componentes neles presentes.</p>
+<p>Para o container relacionado ao pré-processamento, temos os componentes do Tratamento de Dados e do Coletor de Dados. Este último é o responsável por, utilizando Django, realizar a coleta dos dados disponibilizados através de datasets na plataforma do Brasil.io, enquanto o componente do Tratamento de Dados é o componente que utiliza o Jupyter para limpar e organizar os dados da maneira que devem ser apresentados na plataforma.</p>
+<p>Conforme mencionado anteriormente, a interface do Perfil Político encontra-se em um repositório separado, mas para a análise dos componentes ela deve ser citada, pois representa o que aqui foi chamado de Interface de Acesso. Este componente é o contato do usuário com a API e é através da Interface de Acesso que se passa para o componente seguinte da API do projeto, o Buscador de Dados. Implementado em Python, ele recupera os dados solicitados no Banco de Dados para que, na interface, eles sejam apresentados da maneira adequada (as visualizações são realizadas utilizando D3).</p>
+<p><img src="componentes.png" alt="fig3"></p>
+<h2 id="visão-da-informação">Visão da Informação</h2>
+<p>Nessa seção é importante relembrar que o percurso dos dados no Perfil Político é encurtado pela coleta das informações em formato acessível fornecidas pelo Brasil.io. Dessa forma, o projeto não tem de lidar com a etapa inicial de raspagem dos dados brutos do Portal do TSE, tendo eles já disponibilizados na forma de datasets.</p>
+<p>Assim, o fluxo de informações se dá a partir da disponibilização dos dados no Brasil.io e da recuperação destes por parte do Perfil Político, que logo em seguida trata esses datasets recuperados, deixando-os devidamente limpos e organizados para a futura geração dos gráficos. Desse ponto, esses dados são armazenados no banco de dados e repassados assim que solicitados.</p>
+<p><img src="fluxoinformacao.png" alt="fig4"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/grafana/"><i class="fa fa-chevron-circle-left"></i> Grafana</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/whitelabel-compcult-mobile/">CompCult Mobile - Documentação arquitetural <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

@@ -4,17 +4,292 @@
   
   <url>
     <loc>https://joaoarthurbm.github.io/arqsoft-blog/</loc>
-    <lastmod>2021-04-16T00:00:00-03:00</lastmod>
+    <lastmod>2021-09-07T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/discussao-intro-arquitetura/</loc>
+    <lastmod>2021-09-07T00:00:00-03:00</lastmod>
   </url>
   
   <url>
     <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/</loc>
+    <lastmod>2021-09-07T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/airflow/</loc>
+    <lastmod>2021-08-15T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/mockito/</loc>
+    <lastmod>2021-08-13T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/asperathos/</loc>
+    <lastmod>2021-08-13T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/tags/java/</loc>
+    <lastmod>2021-08-13T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/tags/</loc>
+    <lastmod>2021-08-13T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/tags/testes/</loc>
+    <lastmod>2021-08-13T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/jupyter-lab/</loc>
+    <lastmod>2021-08-02T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/pdfbox/</loc>
+    <lastmod>2021-08-02T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/animavita/</loc>
+    <lastmod>2021-08-02T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/locust/</loc>
+    <lastmod>2021-08-02T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/deno/</loc>
+    <lastmod>2021-08-02T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/elasticsearch/</loc>
+    <lastmod>2021-08-02T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/kubernetes/</loc>
+    <lastmod>2021-08-02T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/express/</loc>
+    <lastmod>2021-08-02T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/flutter/</loc>
+    <lastmod>2021-08-02T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/jsonwebtoken/</loc>
+    <lastmod>2021-08-02T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/yoroi-frontend/</loc>
+    <lastmod>2021-08-02T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/openvidu/</loc>
+    <lastmod>2021-08-01T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/keycloak/</loc>
+    <lastmod>2021-08-01T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/signal-android/</loc>
+    <lastmod>2021-07-30T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/gson/</loc>
+    <lastmod>2021-07-29T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/ceph/</loc>
+    <lastmod>2021-07-28T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/docker/</loc>
+    <lastmod>2021-07-27T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/ecommerce/</loc>
+    <lastmod>2021-07-27T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/whitelabel-compcult-mobile/</loc>
+    <lastmod>2021-05-01T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/perfil-politico/</loc>
+    <lastmod>2021-04-30T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/grafana/</loc>
+    <lastmod>2021-04-30T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/anki/</loc>
+    <lastmod>2021-04-29T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/dispatch/</loc>
+    <lastmod>2021-04-29T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/stremio-web/</loc>
+    <lastmod>2021-04-29T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/popcorn/</loc>
+    <lastmod>2021-04-29T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/godot/</loc>
+    <lastmod>2021-04-24T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/cep-promise/</loc>
     <lastmod>2021-04-16T00:00:00-03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/tmodloader/</loc>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/chakra-ui/</loc>
     <lastmod>2021-04-16T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/brasil-api/</loc>
+    <lastmod>2021-04-16T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/meu-menu/</loc>
+    <lastmod>2021-04-16T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/leaflet/</loc>
+    <lastmod>2021-04-16T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/palemoon/</loc>
+    <lastmod>2021-04-16T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/bento/</loc>
+    <lastmod>2021-04-15T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/consoleme/</loc>
+    <lastmod>2021-04-15T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/kolibri/</loc>
+    <lastmod>2021-04-15T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/appwrite/</loc>
+    <lastmod>2021-04-15T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/insomnia/</loc>
+    <lastmod>2021-04-15T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/dialetus/</loc>
+    <lastmod>2021-04-15T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/learnsystemverilog/</loc>
+    <lastmod>2021-04-15T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/valheim/</loc>
+    <lastmod>2021-04-15T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/compcult-mobile/</loc>
+    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/gatsby/</loc>
+    <lastmod>2021-04-14T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/vlc/</loc>
+    <lastmod>2021-04-14T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/insomnia-inso/</loc>
+    <lastmod>2021-04-14T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/mysql-workbench/</loc>
+    <lastmod>2021-04-14T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/sequelize/</loc>
+    <lastmod>2021-04-14T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/react-intl/</loc>
+    <lastmod>2021-04-14T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/moodle/</loc>
+    <lastmod>2021-04-13T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/horarios-ufcg/</loc>
+    <lastmod>2021-04-13T00:00:00-03:00</lastmod>
   </url>
   
   <url>
@@ -148,16 +423,6 @@
   </url>
   
   <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft-blog/tags/java/</loc>
-    <lastmod>2020-10-06T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://joaoarthurbm.github.io/arqsoft-blog/tags/</loc>
-    <lastmod>2020-10-06T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/comunidadestech/</loc>
     <lastmod>2020-10-05T00:00:00-03:00</lastmod>
   </url>
@@ -193,6 +458,11 @@
   </url>
   
   <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/sme-fila-da-creche/</loc>
+    <lastmod>2020-04-15T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/instrucoes/</loc>
     <lastmod>2020-04-07T00:00:00-03:00</lastmod>
   </url>
@@ -220,6 +490,18 @@
   <url>
     <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/momentjs/</loc>
     <lastmod>2019-10-10T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/consoleme/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/docker/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>https://joaoarthurbm.github.io/arqsoft-blog/posts/tesseract-ocr/</loc>
   </url>
   
   <url>

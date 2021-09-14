@@ -1,0 +1,197 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Descrição arquitetural do OpenVidu - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Descrição arquitetural do OpenVidu" />
+<meta property="og:description" content="Autores Este documento foi produzido por Wellisson Gomes Pereira Bezerra Cacho.
+ Matrícula: 118210873 Contato: wellisson.cacho@ccc.ufcg.edu.br Projeto documentado: https://github.com/OpenVidu/openvidu  Descrição Arquitetural Este documento descreve parte da arquitetura do projeto OpenVidu." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/openvidu/" />
+<meta property="article:published_time" content="2021-08-01T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-08-01T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Descrição arquitetural do OpenVidu"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Wellisson Gomes Pereira Bezerra Cacho.
+ Matrícula: 118210873 Contato: wellisson.cacho@ccc.ufcg.edu.br Projeto documentado: https://github.com/OpenVidu/openvidu  Descrição Arquitetural Este documento descreve parte da arquitetura do projeto OpenVidu."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Descrição arquitetural do OpenVidu</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-08-01T00:00:00-03:00">Aug 1, 2021</time>
+        </li>
+        
+
+        
+
+        <li>4 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Wellisson Gomes Pereira Bezerra Cacho.</p>
+<ul>
+<li>Matrícula: 118210873</li>
+<li>Contato: <a href="mailto:wellisson.cacho@ccc.ufcg.edu.br">wellisson.cacho@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/OpenVidu/openvidu">https://github.com/OpenVidu/openvidu</a></li>
+</ul>
+<h1 id="descrição-arquitetural">Descrição Arquitetural</h1>
+<p>Este documento descreve parte da arquitetura do projeto <a href="https://github.com/OpenVidu/openvidu">OpenVidu</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<h2 id="descrição-geral-sobre-o-openvidu">Descrição Geral sobre o OpenVidu</h2>
+<p>É uma plataforma para facilitar a adição de videochamadas em seu aplicativo web ou mobile. Ele fornece um conjunto completo de tecnologias muito fáceis de integrar em sua aplicação.</p>
+<h2 id="a-plataforma-do-openvidu">A plataforma do OpenVidu</h2>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Permitir que os desenvolvedores e desenvolvedoras adicionem comunicações em tempo real a seus aplicativos de forma muito rápida e com baixo impacto em seu código.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>Criar video chamadas totalmente customizadas sem se preocupar com as operações de baixo nível. O OpenVidu fornece uma API simples, eficaz e fácil de usar para você poder esquecer o WebRTC e as coisas complicadas relacionadas a mídia.</p>
+<h3 id="contexto">Contexto</h3>
+<p>O OpenVidu é utilizado por uma aplicação web (no cliente ou server side) que permite que os desenvolvedores adicionem comunicações em tempo real aos seus aplicativos de maneira rápida e fácil. O mesmo utiliza o Kurento para facilitar detalhes de baixo nível. Além disso, o OpenVidu pode ser utilizado tanto no client side (como o mobile, mas não expandiremos até esse ponto) como no server side.</p>
+<p>Kurento é um servidor de mídia WebRTC (comunicação em tempo real da Web) e um conjunto de APIs que simplifica o desenvolvimento de aplicativos de vídeo avançados para plataformas web e smartphones. Os recursos do servidor de mídia Kurento incluem comunicações em grupo, transcodificação, gravação, mixagem, transmissão e roteamento de fluxos audiovisuais.</p>
+<p><img src="./openvidu-contexto.jpeg" alt="Contexto"></p>
+<h3 id="containers">Containers</h3>
+<p>Abaixo, observamos o diagrama de container para o OpenVidu:</p>
+<p><img src="./openvidu-container.jpeg" alt="Containers"></p>
+<p>Como já havia sido dito, é possível utilizar o OpenVidu em diversos módulos de um único sistema. Daremos foco em dois containers: openvidu-browser e openvidu-server.</p>
+<ul>
+<li>
+<p><strong>openvidu-browser:</strong> Nesse container, são executadas funções solicitadas pelo usuário. Isto é, renderiza determinados componentes que, juntos, constroem todo o arcabouço para chamadas de vídeo. Comunica-se com a API usando WebRTC.</p>
+</li>
+<li>
+<p><strong>openvidu-server:</strong> Container que engloba toda a parte do servidor da aplicação e gerencia o Kurento. É responsável por definir todas as entidades do domínio, criar uma sessão de vídeo, conectar usuários a uma determinada sessão, etc. Como já foi dito acima, é fornecido uma API WebRTC para o <em>openvidu-client</em> poder utilizar, mas também é fornecido uma API REST para que sistemas externos também possam fazer uso.</p>
+</li>
+</ul>
+<h3 id="componentes">Componentes</h3>
+<p>Abaixo é possível observar o diagrama dos componentes mais importantes do sistema:</p>
+<p><img src="./openvidu-component.jpeg" alt="Componentes"></p>
+<ul>
+<li>
+<p><strong>openvidu-browser</strong> tem diversos componentes:</p>
+<ul>
+<li><strong>Session</strong> é o responsável por iniciar/terminar a sessão com o server. Além disso, contém todas as informações de uma chamada de vídeo.</li>
+<li><strong>Subscriber</strong> permite inscrever-se ou cancelar a inscrição de um stream de áudio e vídeo.</li>
+<li><strong>Publisher</strong> permite publicar ou despublicar o stream de audio e vídeo.</li>
+<li><strong>StreamManager</strong> permite criar, atualizar e remover os vídeos de determinado stream. Além disso, o uso do StreamManager é particularmente útil quando você não precisa diferenciar entre streams do Publisher ou do Subscriber, ou apenas deseja gerenciar diretamente seus próprios elementos de vídeo (até mais de um elemento de vídeo por stream). Este cenário é bastante comum em frameworks de front-end declarativos MVC, como Angular, React ou Vue.js</li>
+<li><strong>OpenVidu</strong> é o ponto de entrada da biblioteca. É nele onde são chamadas as funções do <em>StreamManager</em>. Logo, é onde fica responsável a lógica para gerenciar os publishers e subscribers.</li>
+</ul>
+</li>
+<li>
+<p><strong>openvidu-server</strong></p>
+<ul>
+<li><strong>SessionManager</strong> responsável por gerenciar todas as sessões. Isto é, juntar um usuário a uma sessão, publicar/despublicar um vídeo, enviar uma mensagem (chat), reconectar, etc.</li>
+<li><strong>Session</strong> contém todas as informações de uma chamada de vídeo, ou seja, os publishers, os participantes, o estado de que é uma chamada privada ou não, etc.</li>
+<li><strong>TokenRegister</strong> responsável por registrar um token para cada sessão ativa.</li>
+<li><strong>MediaOptions</strong> contém todos os atributos de uma chamada, isto é, se há áudio, video, o tipo do vídeo e as dimensões do vídeo.</li>
+<li><strong>Participant</strong> um usuário que está participando de uma chamada. Note que o estado pode ser <em>pending</em> ou <em>active</em>. Quando não é chamado o Session.publish no cliente side, o status é pendente. Do contrário, o status fica ativo e uma conexão WebSocket é estabelecida. Além disso, há todas as informações, como o timestamp de quando a conexão foi estabelecida, o tipo da plataforma que ele está, o token, o status, etc.</li>
+</ul>
+</li>
+</ul>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p>Aqui estão todos os possíveis estados de mídia dentro do OpenVidu.</p>
+<ul>
+<li><strong>iniciando:</strong> a sessão está sendo iniciada.</li>
+<li><strong>falhou:</strong> a tentativa de iniciar uma sessão falhou.</li>
+<li><strong>rodando:</strong> a sessão está ativa e rodando. Novos participantes podem entrar enquanto esse estado estiver ativo. Pode ser alcançado pelos estados <em>iniciando</em> e <em>esperando-terminar</em>.</li>
+<li><strong>esperando-terminar:</strong> é possível uma sessão ficar em modo de espera para terminar quando ela é fechada. Uma vez que isso acontece, irá automaticamente entrar no estado <em>terminando</em>.</li>
+<li><strong>terminando:</strong> quando uma sessão está sendo fechada. Esse estado pode ser alcançado pelos estados <em>rodando</em> e <em>esperando-terminar</em>.</li>
+<li><strong>terminou:</strong> quando uma sessão é fechada. Esse estado pode ser alcançado pelo estado <em>terminando</em>.</li>
+</ul>
+<p><img src="./openvidu-information.jpeg" alt="Informação"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/keycloak/"><i class="fa fa-chevron-circle-left"></i> Documentação Arquitetural da funcionalidade Single-Sing On(SSO) da Aplicação Keycloak</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/yoroi-frontend/">Yoroi Wallet - Documentação arquitetural <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

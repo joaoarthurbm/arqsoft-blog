@@ -1,0 +1,192 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação Arquitetural da funcionalidade Single-Sing On(SSO) da Aplicação Keycloak - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação Arquitetural da funcionalidade Single-Sing On(SSO) da Aplicação Keycloak" />
+<meta property="og:description" content="Autores  Autor: Anderson Vidal Matricula: 117110162 Contato: anderson.vidal@ccc.ufcg.edu.br Projeto a ser documentado: Keycloak  Descrição Arquitetural - Keycloak Este documento descreve parte da arquitetura do projeto Keycloak baseado no padrão do modelo C4, focando especialmente na sua funcionalidade principal de Single-Sign On (SSO) para aplicações cadastradas." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/keycloak/" />
+<meta property="article:published_time" content="2021-08-01T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-08-01T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação Arquitetural da funcionalidade Single-Sing On(SSO) da Aplicação Keycloak"/>
+<meta name="twitter:description" content="Autores  Autor: Anderson Vidal Matricula: 117110162 Contato: anderson.vidal@ccc.ufcg.edu.br Projeto a ser documentado: Keycloak  Descrição Arquitetural - Keycloak Este documento descreve parte da arquitetura do projeto Keycloak baseado no padrão do modelo C4, focando especialmente na sua funcionalidade principal de Single-Sign On (SSO) para aplicações cadastradas."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação Arquitetural da funcionalidade Single-Sing On(SSO) da Aplicação Keycloak</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-08-01T00:00:00-03:00">Aug 1, 2021</time>
+        </li>
+        
+
+        
+
+        <li>5 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autores">Autores</h1>
+<ul>
+<li><strong>Autor</strong>: Anderson Vidal</li>
+<li><strong>Matricula</strong>: 117110162</li>
+<li><strong>Contato</strong>: <a href="mailto:anderson.vidal@ccc.ufcg.edu.br">anderson.vidal@ccc.ufcg.edu.br</a></li>
+<li><strong>Projeto a ser documentado</strong>: <a href="https://github.com/keycloak/keycloak">Keycloak</a></li>
+</ul>
+<h1 id="descrição-arquitetural---keycloak">Descrição Arquitetural - Keycloak</h1>
+<p>Este documento descreve parte da arquitetura do projeto <a href="https://github.com/keycloak/keycloak">Keycloak</a> baseado no padrão do <a href="https://c4model.com/">modelo C4</a>, focando especialmente na sua funcionalidade principal de Single-Sign On (SSO) para aplicações cadastradas.</p>
+<h2 id="descrição-geral-sobre-o-keycloak">Descrição Geral sobre o Keycloak</h2>
+<p>Keycloak é uma aplicação OpenSource para gerenciamento de identidades e acesso para aplicações e serviços modernos. Com ele, não é necessário se preocupar com o armazenamento de credenciais de usuários nem com o desenvolvimento de serviços de autenticação. Além disso, ele fornece outras ferramentas para lidar com a segurança no acesso a aplicações.
+Para mais detalhes sobre a aplicação, visitar o <a href="https://www.keycloak.org/">site oficial</a>.</p>
+<h2 id="keycloak---single-sign-on-sso">Keycloak - Single-Sign On (SSO)</h2>
+<h3 id="sobre-o-serviço-sso">Sobre o serviço SSO</h3>
+<p>O objetivo da funcionalidade Single-Sign On (SSO) é possibilitar que o usuário faça login apenas uma vez para acessar todos os sistemas que estejam configurados no keycloak,
+com um único serviço de autenticação para permitir que os usuários façam login em outros serviços, sem fornecer uma senha para o serviço que está sendo conectado.</p>
+<h3 id="contexto">Contexto</h3>
+<p>O contexto da funcionalidade SSO compreende os seguintes sistemas:</p>
+<ul>
+<li><strong>Client genérico</strong>: é um meio no qual uma aplicação genérica está executando e é o objetivo de acesso do usuário comum. Por exemplo um browser executando uma aplicação web.</li>
+<li><strong>Aplicações terceiras</strong>: são aplicações que a aplicação genérica principal acessa de alguma forma, como por exemplo, redes sociais.</li>
+<li><strong>Keycloak</strong>: é a aplicação que realiza o login do usuário comum e, quando autenticado, envia um token de acesso que é utilizado pelo client para acesso as demais aplicações terceiras</li>
+</ul>
+<p>No diagrama de contexto abaixo, podemos observar como se dá a comunicação entre as entidades mensionadas:</p>
+<ol>
+<li>O <em>usuário comum</em> requisita acesso ao cliente genérico</li>
+<li>O <em>cliente genérico</em> redireciona essa requisição para o <em>Keycloak</em></li>
+<li>O <em>Keycloak</em> então responde ao usuário com uma pagina de login</li>
+<li>O <em>usuário comum</em> envia suas credenciais</li>
+<li>O <em>Keycloak</em> verifica estas credenciais de acesso e, caso válidas, devolve um token de acesso ao cliente</li>
+<li>O <em>cliente genérico</em> em posse do token agora pode acessar as aplicações terceiras com o token que dá acesso as contas do <em>usuário comum</em></li>
+</ol>
+<p>Neste fluxo podemos observar que não foi necessário realizar requisições de login para as aplicações A, B e C, apenas o login no Keycloak, caracterizando a funcionalidade SSO.</p>
+<p><img src="c4contexto.png" alt="fig1"></p>
+<h3 id="containers">Containers</h3>
+<p>A integração do <strong>Keycloak</strong> é feita em um servidor pessoal ou empresarial, utilizando a tecnologia <em>Docker</em> para os containers que iram executar as aplicações secundárias <strong>Keycloak Security Proxy</strong>, que realiza o gerenciamento e redirecionamento das requisições para os <em>Keycloak Servers</em>, e o <strong>Keycloak Server</strong>, que executa as logica de negócio da aplicação. Além disso, também é utilizado uma base de dados utilizando a tecnologia <em>Postgres</em> que irá armazenar os dados referente aos usuários e aplicações cadastradas para acesso, além de informações da aplicação em si.</p>
+<p>No diagrama abaixo, podemos observar os relacionamentos entre as entidades do sistema e os containers de execução do <strong>Keycloak</strong>, destacando os seguintes relacionamentos:</p>
+<ol>
+<li>O usuário genérico realiza uma requisição <em>HTTP</em> para autenticação de login no <strong>Keycloak</strong></li>
+<li>O <em>Keycloak Security Proxy</em> busca pelo <em>Keycloak Server Container</em> de destino (as empresas/aplicações podem configurar mais de uma instancias/servides do Keycloak) e redireciona a requisição.</li>
+<li>O <em>Keycloak Server</em> verifica as credenciais do usuário em uma aplicação LDAP externa ou na base de dados no proprio servidor dependendo do tipo de aplicações que serão autenticadas.</li>
+<li>Quando todos os passos anteriores forem satisfeitos, uma resposta contendo o token de acesso é encaminhada do <em>Keycloak Server</em> para o <em>Keycloak Security Proxy</em> que o encaminha para a aplicação cliente.</li>
+</ol>
+<p><img src="c4container.png" alt="fig1"></p>
+<h3 id="components">Components</h3>
+<p>Os principais componentes envolvidos na lógica da funcionalidade de Single-Sign On (SSO) são:</p>
+<ul>
+<li><strong>Realm</strong>: É o componente responsável por gerenciar um conjunto de usuários, credenciais, funções e grupos. Podem existir varios realms e eles são isolados uns dos outros, podendo somente gerenciar e autenticar os usuários que controlam.</li>
+<li><strong>Events</strong>: É o componente responsável por receber todas os eventos que acontecem dentro do sistema para um realm específico, criando um histórico de acontecimentos que podem ser consultados posteriormente.</li>
+<li><strong>Identity Brokering</strong>: serviço intermediário que conecta vários provedores de serviços com diferentes provedores de identidade. Como um serviço intermediário, o <em>Identity Brokering</em> é responsável por criar uma relação de confiança com um provedor de identidade (Identity Provider) externo para usar suas identidades para acessar serviços internos expostos por provedores de serviço. Estes provedores podem ser redes sociais, serviços de nuvem ou serviços parceiros.</li>
+<li><strong>User Federation</strong>: é o serviço intermediário para gerenciamento de acesso a sistemas baseados em LDAP ou Active Directories que são freqüentemente utilizados por empresas.</li>
+</ul>
+<p>O diagrama abaixo mostra como cada componente se relaciona. Os relacionamentos de dão da seguinte forma:</p>
+<ol>
+<li>O usuário genérico realiza uma requisição <em>HTTP</em> para autenticação de login no <strong>Keycloak</strong>.</li>
+<li>A aplicação reconhece o <em>Realm</em> responsavél para aquele acesso e realiza uma busca das aplicações cadastradas na base, relacionadas a este usuário, para serem autenticadas. Em seguida envia os dados de usuário para o <em>Identity Brokering</em> e/ou <em>User Federation</em> para realizar as verificações e autenticações necessárias.</li>
+<li>O <em>Identity Brokering</em> realiza uma requisição de autenticação para os <em>Identity providers</em>, que são as aplicações a serem autenticadas.</li>
+<li>O <em>User Federation</em> realiza chamadas LDAP para verificar as credenciais de usuário para aplicações LDAP e serviços de diretório.</li>
+<li>Quanto todas as autenticações forem verificadas o <em>Identity Brokering</em> e/ou <em>User Federation</em> retornam o usuário com os tokens de acesso para o <em>Realm</em></li>
+<li>O <em>Realm</em> constroi uma resposta a autenticação contendo o token de acesso a para o <em>cliente genérico</em> e garante acesso ao <em>usuário comum</em></li>
+</ol>
+<p><img src="c4component.png" alt="fig1"></p>
+<h3 id="visão-de-informação">Visão de informação</h3>
+<p>Abaixo podemos ver um diagrama de linha de vida, mostrando o caminho percorrido pela informação desde o login do usuário até o feedback de acesso para ele, como explicitado no fluxo de contexto.</p>
+<p><img src="informacao.png" alt="fig1"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/signal-android/"><i class="fa fa-chevron-circle-left"></i> Documentação da arquitetura do aplicativo para Android Signal</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/openvidu/">Descrição arquitetural do OpenVidu <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

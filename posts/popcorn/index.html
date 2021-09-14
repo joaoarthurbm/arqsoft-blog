@@ -1,0 +1,187 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação arquitetural para o PopCorn - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação arquitetural para o PopCorn" />
+<meta property="og:description" content="Autores Este documento foi produzido por João Henrique Dos Santos Soares.
+ Matrícula: 118210761 Contato: joao.soares@ccc.ufcg.edu.br Projeto documentado: PopCorn-Desktop  Descrição Arquitetural &ndash; popcorn-desktop Este documento descreve a arquitetura do serviço popcorn-desktop." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/popcorn/" />
+<meta property="article:published_time" content="2021-04-29T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-04-29T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação arquitetural para o PopCorn"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por João Henrique Dos Santos Soares.
+ Matrícula: 118210761 Contato: joao.soares@ccc.ufcg.edu.br Projeto documentado: PopCorn-Desktop  Descrição Arquitetural &ndash; popcorn-desktop Este documento descreve a arquitetura do serviço popcorn-desktop."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação arquitetural para o PopCorn</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-04-29T00:00:00-03:00">Apr 29, 2021</time>
+        </li>
+        
+
+        
+
+        <li>3 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por João Henrique Dos Santos Soares.</p>
+<ul>
+<li>Matrícula: 118210761</li>
+<li>Contato: <a href="mailto:joao.soares@ccc.ufcg.edu.br">joao.soares@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/popcorn-official/popcorn-desktop">PopCorn-Desktop</a></li>
+</ul>
+<h1 id="descrição-arquitetural----popcorn-desktop">Descrição Arquitetural &ndash; popcorn-desktop</h1>
+<p><img src="2.jpg" alt="fig1"></p>
+<p>Este documento descreve a arquitetura do serviço <a href="https://github.com/popcorn-official/popcorn-desktop">popcorn-desktop</a>.
+As descrições e diagramas aqui presentes foram produzidos usando como base o modelo <a href="https://c4model.com/">C4</a>.
+É importante destacar que não será apresentada toda a documentação da arquitetura do PopCorn.O foco aqui será apresentar a descrição arquitetural do serviço de desktop disponibilizado pelo PopCorn</p>
+<h1 id="descrição-geral-sobre-o-popcorn-desktop">Descrição Geral sobre o Popcorn-Desktop</h1>
+<p>É um programa desktop que tem como objetivo a propagação de filmes e séries assim como a Netflix, porém tanto o seu download quanto o seu conteúdo é gratuito, e o melhor de tudo diferentemente do Netflix, o
+conteúdo do Popcorn é praticamente infinito.</p>
+<ul>
+<li>É Multiplataforma;</li>
+</ul>
+<p><img src="1.png" alt="fig1"></p>
+<h2 id="objetivo-geral">Objetivo Geral</h2>
+<p>A implementação desse serviço permite que o usuaria assista filmes ou series com o streaming de torrents de forma gratuita.</p>
+<h2 id="objetivos-específicos">Objetivos Específicos</h2>
+<p>O serviço do Popcorn Time tem como objetivo ser uma alternativa gratuita para serviços de vídeo sob demanda em assinatura, como o Netflix, Amazon Prime Video , Disnay Plus e etc.</p>
+<p><img src="3.gif" alt="intelliSense"></p>
+<h1 id="contexto">Contexto</h1>
+<p>É necessário baixar o instalador do popcorn e abrir o arquivo de instalação. Depois deste processo, pode começar a usar o sistema. O contexto do sistema se resume ao usuário conseguir acessar o serviço de streaming, navegar por sua galeria e conseguir assistir.</p>
+<ul>
+<li>O usuário instala o aplicativo em seu computador</li>
+<li>O sistema consegue trocar informações com o armazenamento de dados para criar ou fazer login.</li>
+<li>O usuário tem acesso ao sistema</li>
+<li>O sistema busca as informações dos streamings de vídeos e criar uma galeria para o usuário escolher</li>
+<li>A plataforma consegue disponibilizar os Streaming de vídeos</li>
+</ul>
+<p><img src="contexto.jpg" alt="fig1"></p>
+<h2 id="containers">Containers</h2>
+<p>O sistema popcorn pode ser dividida basicamente em três containers:</p>
+<ul>
+<li>Sistema Desktop :  foi implementado usando a linguagem JavaScript. O Sistema consegue entregar o conteúdo estático da aplicação.</li>
+<li>Streaming :  foi implementado usando a linguagem JavaScript. Tem como responsabilidade permitir que os usuários consigam reproduzir os arquivos de vídeos.</li>
+<li>API Application : foi implementado usando a linguagem JavaScript e NodeJs. Tem a responsabilidade de fornecer funcionalidades e a lógica de negócio para o sistema.</li>
+</ul>
+<p><img src="containers.jpg" alt="fig1"></p>
+<h2 id="componentes">Componentes</h2>
+<ul>
+<li>Gerenciador de usuário : Responsável pelo CRUD de usuários</li>
+<li>Autenticação : Responsável por verificar se o token é válido do usuário e ter um controle de acesso dos usuários.</li>
+<li>Gerenciador de Streaming: É responsável por controlar o fluxo de Streaming. Esse componente faz uma conexão com um sistema externo via p2p então ele consegue organizar o download do torrent de forma sequencial para que o usuário consiga assistir de forma fluida.Enquanto o filme é assistido o componente salva o arquivo em memória usando o <a href="https://github.com/louischatriot/nedb">NEDB</a></li>
+</ul>
+<p><img src="componentes.jpg" alt="fig1"></p>
+<h3 id="código">Código</h3>
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
+<h2 id="visão-de-informação">Visão de Informação</h2>
+<p>O objetivo do do popcorn é reduzir o tempo de espera para assistir a filmes baixados pela internet por meio do streaming a partir de torrents de fontes confiáveis. A visão de informação a seguir retrata o fluxo de um usuário para o consumo de uma streaming.
+O usuário faz a autenticação no sistema é aprovado e prossegue para a catálogo onde consegue visualizar todos os filmes/séries disponíveis.O usuário seleciona um filme/série e tem a possibilidade de assistir ao fim o usuário pode assistir novamente o streaming ou voltar ao catálogo.<br>
+<img src="visao.jpg" alt="fig1"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/godot/"><i class="fa fa-chevron-circle-left"></i> Documentação de Arquitetura da Engine de Jogos: GODOT</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/stremio-web/">Documentação arquitetural do Stremio Web <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

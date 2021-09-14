@@ -1,0 +1,203 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação arquitetural - Anki - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação arquitetural - Anki" />
+<meta property="og:description" content="Autor Este documento foi produzido por Igor Seabra.
+ Matrícula: 117210304 Contato: igor.seabra@ccc.ufcg.edu.br Projeto documentado: https://github.com/ankitects/anki  Descrição arquitetural &ndash; Anki (Imagem: Alex Fraser/Anki)
+Este documento descreve a arquitetura do aplicativo Anki." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/anki/" />
+<meta property="article:published_time" content="2021-04-29T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-04-29T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação arquitetural - Anki"/>
+<meta name="twitter:description" content="Autor Este documento foi produzido por Igor Seabra.
+ Matrícula: 117210304 Contato: igor.seabra@ccc.ufcg.edu.br Projeto documentado: https://github.com/ankitects/anki  Descrição arquitetural &ndash; Anki (Imagem: Alex Fraser/Anki)
+Este documento descreve a arquitetura do aplicativo Anki."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação arquitetural - Anki</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-04-29T00:00:00-03:00">Apr 29, 2021</time>
+        </li>
+        
+
+        
+
+        <li>6 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autor">Autor</h1>
+<p>Este documento foi produzido por Igor Seabra.</p>
+<ul>
+<li>Matrícula: 117210304</li>
+<li>Contato: <a href="mailto:igor.seabra@ccc.ufcg.edu.br">igor.seabra@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/ankitects/anki">https://github.com/ankitects/anki</a></li>
+</ul>
+<h1 id="descrição-arquitetural----anki">Descrição arquitetural &ndash; Anki</h1>
+<p><img src="anki_icon.png" alt="fig1"></p>
+<p>(Imagem: Alex Fraser/Anki)</p>
+<p>Este documento descreve a arquitetura do aplicativo <a href="https://github.com/ankitects/anki">Anki</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<h2 id="sobre-o-anki">Sobre o Anki</h2>
+<p><a href="https://apps.ankiweb.net/">Anki</a> é um serviço open source e gratuito para auxiliar na memorização de conteúdos de forma eficiente, automática e customizável.</p>
+<p>Ele permite ao usuário estudar cartões (compostos geralmente por uma pergunta na frente e sua resposta no verso) através de um sistema de repetição espaçada, ou seja, mostrando os cartões novamente em intervalos de tempo baseados no quão bem o usuário sabe o conteúdo daquele cartão. Os cartões podem possuir texto, imagens, áudio e vídeo, permitindo que o Anki seja usado para estudar praticamente qualquer tipo de conteúdo, como idiomas, conteúdo acadêmico ou artístico.</p>
+<p>Os usuários podem criar seus próprios baralhos com qualquer conteúdo nos cartões ou usar baralhos prontos criados por outros usuários, disponíveis na plataforma <a href="https://ankiweb.net/shared/decks/">AnkiWeb</a>.</p>
+<h2 id="o-serviço-de-monitoramento-do-twitter">O Serviço de monitoramento do twitter</h2>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Disponibilizar um serviço para aprendizagem através de repetição espaçada.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<ul>
+<li>Promoção de um serviço de repetição espaçada com cartões que automatiza e abstrai do usuário o que for possível, para que ele foque no estudo dos cartões.</li>
+<li>Flexibilidade na customização da apresentação dos cartões (como apresentação de cartões novos e intervalos de repetições)</li>
+<li>Formatação dos cartões com diversos tipos de mídia, como texto, imagens, áudio e vídeo</li>
+<li>Disponibilizade do serviço em plataforma web e aplicativos para Windows, Linux, Mac OS X, Android e iOS</li>
+<li>Acesso do estado mais recente da coleção do usuário em qualquer dispositivo, através da sincronização com o servidor</li>
+<li>Visualização de métricas de utilização, como índice de acertos, previsão de revisões, dificuldade dos cartões e tempo necessário para estudo</li>
+<li>Biblioteca de baralhos disponíveis para uso construída pela comunidade no serviço AnkiWeb</li>
+<li>Extensão da funcionalidade através de add-ons que podem ser desenvolvidos e instalados pelo usuário</li>
+</ul>
+<h3 id="contexto">Contexto</h3>
+<p><img src="anki_contexto.png" alt="fig2"></p>
+<ul>
+<li><strong>Usuário</strong>: O usuário deseja usar o Anki para criar e estudar baralhos com os cartões que contém as informações. Para isso, ele interage com a interface principal do Anki e com o AnkiWeb (Shared).</li>
+<li><strong>Anki</strong>: Na interface principal, o usuário pode ver seus baralhos, adicionar, editar ou estudar cartões, ver informações estatísticas e editar configurações. O Anki sincroniza todo seu estado com o AnkiWeb.</li>
+<li><strong>AnkiWeb</strong>: No servidor AnkiWeb, ficam armazenados os dados e baralhos dos usuários. O Anki sincroniza os dados com o AnkiWeb para que o usuário não os perca e possa acessá-los de qualquer dispositivo.</li>
+<li><strong>AnkiWeb (Shared)</strong>: Essa é a plataforma na web na qual o usuário pode pesquisar e baixar baralhos feitos por outros usuários e fazer upload de seus baralhos para a plataforma pública.</li>
+</ul>
+<h3 id="containers">Containers</h3>
+<p><img src="anki_containers.png" alt="fig3"></p>
+<ul>
+<li><strong>Versões da interface do Anki</strong>: O Anki está disponível em diversas plataformas.
+<ul>
+<li><strong>Anki (Windows, Linux, Mac OS X)</strong>: versões do aplicativo desktop do Anki. Possuem todas as funcionalidades.</li>
+<li><strong>AnkiWeb (Decks)</strong>: aplicativo do Anki no navegador. Permite apenas adicionar e editar notas e estudar baralhos, sem componentes como gerenciador de configurações, editor de tipos de nota, visualização de métricas de utilização e add-ons (mais informações abaixo).</li>
+<li><strong>AnkiMobile</strong>: aplicativo do Anki para iOS. Possui todas as funcionalidades da versão desktop, exceto add-ons. Com o objetivo de apoiar a equipe de desenolvimento, é a única versão paga do Anki.</li>
+<li><strong>AnkiDroid</strong>: aplicativo do Anki para Android. Possui todas as funcionalidades da versão desktop, exceto add-ons.</li>
+</ul>
+</li>
+<li><strong>Add-ons</strong>: o usuário pode buscar add-ons desenvolvidos pela comunidade que complementam a funcionalidade do Anki. Os add-ons são visualizados através do AnkiWeb (Shared), mas o próprio aplicativo do Anki se encarrega de baixar e instalar. Exemplos de add-ons: dicionário embutido, assistente de foco, edição de cartões em massa, leitor de tela.</li>
+<li><strong>Banco de Dados SQLite</strong>: um banco de dados completo é criado para armazenar a coleção de cada usuário. Cada instalação local do aplicativo do Anki, além do próprio servidor AnkiWeb, possui uma cópia do banco. As mudanças são sincronizadas com o AnkiWeb automaticamente pelo aplicativo ao início e final de cada sessão ou a pedido do usuário. O Anki resolve conflitos automaticamente, mas algumas mudanças, como a adição de um estilo novo de cartão, requerem que a cópia do banco no AnkiWeb seja apagada e substituída completamente.</li>
+</ul>
+<p><strong>Obs.</strong>: o usuário que deseja usar o serviço do Anki em um dispositivo iOS sem comprar o aplicativo pode fazer isso através do AnkiWeb (Decks) no navegador, mas precisará de acesso ao aplicativo em outro dispositivo, pois o aplicativo no navegador não possui todas as funções necessárias.</p>
+<h3 id="componentes">Componentes</h3>
+<p><img src="anki_componentes.png" alt="fig4"></p>
+<p><strong>Obs.</strong>: os componentes com contorno em <strong>vermelho</strong> não estão disponíveis na plataforma <strong>AnkiWeb (Decks)</strong> no navegador, apenas nos aplicativos para desktop e celular.</p>
+<p>Há uma relação próxima entre os gerenciadores de configurações, baralhos, tipos de cartões, notas e cartões:</p>
+<ul>
+<li>Uma <strong>configuração</strong> é um conjunto de parâmetros que define quantos cartões novos serão mostrados por dia, o fator de multiplicação para o tempo em que o cartão será mostrado novamente de acordo com a resposta, a quantidade diária máxima de revisões etc. Pode ser criado qualquer número de configurações e uma configuração pode ser usada por qualquer quantidade de baralhos.</li>
+<li>Um <strong>tipo de nota</strong> é um esquema que define quais campos uma nota terá. O padrão são dois campos (frente e verso), mas podem ser adicionados mais tipos com outros campos (como mídia e informações adicionais). Um tipo de nota possui um ou mais <strong>tipos de cartão</strong>. O tipo padrão possui o campo da frente na frente e o campo do verso no verso, mas isso pode ser customizado (e deve, caso campos além da frente e verso sejam adicionados). Os cartões são escritos em HTML.</li>
+<li>Uma <strong>nota</strong> é uma instância de um tipo de nota, com as informações a serem inseridas nos campos daquele tipo. Uma nota representa uma quantidade de cartões igual à quantidade de tipos de cartão naquele tipo de nota.</li>
+<li>Um <strong>baralho</strong> é um conjunto de notas. As notas de um baralho não precisam ser todas do mesmo tipo. O conjunto de cartões de um baralho é a união dos cartões de cada nota. Permitir ao usuário estudar os cartões de um baralho é o principal objetivo do Anki.</li>
+</ul>
+<p>O Anki já vem com alguns tipos de nota padrão, para que não seja necessário que o usuário saiba gerenciá-los ou precise criar as formatações para os cartões em HTML.</p>
+<h3 id="código">Código</h3>
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p><img src="anki_informacao.png" alt="fig5"></p>
+<p><strong>Obs.</strong>: no diagrama de informação, as setas e contornos pontilhados roxos indicam que aquele fluxo ou etapa é opcional.</p>
+<p>O objetivo do usuário do Anki é estudar seus baralhos; para isso, ele precisa criá-los, tendo a opção de buscar um pronto no AnkiWeb (Shared) ou criar um novo, seguindo o fluxo de informação indicado. Já tendo baralhos com cartões, o usuário sincroniza sua coleção com o AnkiWeb antes e depois de estudá-los.</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/dispatch/"><i class="fa fa-chevron-circle-left"></i> Documentação Arquitetural do Netflix Dispatch</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/grafana/">Grafana <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

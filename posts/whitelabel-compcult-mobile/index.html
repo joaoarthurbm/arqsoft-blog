@@ -1,0 +1,204 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>CompCult Mobile - Documentação arquitetural - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="CompCult Mobile - Documentação arquitetural" />
+<meta property="og:description" content="Este documento tem por finalidade descrever a plataforma CompCult Mobile sob diversos níveis (visões) arquiteturais. Em verdade, a CompCult Mobile descreve uma White Label, um arcabouço para o desenvolvimento das aplicações móveis produzidas pelo laboratório CompCult - UFCG." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/whitelabel-compcult-mobile/" />
+<meta property="article:published_time" content="2021-05-01T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-05-01T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CompCult Mobile - Documentação arquitetural"/>
+<meta name="twitter:description" content="Este documento tem por finalidade descrever a plataforma CompCult Mobile sob diversos níveis (visões) arquiteturais. Em verdade, a CompCult Mobile descreve uma White Label, um arcabouço para o desenvolvimento das aplicações móveis produzidas pelo laboratório CompCult - UFCG."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>CompCult Mobile - Documentação arquitetural</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-05-01T00:00:00-03:00">May 1, 2021</time>
+        </li>
+        
+
+        
+
+        <li>6 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <hr>
+<p>Este documento tem por finalidade descrever a plataforma <em>CompCult Mobile</em> sob diversos níveis (visões) arquiteturais. Em verdade, a <em>CompCult Mobile</em> descreve uma <em>White Label</em>, um arcabouço para o desenvolvimento das aplicações móveis produzidas pelo laboratório CompCult - UFCG.</p>
+<hr>
+<h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Lucas Christopher de Souza Silva.</p>
+<ul>
+<li>Matrícula: 115210934</li>
+<li>Contato: <a href="mailto:lucas.christopher.silva@ccc.ufcg.edu.br">lucas.christopher.silva@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/CompCult/compcult-mobile">https://github.com/CompCult/compcult-mobile</a></li>
+</ul>
+<h1 id="descrição-arquitetural">Descrição Arquitetural</h1>
+<p>Este documento descreve parte da arquitetura do projeto <a href="https://github.com/CompCult/compcult-mobile">CompCult Mobile</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<h2 id="descrição-geral-sobre-o-compcult-mobile">Descrição Geral sobre o CompCult Mobile</h2>
+<p>A CompCult Mobile é uma <em>white label app</em> que tem como objetivo oferecer um arcabouço para o desenvolvimento das aplicações híbridas produzidas pelo laboratório CompCult - UFCG. Através dessa aplicação, podemos dar forma às metodologias frisadas pelo <a href="https://www.scitepress.org/Papers/2018/66911/66911.pdf">ReadAct</a>, dando forma ao conceito interno do laboratório chamado GSDK (Gaming Software Development Kit), que, em suma, trata-se de uma implementação de realidade alternativa em aplicações socioeducativas.</p>
+<h2 id="o-arcabouço-para-aplicações-socioeducativas-desenvolvidas-pelo-compcult-atelier">O Arcabouço para aplicações socioeducativas desenvolvidas pelo CompCult Atelier</h2>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Implementar um arcabouço para padronizar as aplicações socioeducativas desenvolvidas pelo CompCult Atelier a fim de proporcionar uma arquitetura limpa, com fácil manutenção e que siga as metodologias frisadas pelo <a href="https://www.scitepress.org/Papers/2018/66911/66911.pdf">ReadAct</a>.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>Queremos propor ao CompCult uma forma de desenvolver aplicações de uma maneira mais facilitada. Com esta missão em vista, escolhemos o uso do Flutter (SDK do Google) para desenvolver o sistema, já que com ele, temos a vantagem de utilizar uma única base de código para oferecer a aplicação aos sistemas operacionais Android e iOS, de uma forma que a performance seja semelhante a de aplicações nativas.</p>
+<p>Visto que os projetos que chegam ao laboratório são de cunho exclusivamente educacional, a ideia é propor uma interface para acelerar o desenvolvimento de nossos produtos de uma forma que não impacte na qualidade dos mesmos. Além disso, a maturação da ideia deste arcabouço levará a possíveis negociações com empresas de viés educacional que buscam melhorar a interação aluno-professor.</p>
+<h3 id="contexto">Contexto</h3>
+<p>O sistema se resume a uma aplicação mobile híbrida que aproxima a interação aluno-professor utilizando-se de realidade alternativa. Com isso, disponibilizamos aos clientes do CompCult uma interface personalizável e distribuída ao qual eles podem trazer a aplicação, &ldquo;sua própria cara&rdquo; (com suas cores e temas de preferência). Imagine que você tenha uma forma de bolo em sua casa. Nela, você pode fazer bolos de diferentes sabores, porém, todos esses bolos terão o mesmo formato. Em suma, é basicamente isso: o usuário consome uma aplicação que é uma implementação do CompCult Mobile.</p>
+<p>O arcabouço é composto basicamente por:</p>
+<ul>
+<li>sistema de log in/sign up: podemos cadastrar usuários e entrar/sair da aplicação com os mesmos;</li>
+<li>missões/quizzes: a aplicação possui quizzes na forma perguntas/respostas, e missões, que podem proporcionar uma ideia de realidade alternativa, no qual os usuários (geralmente, alunos) da aplicação podem solucionar suas missões dispondo de respostas através de geolocalização, imagens, vídeos e arquivos de áudio;</li>
+<li>sistema de rancking/recompensa: a cada missão/quiz resolvido, os usuários recebem pontuações e  recompensas na aplicação (moedas virtuais na aplicação que possibilitam uso na loja);</li>
+<li>loja: uma miniloja com itens no qual os usuários podem comprar/vender itens utilizando-se de suas moedas virtuais, itens como livros e novas missões.</li>
+</ul>
+<p><img src="context-diagram.png" alt="fig1"></p>
+<h3 id="containers">Containers</h3>
+<p>A arquitetura do CompCult Mobile foi pensada no padrão de projeto MVVM (Model-View-ViewModel), que visa estabelecer uma clara separação em camadas de responsabilidades e tornar a aplicação mais manutenível e testável. A grosso modo, temos uma divisão em três containers:</p>
+<p><strong>VIEW</strong>: Aqui temos toda a parte de visualização onde o usuário iterage com a aplicação. Nela estão todas as telas com seus respectivos layouts, componentes (botões, inputs, menus e etc), temas, imagens e etc.</p>
+<p><strong>BUSINESS LOGIC</strong>: Por outro lado, nesta camada temos os intermediadores e os responsáveis por ditarem as regras de negócio da aplicação.</p>
+<p><strong>DATABASE</strong>: Camada responsável pelo armazenamento dos dados da aplicação, localmente e remotamente.</p>
+<p><img src="containers-diagram.png" alt="fig2"></p>
+<h3 id="componentes">Componentes</h3>
+<p>Expandindo os containers do <em>white label</em>, podemos enxergar os principais componentes da aplicação com seus relacionamentos e responsabilidades descritas.</p>
+<p><strong>VIEWS</strong>: Aqui reunimos todas as telas da aplicação. Podemos enxergar por exemplo, a &ldquo;LoginScreen&rdquo; que é a tela no qual o usuário poderá inserir seus dados e entrar na aplicação; também, a &ldquo;MissionsScreen&rdquo; e a &ldquo;QuizzesScreen&rdquo; que reúnem, respectivamente, a listagem de missões e quizzes disponíveis para os usuários, além das opções de inserir códigos para missões/quizzes secretos e tudo mais.</p>
+<p>Expandindo o container &ldquo;Business Logic&rdquo;, podemos encontrar:</p>
+<p><strong>VIEWMODELS</strong>: Buscam prover para as <em>views</em> a lógica de apresentação, implementando propriedades e comandos para que as <em>views</em> possa preencher seus controles, notificando as mesmas, em caso de mudança de estado, através de eventos ou notificação de mudança. Os <em>viewmodels</em> funcionam como controladores das ações que os usuários fazem nas <em>views</em>. Podemos citar por exemplo, o &ldquo;StoresViewModel&rdquo;, que lida com todo controle de ações nos usuários com a loja, como por exemplo, a pesquisa, a venda e a compra de itens na loja da aplicação, e o &ldquo;GamesViewModel&rdquo; que lida com as iterações do usuário referente aos minijogos na aplicação, controlando a pontuação e regras dos minijogos.</p>
+<p><strong>MODELS</strong>: Esse componente engloba a manipulação dos dados. Podemos ver os <em>models</em> que são as abstrações para as entidades da aplicação (usuário, missão, quiz, itens da loja e etc), os <em>repositories</em> que controlam as ações de armazenamento no dispositivo do usuário e os <em>services</em> que listam as chamadas para a <em>CompCult API</em>.</p>
+<p>Em suma, as <em>views</em> enviam suas ações para os <em>viewmodels</em>. Estes, por sua vez, podemos ver que ocupam a posição central, enviando e recebendo os dados dos <em>models</em> e fornecendo os dados para as <em>views</em>, sem conhecer o que há nelas. Também observam as mudanças de dados que ocorreram nas <em>views</em> e respondem de acordo com o modelo para a vista.</p>
+<p><img src="components-diagram.png" alt="fig3"></p>
+<h3 id="código">Código</h3>
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p>As informações mais importantes para o funcionamento do CompCult Mobile se dá pela personalização do cliente nos arquivos de configuração:</p>
+<ul>
+<li>lib/config.dart: configurações gerais do aplicativo (cores, nome, url da api, etc);</li>
+<li>pubspec.yaml: configuração das imagens e fontes utilizadas na aplicação;</li>
+<li>android/app/src/main/AndroidManifest.xml: configuração do <em>package name</em> utilizado nas lojas de aplicações;</li>
+<li>android/app/external: configura as chaves e certificados para aplicação.</li>
+</ul>
+<p>Feita essas configurações, o cliente poderá executar a aplicação e o <em>white label</em> gerará uma nova aplicação com as configurações aplicadas.</p>
+<p><img src="information-view.png" alt="fig4"></p>
+<h1 id="contribuições-concretas">Contribuições Concretas</h1>
+<p>Apesar do Flutter deixar livre para a comunidade como estruturar o projeto, o CompCult Mobile foi iniciado de uma forma confusa, com um MVC mal implementado e uma estruturação de pastas nada agradável. Com isso, em meados de junho de 2020 foi proposta uma refatoração total na arquitetura e nos componentes da aplicação, para adotarmos o que mais tem sido utilizado na comunidade:</p>
+<ul>
+<li><a href="https://pub.dev/packages/slidy">Slidy</a> para estruturação e divisão de pastas do projeto;</li>
+<li><a href="https://pub.dev/packages/flutter_modular">Flutter Modular</a> para a navegação e rotas da aplicação;</li>
+<li>Padrão arquitetural MVVM, que é o mais utilizado em aplicações móveis e recomendado pelo Google;</li>
+<li>MobX para o controle e gerência de estados da aplicação.</li>
+</ul>
+<p>Segue abaixo os Pull Request com contribuições para o projeto:</p>
+<ul>
+<li><a href="https://github.com/CompCult/compcult-mobile/pull/10">Jogo da memória implementado no GSDK (ReadAct)</a>;</li>
+<li><a href="https://github.com/CompCult/compcult-mobile/pull/11">Funcionalidade de missões aceitarem arquivos de áudio como respostas</a>;</li>
+<li><a href="https://github.com/CompCult/compcult-mobile/pull/12">Refatoração no layout e na lógica de negócio das telas de login e cadastro de usuários</a>.</li>
+</ul>
+<p>Segue o link dos commits na branch com a nova reestruturação proposta até o final de 2021:</p>
+<ul>
+<li><a href="https://github.com/CompCult/compcult-mobile/commits/support/migracao-mobx">Reestruturação do projeto com o uso do padrão arquitetural MVVM, MobX e Flutter Modular</a>.</li>
+</ul>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/perfil-politico/"><i class="fa fa-chevron-circle-left"></i> Documentação arquitetural do Perfil Político</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/ecommerce/">Website de e-commerce com Django <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

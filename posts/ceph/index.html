@@ -1,0 +1,181 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação arquitetural do Ceph - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação arquitetural do Ceph" />
+<meta property="og:description" content="Este documento explica aspectos da arquitetura do sistema de arquivos Ceph. O Ceph é um sistema que armazena seus arquivos em um cluster distribuído.
+ Autores Este documento foi produzido por Luis Eduardo Barroso Mafra." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/ceph/" />
+<meta property="article:published_time" content="2021-07-28T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-07-28T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação arquitetural do Ceph"/>
+<meta name="twitter:description" content="Este documento explica aspectos da arquitetura do sistema de arquivos Ceph. O Ceph é um sistema que armazena seus arquivos em um cluster distribuído.
+ Autores Este documento foi produzido por Luis Eduardo Barroso Mafra."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação arquitetural do Ceph</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-07-28T00:00:00-03:00">Jul 28, 2021</time>
+        </li>
+        
+
+        
+
+        <li>4 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <hr>
+<p>Este documento explica aspectos da arquitetura do sistema de arquivos Ceph. O Ceph é um sistema que armazena seus arquivos em um cluster distribuído.</p>
+<hr>
+<h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Luis Eduardo Barroso Mafra.</p>
+<ul>
+<li>Matrícula: 118110175</li>
+<li>Contato: <a href="mailto:luis.mafra@ccc.ufcg.edu.br">luis.mafra@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/ceph/ceph">https://github.com/ceph/ceph</a></li>
+</ul>
+<h1 id="descrição-arquitetural---ceph">Descrição Arquitetural - Ceph</h1>
+<p>Este documento descreve a arquitetura do Ceph. Essa descrição foi baseada principalmente no modelo C4. O foco principal é descrever como esse software realiza o armazenamento de dados e o acesso à eles.</p>
+<h2 id="descrição-geral-sobre-o-ceph">Descrição Geral sobre o Ceph</h2>
+<p>O Ceph é um software que armazena os dados em blocos e os distribui em um cluster escalonável de armazenamento, composto por Object Storage Daemons (OSD). O Ceph possui também um monitor com acesso à informações do cluster, e pode ter um servidor de metadados (MDS) para intermediar o acesso a inodes e diretórios no CephFS.</p>
+<p>Mais detalhes podem ser vistos <a href="https://docs.ceph.com/en/latest/">nesse link</a>.</p>
+<h2 id="ceph">Ceph</h2>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Implementar um sistema de arquivos distribuídos que permite leitura e escrita de arquivos de forma eficiente.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>O Ceph é um software que tem como objetivo criar um cluster de armazenamento de arquivos escalonável, garantindo replicação e tolerância a falhas, assim como um acesso eficiente aos dados armazenados nesse cluster.</p>
+<h3 id="contexto">Contexto</h3>
+<p>Abaixo, é possível observar o diagrama de contexto do sistema.
+<img src="context.png" alt="context"></p>
+<p>Quando o cluster for criado, o cliente poderá acessar o diretório em que o ceph foi montado, e armazenar os arquivos. Esses arquivos serão dividos em objetos e armazenados de forma balanceada entre os vários servidores de armazenamento que compõem o cluster. Também é possível adquirir informações sobre arquivos e diretórios com comandos básicos (<code>ls</code>, <code>find</code>,<code>stat</code>, etc), que irá pegar isso do cluster de metadadados caso o tipo de cliente seja CephFS.</p>
+<h3 id="containers">Containers</h3>
+<p>Abaixo, observamos o diagrama de container para o Ceph:</p>
+<p><img src="container.png" alt="container"></p>
+<p>Vamos detalhar cada container e sua função no sistema:</p>
+<ul>
+<li><strong>Monitor</strong>: Esse é o container que guarda uma mapa do estado do cluster, que inclui o mapa do <strong>Manager</strong>, o mapa do <strong>OSD</strong>, o mapa do próprio <strong>Monitor</strong>, e o CRUSH Map. Esses mapas possuem informações necessárias para que os daemons do Ceph se comuniquem entre si. Ele também é responsável por gerenciar a autenticação entre o cliente e os daemons, através de uma chave secreta.</li>
+<li><strong>Manager</strong>: Esse é o container responsável por manter métricas em tempo de execução do cluster, incluindo espaço utilizado e métricas de desempenho. Ele também possui módulos em python para exibir informações do cluster em uma plataforma web através de um Dashboard.</li>
+<li><strong>Object Storage Daemon(OSD)</strong>: Esse é o container responsável por armazenar os dados dos arquivos, lidar com replicação e rebalanceamento desses dados entre os nodes, e fornece informações de monitoramente para o <strong>Monitor</strong> e o <strong>Manager</strong>. É possível(e esperado) ter vários OSDs para garantir uma maior segurança e eficiência.</li>
+</ul>
+<h3 id="componentes">Componentes</h3>
+<p>Abaixo, é possível observar o diagrama de componentes do sistema:</p>
+<p><img src="component.png" alt="component"></p>
+<p>Nos componentes, temos:</p>
+<ul>
+<li><strong>Data Striping</strong>: Responsável por dividir os dados do arquivo em vários objetos menores para que o arquivo fique espalhado em diferentes OSDs. Dessa forma, o Ceph garante uma maior eficiência na leitura de dados, podendo ler o arquivo de várias OSDs ao mesmo tempo.</li>
+<li><strong>Algoritmo CRUSH</strong>: O Algoritmo CRUSH mapeia objetos em Placement Groups(PG), e PGs em OSDs dinamicamente utilizando uma função hash pseudo-aleatória para que os objetos sejam distribuídos de forma uniforme. Essas informações são armazenadas no CRUSH Map para posterior utilização.</li>
+<li><strong>Replication</strong>: A OSD usa o algoritmo CRUSH para calcular onde as réplicas dos objetos devem ser armazenadas. Quando um objeto é criado, ele é armazenado na OSD primária, e a OSD recupera o número de réplicas esperada por arquivos, e utiliza o CRUSH Map para armazenar nas OSDs secundárias.</li>
+<li><strong>Rebalancing</strong>: Responsável por atualizar o Cluster Map quando uma OSD for adicionada ou removida do cluster, migrando alguns Placement Groups para garantir que os objetos continuem distribuidos uniformemente entre as OSDs.</li>
+<li><strong>Heartbeat</strong>: Responsável por verificar o &ldquo;batimento cardíaco&rdquo; de outras OSDs, e reportar ao monitor se verificar que umas das OSDs tenha caído.</li>
+</ul>
+<h3 id="código">Código</h3>
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p>Temos um fluxo de estados bem simples, onde o arquivo é criado, e será dividido em vários pedaços pelo Data Striping. Em seguida, ele é enviado ao Algoritmo CRUSH para ser mapeado em algum Placement Group, e replicado em várias das OSDs, onde ele chegará ao seu estado final.</p>
+<p><img src="informacao.png" alt="informacao"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/docker/"><i class="fa fa-chevron-circle-left"></i> Docker - Documentação arquitetural usando o modelo C4</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/gson/">Documento arquitetural - Biblioteca Gson <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

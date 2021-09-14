@@ -1,0 +1,171 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Horários UFCG - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Horários UFCG" />
+<meta property="og:description" content="Autores Este documento foi produzido por Eduardo Pereira dos Santos.
+ Matrícula: 117210342 Contato: eduardo.pereira.santos@ccc.ufcg.edu.br Projeto documentado: https://github.com/Guardians-DSC/horarios-ufcg  Descrição Arquitetural &ndash; Horários UFCG Frontend  Este documento descreve o Frontend do Horários UFCG." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/horarios-ufcg/" />
+<meta property="article:published_time" content="2021-04-13T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-04-13T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Horários UFCG"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Eduardo Pereira dos Santos.
+ Matrícula: 117210342 Contato: eduardo.pereira.santos@ccc.ufcg.edu.br Projeto documentado: https://github.com/Guardians-DSC/horarios-ufcg  Descrição Arquitetural &ndash; Horários UFCG Frontend  Este documento descreve o Frontend do Horários UFCG."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Horários UFCG</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-04-13T00:00:00-03:00">Apr 13, 2021</time>
+        </li>
+        
+
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Eduardo Pereira dos Santos.</p>
+<ul>
+<li>Matrícula: 117210342</li>
+<li>Contato: <a href="mailto:eduardo.pereira.santos@ccc.ufcg.edu.br">eduardo.pereira.santos@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/Guardians-DSC/horarios-ufcg">https://github.com/Guardians-DSC/horarios-ufcg</a></li>
+</ul>
+<h1 id="descrição-arquitetural----horários-ufcg-frontend">Descrição Arquitetural &ndash; Horários UFCG Frontend</h1>
+<div align="center" style="margin-top:1.5rem;">
+    <img src="horarios-ufcg-logo.png" style="width:20rem;">
+</div>
+<p>Este documento descreve o Frontend do Horários UFCG. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<h2 id="descrição-geral-sobre-o-horários-ufcg">Descrição Geral sobre o Horários UFCG</h2>
+<p>O Horários UFCG é uma aplicação SPA (Single Page Application), feita em <a href="https://vuejs.org/">Vue.js</a>, que fornece uma visualização moderna e limpa, ajudando os alunos de Ciência da Computação a montar seu horário antes da realização das matrículas. Além disso, fornece opções de filtragem e pesquisa permitindo uma experiência mais otimizada.</p>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Visualizar os horários das disciplinas dos cursos da UFCG, a princípio do curso de Ciência da Computação.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>Ajudar o aluno da UFCG a visualizar melhor os conflitos entre disciplinas e organizar o seu horário, fornecendo uma visualização limpa e amigável.</p>
+<h3 id="contexto">Contexto</h3>
+<p><img src="contexto.png" alt="fig1"></p>
+<p>Como vemos no diagrama de contexto, o Horários UFCG utiliza-se de uma API externa que fornece as disciplinas e horários, que são requisitados utilizando o protocolo HTTP.</p>
+<h3 id="containers">Containers</h3>
+<p>O Horários UFCG é basicamente uma aplicação <a href="https://vuejs.org/">Vue.js</a> e faz uso do LocalStorage para armazenar as disciplinas selecionadas, mantendo-as salvas mesmo após o fechamento da página.</p>
+<p><img src="container.png" alt="fig1"></p>
+<h3 id="componentes">Componentes</h3>
+<p>O Horários UFCG é composto, basicamente, em três tipos de componentes:</p>
+<ul>
+<li>Visualização: Horário, Dia, Aula, Tabela e Model</li>
+<li>Filtragem e Pesquisa (contém visualização): NavBar e Filtro</li>
+<li>Serviços: Store e Services</li>
+</ul>
+<p><img src="componente.png" alt="fig1"></p>
+<h3 id="código">Código</h3>
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p>O fluxo de informação é bem simples. O usuário escolhe suas disciplinas e em seguida remove os choques de horário, isso se repete até o usuário achar um horário adequado.</p>
+<p><img src="informacao.png" alt="fig1"></p>
+<h1 id="contribuições-concretas">Contribuições Concretas</h1>
+<p><em>Descreva</em> aqui os PRs enviados para o projeto e o status dos mesmos. Forneça os links dos PRs.</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/oathkeeper/"><i class="fa fa-chevron-circle-left"></i> Documentação Arquitetural ORY Oathkeeper</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/moodle/">Documentação arquitetural Moodle <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

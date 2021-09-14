@@ -1,0 +1,182 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação arquitetural do Insomnia - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação arquitetural do Insomnia" />
+<meta property="og:description" content="Este é um documento explica aspectos da arquitetura de um cliente para requisições à API&rsquo;s. O Insomnia torna a tarefa de teste de Api&rsquo;s mais fáceis.
+ Autores Este documento foi produzido por Filipe Pires Guimarães." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/insomnia/" />
+<meta property="article:published_time" content="2021-04-15T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-04-15T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação arquitetural do Insomnia"/>
+<meta name="twitter:description" content="Este é um documento explica aspectos da arquitetura de um cliente para requisições à API&rsquo;s. O Insomnia torna a tarefa de teste de Api&rsquo;s mais fáceis.
+ Autores Este documento foi produzido por Filipe Pires Guimarães."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação arquitetural do Insomnia</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-04-15T00:00:00-03:00">Apr 15, 2021</time>
+        </li>
+        
+
+        
+
+        <li>4 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <hr>
+<p>Este é um documento explica aspectos da arquitetura de um cliente para requisições à API&rsquo;s. O Insomnia
+torna a tarefa de teste de Api&rsquo;s mais fáceis.</p>
+<hr>
+<h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Filipe Pires Guimarães.</p>
+<ul>
+<li>Matrícula: 116210442</li>
+<li>Contato: <a href="mailto:filipepiresg@gmail.com">filipepiresg@gmail.com</a></li>
+<li>Projeto documentado: <a href="https://github.com/Kong/insomnia">https://github.com/Kong/insomnia</a></li>
+</ul>
+<h1 id="descrição-arquitetural--insomnia">Descrição Arquitetural – Insomnia</h1>
+<p>Este documento descreve parte da arquitetura do projeto Insomnia. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<p>É importante destacar que não será escrita toda a arquitetura do Insomnia. O foco principal é descrever a <code>API client</code> utilizando o padrão REST de um ùnico workspace, que é parte fundamental do projeto. A organização utiliza um padrão de arquitetura <em>monolíto</em>.</p>
+<h2 id="descrição-geral-sobre-o-insomnia">Descrição Geral sobre o Insomnia</h2>
+<p>O Insomnia é uma ferramenta open-source e cross-platform para desktop, feito em electron para testar requisições à APIs com suporte à protocolos, como: <code>REST</code>, <code>SOAP</code>, <code>GraphQL</code> e <code>GRPC</code>. De uma forma muito fácil e àgil. Nele,podem ter vários workspaces, com distintas API`s.</p>
+<p>Mais detalhes podem ser vistos <a href="https://insomnia.rest/">nesse link</a></p>
+<h2 id="insomnia-client">Insomnia Client</h2>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Implementar uma ferramenta em que possa testar mais facilmente, e agilmente, às API&rsquo;s.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>O Insomnia é um projeto que tem como objetivo &ldquo;facilitar o teste de requisições às API&rsquo;s&rdquo;, nele pode-se simular uma requisição completa, observar sua execução e verificar o seu retorno. Ele permite o compartilhamento do workspace com o time, acelerando, mais ainda, esse processo.</p>
+<h3 id="contexto">Contexto</h3>
+<p>Abaixo, é possível observar o diagrama de contexto do sistema.</p>
+<p><img src="insomnia-context.png" alt="context"></p>
+<p>Ao baixar a ferramenta, é possível o usuário criar requisições de todos os tipos (<em>GET</em>, <em>POST</em>, <em>PUT</em>, <em>DELETE</em>, <em>PATCH</em>, <em>OPTIONS</em>, <em>TRACE</em> e <em>CONNECT</em>, que são todos os tipos de métodos para requisições suportados pelo padrão HTTP). Além disso, é possível o envio de diversos tipos de body pela requisição. como: <em>Multipart Form</em>, <em>GraphQL Query</em>, <em>JSON</em>, <em>XML</em>, e outras. E também é possível utilizar padrões de autenticação já pre-definidos ou fazer sobrecarga dos cabeçalhos. Após a criação da requisição, o mesmo é enviado para a API destino, no qual é processado e retornado a requisição é exibida para o usuário em tela, além de ser salva no banco de dados da ferramenta, para posterior visualização e/ou compartilhamento.</p>
+<h3 id="containers">Containers</h3>
+<p>Abaixo, observamos o diagrama de container para a plataforma Insomnia Client:</p>
+<p><img src="insomnia-container.png" alt="container"></p>
+<p>Vamos detalhar cada container e seu papel no sistema:</p>
+<ul>
+<li>SinglePage Application: Esse é o container de exibição dos dados fornecidos para o usuário, feito atualmente em <strong>Electron</strong> utilizando <em>typescript</em>, é nele que é feito a criação das requisições e realizado o envio dos mesmos para a API em teste, também é possível visualizar respostas à requisições feitas aquele mesmo <code>endpoint</code>;</li>
+<li>API Application: Nesse container é feito a validação do corpo da requisição, da resposta e até mesmo dos padrões de autenticação, como o <em>Basic Token</em>, entre outros. Ele também é responsável pelo envio destes dados para persistir no database da aplicação. Utilizado <strong>NodeJS</strong> com <em>typescript</em>;</li>
+<li>Databse: Armazena informações das requisições criadas, feitas e/ou enviadas, e também dos retornos obtidos de cada requisição.</li>
+</ul>
+<h3 id="componentes">Componentes</h3>
+<p>Abaixo, é possível observar o diagrama de componentes do sistema:</p>
+<p><img src="insomnia-component.png" alt="component"></p>
+<p>Nos componentes, temos:</p>
+<ul>
+<li>Database Controller: Esse componente faz o controle sobre o database, fazendo a persistência dos dados e criação/atualização dos dados no mesmo;</li>
+<li>Request Validator: Esse componente faz a validação das requisições para o padrão selecionado, como por exemplo o body, se foi utilizado <em>JSON</em>, que é um padrão de notação de objetos, onde deve-se seguir algumas &lsquo;regras&rsquo;, como o nome das propriedades desse objeto devem ser <code>string</code>, entre outros;</li>
+<li>Response Validator: Esse módulo é responsável por validar as respostas vindas, ou não, da API em testes. Ele utiliza o padrão de respostas de status das requisiçoes HTTP baseado em REST, onde cada status tem sua característica &ldquo;única&rdquo;;</li>
+<li>Axios: Esse módulo utiliza uma biblioteca externa para fazer as requisiçoes a API em teste, facilitando o processamento de envio das requisiçoes. Aqui no blog já foi feito um post sobre ela e pode ser lido mais <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/axios/">aqui</a>.</li>
+</ul>
+<h3 id="código">Código</h3>
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
+<h3 id="visão-de-informação">Visão de informação</h3>
+<p>Temos um fluxo de estados bem simples, onde a requisição é criada, e ao longo do processo será modificada quando tiver alteração do <code>endpoint</code>, do body, dos cabeçalhos, entre outros. Em seguida, é enviada para a API em teste e é passada para aguardando resposta, após o retorno, ou não tiver, dessa resposta, ela entra no seu estado final, exibindo para o usuário a resposta, com algumas métricas, que pessoalmente acho bem interessante para o teste da API, como o tempo de resposta e o tamanho da resposta. Após essa interação, é feita a atualização no banco de dados.</p>
+<p><img src="insomnia-estados.png" alt="estados"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/dialetus/"><i class="fa fa-chevron-circle-left"></i> Documentação arquitetural para o Dialetus</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/appwrite/">Documentação Arquitetural do Appwrite <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

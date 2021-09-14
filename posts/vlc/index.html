@@ -1,0 +1,178 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação Arquitetural do VLC - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação Arquitetural do VLC" />
+<meta property="og:description" content="Este documento descreve a arquitetura de uma parte do projeto VLC.
+ Autores Este documento foi produzido por Higor Santos de Brito Dantas.
+ Matrícula: 118110808 Contato: higor.dantas@ccc.ufcg.edu.br Projeto documentado: https://github." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/vlc/" />
+<meta property="article:published_time" content="2021-04-14T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-04-14T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação Arquitetural do VLC"/>
+<meta name="twitter:description" content="Este documento descreve a arquitetura de uma parte do projeto VLC.
+ Autores Este documento foi produzido por Higor Santos de Brito Dantas.
+ Matrícula: 118110808 Contato: higor.dantas@ccc.ufcg.edu.br Projeto documentado: https://github."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação Arquitetural do VLC</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-04-14T00:00:00-03:00">Apr 14, 2021</time>
+        </li>
+        
+
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <hr>
+<p>Este documento descreve a arquitetura de uma parte do projeto VLC.</p>
+<p><img src="vlc.gif" alt="vlc"></p>
+<hr>
+<h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Higor Santos de Brito Dantas.</p>
+<ul>
+<li>Matrícula: 118110808</li>
+<li>Contato: <a href="mailto:higor.dantas@ccc.ufcg.edu.br">higor.dantas@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/videolan/vlc">https://github.com/videolan/vlc</a></li>
+</ul>
+<h1 id="descrição-arquitetural----vlc">Descrição Arquitetural &ndash; VLC</h1>
+<p>Este documento descreve parte da arquitetura do projeto <a href="https://github.com/videolan/vlc">VLC</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<p>É importante destacar não será descrita toda a arquitetura do VLC. O foco será dado no módulo responsável por realizar a saída de vídeo, que é uma das partes mais importantes do programa.</p>
+<h2 id="descrição-geral-sobre-o-vlc">Descrição Geral sobre o VLC</h2>
+<p>O VLC é um projeto desenvolvido pela <a href="https://www.videolan.org/vlc/index.pt_BR.html">VideoLAN</a> que funciona como um player de arquivos de vídeos e como um servidor de mídia via streaming. Atualmente, o VLC pode ser instalado em computadores com os sistemas operacionais <code>Windows</code>, <code>MacOS</code>, <code>Linux</code>, <code>Chrome OS</code>, entre outros, além de dispositivos móveis com <code>Android</code>, <code>iOS</code>, <code>iPadOS</code>, <code>Tizen</code>.<br>
+O software é capaz de reproduzir a maioria dos codificadores (MPEG-2, MPEG-4, MKV, H.264, MP3&hellip;) sem ser necessário instalar pacotes adicionais, suporta reprodução de CDs e DVDs, além de vários protocolos de streaming.</p>
+<h2 id="serviço-de-saída-de-vídeo">Serviço de Saída de Vídeo</h2>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>O VLC busca servir de um <code>media player</code> completo.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>O VLC tem diversas funcionalidades como reprodução de arquivos de vídeos, de CDs e DVDs, de streaming, entre outras. E, em grande parte, uma atividade necessita ser realizada: a saída das imagens na tela do computador, celular, TV&hellip;, enfim, qualquer dispositivo que o mesmo esteja sendo executado. Portanto, ele busca prover uma ferramenta que facilite a visualização de vídeos.</p>
+<h3 id="contexto">Contexto</h3>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h3 id="containers">Containers</h3>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h3 id="componentes">Componentes</h3>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h3 id="código">Código</h3>
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h1 id="contribuições-concretas">Contribuições Concretas</h1>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/insomnia-inso/"><i class="fa fa-chevron-circle-left"></i> Documentação arquitetural para a plataforma insomnia-inso</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/gatsby/">Arquitetura do Gatsby Stater Shopify <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

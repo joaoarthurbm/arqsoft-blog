@@ -1,0 +1,172 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>React Intl - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="React Intl" />
+<meta property="og:description" content="Autores Este documento foi produzido por Rayla Medeiros Araújo.
+ Matrícula: 117110383 Contato: rayla.araujo@ccc.ufcg.edu.br Projeto documentado: https://github.com/formatjs/formatjs/tree/main/packages/react-intl  Descrição Arquitetural &ndash; React Intl Descrição Geral sobre o React Intl O React Intl é uma das várias bibliotecas oferecidas pelo FormatJS, coleção de bibliotecas JavaScript, que segue os padrões do JavaScript Intl e do i18n, para internacionalização de números, datas e strings." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/react-intl/" />
+<meta property="article:published_time" content="2021-04-14T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-04-14T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="React Intl"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Rayla Medeiros Araújo.
+ Matrícula: 117110383 Contato: rayla.araujo@ccc.ufcg.edu.br Projeto documentado: https://github.com/formatjs/formatjs/tree/main/packages/react-intl  Descrição Arquitetural &ndash; React Intl Descrição Geral sobre o React Intl O React Intl é uma das várias bibliotecas oferecidas pelo FormatJS, coleção de bibliotecas JavaScript, que segue os padrões do JavaScript Intl e do i18n, para internacionalização de números, datas e strings."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>React Intl</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-04-14T00:00:00-03:00">Apr 14, 2021</time>
+        </li>
+        
+
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Rayla Medeiros Araújo.</p>
+<ul>
+<li>Matrícula: 117110383</li>
+<li>Contato: <a href="mailto:rayla.araujo@ccc.ufcg.edu.br">rayla.araujo@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/formatjs/formatjs/tree/main/packages/react-intl">https://github.com/formatjs/formatjs/tree/main/packages/react-intl</a></li>
+</ul>
+<h1 id="descrição-arquitetural----react-intl">Descrição Arquitetural &ndash; React Intl</h1>
+<h2 id="descrição-geral-sobre-o-react-intl">Descrição Geral sobre o React Intl</h2>
+<p>O React Intl é uma das várias bibliotecas oferecidas pelo FormatJS, coleção de bibliotecas JavaScript, que segue os padrões do JavaScript Intl e do i18n, para internacionalização de números, datas e strings. Sendo essa biblioteca específica utilizada na internacionalização e formatação de aplicações <em>React</em>.</p>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Auxiliar na internacionação de projetos <em>React</em>, a partir da criação de objetos simples de serem trabalhados.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>A biblioteca tem como objetivo trazer a internacionalização de strings, datas, números e pluralização para aplicações <em>React</em>, com uma API simples que pode ser utilizada tanto em componentes JSX quanto no código Javascript.</p>
+<h3 id="contexto">Contexto</h3>
+<p>Como dito antes, o react-intl é uma biblioteca oferecida pelo FormatJs, que manipula strings, datas, listas, números e pluralizações, tendo em vista a simplificação da internacionalização de aplicações <em>React</em>.</p>
+<p>O desenvolvedor da aplicação passa as strings internacionalizadas de cada locale que ele deseja utilizar e o react-intl faz a formatação das mensagens a partir do locale selecionado.</p>
+<p><img src="react-intl_context.png" alt="contexto"></p>
+<h3 id="containers">Containers</h3>
+<p>O react-intl pode ser divida em dois containers principais: o I18n, responsavél pela configuração do idioma e paramêtros necessários para usar a biblioteca; e o Formatador de Dados, que formata e manipula as mensagens a partir das configurações feitas no I18n e customizações que o usuário pode passar.</p>
+<p><img src="react-intl_container.png" alt="containers"></p>
+<h3 id="componentes">Componentes</h3>
+<p>O diagrama abaixo contém os principais componentes do sistema:</p>
+<ul>
+<li>
+<p>Provider: Permite que o usuário configure o idioma da aplicação feita e as mensagens correspondentes a cada idioma.</p>
+</li>
+<li>
+<p>Formatadores: Formata as mensagens recebidas de acordo com o idioma e customizações que o usuário deseje fazer.</p>
+</li>
+<li>
+<p>Manipuladores: Manipula datas, horas e pluralização de acordo com o configurações específicas para esses casos, e no caso das datas e horas também há uma manipulações com intervalos de tempo.</p>
+</li>
+</ul>
+<p><img src="react-intl_component.png" alt="componentes"></p>
+<h3 id="código">Código</h3>
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p>Ao configurar as mensagens de internacionalização e o locale, a aplicação está pronta para formatar ou manipular as mensagens recebidas. O usuário escolhe a mensagem que deseja manipular e então o react-intl, a partir das configurações feitas, retorna ao usuário sua mensagem formatada.</p>
+<p><img src="react-intl_information.png" alt="informação"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/moodle/"><i class="fa fa-chevron-circle-left"></i> Documentação arquitetural Moodle</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/sequelize/">Documento arquitetural do Sequelize <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

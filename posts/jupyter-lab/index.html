@@ -1,0 +1,184 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Arquitetura do JupyterLab - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Arquitetura do JupyterLab" />
+<meta property="og:description" content="Autores Este documento foi produzido por Helena Mylena Cunha Dantas.
+ Matrícula: 117210323 Contato: helena.dantas@ccc.ufcg.edu.br Projeto documentado: https://github.com/jupyterlab/jupyterlab  Descrição Arquitetural &ndash; Ambiente extensível do Jupyter Notebook para computador. Este documento foi produzido na disciplina de Arquitetura de Software da UFCG e descreve a arquitetura do projeto JupyterLab." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/jupyter-lab/" />
+<meta property="article:published_time" content="2021-08-02T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-08-02T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Arquitetura do JupyterLab"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Helena Mylena Cunha Dantas.
+ Matrícula: 117210323 Contato: helena.dantas@ccc.ufcg.edu.br Projeto documentado: https://github.com/jupyterlab/jupyterlab  Descrição Arquitetural &ndash; Ambiente extensível do Jupyter Notebook para computador. Este documento foi produzido na disciplina de Arquitetura de Software da UFCG e descreve a arquitetura do projeto JupyterLab."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Arquitetura do JupyterLab</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-08-02T00:00:00-03:00">Aug 2, 2021</time>
+        </li>
+        
+
+        
+
+        <li>3 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Helena Mylena Cunha Dantas.</p>
+<ul>
+<li>Matrícula: 117210323</li>
+<li>Contato: <a href="mailto:helena.dantas@ccc.ufcg.edu.br">helena.dantas@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/jupyterlab/jupyterlab">https://github.com/jupyterlab/jupyterlab</a></li>
+</ul>
+<h1 id="descrição-arquitetural----ambiente-extensível-do-jupyter-notebook-para-computador">Descrição Arquitetural &ndash; Ambiente extensível do Jupyter Notebook para computador.</h1>
+<p>Este documento foi produzido na disciplina de Arquitetura de Software da UFCG e descreve a arquitetura do projeto <a href="https://github.com/jupyterlab/jupyterlab">JupyterLab</a>. A descrição é baseada no modelo <a href="https://c4model.com/">C4</a>.</p>
+<h2 id="descrição-geral-sobre-o-jupyterlab">Descrição Geral sobre o JupyterLab</h2>
+<p>O JupyterLab é a uma interface de usuário para o Project Jupyter, que oferece todos os blocos de construção familiares do Notebook Jupyter clássico (notebook, terminal, editor de texto, navegador de arquivos, saídas ricas, etc.) em uma interface de usuário flexível e poderosa.</p>
+<h2 id="o-ambiente-extensível-do-jupyter-notebook-para-computador">O ambiente extensível do Jupyter Notebook para computador</h2>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>O objetivo desse projeto é implementar uma interface para computador que permita ao usuário trabalhar de forma flexível, integrada e extensível com documentos, blocos de notas Jupyter , editores de texto, terminais e componentes.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>O JupyterLab permitirá que vários documentos e atividades sejam organizados um ao lado do outro na área de trabalho fazendo uso de guias e divisores. Além disso, permitirá novos fluxos de trabalho interativos.
+Também será oferecido um modelo unificado para visualizar e manipular formatos de dados e, com isso, serão compreendidos muitos formatos de arquivo, podendo também exibir uma rica saída de kernel nesses formatos.
+O usuário poderá personalizar sua experiência através de atalhos de teclados personalizáveis e com as extensões do JupyterLab para aprimorar qualquer parte do JupyterLab, incluindo novos temas, editores de arquivo e componentes personalizados.</p>
+<h3 id="contexto">Contexto</h3>
+<p>O JupyterLab é composto de duas partes principais:</p>
+<ul>
+<li>Código base: Um package npm que possui a maior parte do código base do projeto.</li>
+<li>Jupyterlab: compreende o código Python para o projeto, incluindo a extensão do servidor de notebook, interface de linha de comando do JupyterLab, pontos de entrada e testes Python. Possui os recursos JavaScript finais construídos que são distribuídos com o pacote Python.</li>
+</ul>
+<p>O package npm contém vários subpacotes em TypeScript que são inclusos no package em Python. É nele que está grande parte do código fonte.
+Já o packagem em Python contém o servidor e distribui o código TypeScript.</p>
+<p><img src="contexto.png" alt="fig1"></p>
+<h3 id="containers">Containers</h3>
+<p>O JupyterLab possui os seguintes sistemas:</p>
+<ul>
+<li>Aplications</li>
+<li>API</li>
+<li>Kernel</li>
+<li>Servers</li>
+</ul>
+<p>O processo inicia quando o usuário abre um notebook no Jupyterlab. A aplicação envia uma requisição ao servidor, se comunica com a API. A API irá enviar uma mensagem ao Kernel para que ocorra a interpretação do código e retornará a mensagem para a API.</p>
+<p><img src="container.png" alt="fig2"></p>
+<h3 id="componentes">Componentes</h3>
+<p>Há três principais componentes na aplicação do jupyterlab:</p>
+<ul>
+<li>jupyter_console: é o terminal da aplicação jupyter</li>
+<li>qtconsole: é um aplicativo Qt para computação interativa com saída rica</li>
+<li>notebook</li>
+</ul>
+<h3 id="visão-de-informação">Visão de informação</h3>
+<p>Como já visto antes, o jupyterlab permite que você trabalhe com documentos e atividades como blocos de notas Jupyter , editores de texto, terminais e componentes personalizados de maneira flexível, integrada e extensível.</p>
+<p>As etapas para criar um documento no jupyterlab são:</p>
+<ul>
+<li>Iniciar o jupyterlab;</li>
+<li>Escolher o kernel;</li>
+<li>Instalar bibliotecas;</li>
+<li>Inserir código/texto;</li>
+<li>Executar o arquivo.</li>
+</ul>
+<p><img src="informacao.png" alt="fig4"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/pdfbox/"><i class="fa fa-chevron-circle-left"></i> Arquitetura do pdf-box</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/asperathos/">Documento Arquitetural do Asperathos <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,163 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação arquitetural para o Valheim - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação arquitetural para o Valheim" />
+<meta property="og:description" content="Este documento descreve a arquitetura do projeto Valheim server docker.
+ Autores Este documento foi produzido por André Filipe Queiroz.
+ Matrícula: 116210818 Contato: andre.soares@ccc.ufcg.edu.br Projeto documentado: https://github.com/lloesche/valheim-server-docker  Descrição Arquitetural &ndash; Servidores Dedicados para Valheim Este documento foi produzido para a disciplina de Arquitetura de Software da UFCG, descrevendo parte da arquitetura do projeto Valheim Server Docker e usando como descrição principalmente o modelo C4." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/valheim/" />
+<meta property="article:published_time" content="2021-04-15T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-04-15T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação arquitetural para o Valheim"/>
+<meta name="twitter:description" content="Este documento descreve a arquitetura do projeto Valheim server docker.
+ Autores Este documento foi produzido por André Filipe Queiroz.
+ Matrícula: 116210818 Contato: andre.soares@ccc.ufcg.edu.br Projeto documentado: https://github.com/lloesche/valheim-server-docker  Descrição Arquitetural &ndash; Servidores Dedicados para Valheim Este documento foi produzido para a disciplina de Arquitetura de Software da UFCG, descrevendo parte da arquitetura do projeto Valheim Server Docker e usando como descrição principalmente o modelo C4."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação arquitetural para o Valheim</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-04-15T00:00:00-03:00">Apr 15, 2021</time>
+        </li>
+        
+
+        
+
+        <li>4 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <hr>
+<p>Este documento descreve a arquitetura do projeto Valheim server docker.</p>
+<hr>
+<h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por André Filipe Queiroz.</p>
+<ul>
+<li>Matrícula: 116210818</li>
+<li>Contato: <a href="mailto:andre.soares@ccc.ufcg.edu.br">andre.soares@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/lloesche/valheim-server-docker">https://github.com/lloesche/valheim-server-docker</a></li>
+</ul>
+<h1 id="descrição-arquitetural----servidores-dedicados-para-valheim">Descrição Arquitetural &ndash; Servidores Dedicados para Valheim</h1>
+<p>Este documento foi produzido para a disciplina de Arquitetura de Software da UFCG, descrevendo parte da arquitetura do projeto <a href="https://github.com/lloesche/valheim-server-docker">Valheim Server Docker</a> e usando como descrição principalmente o modelo <a href="https://c4model.com/">C4</a>.</p>
+<h2 id="descrição-geral-sobre-o-valheim-server-docker">Descrição Geral sobre o Valheim Server Docker</h2>
+<p>O Valheim Server Docker é um projeto Open-Source que permite ao usuário configurar como desejar um servidor dedicado no jogo eletrônico Valheim, utilizando comandos via terminal.</p>
+<h2 id="servidores-dedicados-para-o-valheim-utilizando-docker">Servidores Dedicados para o Valheim Utilizando Docker</h2>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Implementar  e configurar com o auxílio da plataforma Docker permitindo um processo repetível e configurável para gerenciar a execução de servidor(es) dedicado(es) para o jogo Valheim.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>Valheim tem hospedagem “peer-to-peer”, mas se o host se desconectar, o mundo não estará mais acessível a ninguém e todos os outros serão removidos do mundo. Hospedar um servidor Valheim dedicado resolve isso sendo acessível 24 horas por dia e 7 dias por semana, para que seus amigos possam jogar mesmo se você não estiver online, tornando a experiência ainda melhor.
+Além disso, se precisarmos atualizar o servidor, simplesmente o reconstruiremos em um único comando com o Docker. Como um contêiner do Docker, o servidor pode ser executado em qualquer computador que também execute o Docker. Isso significa que é fácil mover o servidor para outro computador, se necessário.</p>
+<h3 id="contexto">Contexto</h3>
+<p>Com o Docker instalado na máquina host, este é executado por linha de comando, no terminal. Depois de executar o comando de execução do Docker, com isso será puxado a imagem do Valheim Server mais recente do repositório do Docker que com isso você poderá se conectar ao servidor Valheim localmente ou pela Internet e Conectar-se pela Internet significa que seus amigos também podem se conectar ao servidor Valheim ou criar uma imagem nova personalizada.</p>
+<p><img src="contexto.png" alt="fig1"></p>
+<h3 id="containers">Containers</h3>
+<p>Sabendo disso, usamos a interface de linha de comando (CLI) do Docker chamada docker para executar a aplicação, ademais o Docker usa uma arquitetura cliente-servidor, em que o cliente Docker se comunica com o daemon Docker , que faz o trabalho pesado de construir, executar e distribuir seus containers Docker. O Docker fornece também Dockerfiles(construção de imagens automaticamente lendo instruções) assim podendo fazer uma nova imagem Docker que inicie automaticamente o servidor Valheim sem ter que entrar no contêiner e inserir comandos manualmente. Assim, a imagem Docker do servidor Valheim deve ser o mais genérica possível, permitindo ao usuário personalizar o comportamento específico do servidor em tempo de execução.</p>
+<p><img src="container.png" alt="fig2"></p>
+<h3 id="componentes">Componentes</h3>
+<p>No diagrama de componentes (localizado abaixo) temos os componentes, além de seus relacionamentos.  O Dockerfile é um documento de texto que contém todos os comandos que um usuário pode chamar na linha de comando para montar uma imagem, nada mais é do que um meio que utilizamos para criar nossas próprias imagens. Os volumes são o mecanismo preferencial para persistir os dados gerados e usados por containers Docker, assim os volumes são totalmente gerenciados pelo Docker. Sabendo disso, para poder compartilhar dados entre o contêiner e o host usamos o recurso Volumes do Docker, já com a montagem de ligação, o diretório a ser criado na máquina host é montado em um contêiner. Então por padrão, o contêiner Updater irá verificar se há atualizações do servidor Valheim a cada 15 minutos se nenhum jogador estiver conectado ao servidor e o de backup O contêiner será inicializado e criará periodicamente um backup do worlds/diretório.</p>
+<p><img src="componentes.png" alt="fig3"></p>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p>No diagrama de informação é descrito os estados que o processamento pode atingir, ao iniciarmos você pode copiar um mundo existente(já existindo uma imagem Docker) ou você pode criar um novo mundo do zero manualmente com as configurações de sua preferência. A imagem Docker do servidor Valheim deve ser o mais genérica possível, permitindo ao usuário personalizar o comportamento específico do servidor em tempo de execução, isso significa que escrevemos um script personalizado para iniciar o servidor Valheim que controla como o servidor é iniciado e encerrado. Sabendo que ao criarmos uma imagem Docker do servidor Valheim, então precisamos executá-lo como um contêiner e que por fim Hospedar um servidor dedicado requer permitir conexões de entrada das portas que o servidor Valheim usa.</p>
+<p><img src="visao.png" alt="fig4"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/compcult-mobile/"><i class="fa fa-chevron-circle-left"></i> Documento Arquitetural do Compcult Mobile</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/learnsystemverilog/">Documentação arquitetural para o Simulador Didático de SystemVerilog <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

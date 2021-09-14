@@ -1,0 +1,186 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação Arquitetural do Express - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação Arquitetural do Express" />
+<meta property="og:description" content="Autores Este documento foi produzido por Arthur de Lima Ferrão.
+ Matrícula: 117110318 Contato: arthur.ferrao@ccc.ufcg.edu.br Projeto documentado: https://github.com/expressjs/express  Descrição Arquitetural &ndash; Express Este documento descreve a arquitetura do projeto Express." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/express/" />
+<meta property="article:published_time" content="2021-08-02T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-08-02T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação Arquitetural do Express"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Arthur de Lima Ferrão.
+ Matrícula: 117110318 Contato: arthur.ferrao@ccc.ufcg.edu.br Projeto documentado: https://github.com/expressjs/express  Descrição Arquitetural &ndash; Express Este documento descreve a arquitetura do projeto Express."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação Arquitetural do Express</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-08-02T00:00:00-03:00">Aug 2, 2021</time>
+        </li>
+        
+
+        
+
+        <li>3 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Arthur de Lima Ferrão.</p>
+<ul>
+<li>Matrícula: 117110318</li>
+<li>Contato: <a href="mailto:arthur.ferrao@ccc.ufcg.edu.br">arthur.ferrao@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/expressjs/express">https://github.com/expressjs/express</a></li>
+</ul>
+<h1 id="descrição-arquitetural----express">Descrição Arquitetural &ndash; Express</h1>
+<p>Este documento descreve a arquitetura do projeto <a href="https://github.com/expressjs/express">Express</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<h2 id="descrição-geral-sobre-o-express">Descrição Geral sobre o Express</h2>
+<p>O Express é um framework de código aberto, utilizado em conjunto com o Node.js, tem objetivo de prover o ferramental necessário para a criação de servidores web, de maneira simples e robusta.</p>
+<h2 id="objetivos">Objetivos</h2>
+<p>Oferecer um ferramental robusto, em conjunto do Node.js, para desenvolvimento de aplicações back-end de forma simples, permitindo a criação de rotas para comunição via requisições HTTP.</p>
+<h2 id="contexto">Contexto</h2>
+<p>O Express é responsável por criar as rotas e gerenciar as requisições feitas para o sistema back-end, ele vai permitir que sistemas externos possam fazer requisições HTTP para a API. Além disso o Express é usado em conjunto com o Node.js, que vai ser responsável pela codificação do sistema back-end.</p>
+<p>Também é possivel integrar middlewares que irão ser utilizados pelo Express para adicionar funcionalidades e facilitar o desenvolvimento da aplicação back-end. Podemos encontrar alguns middlewares desenvolvidos pela própria equipe do Express na organização <a href="https://github.com/expressjs">expressjs</a>.</p>
+<p>Abaixo podemos ver o diagrama de contexto que ilustra a comunicação dessas entidades com o Express.</p>
+<p><img src="diagrama-contexto.png" alt="Diagrama de Contexto"></p>
+<h2 id="containers">Containers</h2>
+<p>Como o Express é um framework utilizado para implementar uma aplicação back-end ele não pode ser dividido em diferentes sistemas de software e, por ser um sistema único, é representado apenas por um container.</p>
+<p>Algumas das funcionalidades do Express podem ser vistas abaixo:</p>
+<h4 id="configurando-o-express">Configurando o Express</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">express</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;express&#39;</span>)
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>()
+</code></pre></div><h4 id="métodos-de-roteamento">Métodos de Roteamento</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// GET method route
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/&#39;</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) {
+  <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#39;GET request&#39;</span>)
+})
+
+<span style="color:#75715e">// POST method route
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">post</span>(<span style="color:#e6db74">&#39;/&#39;</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) {
+  <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#39;POST request&#39;</span>)
+})
+</code></pre></div><h4 id="adicionando-função-middleware">Adicionando função middleware</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">next</span>) {
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Do something&#39;</span>)
+  <span style="color:#a6e22e">next</span>()
+})
+</code></pre></div><p>Para mais detalhes sobre as funcionalidades do Express leia a <a href="https://expressjs.com/en/guide/routing.html">documentação</a>.</p>
+<h2 id="componentes">Componentes</h2>
+<p>Podemos dividir o Express em dois componentes:</p>
+<p><strong>Router Controller</strong>: permite criar rotas e gerenciar as requisições HTTP rescebidas pela API.</p>
+<p><strong>Middleware Controller</strong>: permite adicionar funções que podem ter acesso aos objetos de responde e request das requisições recebidas pela API.</p>
+<p>Abaixo podemos ver o diagrama que ilustra a distribuição desses componentes no Express.</p>
+<p><img src="diagrama-componentes.png" alt="Diagrama de Componentes"></p>
+<h2 id="código">Código</h2>
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
+<h2 id="visão-de-informação">Visão de Informação</h2>
+<p>Para essa etapa vamos focar em demonstrar desde a chegada de uma request na API até ela ser respondida por meio do Express.</p>
+<p>Abaixo podemos ver o diagrama que ilustra os estados de uma request.</p>
+<p><img src="maquina-de-estados.png" alt="Máquina de Estados"></p>
+<h2 id="contribuições-concretas">Contribuições Concretas</h2>
+<p>É necessário traduzir esta documentação para inglês e por esse motivo ainda não foram abertas PRs para o repositório do Express.</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/flutter/"><i class="fa fa-chevron-circle-left"></i> Documento Arquitetural do Flutter</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/kubernetes/">Documentação Arquitetural - Kubernetes <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

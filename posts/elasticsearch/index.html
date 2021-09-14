@@ -1,0 +1,163 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação Arquitetural - Elasticsearch - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação Arquitetural - Elasticsearch" />
+<meta property="og:description" content="Autores Este documento foi produzido por Túlio Araújo Cunha.
+ Matrícula: 118210965 Contato: tulio.cunha@ccc.ufcg.edu.br Projeto documentado: https://github.com/elastic/elasticsearch  Descrição Arquitetural &ndash; Serviço de análise do Elasticsearch Este documento descreve parte da arquitetura do projeto Elasticsearch." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/elasticsearch/" />
+<meta property="article:published_time" content="2021-08-02T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-08-02T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação Arquitetural - Elasticsearch"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Túlio Araújo Cunha.
+ Matrícula: 118210965 Contato: tulio.cunha@ccc.ufcg.edu.br Projeto documentado: https://github.com/elastic/elasticsearch  Descrição Arquitetural &ndash; Serviço de análise do Elasticsearch Este documento descreve parte da arquitetura do projeto Elasticsearch."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação Arquitetural - Elasticsearch</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-08-02T00:00:00-03:00">Aug 2, 2021</time>
+        </li>
+        
+
+        
+
+        <li>4 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Túlio Araújo Cunha.</p>
+<ul>
+<li>Matrícula: 118210965</li>
+<li>Contato: <a href="mailto:tulio.cunha@ccc.ufcg.edu.br">tulio.cunha@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/elastic/elasticsearch">https://github.com/elastic/elasticsearch</a></li>
+</ul>
+<h1 id="descrição-arquitetural----serviço-de-análise-do-elasticsearch">Descrição Arquitetural &ndash; Serviço de análise do Elasticsearch</h1>
+<p>Este documento descreve parte da arquitetura do projeto <a href="https://github.com/elastic/elasticsearch">Elasticsearch</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<h2 id="descrição-geral-sobre-o-elasticsearch">Descrição Geral sobre o Elasticsearch</h2>
+<p>O Elasticsearch é uma ferramenta para realização de buscas e análise de dados construída para trabalhar com grandes volumes de dados, permitindo indexar documentos e realizar buscas nesses documentos em quase tempo real. Com ele é possível trabalhar com dados de variados tipos, como textuais, numéricos, geoespaciais, estruturados e não estruturados. Além disso, é o componente central do Elastic Stack, que é um conjunto de ferramentas para ingestão, enriquecimento, armazenamento, análise e visualização de dados.</p>
+<hr>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>O Elasticsearch é uma ferramenta de código aberto de análise e pesquisa de <em>full-text</em>. Para isso, dados são guardados como documentos (como o MongoDB) que são constituídos de campos que armazenam basicamente qualquer tipo de informação.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>Costumeiramente utiliza-se o Elasticsearch para campos de pesquisa em aplicativos, que dá suporte a diversas funcionalidades como preenchimento automático, correção de erros de digitação, destaque de correspondências, entre outros. Além disso, é possível realizar consultas que agregam dados para construção de gráficos, analisar logs de aplicações ou métricas do sistema no caso de um APM (<em>Application Performance Management</em>). Outra maneira de fazer uso da ferramenta é com envio de eventos, como vendas, cliques em um site, ligações, e-mails.</p>
+<h3 id="contexto">Contexto</h3>
+<p>O Elasticsearch se apresenta como o coração da Elastic Stack, sendo um motor distribuído de pesquisa e análise dos dados. O Logstash e Beats facilitam a coleta, agregação e incrementam os dados para armazená-los no Elasticsearch, porém não são essenciais, sendo possível consumir a API do Elasticsearch direto do sua aplicação. Também não essencial, mas altamente recomendado, o Kibana se apresenta como uma plataforma de análise e visualização gráfica dos dados contidos no Elasticsearch, economizando um tempo precioso se utilizada.</p>
+<p><img src="context.png" alt="Diagrama de Contexto"></p>
+<h3 id="containers">Containers</h3>
+<p>O Elasticsearch utiliza-se de uma <em>RESTful API</em> para sua comunicação com serviços externos, como a aplicação criada ou outros componentes da Elastic Stack (Logstash, Beats ou Kibana). Essa conversa também pode ser facilitada por diversas bibliotecas (<em>clients</em>) disponibilizadas nas linguagens de programação mais utilizadas (Java, Javascript, Python, entre outras).
+O serviço externo utiliza essa API para se comunicar com o <em>Cluster</em> que tem o papel de agrupar e realizar a comunicação entre um ou mais <em>Nodes</em>, que por sua vez, são quem executam uma instância do Elasticsearch e utilizam a camada de transporte para se comunicarem - assim, todos os <em>Nodes</em> se conhecessem em um <em>Cluster</em> e podem encaminhar uma requisição de um cliente para o <em>Node</em> apropriado - e deixam a camada HTTP para os clientes <em>REST</em>.</p>
+<p><img src="container.png" alt="Diagrama de Container"></p>
+<h3 id="componentes">Componentes</h3>
+<p>Olhando mais afundo o <em>Node</em>, podemos observar que dentro dele, são implementados <em>Indices</em>, que funcionam de maneira semelhante à tabela em um banco de dados relacional. Dentro de cada <em>Index</em>, armazena-se <em>Documents</em> que salvam a informação do banco em um padrão <em>json</em>. Por sua vez, esses <em>Documents</em> podem ser agrupados em diversos <em>Shards</em> dentro da cada <em>Index</em>, sendo o <em>Shard</em> uma implementação do <em>Lucene Index</em> que internamente possuem segmentos, que funcionam como mini índices, e dentro dos segmentos outras estruturas de dados, como <em>inverted index</em> e os campos com seus valores.</p>
+<p><img src="components.png" alt="Diagrama de Componentes"></p>
+<h3 id="código">Código</h3>
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p>Levando em conta a principal funcionalidade do Elasticsearch, vamos simular uma pesquisa de um texto. Inicialmente, o texto passa por um processo para extrair as palavras relevantes da entrada, removendo artigos, acentuação, letras maiúsculas, criando assim <em>tokens</em> que podem ser aproveitados pelo <em>inverted index</em> utilizado pelo <em>Lucene Index</em>. Nessa pesquisa, o Elasticsearch pesquisa por todos os <em>shards</em> em busca de documentos que encaixem com os <em>tokens</em> criados logo antes. Após a obtenção desses documentos, extraem-se informações como a <strong>frequência do termo</strong> (TF) e a <strong>frequência do documento</strong> (DF), que são, respectivamente, a frequência do termo em um dado documento e a frequência do termo em todos os documentos. Com esses valores, pode-se calcular a relevância de um documento para o texto de entrada, por meio do cálculo <code>TF / DF</code>. Por fim, ordena-se os documentos pela relevância de cada um e é finalizada a pesquisa.</p>
+<p><img src="informacao.png" alt="Diagrama de Informação"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/kubernetes/"><i class="fa fa-chevron-circle-left"></i> Documentação Arquitetural - Kubernetes</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/deno/">Documentação Arquitetural - Deno <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

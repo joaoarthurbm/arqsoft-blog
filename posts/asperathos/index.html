@@ -1,0 +1,223 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documento Arquitetural do Asperathos - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documento Arquitetural do Asperathos" />
+<meta property="og:description" content="Autores Este documento foi produzido por Diego Alves Gama.
+ Matrícula: 117110223 Contato: diego.gama@ccc.ufcg.edu.br Projeto documentado: https://github.com/ufcg-lsd/asperathos  Descrição Arquitetural &ndash; Asperathos Este documento descreve a arquitetura do projeto Asperathos. Essa descrição foi baseada principalmente no modelo C4." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/asperathos/" />
+<meta property="article:published_time" content="2021-08-13T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-08-13T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documento Arquitetural do Asperathos"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Diego Alves Gama.
+ Matrícula: 117110223 Contato: diego.gama@ccc.ufcg.edu.br Projeto documentado: https://github.com/ufcg-lsd/asperathos  Descrição Arquitetural &ndash; Asperathos Este documento descreve a arquitetura do projeto Asperathos. Essa descrição foi baseada principalmente no modelo C4."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documento Arquitetural do Asperathos</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-08-13T00:00:00-03:00">Aug 13, 2021</time>
+        </li>
+        
+
+        
+
+        <li>10 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Diego Alves Gama.</p>
+<ul>
+<li>Matrícula: 117110223</li>
+<li>Contato: <a href="mailto:diego.gama@ccc.ufcg.edu.br">diego.gama@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/ufcg-lsd/asperathos">https://github.com/ufcg-lsd/asperathos</a></li>
+</ul>
+<h1 id="descrição-arquitetural----asperathos">Descrição Arquitetural &ndash; Asperathos</h1>
+<p>Este documento descreve a arquitetura do projeto <a href="https://github.com/ufcg-lsd/asperathos">Asperathos</a>. Essa descrição foi baseada principalmente no modelo <a href="https://c4model.com/">C4</a>.</p>
+<h2 id="descrição-geral-sobre-o-asperathos">Descrição Geral sobre o Asperathos</h2>
+<p>O Asperathos é uma plataforma de controle e orquestração para aplicações replicáveis em ambientes de nuvem (como AKS, AWS ou GKE). A sua principal função é controlar a replicação de uma aplicação na infraestrutura de nuvem escolhida, de maneira a equilibrar métricas configuradas nele, sejam elas de <em>Quality of Service</em> (QoS) geral ou específicas da aplicação.</p>
+<p>Por exemplo, para um software executando na AWS, e que analisa remessas de exames médicos com prazos, o Asperathos pode controlar as réplicas do software de forma a atender à demanda dentro do <em>deadline</em>, mas também de maneira a minimizar o custo da infraestrutura.</p>
+<h3 id="contexto">Contexto</h3>
+<p>O Asperathos é imerso em um contexto naturalmente de nuvem. Seu objetivo é atender às necessidades de controle de pessoas que desejam que suas aplicações sejam controladas para garantia de QoS, e apenas para aplicações replicáveis. Isto é, aplicações que ou sejam <em>stateless</em> ou cujo estado interno não atrapalhe replicação automática de si mesma.</p>
+<p>Assim, o Asperathos é usado por um cliente interessado através de algum software que o utilize, e que pode submeter um arquivo especificando o job e como ele acontecerá. Aqui, um job representa uma carga de trabalho a ser executada em <strong>batch</strong> (uma carga por job, com <em>deadline</em>) ou em <strong>streaming</strong> (em sequência sob demanda do cliente, por tempo indefinido).</p>
+<p>Após isso, o Asperathos recebe o job, e começa a se comunicar com algum cluster Kubernetes acessível para controlar a replicação. O Kubrentes e aplicações auxiliares do Asperathos criadas nele enviam periódicas informações sobre o job e sobre a aplicação, e utilizando elas o Asperathos decide se deve haverá <strong>scale-up</strong> (aumento de réplicas) ou <strong>scale-down</strong> (diminuição de réplicas) de forma a gerir QoS e economia de recursos, e gerencia essas aplicações auxiliares.</p>
+<p>É também possível que o cliente utilize suas próprias implementações específicas para os componentes do Asperathos, mas esses detalhes são mais profundos e serão tratados em seguida. O diagrama abaixo ilustra essa interação entre os contextos</p>
+<p><img src="contexto_asperathos.png" alt="fig1"></p>
+<h3 id="containers">Containers</h3>
+<p>O Asperathos tem quatro principais containers que compõem a aplicação. Há o <strong>manager</strong>, o <strong>controller</strong>, o <strong>monitor</strong> e por fim o <strong>visualizer</strong> que é opcional e não é necessário para o funcionamento básico do Asperathos. Cada um deles é implementado em Python e containerizado em Docker, e todos se comunicam entre si através de suas respectivas API REST. Entraremos em detalhes neles abaixo.</p>
+<p>Além dos containers principais, há também três containers auxiliares que são criados no cluster Kubernetes onde a aplicação do usuário executará. Esses microsserviços são: um <strong>Banco de Dados de Série Temporal</strong> (InfluxDB por padrão), uma <strong>Fila de Mensagens</strong> (Redis por padrão), e um <strong>Dashboard Analítico</strong> (opcional e Grafana por padrão).</p>
+<p>O objetivo do Banco de Dados é armazenar métricas sensíveis ao tempo; o da Fila de Mensagens é de organizar os itens de trabalho e seus status (prontos, em processamento e processados); e por fim o do Dashboard Analítico opcional é prover uma visualização conforme é alimentado pelo Visualizer.</p>
+<p>Esses containers são importantes para gerenciar dados e métricas que serão posteriormente utilizados pelos containers principais do Asperathos. O diagrama a seguir ilustra como os containers se relacionam.</p>
+<p><img src="containers_asperathos.png" alt="fig2"></p>
+<h4 id="manager">Manager</h4>
+<p>O manager é o container mais complexo, pois gerencia todos os outros. Ele é o único container que se comunica diretamente com o usuário, e delega tarefas para os outros containers a depender das rotas acessadas em sua API REST.</p>
+<p>Quando o manager recebe um Job por parte do cliente, ele utiliza a API do Kubernetes para acessar o cluster (cujas credenciais foram passadas na sua configuração) e lá inicia os microsserviços auxiliares, passa configurações relevantes para os outros containers e cria o KubeJob para a aplicação do usuário. O Job Kubernetes ou KubeJob é um tipo de recurso Kubernetes que permite que a aplicação do usuário só termine quando finalize toda a carga de trabalho. Assim, o Job executa e o Asperathos pode controlar seu escalonamento.</p>
+<p>Os endpoints do manager são estes abaixo:</p>
+<ul>
+<li><code>/submissions</code>, <strong>POST</strong> com JSON do Job e que retorna o id do Job.</li>
+<li><code>/submissions/:id/stop</code>, <strong>PUT</strong> para parar o Job com aquele id.</li>
+<li><code>/submissions</code>, <strong>GET</strong> que lista todos os Job já submetidos.</li>
+<li><code>/submissions/:id</code>, <strong>GET</strong> que retorna status do Job com aquele id.</li>
+<li><code>/submissions/:id/log</code>, <strong>GET</strong> que retorna os logs daquele Job.</li>
+</ul>
+<h4 id="monitor">Monitor</h4>
+<p>O monitor é um container que observa o progresso do Job conforme a aplicação lê, processa e conclui itens de trabalho. Através dessas métricas de progresso ele gera outras métricas, as quais ele armazena no Banco de Dados de Série Temporal.</p>
+<p>Os endpoints do monitor são estes abaixo:</p>
+<ul>
+<li><code>/monitoring/:app_id</code>, <strong>POST</strong> com JSON de configurações para monitorar o Job daquele id.</li>
+<li><code>/monitoring/:app_id/stop</code>, <strong>PUT</strong> para parar o Job com aquele id.</li>
+</ul>
+<h4 id="controller">Controller</h4>
+<p>O controller é um container que lê métricas do Banco de Dados periodicamente e as utiliza para decidir se deve atuar ou não. Ele atua se comunicando com o Kubernetes para aumentar ou diminuir uma certa quantidade de réplicas da aplicação.</p>
+<p>Os endpoints do controller são estes abaixo:</p>
+<ul>
+<li><code>/setup</code>, <strong>POST</strong> com JSON contendo as restrições de recursos que as réplicas da aplicação do cliente podem usar.</li>
+<li><code>/scailing/:app_id</code>, <strong>POST</strong> com JSON de configurações para que o controller atue no Job com aquele id.</li>
+<li><code>/scailing/:app_id/stop</code>, <strong>PUT</strong> para que o controller pare de atuar naquele Job com aquele id.</li>
+<li><code>/scaling</code>, <strong>GET</strong> que retorna o status atual detalhado do controller.</li>
+</ul>
+<h4 id="visualizer">Visualizer</h4>
+<p>O visualizer é um container que gerencia o Dashboard Analítico, e que lê periodicamente o Banco de Dados para alimentar o Dashboard com as métricas. Ele é opcional.</p>
+<p>Os endpoints do visualizer são estes abaixo:</p>
+<ul>
+<li><code>/visualizing</code>, <strong>POST</strong> com JSON contendo configurações para que o visualizer inicie a visualização de um Job.</li>
+<li><code>/visualizing/:id/stop</code>, <strong>PUT</strong> para que o visualizer pare a visualização no Job com aquele id.</li>
+<li><code>/visualizing/:id</code>, <strong>GET</strong> que retorna a URL do Dashboard.</li>
+</ul>
+<h3 id="componentes">Componentes</h3>
+<p>Todos os containers do Asperathos seguem uma arquitetura de plugin. A maior implicação disso, é que não há detalhes muito minunciosos de implementação para cada um, visto que são feitos para comportar diversas possibilidades de plugin. Eles, entretanto, devem seguir responsabilidades bem definidas, como falamos na seção anterior, mas que separaremos aqui componente a componente de cada container.</p>
+<p>Cada container tem dois componentes em comum: a <strong>API REST</strong> (como discutimos) e o <strong>gerente de plugins</strong>. O gerente de plugins é o responsável por instalar as opcões de plugin e decidir qual usar de acordo com a configuração do Job. Abaixo, estão os componentes diferenciais de cada um.</p>
+<h4 id="manager-1">Manager</h4>
+<p>Como vimos, o Manager coordena os outros containers e também o Job. Ele consegue fazer isso dividindo suas responsabilidades entre três componentes: o <strong>executor de Job</strong>, o <strong>gerente</strong> e o <strong>componente de persistência</strong>. Cada componente desses é um plugin.</p>
+<p>O <strong>executor de Job</strong> é o responsável por se comunicar com a API da infraestrutura (e.g. Kubernetes) para poder criar e configurar as aplicações auxiliares e a aplicação do cliente no cluster, bem como inicializar a carga de trabalho na Fila de Mensagens para que o Job possa começar.</p>
+<p>O <strong>gerente</strong> é o responsável por gerenciar os outros containers em si. Ele repassa as configurações do Job que são específicas a cada um, e os atualiza sempre que um Job novo é inciado e também quando é terminado. Ele faz isso se comunicando com a API REST de cada um.</p>
+<p>O <strong>componente de persistência</strong> não tem um nome específico, mas é responsável por persistir dados do Job em um banco local SQLite. Dessa maneira além de salvar dados sobre o Job atual, o Manager consegue manter histórico dos Jobs anteriores.</p>
+<p><img src="componente_manager_asperathos.png" alt="fig3"></p>
+<h4 id="monitor-1">Monitor</h4>
+<p>Já o Monitor tem responsabilidade de coletar as métricas e publicá-las no BD. Entretanto, o Monitor não possui diversos plugins nele, apenas um. A lógica de como o Monitor lida com tudo pode variar bastante de acordo com a implementação de plugin dele, mas é indicado que além de coletar e publicar ele faça um processamento das métricas. Isso é útil para converter, por exemplo, a contagem de itens de trabalho processados em um fluxo de processamento em itens por segundo.</p>
+<p>Assim, nós teríamos três componentes, os quais devem fazer parte do mesmo plugin.</p>
+<p>O <strong>coletor</strong> é responsável pela coleta. Não só pegar as métricas, como também decidir de onde elas vêm. Por padrão utilizamos apenas a Fila de Mensagens, mas outras fontes podem ser utilizadas. Por exemplo: uso de CPU/RAM dos nós do cluster, coletados através da API do Kubernetes.</p>
+<p>O <strong>processador</strong> utiliza as métricas para produzir novas ou refiná-las. Enquanto o coletor lê a quantidade de itens produzida, o processador é o responsável por utilizar isso e produzir a métrica de fluxo de itens por segundo. Ele pode também deduzir as distâncias de tempo entre cada item.</p>
+<p>O <strong>publicador</strong> utiliza as métricas refinadas do processador para publicá-las no Banco de Dados de Série Temporal. Essa função é simples, e só precisa ser reimplementada quando o Banco de Dados é diferente. Por padrão, é o InfluxDB.</p>
+<p><img src="componente_monitor_asperathos.png" alt="fig4"></p>
+<h4 id="controller-1">Controller</h4>
+<p>O Controller é responsável por decidir quando, como e com qual intensidade atuar no escalonamento das réplicas, baseado em métrias lidas no BD, e também aplicar a decisão. Ele divide essas tarefas em três componentes: o <strong>controlador</strong>, o <strong>atuador</strong> e o <strong>coletor</strong>. Cada um deles é um plugin.</p>
+<p>O <strong>controlador</strong> é o componente de inteligência, e é responsável por decidir baseado nas métricas. Esse é o plugin de maior impacto do container e talvez da aplicação, pois afeta diretamente o progresso do job.</p>
+<p>O <strong>atuador</strong> é responsável por se conectar com a interface da estrutura (i.e. API do Kubernetes) e aplicar as decisões do controlador. Essa função é simples, e só precisa ser reimplementada quando a Infraestrutura é diferente.</p>
+<p>O <strong>coletor</strong> é quem lê as métricas do Banco de Dados de Série Temporal. Essa função é simples, e só precisa ser reimplementada quando o Banco de Dados é diferente.</p>
+<p><img src="componente_controller_asperathos.png" alt="fig5"></p>
+<h4 id="visualizer-1">Visualizer</h4>
+<p>O Visualizer, sendo responsável por gerir o Dashboard Analítico, é bem separado da lógica normal. Ele não possui componentes bem definidos e também possui apenas um plugin, que é o responsável por tudo.</p>
+<h3 id="visão-de-informação">Visão de Informação</h3>
+<p>O Asperathos tem consigo diversas informações que trafegam. Desde as configurações iniciais em JSON, até as métricas lidas pelos componentes. O essencial de se entender para um usuário do sistema, entretanto, é sobre o processamento do Job.</p>
+<p>Uma vez que o Job é submetido, a carga de trabalho é preparada na Fila de Mensagens. Nesse componente estão três filas: fila <em>main</em>, <em>processing</em> e <em>results</em>. Essas filas representam os estados de cada item alocado nela, explicremos mais adiante.</p>
+<p>Inicialmente, se o Job for do modo <em>batch</em> toda a carga é submetida para a fila <em>main</em> de uma única vez. Caso o Job seja do tipo <em>streaming</em>, o software cliente é quem tem responsabilidade de enviar os itens de trabalho à Fila de Mensagens, e então a fila <em>main</em> recebe itens indefinidamente enquanto o Job não for finalizado.</p>
+<p>Assim que o Job inicia e a aplicação do cliente está pronta para processar itens, ela começa a ler itens da fila <em>main</em>. O item é lido e passado para a fila <em>processing</em>, onde ficará até ser finalizado. Uma vez que o item é finalizado, ele é removido, e o output do processamento é salvo na fila <em>results</em>.</p>
+<p>Após se passar um tempo, determinado pelo cliente, com um item parado na fila <em>processing</em> ocorre um timeout. É então considerado que essa réplica da aplicação do cliente bloqueou em alguma das suas tarefas. O item é então retornado para o começo da fila <em>main</em>, e quando o cliente bloqueado finalizar ele não será capaz de publicar seus resultados à fila <em>results</em>, sendo forçado a passar para um próximo item na fila <em>main</em>.</p>
+<p>O diagrama de informação abaixo ilustra essa mudança de estado de um item conforme ele muda de fila.</p>
+<p><img src="informacao_asperathos.png" alt="fig6"></p>
+<h1 id="contribuições-concretas">Contribuições Concretas</h1>
+<p>Foi feito um PR contendo os diagramas de contexto, container e informação. Como o repositório já possui documentação, a adição foi pouca para que os diagramas coubessem de maneira a agregar informação. Além disso, visto que a documentação foi produzida em Inglês no repositório, os diagramas tiveram de ser traduzidos.</p>
+<p><a href="https://github.com/ufcg-lsd/asperathos/pull/11">https://github.com/ufcg-lsd/asperathos/pull/11</a></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/jupyter-lab/"><i class="fa fa-chevron-circle-left"></i> Arquitetura do JupyterLab</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/mockito/">Documentação Arquitetural do Mockito <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

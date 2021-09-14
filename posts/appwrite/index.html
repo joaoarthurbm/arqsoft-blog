@@ -1,0 +1,278 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Documentação Arquitetural do Appwrite - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Documentação Arquitetural do Appwrite" />
+<meta property="og:description" content="Autores Este documento foi produzido por Jessé Souza Cavalcanti Neto.
+ Matrícula: 117110637 Contato: jesse.neto@ccc.ufcg.edu.br Projeto documentado: https://github.com/appwrite/appwrite  Descrição Arquitetural &ndash; Appwrite Este documento descreve a arquitetura do serviço Appwrite." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/appwrite/" />
+<meta property="article:published_time" content="2021-04-15T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-04-15T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentação Arquitetural do Appwrite"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Jessé Souza Cavalcanti Neto.
+ Matrícula: 117110637 Contato: jesse.neto@ccc.ufcg.edu.br Projeto documentado: https://github.com/appwrite/appwrite  Descrição Arquitetural &ndash; Appwrite Este documento descreve a arquitetura do serviço Appwrite."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Documentação Arquitetural do Appwrite</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-04-15T00:00:00-03:00">Apr 15, 2021</time>
+        </li>
+        
+
+        
+
+        <li>5 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Jessé Souza Cavalcanti Neto.</p>
+<ul>
+<li>Matrícula: 117110637</li>
+<li>Contato: <a href="mailto:jesse.neto@ccc.ufcg.edu.br">jesse.neto@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/appwrite/appwrite">https://github.com/appwrite/appwrite</a></li>
+</ul>
+<h1 id="descrição-arquitetural----appwrite">Descrição Arquitetural &ndash; Appwrite</h1>
+<p>Este documento descreve a arquitetura do serviço <a href="https://github.com/appwrite/appwrite">Appwrite</a>.
+As descrições e diagramas aqui presentes foram produzidos usando como base o modelo <a href="https://c4model.com/">C4</a>.</p>
+<p>É importante destacar que o foco principal da análise será o serviço de <em>Users</em> do Appwrite, entretanto, será possível entender como funciona a estrutura monolítica + microserviços adotado pelo projeto, uma vez que os outros serviços seguem a mesma lógica. É importante ressaltar que a documentação chama de microserviço por considerar que cada container (serviço ou worker) é um processo independente e pode ser escalado sem depender de outros serviços.</p>
+<h2 id="descrição-geral-sobre-o-appwrite">Descrição Geral sobre o Appwrite</h2>
+<p>O Appwrite é um servidor backend end-to-end que tem como objetivo abstrair grande parte da complexidade, muitas vezes repetitivas, na construção de aplicativos modernos. O serviço é composto por um conjunto de APIs, ferramentas e um console para gerenciamento que auxiliam no desenvolvimento de diversas features, tais como:</p>
+<ul>
+<li>Gerenciamento de conta</li>
+<li>Autenticação</li>
+<li>Preferências do usuário</li>
+<li>Persistência de banco de dados</li>
+<li>Funções de nuvem</li>
+<li>Manipulação de Imagens</li>
+<li>Dentre outros serviços</li>
+</ul>
+<p>Além disso tudo, o Appwrite é <strong>cross-platform</strong>, ou seja, é possível executar em qualquer lugar independente de sistema operacional, linguagem de programação, framework ou plataforma, permitindo uma fácil integração com vários serviços distintos.</p>
+<h2 id="o-serviço-de-users">O Serviço de Users</h2>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>Fornecer o serviço de cadastro, autenticação e gerenciamento de usuários a aplicação do usuário, permitindo que o mesmo possa implementar um sistema de cadastro/login na aplicação (página web, aplicativo IOS/Flutter/Android ou mesmo outro servidor) sem se preocupar com a implementação e persistência dos dados.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>O sistema de usuários do Appwrite permite que o desenvolvedor gerencie os usuários que consomem sua aplicação, permitindo que o mesmo possa criar, procurar, bloquear usuários, visualizar informações de sessão, revisar últimas atividades ou até mesmo obter informações do User Agent do usuário somente através do consumo da API REST.</p>
+<h2 id="contexto">Contexto</h2>
+<p>O objetivo principal do Appwrite é fornecer grande parte das funcionalidades que um backend normalmente proveria, permitindo ser usado tanto em ambiente de desenvolvimento para prover suporte ao desenvolvimento do Frontend Web, como também pode ser usado em produção devido a sua alta escalabilidade.</p>
+<p>Dito isso, o sistema principal do Appwrite se comunica com o usuário tanto através de sua interface web quanto por meio do consumo de sua API REST (diretamente ou através de suas SDKs).</p>
+<div align="center" style="margin:2rem 0;">
+    <img src="diagrama-contexto.png" style="width:95%;">
+    <span style="display:block;font-weight:bold;">
+        Figura 1 - Diagrama de Contexto do Appwrite
+    </span>
+</div>
+<h2 id="container">Container</h2>
+<p>O serviço de usuários do Appwrite envolve basicamente os 3 componentes que serão descritos abaixo:</p>
+<p>O <strong>Console</strong> é o container responsável por fornecer uma interface web para que o desenvolvedor consiga ter acesso a parte dos serviços do Appwrite, dentre eles, o gerenciamento de usuários. O console segue o padrão MVC e foi implementado utilizando PHP e HTML (para as views), além da framework <a href="https://github.com/utopia-php/framework">Utopia PHP</a>. A comunicação com o serviço de <em>Users</em> se dá por meio do protocolo HTTP.</p>
+<p>O <strong>Database</strong> é o container responsável por armazenar, de forma estruturada, as informações referentes a todos os serviços e workers disponibilizados pelo Appwrite. O banco de dados utilizado é o MariaDB e os dados de cada serviço é separado através de <em>collections</em> distintas.</p>
+<p>O <strong>Users</strong> é o container responsável pelo gerenciamento do serviço de usuários na aplicação. O serviço disponibiliza uma API REST para que outros serviços e sistemas possam consumir seus recursos. Foi implementado utilizando o Utopia PHP.</p>
+<p>A API do serviço de <strong>Users</strong> disponibiliza 11 endpoints para gerenciamento de usuários que podem ser acessados diretamente via HTTP ou pelo uso de uma das suas <a href="https://appwrite.io/docs/sdks">SDKs</a>. Segue uma breve descrição de alguns dos endpoints:</p>
+<p><strong><code>POST /v1/users</code></strong></p>
+<ul>
+<li>
+<p><strong>Descrição:</strong> Cria um novo usuário.</p>
+</li>
+<li>
+<p><strong><em>Request</em></strong></p>
+<ul>
+<li><strong><code>email</code>:</strong> Email de cadastro do usuário.</li>
+<li><strong><code>password</code>:</strong> Senha do usuário.</li>
+<li><strong><code>name</code>:</strong> Nome do usuário.</li>
+</ul>
+</li>
+<li>
+<p><strong>Exemplo de <em>Payload</em></strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{ 
+    <span style="color:#f92672">&#34;$id&#34;</span>: <span style="color:#ae81ff">1</span>,
+    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;exemplo&#34;</span>,
+    <span style="color:#f92672">&#34;registration&#34;</span>: <span style="color:#ae81ff">181058</span>,
+    <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#ae81ff">1</span>,
+    <span style="color:#f92672">&#34;email&#34;</span>: <span style="color:#e6db74">&#34;email@email.com&#34;</span>,
+    <span style="color:#f92672">&#34;emailVerification&#34;</span>: <span style="color:#e6db74">&#34;emailver@email.com&#34;</span>,
+    <span style="color:#f92672">&#34;prefs&#34;</span>: {}
+}
+</code></pre></div></li>
+</ul>
+<p><strong><code>GET /v1/users/{userId}</code></strong></p>
+<ul>
+<li>
+<p><strong>Descrição:</strong> Retorna um usuário a partir do id.</p>
+</li>
+<li>
+<p><strong><em>Request</em></strong></p>
+<ul>
+<li><strong><code>userId</code>:</strong> Identificador único do usuário.</li>
+</ul>
+</li>
+<li>
+<p><strong>Exemplo de <em>Payload</em></strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{ 
+    <span style="color:#f92672">&#34;$id&#34;</span>: <span style="color:#ae81ff">1</span>,
+    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;exemplo&#34;</span>,
+    <span style="color:#f92672">&#34;registration&#34;</span>: <span style="color:#ae81ff">181058</span>,
+    <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#ae81ff">1</span>,
+    <span style="color:#f92672">&#34;email&#34;</span>: <span style="color:#e6db74">&#34;email@email.com&#34;</span>,
+    <span style="color:#f92672">&#34;emailVerification&#34;</span>: <span style="color:#e6db74">&#34;emailver@email.com&#34;</span>,
+    <span style="color:#f92672">&#34;prefs&#34;</span>: {}
+}
+</code></pre></div></li>
+</ul>
+<p><strong><code>DELETE /v1/users/{userId}</code></strong></p>
+<ul>
+<li>
+<p><strong>Descrição:</strong> Remove um usuário a partir do id.</p>
+</li>
+<li>
+<p><strong><em>Request</em></strong></p>
+<ul>
+<li><strong><code>userId</code>:</strong> Identificador único do usuário.</li>
+</ul>
+</li>
+<li>
+<p><strong>Exemplo de <em>Payload</em></strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#ae81ff">204</span>
+</code></pre></div></li>
+</ul>
+<p>A lista completa dos endpoints de usuário fornecidos pode ser encontrado neste <a href="https://appwrite.io/docs/server/users">link</a>.</p>
+<div align="center" style="margin:2rem 0;">
+    <img src="diagrama-containers.png" style="width:95%;">
+    <span style="display:block;font-weight:bold;">
+        Figura 2 - Diagrama de Containers do Appwrite
+    </span>
+</div>
+<h2 id="componentes">Componentes</h2>
+<p>Olhando os containers descritos acima, é possível subdividi-los em componentes mais específicos.</p>
+<p>O <strong>Console</strong> pode ser subdividido em <strong>Views</strong> e <strong>Console Controller</strong> seguindo o padrão MVC. As <strong>Views</strong> contém os templates HTML + PHP que serão retornados ao usuário quando o mesmo acessa uma rota X, por exemplo, caso o usuário acesse <code>/console/account</code>, é retornada a view <em>account</em>. Já o <strong>Console Controller</strong> é o responsável por receber as requisições e retornar as <strong>Views</strong>.</p>
+<p>Já o <strong>Users</strong> possui somente um componente que seria o próprio <strong>Users Controller</strong>. Ele é o responsável por receber as requisições HTTP de outros serviços (internos e externos), além de conter a lógica de negócios necessária para o gerenciamento dos usuários, como o tratamento e o acesso ao <strong>Database</strong>.</p>
+<div align="center" style="margin:2rem 0;">
+    <img src="diagrama-componentes.png" style="width:95%;">
+    <span style="display:block;font-weight:bold;">
+        Figura 3 - Diagrama de Componentes do Appwrite
+    </span>
+</div>
+<h2 id="código">Código</h2>
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
+<h2 id="visão-de-informação">Visão de Informação</h2>
+<p>Como o foco deste documento é analizar o Appwrite com foco na funcionalidade de usuários, a informação analisada será os dados cadastrados do usuário.</p>
+<p>Os dados cadastrais do usuário podem sofrer alguns eventos, são eles:</p>
+<ul>
+<li>Criação</li>
+<li>Edição dos status</li>
+<li>Edição das preferências</li>
+<li>Edição das sessões</li>
+<li>Remoção do usuário</li>
+</ul>
+<div align="center" style="margin:2rem 0;">
+    <img src="diagrama-info.png" style="width:95%;">
+    <span style="display:block;font-weight:bold;">
+        Figura 1 - Diagrama de informação dos dados de usuário
+    </span>
+</div>
+<h1 id="contribuições-concretas">Contribuições Concretas</h1>
+<p><em>Descreva</em> aqui os PRs enviados para o projeto e o status dos mesmos. Forneça os links dos PRs.</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/insomnia/"><i class="fa fa-chevron-circle-left"></i> Documentação arquitetural do Insomnia</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/kolibri/">Documentação Arquitetural - Kolibri <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+
