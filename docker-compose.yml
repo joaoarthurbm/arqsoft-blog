@@ -2,7 +2,7 @@ version: "3"
 
 services:
   hugo:
-    image: klakegg/hugo:0.74.3
+    image: ezkrg/hugo:v0.75.1
     command: server
     volumes:
       - .:/src
