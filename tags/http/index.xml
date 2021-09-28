@@ -144,6 +144,80 @@ Separação da arquitetura de módulo e execução.&amp;rdquo;&lt;/p&gt;
      </item>
    
      <item>
+       <title>Discussão sobre visões arquiteturais</title>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/discussao-visoes-arquiteturais/</link>
+       <pubDate>Tue, 07 Sep 2021 00:00:00 -0300</pubDate>
+       
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/discussao-visoes-arquiteturais/</guid>
+       <description>&lt;hr&gt;
+&lt;p&gt;Este é um documento utilizado como guia para discutir em sala de aula alguns conceitos sobre visões arquiteturais.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;vinicius-brandão&#34;&gt;Vinicius Brandão&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;Baragry, Jason, and Karl Reed. &amp;quot;Why we need a different view of software architecture.&amp;quot; Proceedings Working IEEE/IFIP Conference on Software Architecture. IEEE, 2001.&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;por que a associação faz mal?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;quot; Outro ponto importante é uma visão mais aprofundada no aspecto da indústria de como eles utilizam não apenas o processo de como a indústria traz para a teoria, discorrendo sobre o que é utilizado e como e assim associar as possíveis falhas de interpretação de definição.&amp;quot;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;não entendi&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;rodrigo&#34;&gt;Rodrigo&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;Kruchten, Philippe B. &amp;quot;The 4+ 1 view model of architecture.&amp;quot; IEEE software 12.6 (1995): 42-50.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Visão Lógica: Descreve o modelo de objeto do projeto quando um método de projeto orientado a objeto é usado. Para projetar um aplicativo que é muito orientado a dados, você pode usar uma abordagem alternativa para desenvolver alguma outra forma de visão lógica, como um diagrama de entidade - relacionamento.&lt;/p&gt;
+&lt;p&gt;Visão de Processo: Descreve os aspectos de simultaneidade e sincronização do projeto.&lt;/p&gt;
+&lt;p&gt;Visão Física: Descreve o mapeamento do software no hardware e reflete seu aspecto distribuído.&lt;/p&gt;
+&lt;p&gt;Visão de Desenvolvimento: descreve a organização estática do software em seu ambiente de desenvolvimento.
+&amp;quot;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Vamos discutir um pouco sobre cada visão proposta. Vamos debater essas com as que vimos em sala de aula. Essas visões são &amp;ldquo;atuais&amp;rdquo;? Como vemos o mundo de desenvolvimento de software hoje se encaixando nessas visões?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;O conceito de +1.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;ldquo;A arquitetura por si só deve se tornar estável e não se deve encontrar novas abstrações, subsistemas, processos ou interfaces importantes após a construção inicial.&amp;rdquo;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Isso significa que a arquitetura não deve evoluir?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;sarah-albuquerque&#34;&gt;Sarah Albuquerque&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;Kruchten, Philippe B. &amp;quot;The 4+ 1 view model of architecture.&amp;quot; IEEE software 12.6 (1995): 42-50.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Pontos de destaque são que as diferentes arquiteturas não são completamente independentes; o processo proposto não é linear, requer algumas iterações para se estruturar a arquitetura; não é necessário usar as 05 perspectivas.
+&amp;quot;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;O que siginifica não ser linear?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;valter&#34;&gt;Valter&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;Baragry, Jason, and Karl Reed. &amp;quot;Why we need a different view of software architecture.&amp;quot; Proceedings Working IEEE/IFIP Conference on Software Architecture. IEEE, 2001.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;O principal problema não é a falta de resposta para as questões que surgem, e sim a grande quantidade de respostas diferentes.&amp;rdquo;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Relação com integridade conceitual na área.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;ldquo;Enquanto essas analogias facilitam a criação dos conceitos de desenvolvimento de software, elas falham em considerar adequadamente as diferenças entre desenvolvimento e outras disciplinas da área de Engenharia de Software.&amp;rdquo;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Importância da escolha de metáforas. Ajudam, mas podem atrapalhar também. Qual é o caso aqui?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;ldquo;A análise dessas falhas foi muito bem desenvolvida no artigo, desde a categorização até a discussão dos principais aspectos de cada uma. &amp;quot;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Vamos discutir um pouco mais esse tópico?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;joão-neto&#34;&gt;João Neto&lt;/h1&gt;
+&lt;p&gt;&amp;ldquo;Os autores encontraram 3 categorias no qual a analogia falha, sendo elas: Diferenças entre software  sistemas projetados tradicionalmente,   diferenças entre o conteúdo abordado sobre visões arquiteturais nas respectivas disciplinas (software e engenharia tradicional) e as diferenças entre como essas visualizações são usadas no processo de desenvolvimento.&amp;rdquo;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Vamos detalhar essas categorias e discutir melhor.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;ldquo;Por exemplo, quanto a diferença entre sistemas, os produzidos pela engenharia tradicional, tem forma física (ex: documentos) e tangibilidade que permite identificar sua arquitetura. Por outro lado, na engenharia de software você não consegue identificar a arquitetura olhando apenas para as linhas do código fonte do sistema. Portanto, sistemas de software não tem forma física análogo, logo não são tangíveis e  suas representações de nível, abstração e de design devem ser diferentes para aqueles produzidos pelo mesmo nível de design na engenharia tradicional. Além disso, o conteúdo das visões de arquitetura como ponto de vista de subconjuntos orientados do design ou implementação global não é apresentado em visualizações de arquitetura de software, uma vez que  em sistemas tradicionais não é abordado como o sistema vai operar, e sim como esse aspecto do sistema existirá como um artefato físico.&amp;rdquo;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Importante destacar essa exemplificação.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;ldquo;No entanto, acredito que é de grande importância o uso de analogias para os casos em que tal mecanismo pode ser aplicado. Uma vez que ajuda na didática e entendimento do sistema em uma perspectiva de mais alto nível. &amp;quot;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Interessante esse contraponto.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+     </item>
+   
+     <item>
        <title>Documentação Arquitetural do Apache Airflow</title>
        <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/airflow/</link>
        <pubDate>Sun, 15 Aug 2021 00:00:00 -0300</pubDate>

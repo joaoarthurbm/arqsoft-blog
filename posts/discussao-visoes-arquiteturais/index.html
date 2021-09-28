@@ -1,0 +1,194 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Discussão sobre visões arquiteturais - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Discussão sobre visões arquiteturais" />
+<meta property="og:description" content="Este é um documento utilizado como guia para discutir em sala de aula alguns conceitos sobre visões arquiteturais.
+ Vinicius Brandão Baragry, Jason, and Karl Reed. &quot;Why we need a different view of software architecture." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/discussao-visoes-arquiteturais/" />
+<meta property="article:published_time" content="2021-09-07T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-09-07T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Discussão sobre visões arquiteturais"/>
+<meta name="twitter:description" content="Este é um documento utilizado como guia para discutir em sala de aula alguns conceitos sobre visões arquiteturais.
+ Vinicius Brandão Baragry, Jason, and Karl Reed. &quot;Why we need a different view of software architecture."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Discussão sobre visões arquiteturais</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-09-07T00:00:00-03:00">Sep 7, 2021</time>
+        </li>
+        
+
+        
+
+        <li>4 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <hr>
+<p>Este é um documento utilizado como guia para discutir em sala de aula alguns conceitos sobre visões arquiteturais.</p>
+<hr>
+<h1 id="vinicius-brandão">Vinicius Brandão</h1>
+<p><code>Baragry, Jason, and Karl Reed. &quot;Why we need a different view of software architecture.&quot; Proceedings Working IEEE/IFIP Conference on Software Architecture. IEEE, 2001.</code></p>
+<ul>
+<li>por que a associação faz mal?</li>
+</ul>
+<p>&quot; Outro ponto importante é uma visão mais aprofundada no aspecto da indústria de como eles utilizam não apenas o processo de como a indústria traz para a teoria, discorrendo sobre o que é utilizado e como e assim associar as possíveis falhas de interpretação de definição.&quot;</p>
+<ul>
+<li>não entendi</li>
+</ul>
+<h1 id="rodrigo">Rodrigo</h1>
+<p><code>Kruchten, Philippe B. &quot;The 4+ 1 view model of architecture.&quot; IEEE software 12.6 (1995): 42-50.</code></p>
+<p>&ldquo;Visão Lógica: Descreve o modelo de objeto do projeto quando um método de projeto orientado a objeto é usado. Para projetar um aplicativo que é muito orientado a dados, você pode usar uma abordagem alternativa para desenvolver alguma outra forma de visão lógica, como um diagrama de entidade - relacionamento.</p>
+<p>Visão de Processo: Descreve os aspectos de simultaneidade e sincronização do projeto.</p>
+<p>Visão Física: Descreve o mapeamento do software no hardware e reflete seu aspecto distribuído.</p>
+<p>Visão de Desenvolvimento: descreve a organização estática do software em seu ambiente de desenvolvimento.
+&quot;</p>
+<ul>
+<li>
+<p>Vamos discutir um pouco sobre cada visão proposta. Vamos debater essas com as que vimos em sala de aula. Essas visões são &ldquo;atuais&rdquo;? Como vemos o mundo de desenvolvimento de software hoje se encaixando nessas visões?</p>
+</li>
+<li>
+<p>O conceito de +1.</p>
+</li>
+</ul>
+<p>&ldquo;A arquitetura por si só deve se tornar estável e não se deve encontrar novas abstrações, subsistemas, processos ou interfaces importantes após a construção inicial.&rdquo;</p>
+<ul>
+<li>Isso significa que a arquitetura não deve evoluir?</li>
+</ul>
+<h1 id="sarah-albuquerque">Sarah Albuquerque</h1>
+<p><code>Kruchten, Philippe B. &quot;The 4+ 1 view model of architecture.&quot; IEEE software 12.6 (1995): 42-50.</code></p>
+<p>&ldquo;Pontos de destaque são que as diferentes arquiteturas não são completamente independentes; o processo proposto não é linear, requer algumas iterações para se estruturar a arquitetura; não é necessário usar as 05 perspectivas.
+&quot;</p>
+<ul>
+<li>O que siginifica não ser linear?</li>
+</ul>
+<h1 id="valter">Valter</h1>
+<p><code>Baragry, Jason, and Karl Reed. &quot;Why we need a different view of software architecture.&quot; Proceedings Working IEEE/IFIP Conference on Software Architecture. IEEE, 2001.</code></p>
+<p>&ldquo;O principal problema não é a falta de resposta para as questões que surgem, e sim a grande quantidade de respostas diferentes.&rdquo;</p>
+<ul>
+<li>Relação com integridade conceitual na área.</li>
+</ul>
+<p>&ldquo;Enquanto essas analogias facilitam a criação dos conceitos de desenvolvimento de software, elas falham em considerar adequadamente as diferenças entre desenvolvimento e outras disciplinas da área de Engenharia de Software.&rdquo;</p>
+<ul>
+<li>Importância da escolha de metáforas. Ajudam, mas podem atrapalhar também. Qual é o caso aqui?</li>
+</ul>
+<p>&ldquo;A análise dessas falhas foi muito bem desenvolvida no artigo, desde a categorização até a discussão dos principais aspectos de cada uma. &quot;</p>
+<ul>
+<li>Vamos discutir um pouco mais esse tópico?</li>
+</ul>
+<h1 id="joão-neto">João Neto</h1>
+<p>&ldquo;Os autores encontraram 3 categorias no qual a analogia falha, sendo elas: Diferenças entre software  sistemas projetados tradicionalmente,   diferenças entre o conteúdo abordado sobre visões arquiteturais nas respectivas disciplinas (software e engenharia tradicional) e as diferenças entre como essas visualizações são usadas no processo de desenvolvimento.&rdquo;</p>
+<ul>
+<li>Vamos detalhar essas categorias e discutir melhor.</li>
+</ul>
+<p>&ldquo;Por exemplo, quanto a diferença entre sistemas, os produzidos pela engenharia tradicional, tem forma física (ex: documentos) e tangibilidade que permite identificar sua arquitetura. Por outro lado, na engenharia de software você não consegue identificar a arquitetura olhando apenas para as linhas do código fonte do sistema. Portanto, sistemas de software não tem forma física análogo, logo não são tangíveis e  suas representações de nível, abstração e de design devem ser diferentes para aqueles produzidos pelo mesmo nível de design na engenharia tradicional. Além disso, o conteúdo das visões de arquitetura como ponto de vista de subconjuntos orientados do design ou implementação global não é apresentado em visualizações de arquitetura de software, uma vez que  em sistemas tradicionais não é abordado como o sistema vai operar, e sim como esse aspecto do sistema existirá como um artefato físico.&rdquo;</p>
+<ul>
+<li>Importante destacar essa exemplificação.</li>
+</ul>
+<p>&ldquo;No entanto, acredito que é de grande importância o uso de analogias para os casos em que tal mecanismo pode ser aplicado. Uma vez que ajuda na didática e entendimento do sistema em uma perspectiva de mais alto nível. &quot;</p>
+<ul>
+<li>Interessante esse contraponto.</li>
+</ul>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/airflow/"><i class="fa fa-chevron-circle-left"></i> Documentação Arquitetural do Apache Airflow</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/discussao-intro-arquitetura/">Discussão sobre definições de arquitetura de software <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+
