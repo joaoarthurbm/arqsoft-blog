@@ -17,11 +17,7 @@ Este é um documento utilizado como guia para discutir em sala de aula alguns co
 
 - por que a associação faz mal?
 
-" Outro ponto importante é uma visão mais aprofundada no aspecto da indústria de como eles utilizam não apenas o processo de como a indústria traz para a teoria, discorrendo sobre o que é utilizado e como e assim associar as possíveis falhas de interpretação de definição."
-
-- não entendi
-
-# Rodrigo
+# Rodrigo Santos
 
 `Kruchten, Philippe B. "The 4+ 1 view model of architecture." IEEE software 12.6 (1995): 42-50.`
 
