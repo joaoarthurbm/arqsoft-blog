@@ -15,7 +15,11 @@ Este é um documento utilizado como guia para discutir em sala de aula alguns co
 
 `Baragry, Jason, and Karl Reed. "Why we need a different view of software architecture." Proceedings Working IEEE/IFIP Conference on Software Architecture. IEEE, 2001.`
 
-- por que a associação faz mal?
+- Por que a associação faz mal?
+
+	- Construções físicas mudam menos.
+	- Cuidado com a falsa sensação de facilidade de mudanças no software. Não é apenas uma questão de mulher-homem/hora.
+
 
 # Rodrigo Santos
 
