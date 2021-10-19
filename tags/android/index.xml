@@ -211,6 +211,23 @@ Separação da arquitetura de módulo e execução.&amp;rdquo;&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;yure-pereira-campos&#34;&gt;Yure Pereira Campos&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;C. Izurieta and J. M. Bieman, &amp;quot;How Software Designs Decay: A Pilot Study of Pattern Evolution&amp;quot; First International Symposium on Empirical Software Engineering and Measurement (ESEM 2007), 2007, pp. 449-451, doi: 10.1109/ESEM.2007.55.&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;hipóteses&#34;&gt;Hipóteses&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;H1,0: Existem poucas violações estruturais das realizações de padrões de design.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;H2,0: O número de relacionamentos externos de uma realização de padrão de design permanece o mesmo ao longo do tempo.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;H3,0: A organização do namespace dos componentes que compõem um padrão de design permanece a mesma ao longo do tempo.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Vamos discutir um pouco essas hipóteses.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;ldquo;deterioração do design é uma consequência da evolução do software,&amp;rdquo;
+- deterioração como consequência.&lt;/p&gt;
 </description>
      </item>
    
