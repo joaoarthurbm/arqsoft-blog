@@ -158,57 +158,73 @@ Separação da arquitetura de módulo e execução.&amp;rdquo;&lt;/p&gt;
 &lt;li&gt;Fala mais um pouco sobre o caso do Mozilla.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&amp;ldquo;O artigo traz consigo as possíveis causas que levam ao problema de erosão de software. Desse modo, os autores elencam diversas causas que levam a esse problema, tais como o aumento do custo de manutenção para grandes sistemas, adição de novas funcionalidades não planejadas, métodos iterativos entre outros.&amp;rdquo;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- Vamos falar mais sobre essas causas.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;ldquo;não importa o quão ambiciosas sejam as intenções dos arquitetos, as arquiteturas de software tendem a se desgastar com o tempo, a ponto de redesenhar do zero se tornar uma alternativa viável em comparação com o prolongamento da vida útil da arquitetura existente.&amp;rdquo;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- Comparação com um processo natural de evelhecimento.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;ldquo;Porém,Porem, acredito que mesmo com essa afirmação faltou um embasamento maior dos autores para um estudo de caso mais específico de projetos grandes da indústria, explanando com mais detalhe como ocorreu e consequentemente uma pesquisa com os desenvolvedores desses projetos para medir no aspecto de desenvolvimento o que levou ao problema de erosão. &amp;quot;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- Crítica à metodologia.
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Vamos falar mais sobre essas causas.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;ldquo;Não importa o quão ambiciosas sejam as intenções dos arquitetos, as arquiteturas de software tendem a se desgastar com o tempo, a ponto de redesenhar do zero se tornar uma alternativa viável em comparação com o prolongamento da vida útil da arquitetura existente.&amp;rdquo;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Comparação com um processo natural de evelhecimento.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;ldquo;Porém, acredito que mesmo com essa afirmação faltou um embasamento maior dos autores para um estudo de caso mais específico de projetos grandes da indústria, explanando com mais detalhe como ocorreu e consequentemente uma pesquisa com os desenvolvedores desses projetos para medir no aspecto de desenvolvimento o que levou ao problema de erosão. &amp;quot;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Crítica à metodologia.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&amp;ldquo;Por fim, a metodologia abordada de explicação através de um exemplo traz ao leitor uma visão interessante de como ocorre o problema de erosão, portanto, até leitores que não teve a experiência de participar de um desenvolvimento de software consegue ter domínio e identificar onde e como ocorre erosão de softwares.&amp;rdquo;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- Sobre didática do artigo. A tripla problema-causa-remédio.
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Sobre didática do artigo. A tripla problema-causa-remédio.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h1 id=&#34;valter-vinícius-marinho-de-lucena&#34;&gt;Valter Vinícius Marinho de Lucena&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;Assessing architectural drift in commercial software development: a case study. Jacek Rosik, Andre Le Gear, Jim Buckley, Muhammad Ali Babar e Dave Connolly, 2010.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&amp;quot; A abordagem utilizada foi a Reflexion Modelling, e o estudo acompanhou um time durante a criação de um sistema de software comercial. &amp;quot;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- Vamos discutir um pouco mais essa abordagem.
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;ldquo;A abordagem utilizada foi a Reflexion Modelling, e o estudo acompanhou um time durante a criação de um sistema de software comercial. &amp;quot;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Vamos discutir um pouco mais essa abordagem.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&amp;ldquo;Os resultados mostraram que a abordagem utilizada, ao contrário do que era esperado, oculta algumas das inconsistências que aconteceram durante o desenvolvimento. &amp;quot;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- Pode dar mais detalhes? Como a abordagem serviu para ocultar inconsistências?
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Pode dar mais detalhes? Como a abordagem serviu para ocultar inconsistências?&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&amp;ldquo;Os autores propõem, também, checagens contínuas da arquitetura, assim como geração de alertas através da integração das checagens nas próprias IDEs utilizadas pelos desenvolvedores, uma vez que, quanto mais tempo um erro existe no código, mais complicado é resolvê-lo. &amp;quot;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- Importância da inclusão perene no processo de desenvolvimento. 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Importância da inclusão perene no processo de desenvolvimento.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&amp;ldquo;não existe uma solução única para o problema do desvio arquitetural.&amp;rdquo;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- *No silver bullet.*
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;No silver bullet.&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h1 id=&#34;vinícius-de-medeiros-soares&#34;&gt;Vinícius de Medeiros Soares&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;VAN GURP, Jilles; BOSCH, Jan; BRINKKEMPER, Sjaak. Design erosion in evolving software products. In: ELISA workshop. 2003.&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;O trabalho tem foco em entender a erosão arquitetural no contexto de grandes projetos, e as questões de pesquisa que são respondidas através dos estudos de caso podem servir como base para a evolução de qualquer empresa em relação a como identificar, resolver e prevenir a erosão.&amp;rdquo;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- Quais foram as questões de pesquisa?
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Quais foram as questões de pesquisa?&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&amp;ldquo;Os autores concluíram antecipadamente que a erosão arquitetural é inevitável, por isso o estudo focou em como lidar com essa erosão, ao invés de como preveni-la.&amp;rdquo;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- De novo, um processo &amp;quot;natural&amp;quot;.
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;De novo, um processo &amp;ldquo;natural&amp;rdquo;.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&amp;ldquo;Outro aspecto apontado é que além de fatores técnicos, há fatores não técnicos que contribuem para a erosão arquitetural.&amp;rdquo;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- Quais?
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Quais?&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&amp;ldquo;Os autores destacam na conclusão que a habilidade de lidar com a erosão é mais importante que a prevenção.&amp;rdquo;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- Vamos discutir um pouco mais sobre isso.
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Vamos discutir um pouco mais sobre isso.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h1 id=&#34;joão-antonio-leite-dos-santos-neto&#34;&gt;João Antonio Leite Dos Santos Neto&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;Eick, Stephen G., et al. &amp;quot;Does code decay? assessing the evidence from change management data.&amp;quot; IEEE Transactions on Software Engineering 27.1 (2001): 1-12.NBR 6023&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;O presente artigo tem como objetivo avaliar como as mudanças em sistemas de larga escala impactam negativamente na qualidade do código.&amp;rdquo;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- Como foi feito?
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;ldquo;criaram um modelo conceitual para auxiliar na identificação de causas, sintomas e fatores de riscos para a decadência de código.&amp;rdquo;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- Mais uma vez essa perspectiva de problema-causa-ação/remédio.
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Como foi feito?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;ldquo;Criaram um modelo conceitual para auxiliar na identificação de causas, sintomas e fatores de riscos para a decadência de código.&amp;rdquo;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mais uma vez essa perspectiva de problema-causa-ação/remédio.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&amp;ldquo;Um código é considerado em decadência quando é mais difícil de mudar do que deveria ser, em três perspectivas: O custo (esforço) da mudança, que é efetivamente a quantidade de pessoas necessárias para implementar tais mudanças; O intervalo  para completar a mudança, ex:  o calendário/e horas necessárias para implementar as mudanças; Qualidade do software alterado.&amp;rdquo;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- A tripla: custo, tempo e qualidade. Sempre ela em Engenharia de Software.
-- Como medir quão difícil?
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;A tripla: custo, tempo e qualidade. Sempre ela em Engenharia de Software.&lt;/li&gt;
+&lt;li&gt;Como medir quão difícil?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;É difícil medir, mas fácil reconhecer.&lt;/blockquote&gt;
 &lt;h1 id=&#34;yure-pereira-campos&#34;&gt;Yure Pereira Campos&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;C. Izurieta and J. M. Bieman, &amp;quot;How Software Designs Decay: A Pilot Study of Pattern Evolution&amp;quot; First International Symposium on Empirical Software Engineering and Measurement (ESEM 2007), 2007, pp. 449-451, doi: 10.1109/ESEM.2007.55.&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;hipóteses&#34;&gt;Hipóteses&lt;/h2&gt;
@@ -226,8 +242,32 @@ Separação da arquitetura de módulo e execução.&amp;rdquo;&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;ldquo;deterioração do design é uma consequência da evolução do software,&amp;rdquo;
-- deterioração como consequência.&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Deterioração do design é uma consequência da evolução do software.&amp;rdquo;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Deterioração como consequência.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;rodrigo-oliveira&#34;&gt;Rodrigo Oliveira&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;Godfrey, Michael W., and Eric HS Lee. &amp;quot;Secrets from the monster: Extracting mozilla’s software architecture.&amp;quot; Proceedings of Second Symposium on Constructing Software Engineering Tools (CoSET’00). 2000&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;O caso do Mozilla.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Contexto: batalha dos navegadores.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;notas-sobre-a-discussão&#34;&gt;Notas sobre a discussão&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Como perceber o processo?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dificuldade de mensurar? Conseguimos reconhecer, mas não medir.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;It is all about the fundamental concepts.&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 </description>
      </item>
    
