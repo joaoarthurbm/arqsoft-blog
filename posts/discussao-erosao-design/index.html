@@ -1,0 +1,191 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Discussão sobre erosão arquitetural - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Discussão sobre erosão arquitetural" />
+<meta property="og:description" content="Este é um documento utilizado como guia para discutir em sala de aula alguns artigos sobre erosão arquitetural.
+ Vinícius Brandão Araújo Design erosion: problems and causes. Jilles van Gurp and Jan Bosch." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/discussao-erosao-design/" />
+<meta property="article:published_time" content="2021-09-07T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-09-07T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Discussão sobre erosão arquitetural"/>
+<meta name="twitter:description" content="Este é um documento utilizado como guia para discutir em sala de aula alguns artigos sobre erosão arquitetural.
+ Vinícius Brandão Araújo Design erosion: problems and causes. Jilles van Gurp and Jan Bosch."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Discussão sobre erosão arquitetural</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-09-07T00:00:00-03:00">Sep 7, 2021</time>
+        </li>
+        
+
+        
+
+        <li>4 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <hr>
+<p>Este é um documento utilizado como guia para discutir em sala de aula alguns artigos sobre erosão arquitetural.</p>
+<hr>
+<h1 id="vinícius-brandão-araújo">Vinícius Brandão Araújo</h1>
+<p><code>Design erosion: problems and causes. Jilles van Gurp and Jan Bosch. Journal of systems and software 61.2, 2002.</code></p>
+<ul>
+<li>Fala mais um pouco sobre o caso do Mozilla.</li>
+</ul>
+<p>&ldquo;O artigo traz consigo as possíveis causas que levam ao problema de erosão de software. Desse modo, os autores elencam diversas causas que levam a esse problema, tais como o aumento do custo de manutenção para grandes sistemas, adição de novas funcionalidades não planejadas, métodos iterativos entre outros.&rdquo;</p>
+<pre><code>- Vamos falar mais sobre essas causas.
+</code></pre>
+<p>&ldquo;não importa o quão ambiciosas sejam as intenções dos arquitetos, as arquiteturas de software tendem a se desgastar com o tempo, a ponto de redesenhar do zero se tornar uma alternativa viável em comparação com o prolongamento da vida útil da arquitetura existente.&rdquo;</p>
+<pre><code>- Comparação com um processo natural de evelhecimento.
+</code></pre>
+<p>&ldquo;Porém,Porem, acredito que mesmo com essa afirmação faltou um embasamento maior dos autores para um estudo de caso mais específico de projetos grandes da indústria, explanando com mais detalhe como ocorreu e consequentemente uma pesquisa com os desenvolvedores desses projetos para medir no aspecto de desenvolvimento o que levou ao problema de erosão. &quot;</p>
+<pre><code>- Crítica à metodologia.
+</code></pre>
+<p>&ldquo;Por fim, a metodologia abordada de explicação através de um exemplo traz ao leitor uma visão interessante de como ocorre o problema de erosão, portanto, até leitores que não teve a experiência de participar de um desenvolvimento de software consegue ter domínio e identificar onde e como ocorre erosão de softwares.&rdquo;</p>
+<pre><code>- Sobre didática do artigo. A tripla problema-causa-remédio.
+</code></pre>
+<h1 id="valter-vinícius-marinho-de-lucena">Valter Vinícius Marinho de Lucena</h1>
+<p><code>Assessing architectural drift in commercial software development: a case study. Jacek Rosik, Andre Le Gear, Jim Buckley, Muhammad Ali Babar e Dave Connolly, 2010.</code></p>
+<p>&quot; A abordagem utilizada foi a Reflexion Modelling, e o estudo acompanhou um time durante a criação de um sistema de software comercial. &quot;</p>
+<pre><code>- Vamos discutir um pouco mais essa abordagem.
+</code></pre>
+<p>&ldquo;Os resultados mostraram que a abordagem utilizada, ao contrário do que era esperado, oculta algumas das inconsistências que aconteceram durante o desenvolvimento. &quot;</p>
+<pre><code>- Pode dar mais detalhes? Como a abordagem serviu para ocultar inconsistências?
+</code></pre>
+<p>&ldquo;Os autores propõem, também, checagens contínuas da arquitetura, assim como geração de alertas através da integração das checagens nas próprias IDEs utilizadas pelos desenvolvedores, uma vez que, quanto mais tempo um erro existe no código, mais complicado é resolvê-lo. &quot;</p>
+<pre><code>- Importância da inclusão perene no processo de desenvolvimento. 
+</code></pre>
+<p>&ldquo;não existe uma solução única para o problema do desvio arquitetural.&rdquo;</p>
+<pre><code>- *No silver bullet.*
+</code></pre>
+<h1 id="vinícius-de-medeiros-soares">Vinícius de Medeiros Soares</h1>
+<p><code>VAN GURP, Jilles; BOSCH, Jan; BRINKKEMPER, Sjaak. Design erosion in evolving software products. In: ELISA workshop. 2003.</code></p>
+<p>&ldquo;O trabalho tem foco em entender a erosão arquitetural no contexto de grandes projetos, e as questões de pesquisa que são respondidas através dos estudos de caso podem servir como base para a evolução de qualquer empresa em relação a como identificar, resolver e prevenir a erosão.&rdquo;</p>
+<pre><code>- Quais foram as questões de pesquisa?
+</code></pre>
+<p>&ldquo;Os autores concluíram antecipadamente que a erosão arquitetural é inevitável, por isso o estudo focou em como lidar com essa erosão, ao invés de como preveni-la.&rdquo;</p>
+<pre><code>- De novo, um processo &quot;natural&quot;.
+</code></pre>
+<p>&ldquo;Outro aspecto apontado é que além de fatores técnicos, há fatores não técnicos que contribuem para a erosão arquitetural.&rdquo;</p>
+<pre><code>- Quais?
+</code></pre>
+<p>&ldquo;Os autores destacam na conclusão que a habilidade de lidar com a erosão é mais importante que a prevenção.&rdquo;</p>
+<pre><code>- Vamos discutir um pouco mais sobre isso.
+</code></pre>
+<h1 id="joão-antonio-leite-dos-santos-neto">João Antonio Leite Dos Santos Neto</h1>
+<p><code>Eick, Stephen G., et al. &quot;Does code decay? assessing the evidence from change management data.&quot; IEEE Transactions on Software Engineering 27.1 (2001): 1-12.NBR 6023</code></p>
+<p>&ldquo;O presente artigo tem como objetivo avaliar como as mudanças em sistemas de larga escala impactam negativamente na qualidade do código.&rdquo;</p>
+<pre><code>- Como foi feito?
+</code></pre>
+<p>&ldquo;criaram um modelo conceitual para auxiliar na identificação de causas, sintomas e fatores de riscos para a decadência de código.&rdquo;</p>
+<pre><code>- Mais uma vez essa perspectiva de problema-causa-ação/remédio.
+</code></pre>
+<p>&ldquo;Um código é considerado em decadência quando é mais difícil de mudar do que deveria ser, em três perspectivas: O custo (esforço) da mudança, que é efetivamente a quantidade de pessoas necessárias para implementar tais mudanças; O intervalo  para completar a mudança, ex:  o calendário/e horas necessárias para implementar as mudanças; Qualidade do software alterado.&rdquo;</p>
+<pre><code>- A tripla: custo, tempo e qualidade. Sempre ela em Engenharia de Software.
+- Como medir quão difícil?
+</code></pre>
+<h1 id="yure-pereira-campos">Yure Pereira Campos</h1>
+<p><code>C. Izurieta and J. M. Bieman, &quot;How Software Designs Decay: A Pilot Study of Pattern Evolution&quot; First International Symposium on Empirical Software Engineering and Measurement (ESEM 2007), 2007, pp. 449-451, doi: 10.1109/ESEM.2007.55.</code></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/discussao-visoes-arquiteturais/"><i class="fa fa-chevron-circle-left"></i> Discussão sobre visões arquiteturais</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/discussao-intro-arquitetura/">Discussão sobre definições de arquitetura de software <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+
