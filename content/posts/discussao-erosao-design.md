@@ -105,8 +105,18 @@ Jacek Rosik, Andre Le Gear, Jim Buckley, Muhammad Ali Babar e Dave Connolly, 201
 `C. Izurieta and J. M. Bieman, "How Software Designs Decay: A Pilot Study of Pattern Evolution" First International Symposium on Empirical Software Engineering and Measurement (ESEM 2007), 2007, pp. 449-451, doi: 10.1109/ESEM.2007.55.`
 
 
+## Hipóteses
 
+- H1,0: Existem poucas violações estruturais das realizações de padrões de design.
 
+- H2,0: O número de relacionamentos externos de uma realização de padrão de design permanece o mesmo ao longo do tempo.
+
+- H3,0: A organização do namespace dos componentes que compõem um padrão de design permanece a mesma ao longo do tempo.
+
+	- Vamos discutir um pouco essas hipóteses.
+
+"deterioração do design é uma consequência da evolução do software,"
+	- deterioração como consequência.
 
 
 
