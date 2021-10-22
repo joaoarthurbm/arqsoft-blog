@@ -32,3 +32,13 @@ Facilitar o envio de emails utilizando os mais diversos serviços SMTP ou outros
 Abaixo observamos o diagrama de contexto do sistema. Nele temos como base uma aplicação Node.js na qual um cliente pode interagir
 
 ![fig1](Diagrama_de_Contexto.png)
+
+### Containers
+
+Abaixo, observamos o diagrama de container para a módulo Nodemailer:
+
+![fig2](Diagrama_de_Containers.png)
+
+O serviço em foco é o de SMTP por ser mais comumente utilizado. O módulo possui um serviço de Transporter que é usado para fazer a conexão com o SMTP
+e disponibilizar as funções de envio de emails. Uma vez conectado, o transporter agora é capaz de invocar a função sendEmail que dispara o email
+utilizando as credenciais previamente cadastradas na criação do Transporter, bem como o conteúdo do email.
