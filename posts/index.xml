@@ -6,10 +6,72 @@
    <description>Recent content in Posts on Arquitetura de Software</description>
    <generator>Hugo -- gohugo.io</generator>
    <copyright>Copyright &amp;copy; Turma de Arquitetura de Software UFCG</copyright>
-   <lastBuildDate>Tue, 07 Sep 2021 00:00:00 -0300</lastBuildDate>
+   <lastBuildDate>Tue, 19 Oct 2021 00:00:00 -0300</lastBuildDate>
    
        <atom:link href="https://joaoarthurbm.github.io/arqsoft-blog/posts/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>Arquitetura do MongoDB</title>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/mongodb/</link>
+       <pubDate>Tue, 19 Oct 2021 00:00:00 -0300</pubDate>
+       
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/mongodb/</guid>
+       <description>&lt;h1 id=&#34;autores&#34;&gt;Autores&lt;/h1&gt;
+&lt;p&gt;Este documento foi produzido por Yally de Lima Galdino.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Matrícula: 116211039&lt;/li&gt;
+&lt;li&gt;Contato: &lt;a href=&#34;mailto:yally.galdino@ccc.ufcg.edu.br&#34;&gt;yally.galdino@ccc.ufcg.edu.br&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Projeto documentado: &lt;a href=&#34;https://github.com/mongodb/mongo&#34;&gt;https://github.com/mongodb/mongo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;descrição-arquitetural----banco-de-dados-mongodb&#34;&gt;Descrição Arquitetural &amp;ndash; Banco de Dados MongoDB.&lt;/h1&gt;
+&lt;p&gt;O MongoDB é um software de banco de dados NoSQL, orientado a documentos livre, é opensource, permite que outros servidores repliquem sua database, tem alto desempenho e é flexível.&lt;/p&gt;
+&lt;h2 id=&#34;descrição-geral-sobre-o-mongodb&#34;&gt;Descrição Geral sobre o MongoDB&lt;/h2&gt;
+&lt;p&gt;O MongoDB é um software de banco de dados NoSQL, que é orientado a documentos livre, é opensource, permite que que outros srvidores repliquem seu database, tem alta performace e é flexível.&lt;/p&gt;
+&lt;h2 id=&#34;o-banco-de-dados-mongodb&#34;&gt;O banco de dados MongoDB&lt;/h2&gt;
+&lt;h3 id=&#34;objetivo-geral&#34;&gt;Objetivo Geral&lt;/h3&gt;
+&lt;p&gt;O objetivo do MongoDB consiste em permitir que dados sejam indexados e sejam fáceis de serem buscados, mesmo quando estão complexos hierarquicamente, permitindo que a modelagem por parte das aplicações ocorra de forma mais natural.&lt;/p&gt;
+&lt;h3 id=&#34;objetivos-específicos&#34;&gt;Objetivos Específicos&lt;/h3&gt;
+&lt;p&gt;O MongoDB, por ser AdHoc, permite, realizar buscas por campo, intervalo e expressões regulares, utilizar funções JavaScript, visualizar amostras aleatórias. 
+Além disso, por realizar replicação dos seus dados, o MongoDB tem alta disponibilidade. 
+Também é oferecida a indexação primária e secundária dos campos em documentos.
+Outra funcionalidade oferecida ao usuário do MongoDB é utilizar JavaScript no lado do servidor.
+Por fim, o MongoDB oferecer suporte a transações ACID multi-documento.&lt;/p&gt;
+&lt;h3 id=&#34;contexto&#34;&gt;Contexto&lt;/h3&gt;
+&lt;p&gt;Para ocorrer o funcionamento, um usuário, através de um browser ou outra aplicação, fará uma requisição para o Driver ou App com funcionamento como um plugin e se conectará com o Banco de Dados. O MongoDB executará e retornará operações, gerenciando os processos.
+&lt;img src=&#34;contexto.png&#34; alt=&#34;fig1&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;containers&#34;&gt;Containers&lt;/h3&gt;
+&lt;p&gt;O MongoDB possui os seguintes sistemas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mongod&lt;/li&gt;
+&lt;li&gt;Mongos&lt;/li&gt;
+&lt;li&gt;Mongo&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;O principal processo de MongoDB é o Mongod, responsável pelas requisições, gerenciamento de formatos de dados e execução de operações de gestão. Já o Mongos, tem função de controller, roteamento de consulta e de configurações e de determinar a localização dos dados. Por fim, o Mongo é o shell interativo do MongoDB.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;container.png&#34; alt=&#34;fig2&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;componentes&#34;&gt;Componentes&lt;/h3&gt;
+&lt;p&gt;Há dois principais componentes na aplicação do mongod:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;replSet: consiste em um servidor que realiza réplica do MongoDB&lt;/li&gt;
+&lt;li&gt;qtconsole: realiza a configuração do particionamento de dados (realiza consultas e determina localização)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;componente.png&#34; alt=&#34;fig3&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;visão-de-informação&#34;&gt;Visão de informação&lt;/h3&gt;
+&lt;p&gt;Como foi visto anteriormente, o MongoDB é um banco de dados não-relacional de documentos (JSON). Ele tem como características aninhar documentos, criar links artificiais e tem operações de escrita atômica em um nível de um único documento.&lt;/p&gt;
+&lt;p&gt;As etapas a seguir irão demonstrar como usar o shell do MongoDB. Nesse caso, em um sistema Linux.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Conectar-se ao MongoDB;&lt;/li&gt;
+&lt;li&gt;Listar os bancos de dados presentes no servidor;&lt;/li&gt;
+&lt;li&gt;Usar ou criar um banco de dados;&lt;/li&gt;
+&lt;li&gt;Exibir o banco de dados atual;&lt;/li&gt;
+&lt;li&gt;Criar uma coleção;&lt;/li&gt;
+&lt;li&gt;Criar um documento;&lt;/li&gt;
+&lt;li&gt;Listar coleções do banco de dados atual;&lt;/li&gt;
+&lt;li&gt;Listar todos os documento da coleção.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;informacao.png&#34; alt=&#34;fig4&#34;&gt;&lt;/p&gt;
+</description>
+     </item>
    
      <item>
        <title>Discussão sobre definições de arquitetura de software</title>
@@ -268,6 +330,80 @@ Separação da arquitetura de módulo e execução.&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;It is all about the fundamental concepts.&lt;/em&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+</description>
+     </item>
+   
+     <item>
+       <title>Discussão sobre Refactoring</title>
+       <link>https://joaoarthurbm.github.io/arqsoft-blog/posts/discussao-refactoring/</link>
+       <pubDate>Tue, 07 Sep 2021 00:00:00 -0300</pubDate>
+       
+       <guid>https://joaoarthurbm.github.io/arqsoft-blog/posts/discussao-refactoring/</guid>
+       <description>&lt;hr&gt;
+&lt;p&gt;Este é um documento utilizado como guia para discutir em sala de aula conceitos relacionados à refatoração de código e arquitetura.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;valter-lucena&#34;&gt;Valter Lucena&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;T. Mens and T. Tourwe, &amp;quot;A survey of software refactoring,&amp;quot; in IEEE Transactions on Software Engineering, vol. 30, no. 2, pp. 126-139, Feb. 2004, doi: 10.1109/TSE.2004.1265817.&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Discutir mais as categorias e desafios da área.&lt;/li&gt;
+&lt;li&gt;Destaque para forma como abordar o assunto: através de um exemplo em comum.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;vinicius-brandão-araújo&#34;&gt;Vinicius Brandão Araújo&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;T. Mens and T. Tourwe, &amp;quot;A survey of software refactoring,&amp;quot; in IEEE Transactions on Software Engineering, vol. 30, no. 2, pp. 126-139, Feb. 2004, doi: 10.1109/TSE.2004.1265817.&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mais da metade do orçamento é com refactoring!&lt;/li&gt;
+&lt;li&gt;Discutir mais o artigo. Categorias? Problemas? Ferramentas? Desafios?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;yure-pereira-campos&#34;&gt;Yure Pereira Campos&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;Silva, Danilo, Nikolaos Tsantalis, and Marco Tulio Valente. &amp;quot;Why we refactor? confessions of github contributors.&amp;quot; Proceedings of the 2016 24th acm sigsoft international symposium on foundations of software engineering. 2016.&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Primeira investigação empírica com o propósito de identificar as motivações reais por trás de operações de refatoração específicas aplicadas por desenvolvedores.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;ldquo;monitoraram efetivamente 124 projetos Java mais populares hospedados no GitHub para detectar refatorações aplicadas recentemente (no total de 463 ocorrências em 222 commits no período de 61 dias), e pediram aos desenvolvedores (que realmente realizaram as modificações) que explicassem os motivos por trás de sua decisão de refatorar o código. &amp;quot;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- Firehouse interview?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;ldquo;os desenvolvedores tendem a “floss refactor” (ou seja, aplicar edições de mudança comportamental intencionais junto com as refatorações).&amp;rdquo;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- Vamos discutir mais isso.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;ldquo;A refatoração serve a vários propósitos, como melhorar o design, entender o código, encontrar bugs e melhorar a produtividade. &amp;quot;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- Essas foram as categorias levantadas? Vamos discutir.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;ldquo;Por fim, outra boa contribuição foi que tiveram o cuidado de disponibilizar publicamente os dados coletados e as ferramentas usadas que permitem a replicação das descobertas e facilitam pesquisas futuras, em &lt;a href=&#34;http://aserg-ufmg.github.io/why-we-refactor.%22&#34;&gt;http://aserg-ufmg.github.io/why-we-refactor.&amp;quot;&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- Importante! Ciência é reprodução.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;sarah-jéssika-da-pontes-albuquerque&#34;&gt;Sarah Jéssika da Pontes Albuquerque&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;Silva, Danilo, Nikolaos Tsantalis, and Marco Tulio Valente. &amp;quot;Why we refactor? confessions of github contributors.&amp;quot; Proceedings of the 2016 24th acm sigsoft international symposium on foundations of software engineering. 2016.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Foram identificadas 44 motivações distintas.&amp;rdquo;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- Vamos discutir algumas? As mais populares?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;ldquo;A principal motivação é a mudança de requisitos (adição de funcionalidade, bug fixes).&amp;rdquo;&lt;/p&gt;
+&lt;h1 id=&#34;rodrigo-oliveira&#34;&gt;Rodrigo Oliveira&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;Murphy-Hill, Emerson, Chris Parnin, and Andrew P. Black. &amp;quot;How we refactor, and how we know it.&amp;quot; IEEE Transactions on Software Engineering 38.1 (2011): 5-18.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Na análise automatizada de Xing e Stroulia da base de código do Eclipse, os autores concluem que &amp;ldquo;na verdade, a refatoração é uma prática frequente&amp;rdquo;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- Que artigo é esse? Fiquei com a impressão de que você revisou outro artigo.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;ldquo;Os autores fazem essa afirmação principalmente com base na observação de um grande número de mudanças estruturais, 70% das quais são consideradas refatoração. &amp;quot;&lt;/p&gt;
+&lt;h1 id=&#34;joão-antonio&#34;&gt;João Antonio&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;Murphy-Hill, Emerson, Chris Parnin, and Andrew P. Black. &amp;quot;How we refactor, and how we know it.&amp;quot; IEEE Transactions on Software Engineering 38.1 (2011): 5-18.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Para isto, foi elaborado um experimento, através da análise de quatro conjuntos de dados distintos. &amp;quot;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- que conjuntos?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Vamos dar mais detalhes da análise. O que você descobriu de interessante?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;ldquo;O artigo questiona várias suposições declaradas na literatura sobre como os programadores refatoram.&amp;rdquo;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- Tem exemplo de questionamento e resposta?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;vinícius-de-medeiros-soares&#34;&gt;Vinícius de Medeiros Soares&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;G. Soares, R. Gheyi, D. Serey and T. Massoni, &amp;quot;Making Program Refactoring Safer,&amp;quot; in IEEE Software, vol. 27, no. 4, pp. 52-57, July-Aug. 2010, doi: 10.1109/MS.2010.63.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;O artigo propõe uma ferramenta para aumentar a segurança do processo de refatoração &amp;quot;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- Who watches the watchmen?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;ldquo;Esse processo segue 7 passos&amp;rdquo;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- Explica para a gente.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;ldquo;Os passos seguidos no funcionamento da ferramenta são bem explicados, mas a figura utilizada para ilustrar esse processo poderia ser mais detalhada e organizada, visto que por si só, a figura é de difícil compreensão.&amp;rdquo;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- Explica mais um pouco, por favor.&lt;/code&gt;&lt;/pre&gt;
 </description>
      </item>
    

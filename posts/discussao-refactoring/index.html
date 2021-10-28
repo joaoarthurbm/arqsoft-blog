@@ -1,0 +1,194 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Discussão sobre Refactoring - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Discussão sobre Refactoring" />
+<meta property="og:description" content="Este é um documento utilizado como guia para discutir em sala de aula conceitos relacionados à refatoração de código e arquitetura.
+ Valter Lucena T. Mens and T. Tourwe, &quot;A survey of software refactoring,&quot; in IEEE Transactions on Software Engineering, vol." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/discussao-refactoring/" />
+<meta property="article:published_time" content="2021-09-07T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-09-07T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Discussão sobre Refactoring"/>
+<meta name="twitter:description" content="Este é um documento utilizado como guia para discutir em sala de aula conceitos relacionados à refatoração de código e arquitetura.
+ Valter Lucena T. Mens and T. Tourwe, &quot;A survey of software refactoring,&quot; in IEEE Transactions on Software Engineering, vol."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Discussão sobre Refactoring</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-09-07T00:00:00-03:00">Sep 7, 2021</time>
+        </li>
+        
+
+        
+
+        <li>3 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <hr>
+<p>Este é um documento utilizado como guia para discutir em sala de aula conceitos relacionados à refatoração de código e arquitetura.</p>
+<hr>
+<h1 id="valter-lucena">Valter Lucena</h1>
+<p><code>T. Mens and T. Tourwe, &quot;A survey of software refactoring,&quot; in IEEE Transactions on Software Engineering, vol. 30, no. 2, pp. 126-139, Feb. 2004, doi: 10.1109/TSE.2004.1265817.</code></p>
+<ul>
+<li>Discutir mais as categorias e desafios da área.</li>
+<li>Destaque para forma como abordar o assunto: através de um exemplo em comum.</li>
+</ul>
+<h1 id="vinicius-brandão-araújo">Vinicius Brandão Araújo</h1>
+<p><code>T. Mens and T. Tourwe, &quot;A survey of software refactoring,&quot; in IEEE Transactions on Software Engineering, vol. 30, no. 2, pp. 126-139, Feb. 2004, doi: 10.1109/TSE.2004.1265817.</code></p>
+<ul>
+<li>Mais da metade do orçamento é com refactoring!</li>
+<li>Discutir mais o artigo. Categorias? Problemas? Ferramentas? Desafios?</li>
+</ul>
+<h1 id="yure-pereira-campos">Yure Pereira Campos</h1>
+<p><code>Silva, Danilo, Nikolaos Tsantalis, and Marco Tulio Valente. &quot;Why we refactor? confessions of github contributors.&quot; Proceedings of the 2016 24th acm sigsoft international symposium on foundations of software engineering. 2016.</code></p>
+<ul>
+<li>Primeira investigação empírica com o propósito de identificar as motivações reais por trás de operações de refatoração específicas aplicadas por desenvolvedores.</li>
+</ul>
+<p>&ldquo;monitoraram efetivamente 124 projetos Java mais populares hospedados no GitHub para detectar refatorações aplicadas recentemente (no total de 463 ocorrências em 222 commits no período de 61 dias), e pediram aos desenvolvedores (que realmente realizaram as modificações) que explicassem os motivos por trás de sua decisão de refatorar o código. &quot;</p>
+<pre><code>- Firehouse interview?
+</code></pre>
+<p>&ldquo;os desenvolvedores tendem a “floss refactor” (ou seja, aplicar edições de mudança comportamental intencionais junto com as refatorações).&rdquo;</p>
+<pre><code>- Vamos discutir mais isso.
+</code></pre>
+<p>&ldquo;A refatoração serve a vários propósitos, como melhorar o design, entender o código, encontrar bugs e melhorar a produtividade. &quot;</p>
+<pre><code>- Essas foram as categorias levantadas? Vamos discutir.
+</code></pre>
+<p>&ldquo;Por fim, outra boa contribuição foi que tiveram o cuidado de disponibilizar publicamente os dados coletados e as ferramentas usadas que permitem a replicação das descobertas e facilitam pesquisas futuras, em <a href="http://aserg-ufmg.github.io/why-we-refactor.%22">http://aserg-ufmg.github.io/why-we-refactor.&quot;</a></p>
+<pre><code>- Importante! Ciência é reprodução.
+</code></pre>
+<h1 id="sarah-jéssika-da-pontes-albuquerque">Sarah Jéssika da Pontes Albuquerque</h1>
+<p><code>Silva, Danilo, Nikolaos Tsantalis, and Marco Tulio Valente. &quot;Why we refactor? confessions of github contributors.&quot; Proceedings of the 2016 24th acm sigsoft international symposium on foundations of software engineering. 2016.</code></p>
+<p>&ldquo;Foram identificadas 44 motivações distintas.&rdquo;</p>
+<pre><code>- Vamos discutir algumas? As mais populares?
+</code></pre>
+<p>&ldquo;A principal motivação é a mudança de requisitos (adição de funcionalidade, bug fixes).&rdquo;</p>
+<h1 id="rodrigo-oliveira">Rodrigo Oliveira</h1>
+<p><code>Murphy-Hill, Emerson, Chris Parnin, and Andrew P. Black. &quot;How we refactor, and how we know it.&quot; IEEE Transactions on Software Engineering 38.1 (2011): 5-18.</code></p>
+<p>Na análise automatizada de Xing e Stroulia da base de código do Eclipse, os autores concluem que &ldquo;na verdade, a refatoração é uma prática frequente&rdquo;.</p>
+<pre><code>- Que artigo é esse? Fiquei com a impressão de que você revisou outro artigo.
+</code></pre>
+<p>&ldquo;Os autores fazem essa afirmação principalmente com base na observação de um grande número de mudanças estruturais, 70% das quais são consideradas refatoração. &quot;</p>
+<h1 id="joão-antonio">João Antonio</h1>
+<p><code>Murphy-Hill, Emerson, Chris Parnin, and Andrew P. Black. &quot;How we refactor, and how we know it.&quot; IEEE Transactions on Software Engineering 38.1 (2011): 5-18.</code></p>
+<p>&ldquo;Para isto, foi elaborado um experimento, através da análise de quatro conjuntos de dados distintos. &quot;</p>
+<pre><code>- que conjuntos?
+</code></pre>
+<ul>
+<li>Vamos dar mais detalhes da análise. O que você descobriu de interessante?</li>
+</ul>
+<p>&ldquo;O artigo questiona várias suposições declaradas na literatura sobre como os programadores refatoram.&rdquo;</p>
+<pre><code>- Tem exemplo de questionamento e resposta?
+</code></pre>
+<h1 id="vinícius-de-medeiros-soares">Vinícius de Medeiros Soares</h1>
+<p><code>G. Soares, R. Gheyi, D. Serey and T. Massoni, &quot;Making Program Refactoring Safer,&quot; in IEEE Software, vol. 27, no. 4, pp. 52-57, July-Aug. 2010, doi: 10.1109/MS.2010.63.</code></p>
+<p>&ldquo;O artigo propõe uma ferramenta para aumentar a segurança do processo de refatoração &quot;</p>
+<pre><code>- Who watches the watchmen?
+</code></pre>
+<p>&ldquo;Esse processo segue 7 passos&rdquo;</p>
+<pre><code>- Explica para a gente.
+</code></pre>
+<p>&ldquo;Os passos seguidos no funcionamento da ferramenta são bem explicados, mas a figura utilizada para ilustrar esse processo poderia ser mais detalhada e organizada, visto que por si só, a figura é de difícil compreensão.&rdquo;</p>
+<pre><code>- Explica mais um pouco, por favor.</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/discussao-visoes-arquiteturais/"><i class="fa fa-chevron-circle-left"></i> Discussão sobre visões arquiteturais</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/discussao-erosao-design/">Discussão sobre erosão arquitetural <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+

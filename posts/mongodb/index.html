@@ -1,0 +1,178 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Arquitetura do MongoDB - Arquitetura de Software</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Documentação arquitetural produzida pelas turmas de Arquitetura de Software - Computação @ UFCG." />
+<meta name="author" content="Example" /><meta property="og:title" content="Arquitetura do MongoDB" />
+<meta property="og:description" content="Autores Este documento foi produzido por Yally de Lima Galdino.
+ Matrícula: 116211039 Contato: yally.galdino@ccc.ufcg.edu.br Projeto documentado: https://github.com/mongodb/mongo  Descrição Arquitetural &ndash; Banco de Dados MongoDB. O MongoDB é um software de banco de dados NoSQL, orientado a documentos livre, é opensource, permite que outros servidores repliquem sua database, tem alto desempenho e é flexível." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joaoarthurbm.github.io/arqsoft-blog/posts/mongodb/" />
+<meta property="article:published_time" content="2021-10-19T00:00:00-03:00" />
+<meta property="article:modified_time" content="2021-10-19T00:00:00-03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Arquitetura do MongoDB"/>
+<meta name="twitter:description" content="Autores Este documento foi produzido por Yally de Lima Galdino.
+ Matrícula: 116211039 Contato: yally.galdino@ccc.ufcg.edu.br Projeto documentado: https://github.com/mongodb/mongo  Descrição Arquitetural &ndash; Banco de Dados MongoDB. O MongoDB é um software de banco de dados NoSQL, orientado a documentos livre, é opensource, permite que outros servidores repliquem sua database, tem alto desempenho e é flexível."/>
+
+<meta name="generator" content="Hugo 0.75.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://joaoarthurbm.github.io/arqsoft-blog/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://joaoarthurbm.github.io/arqsoft-blog/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://joaoarthurbm.github.io/arqsoft-blog/">Arquitetura de Software</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/joaoarthurbm/arqsoft-blog" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Conteúdo produzido pelas turmas de Arquitetura de Software - Computação @ UFCG</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Arquitetura do MongoDB</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-10-19T00:00:00-03:00">Oct 19, 2021</time>
+        </li>
+        
+
+        
+
+        <li>3 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <h1 id="autores">Autores</h1>
+<p>Este documento foi produzido por Yally de Lima Galdino.</p>
+<ul>
+<li>Matrícula: 116211039</li>
+<li>Contato: <a href="mailto:yally.galdino@ccc.ufcg.edu.br">yally.galdino@ccc.ufcg.edu.br</a></li>
+<li>Projeto documentado: <a href="https://github.com/mongodb/mongo">https://github.com/mongodb/mongo</a></li>
+</ul>
+<h1 id="descrição-arquitetural----banco-de-dados-mongodb">Descrição Arquitetural &ndash; Banco de Dados MongoDB.</h1>
+<p>O MongoDB é um software de banco de dados NoSQL, orientado a documentos livre, é opensource, permite que outros servidores repliquem sua database, tem alto desempenho e é flexível.</p>
+<h2 id="descrição-geral-sobre-o-mongodb">Descrição Geral sobre o MongoDB</h2>
+<p>O MongoDB é um software de banco de dados NoSQL, que é orientado a documentos livre, é opensource, permite que que outros srvidores repliquem seu database, tem alta performace e é flexível.</p>
+<h2 id="o-banco-de-dados-mongodb">O banco de dados MongoDB</h2>
+<h3 id="objetivo-geral">Objetivo Geral</h3>
+<p>O objetivo do MongoDB consiste em permitir que dados sejam indexados e sejam fáceis de serem buscados, mesmo quando estão complexos hierarquicamente, permitindo que a modelagem por parte das aplicações ocorra de forma mais natural.</p>
+<h3 id="objetivos-específicos">Objetivos Específicos</h3>
+<p>O MongoDB, por ser AdHoc, permite, realizar buscas por campo, intervalo e expressões regulares, utilizar funções JavaScript, visualizar amostras aleatórias. 
+Além disso, por realizar replicação dos seus dados, o MongoDB tem alta disponibilidade. 
+Também é oferecida a indexação primária e secundária dos campos em documentos.
+Outra funcionalidade oferecida ao usuário do MongoDB é utilizar JavaScript no lado do servidor.
+Por fim, o MongoDB oferecer suporte a transações ACID multi-documento.</p>
+<h3 id="contexto">Contexto</h3>
+<p>Para ocorrer o funcionamento, um usuário, através de um browser ou outra aplicação, fará uma requisição para o Driver ou App com funcionamento como um plugin e se conectará com o Banco de Dados. O MongoDB executará e retornará operações, gerenciando os processos.
+<img src="contexto.png" alt="fig1"></p>
+<h3 id="containers">Containers</h3>
+<p>O MongoDB possui os seguintes sistemas:</p>
+<ul>
+<li>Mongod</li>
+<li>Mongos</li>
+<li>Mongo</li>
+</ul>
+<p>O principal processo de MongoDB é o Mongod, responsável pelas requisições, gerenciamento de formatos de dados e execução de operações de gestão. Já o Mongos, tem função de controller, roteamento de consulta e de configurações e de determinar a localização dos dados. Por fim, o Mongo é o shell interativo do MongoDB.</p>
+<p><img src="container.png" alt="fig2"></p>
+<h3 id="componentes">Componentes</h3>
+<p>Há dois principais componentes na aplicação do mongod:</p>
+<ul>
+<li>replSet: consiste em um servidor que realiza réplica do MongoDB</li>
+<li>qtconsole: realiza a configuração do particionamento de dados (realiza consultas e determina localização)</li>
+</ul>
+<p><img src="componente.png" alt="fig3"></p>
+<h3 id="visão-de-informação">Visão de informação</h3>
+<p>Como foi visto anteriormente, o MongoDB é um banco de dados não-relacional de documentos (JSON). Ele tem como características aninhar documentos, criar links artificiais e tem operações de escrita atômica em um nível de um único documento.</p>
+<p>As etapas a seguir irão demonstrar como usar o shell do MongoDB. Nesse caso, em um sistema Linux.</p>
+<ul>
+<li>Conectar-se ao MongoDB;</li>
+<li>Listar os bancos de dados presentes no servidor;</li>
+<li>Usar ou criar um banco de dados;</li>
+<li>Exibir o banco de dados atual;</li>
+<li>Criar uma coleção;</li>
+<li>Criar um documento;</li>
+<li>Listar coleções do banco de dados atual;</li>
+<li>Listar todos os documento da coleção.</li>
+</ul>
+<p><img src="informacao.png" alt="fig4"></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://joaoarthurbm.github.io/arqsoft-blog/posts/discussao-intro-arquitetura/"><i class="fa fa-chevron-circle-left"></i> Discussão sobre definições de arquitetura de software</a>
+        </li>
+        
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © Turma de Arquitetura de Software UFCG |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://joaoarthurbm.github.io/arqsoft-blogindex.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://joaoarthurbm.github.io/arqsoft-blog/js/scripts.js"></script>
+
+</body>
+
+</html>
+
