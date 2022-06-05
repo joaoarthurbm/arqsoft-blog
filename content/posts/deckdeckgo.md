@@ -31,8 +31,8 @@ Maurício Marques da Silva Monte
 
 Projeto documentado: https://github.com/deckgo/deckdeckgo
 
-## Descrição Geral sobre o DeckDeckGo
+## Descrição Geral
 
-O DeckDeckGo é um editor open source de apresentações de slides online. Ele funciona em qualquer dispositivo (desktop, mobile ou tablets) sem a necessidade de qualquer instalação prévia.
+O DeckDeckGo é um editor open source de apresentações de slides online. Ele funciona em qualquer dispositivo (desktop, mobile ou tablets) sem a necessidade de qualquer instalação prévia. Ele também permite interação entre o apresentador e o público através de votações ao vivo.
 
 Ao contrário de outros softwares de apresentação, os slides são publicados como aplicativos online, com o objetivo de tornar mais fácil seu compartilhamento.
