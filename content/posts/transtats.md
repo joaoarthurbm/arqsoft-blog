@@ -33,3 +33,4 @@ Este documento descreve a arquitetura da aplicação [Transtats](https://github.
 
 ## Descrição Geral sobre o Transtats
 
+O Transtats é um software open source para auxiliar sistemas que trabalham com versões em diferentes linguagens, agindo na automação de etapas de extração e atualização de recursos de idioma. Além da função de tradução do produto, o software também gera estatísticas do progresso de tradução, procura por erro de traduções, gerencia o progresso de I10n (adaptação de um produto, aplicativo ou conteúdo de documento para atender aos requisitos de idioma, cultura e outros de um mercado-alvo específico), e notifica os membros da equipe responsáveis pela tradução com base nas datas de lançamento.
