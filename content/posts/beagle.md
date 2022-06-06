@@ -34,8 +34,7 @@ Neste website, pode-se conferir a [Arquitetura do Beagle](https://docs.usebeagle
 
 ## Descrição Geral do Beagle
 
-2,.0:Çhttps://github.com/ZupIT/beagle-c4model/tree/v1.0.1-a interface do usuário orientada a servidor de maneira multiplataforma.
-{}P0o9l87u6jy543ewqa|z 
+[Beagle](https://github.com/ZupIT/beagle-c4model/tree/v1.0.1) é uma estrutura de código aberto que ajuda os desenvolvedores a implementar a interface do usuário orientada a servidor de maneira multiplataforma .
   
 Ao usar o Beagle, os desenvolvedores podem:
 * Alterar rapidamente um layout de aplicativo, dados, fluxo de navegação ou até mesmo lógica, apenas alterando o código no back-end.
