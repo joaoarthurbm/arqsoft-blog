@@ -19,9 +19,9 @@ Esse documento descreve a arquitetura do [Jest](https://github.com/facebook/jest
 
 ## Descrição geral
 
-Jest é um framework de teste Javascript construído para garantir a corretude de qualquer base de código escrita em JavaScript. É disponibilizado como um pacote NPM e permite a escrita de testes de uma maneira acessível, intuitiva e rica em recursos que produzem resultados dos testes, através de uma API.
+Jest é um framework de teste Javascript construído para garantir a corretude de qualquer base de código escrita em JavaScript. É disponibilizado como um pacote NPM e permite a escrita de testes de uma maneira acessível, intuitiva e rica em recursos que produzem resultados dos testes rapidamente, através de um conjunto de APIs.
 
-Jest requer zero configuração e exporta alguns de seus módulos internos, dessa forma os seus usuários conseguem customizar as funcionalidades de modo que elas atendem à necessidades mais especificas ou sejam usadas para outros propósitos. Por exemplo, um projeto que precise lidar com paralelização em JavaScript pode remover toda a fricção de configurar threads, utilizando o pacote jest-worker.
+Jest requer zero configuração, garante o isolamento dos testes, fornece suporte à snapshots, o que permite verificar a integridade de objetos grandes e complexos, além de exportar alguns de seus módulos internos. Dessa forma os seus usuários conseguem customizar as funcionalidades de modo que elas atendem à necessidades mais especificas ou sejam usadas para outros propósitos além do ecossistema de testes. Por exemplo, um projeto que precise lidar com paralelização em JavaScript pode remover toda a fricção de configurar threads, utilizando o pacote jest-worker.
 
 ## Objetivos
 
