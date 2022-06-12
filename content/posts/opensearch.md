@@ -1,7 +1,9 @@
-+++ title = "Documentação Arquitetural - OpenSearch" 
++++ 
+title = "Documentação Arquitetural - OpenSearch" 
 date = 2022-06-06 
 tags = [] 
-categories = [] +++
+categories = [] 
++++
 
 # Autores
 Este documento foi produzido pelos alunos:
