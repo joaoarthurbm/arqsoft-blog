@@ -34,3 +34,8 @@ Esse documento foi produzido pelos alunos:
 O HoCo tem como objetivo principal sanar uma deficiência conhecida no curso de Ciência da Computação na UFCG, a falta de conhecimento sobre o funcionamento de horas e atividade complementares do curso.
 
 O projeto visa criar uma plataforma onde os alunos poderão fazer o gerenciamento das suas atividades complementares de forma simples e unificada. Ao fazer uso do HoCo o aluno poderá cadastrar suas atividades complementares e estas serão enviadas para a coordenação do curso para que essas sejam avaliadas quanto a sua corretude e validez de forma automática.
+
+
+## Diagrama de componetes
+
+![Diagrama](/content/posts/hoco/diagrama-componetes.png)
