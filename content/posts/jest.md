@@ -1,6 +1,6 @@
 +++
 title = "Jest"
-date = 2023-05-04
+date = 2022-05-04
 tags = []
 categories = []
 +++
@@ -35,11 +35,11 @@ Implementar um framework que ofereça uma maneira autómatica de estruturar, exe
 
 ## Contexto
 
-Como citado anteriormente, o Jest se trata de um framework desenhado para estruturação e execução automatizada dos testes, assim, os seus usuários finais são os desenvolvedores de software.
+Como citado anteriormente, o Jest se trata de um framework desenhado para estruturação e execução automatizada de testes, assim, os seus usuários finais são desenvolvedores de software.
 
-No que se refere a comunicação com sistemas externos, a sua principal interação se dá com uma biblioteca chamada watchman que observa mudanças realizadas nos arquivos de teste da aplicação dos usuários. Isso permite a otimização da execução de alguns testes, uma vez que o framework pode pular a execução dos testes em arquivos que não foram recentemente modificados, e tiveram alguma execução anterior.
+No que se refere a comunicação com sistemas externos, a sua principal interação se dá com uma biblioteca chamada _watchman_ que observa mudanças realizadas nos arquivos de teste da aplicação dos usuários. Isso permite a otimização da execução de alguns testes, uma vez que o framework pode pular a execução dos testes em arquivos que não foram recentemente modificados, e realizaram alguma execução, anteriormente.
 
-O Jest também se comunica com outros plugins de terceiros com o objetivo de estender suas funcionalidades, como: suporte a paralelização de tarefas, customização da interface do usuário e manipulação de cache. O diagrama de contexto a seguir ilustra quais entidades interagem com o Jest.
+Além disso, o Jest também se comunica com outros plugins de terceiros com o objetivo de estender suas funcionalidades, como: suporte a paralelização de tarefas, customização da interface do usuário e manipulação de cache. O diagrama de contexto a seguir ilustra quais entidades interagem com o Jest.
 
 ![Diagrama de Contexto](context_diagram_jest.png)
 
@@ -57,7 +57,7 @@ A implantação do Jest é relativamente simples, sendo apenas necessário o uso
 
 ## Componentes
 
-Até o momento, o Jest é composto ao todo por 51 módulos internos. No entanto, para esse diagrama, optou-se por destacar apenas os principais, já que muitos deles, se tratam de funcionalidades utilitárias, ou são usados por outros módulos que englobam suas responsabilidades.
+Até o momento, o Jest é composto por 51 módulos internos. No entanto, para esse diagrama, optou-se por destacar apenas os principais, já que muitos deles, tratam de funcionalidades utilitárias, ou são usados por outros módulos que englobam suas responsabilidades.
 
 ![Diagrama de Components](component_diagram_jest.png)
 
@@ -69,14 +69,14 @@ Até o momento, o Jest é composto ao todo por 51 módulos internos. No entanto,
 
 **Jest-Runtime**: Componente responsável por tratar das configurações e ambientação dos testes. Esse componente define que funcionalidades adicionais deverão ser exportadas dependendo do ambiente de execução do usuário (browser, nodejs e assim por diante.)
 
-**Jest-Haste-Map**: Componente responsável por coletar todos os arquivos de teste do projeto e criar uma representação interna, a fim de localizá-los de maneira mais eficiente.
+**Jest-Haste-Map**: Componente responsável por coletar todos os arquivos de teste do projeto e criar uma representação interna, a fim de tornar sua localização mais eficiente.
 
 **Jest-Runner**: Componente responsável pelo gerenciamento da execução dos testes.
 
-**Jest-Reporters**: Componente responsável pela comunicação dos resultados da execução de testes do projeto através de eventos.
+**Jest-Reporters**: Componente responsável pela comunicação dos resultados da execução de testes do projeto, através de eventos.
 
 **Jest-Workers**: Componente responsável pela paralelização da execução dos testes através de workers.
 
-**Jest-Circus**: Componente responsável pela execução dos testes efetivamente, esse componente exporta a API usada pelos usuários para construção dos testes e permite que os testes construídos pelos usuários sejam invocados e testados.
+**Jest-Circus**: Componente responsável pela execução efetiva dos testes, esse componente exporta a API usada pelos usuários para construção dos testes, e permite que os testes construídos pelos usuários sejam invocados e testados.
 
-**Jest-Jasmine**: Componente responsável pela execução dos testes efetivamente, esse componente exporta a API usada pelos usuários para construção dos testes e permite que os testes construídos pelos usuários sejam invocados e testados.
+**Jest-Jasmine**: Componente responsável pela execução efetiva dos testes, esse componente exporta a API usada pelos usuários para construção dos testes, e permite que os testes construídos pelos usuários sejam invocados e testados.
