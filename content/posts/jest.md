@@ -39,13 +39,13 @@ Como citado anteriormente, o Jest se trata de um framework desenhado para estrut
 
 No que se refere a comunicação com sistemas externos, a sua principal interação se dá com uma biblioteca chamada _watchman_ que observa mudanças realizadas nos arquivos de teste da aplicação dos usuários. Isso permite a otimização da execução de alguns testes, uma vez que o framework pode pular a execução dos testes em arquivos que não foram recentemente modificados, e realizaram alguma execução, anteriormente.
 
-Além disso, o Jest também se comunica com outros plugins de terceiros com o objetivo de estender suas funcionalidades, como: suporte a paralelização de tarefas, customização da interface do usuário e manipulação de cache. O diagrama de contexto a seguir ilustra quais entidades interagem com o Jest.
+Além disso, o Jest se comunica com outros plugins de terceiros com o objetivo de estender suas funcionalidades, como: suporte a paralelização de tarefas, customização da interface do usuário e manipulação de cache. O diagrama de contexto a seguir ilustra quais entidades interagem com o Jest.
 
 ![Diagrama de Contexto](context_diagram_jest.png)
 
 ## Containers
 
-O Jest não se trata de um sistema de software, já que não é composto por aplicações, bem como, não possui armazenamento de dados, sendo assim, se trata de um framework. Possui dois containers principais: _bin_ e _lib_ que atuam operando dentro do ambiente do NodeJS.
+O Jest não se trata de um sistema de software, já que não é composto por aplicações, bem como, não possui armazenamento de dados, sendo assim, se trata de um framework. Possui dois containers principais: _bin_ e _lib_ que operam dentro do ambiente NodeJS.
 
 O container _bin_ é responsável pelo empacotamento do build do framework e por inicializar o Jest, através de um conjunto de comandos fornecidos pelo usuário na _Command Line Interface_(CLI). O container _lib_ é responsável pela exportação dos módulos internos do Jest. Esses dois containers interagem a fim de realizar as tarefas requisitadas pelo usuário.
 
@@ -53,11 +53,11 @@ O container _bin_ é responsável pelo empacotamento do build do framework e por
 
 ### Implantação
 
-A implantação do Jest é relativamente simples, sendo apenas necessário o uso de algum gerenciador de pacotes, como npm ou yarn, e a instalação de algumas bibliotecas adicionais, no caso do projeto não usar JavaScript puro. Por exemplo, no caso de ser uma aplicação web que usa um framework que abstrai o JavaScript. Como essas informações são voláteis e dependem da versão atual do Jest, é recomendado verificá-las na [documentação oficial](https://jestjs.io/docs/getting-started).
+A implantação do Jest é relativamente simples, sendo apenas necessário o uso de algum gerenciador de pacotes, como npm ou yarn, e a instalação de algumas bibliotecas adicionais, se o projeto não usar JavaScript puro. Por exemplo, no caso de ser uma aplicação web que usa um framework que abstrai o JavaScript. Como essas informações são voláteis e dependem da versão atual do Jest, é recomendado verificá-las na [documentação oficial](https://jestjs.io/docs/getting-started).
 
 ## Componentes
 
-Até o momento, o Jest é composto por 51 módulos internos. No entanto, para esse diagrama, optou-se por destacar apenas os principais, já que muitos deles, tratam de funcionalidades utilitárias, ou são usados por outros módulos que englobam suas responsabilidades.
+Até o momento, o Jest é composto por 51 módulos internos. No entanto, para esse diagrama, optou-se por destacar apenas os principais, já que muitos deles, tratam de funcionalidades utilitárias, ou são usados por outros módulos que incorporam suas responsabilidades.
 
 ![Diagrama de Components](component_diagram_jest.png)
 
