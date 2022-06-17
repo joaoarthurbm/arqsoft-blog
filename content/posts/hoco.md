@@ -44,7 +44,7 @@ Abaixo, é possível observar o diagrama de componentes do sistema:
 
 **Nos componentes, temos:**
 
-*Os componentes referentes à sessão de perguntas e organizações são bastante semelhantes, então tanto:*
+*Os componentes referentes à sessão de perguntas e organizações são bastante semelhantes.*
 
 **Questions Controller e Organization Controller:** São REST Controllers do Flask que fazem o controle sobre a sessão de perguntas e de organização do HoCo, respectivamente, pois é possível que o usuário cadastre dúvida para que sejam respondidas e organizações no HoCo, esses componetes fazem uso respectivamente dos componetes Questions Modells e Organization Modells. Ambos não precisam de login;
 
