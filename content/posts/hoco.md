@@ -46,15 +46,15 @@ Abaixo, é possível observar o diagrama de componentes do sistema:
 
 *Os componentes referentes à sessão de perguntas e organizações são bastante semelhantes, então tanto:*
 
-**Questions Controller e Organization Controller:** São um REST Controllers que fazem o controle sobre a sessão de perguntas e de organização do HoCo, respectivamente, pois é possível que o usuário cadastre dúvida para que sejam respondidas e organizações no HoCo, esses componetes fazem uso respectivamente dos componetes Questions Modells e Organization Modells. Ambos não precisam de login;
+**Questions Controller e Organization Controller:** São REST Controllers do Flask que fazem o controle sobre a sessão de perguntas e de organização do HoCo, respectivamente, pois é possível que o usuário cadastre dúvida para que sejam respondidas e organizações no HoCo, esses componetes fazem uso respectivamente dos componetes Questions Modells e Organization Modells. Ambos não precisam de login;
 
 **Questions Modells e Organization Modells:** São componetes que fazem a conexão com o Banco de Dados, fazendo leitura e/ou escrita dos dados no mesmo;
 
-**Login Controller:** Esse componente é um REST Controller que faz o controle da sessão de login, é responsável por realizar o login e logout do usuário e a restauração da senha do usuário, fazendo ususo do componente Security Component;
+**Login Controller:** Esse componente é um REST Controller do Flask que faz o controle da sessão de login, é responsável por realizar o login e logout do usuário e a restauração da senha do usuário, fazendo ususo do componente Security Component;
 
 **Security Component:** É o componente responsável por criptografar e descriptografar as senhas dos usuários, verificar se os dados de login estão corretos, verificar se o usuário tem permissão de acesso à funcionalidade solicitada pelo mesmo;
 
-**User Controller:** É um REST Controller que provê todas as funcionalidades referentes à um usuário em específico (por isso faz uso do Security Component, pois é necessário que o usuário esteja logada, exceto no cadastro), como o cadastro do usuário (não precisa de login), exclusão de conta, cadastro de atividades, exclusão de atividade, edição de perfil, aprovar atividade (precisa que o usuário tenha mais permissões, não permitindo que um aluno aprove atividades);
+**User Controller:** É um REST Controller do Flask que provê todas as funcionalidades referentes à um usuário em específico (por isso faz uso do Security Component, pois é necessário que o usuário esteja logada, exceto no cadastro), como o cadastro do usuário (não precisa de login), exclusão de conta, cadastro de atividades, exclusão de atividade, edição de perfil, aprovar atividade (precisa que o usuário tenha mais permissões, não permitindo que um aluno aprove atividades);
 
 **User Modells:** É o componenente que faz a conexão com o Banco de Dados, fazendo a leitura e escrita dos dados no mesmo;
 
