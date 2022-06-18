@@ -44,3 +44,20 @@ O usuário, agente da Polícia Federal, utiliza o Frontend do SmartPol para proc
 
 ![Diagrama de contexto do ePol](./epol/context-diagram-epol.png)
 
+### Containers
+
+A API REST de consulta de similares é feita em Python, utilizando o framework Flask, permitindo a busca por inquéritos similares a um inquérito alvo através de modelos de inteligência artificial, ou dados estruturados, e utiliza o JSON como formato de dados, e comunicação através do protocolo HTTP. Também se comunica com a API de Sumarização, enviando dados no formato JSON que representam um inquérito temporário, para que a API de Sumarização persista esse inquérito.
+
+A base de dados de similaridade é feita utilizando o MongoDB, ele é utilizado como uma camada de cache para evitar sobrecarga de requisições enviadas para a API de acesso a base de dados de Grafos. A API de consulta de similares realiza buscas nessa base de dados, e se não obtiver os dados requeridos, busca os mesmos na base dados de Grafos.
+   
+A rotina de cálculo de similares é feita em Python, executa constantemente, buscando inquéritos que não possuem similaridade calculada na base de dados de Grafos, e realizando esse processamento, e persistindo os dados logo após, utilizando o protocolo específico do MongoDB nas comunicações.
+                                                                                      
+A rotina de atualização da base de dados de similares é feita em Python, executa constantemente, buscando informações na base de dados de Grafos, compara com as informações existentes na base dados de Similaridade, e persiste na última se houver divergência, utilizando o protocolo específico do MongoDB nas comunicações.
+
+![Diagrama de container do ePol](./epol/container-diagram-epol.png)
+
+#### Implantação
+
+A implantação do sistema de similaridade é feito utilizando containers Docker em todos os serviços, e a configuração da comunicação com outros módulos é feita a partir de variáveis de ambiente, que comumente são utilizados no OpenShift Container Platform, porém como o Docker é um "criador" de ambiente, esses serviços podem ser executados em uma VM. Para mais detalhes, consultar a documentação oficial dos serviços citados.
+
+![Diagrama de implantação do ePol](./epol/diagrama-implantacao.png)
