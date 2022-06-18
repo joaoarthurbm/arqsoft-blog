@@ -58,6 +58,6 @@ A rotina de atualização da base de dados de similares é feita em Python, exec
 
 #### Implantação
 
-A implantação do sistema de similaridade é feito utilizando containers Docker em todos os serviços, e a configuração da comunicação com outros módulos é feita a partir de variáveis de ambiente, que comumente são utilizados no OpenShift Container Platform, porém como o Docker é um "criador" de ambiente, esses serviços podem ser executados em uma VM. Para mais detalhes, consultar a documentação oficial dos serviços citados.
+A implantação do sistema de similaridade é feito utilizando containers Docker em todos os serviços, e a configuração da comunicação com outros módulos é feita a partir de variáveis de ambiente, que comumente são utilizados no OpenShift Container Platform, porém como o Docker é um "criador" de ambiente, esses serviços podem ser executados em uma VM. Para mais detalhes, consultar a documentação oficial dos serviços citados. Segue abaixo o diagrama de implantação.
 
 ![Diagrama de implantação do ePol](./epol/diagrama-implantacao.png)
