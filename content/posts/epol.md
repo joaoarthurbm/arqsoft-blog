@@ -1,8 +1,3 @@
-+++
-title = "ePol"
-date = 2022-06-05
-+++
-
 # Descrição Arquitetural – Serviço de similaridade entre inquéritos do ePol
 
 Este documento descreve parte da arquitetura do projeto [ePol](https://github.com/orgs/epol-ufcg/teams/similaridade/repositories). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
@@ -42,3 +37,10 @@ Implementar um serviço de busca por inquéritos similares a partir de um inqué
 ### Objetivos Específicos
 
 Queremos encontrar inquéritos similares a partir de um inquérito alvo *on the fly* em tempo hábil. Para isso, utilizamos modelos de *Machine Learning* envolvendo Processamento de Linguagem Natural (PLN), juntamente com busca por dados similares via SQL utilizando dados obtidos de um inquérito alvo.
+
+### Contexto
+
+O usuário, agente da Polícia Federal, utiliza o Frontend do SmartPol para processar documentos, gerar e buscar dados de inquéritos. O Frontend se comunica com o módulo de Similaridade para iniciar e buscar casos similares. O módulo citado anteriormente, cujo é o alvo desse documento, é responsável por iniciar o processamento de similaridade entre inquéritos, realizando a persistência dos resultados desse processamento através de comunicação com o módulo de Grafos. Além disso, juntamente com o módulo de Sumarização e com o módulo de Grafos, é responsável pela transformação de um caso temporário em um caso permanente.
+
+![Diagrama de contexto do ePol](./epol/context-diagram-epol.png)
+
