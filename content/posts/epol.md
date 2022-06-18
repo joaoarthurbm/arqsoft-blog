@@ -46,13 +46,35 @@ O usuário, agente da Polícia Federal, utiliza o Frontend do SmartPol para proc
 
 ### Containers
 
-A API REST de consulta de similares é feita em Python, utilizando o framework Flask, permitindo a busca por inquéritos similares a um inquérito alvo através de modelos de inteligência artificial, ou dados estruturados, e utiliza o JSON como formato de dados, e comunicação através do protocolo HTTP. Também se comunica com a API de Sumarização, enviando dados no formato JSON que representam um inquérito temporário, para que a API de Sumarização persista esse inquérito.
+A API REST de consulta de similares é feita em Python, utilizando o framework Flask, que permite a busca por inquéritos similares a um inquérito alvo através de modelos de inteligência artificial, ou dados estruturados através de consultas SQL ao BD ePol, e utiliza o JSON como formato de dados, e comunicação através do protocolo HTTP. Também se comunica com a API de Extração do sistema de Sumarização, enviando dados no formato JSON que representam dados extraídos de inquérito temporário, para que a API de Extração persista esse dados.
 
 A base de dados de similaridade é feita utilizando o MongoDB, ele é utilizado como uma camada de cache para evitar sobrecarga de requisições enviadas para a API de acesso a base de dados de Grafos. A API de consulta de similares realiza buscas nessa base de dados, e se não obtiver os dados requeridos, busca os mesmos na base dados de Grafos.
    
-A rotina de cálculo de similares é feita em Python, executa constantemente, buscando inquéritos que não possuem similaridade calculada na base de dados de Grafos, e realizando esse processamento, e persistindo os dados logo após, utilizando o protocolo específico do MongoDB nas comunicações.
+A rotina de cálculo de similares é feita em Python, executa constantemente, buscando inquéritos que não possuem similaridade calculada na base de dados de Grafos, e realizando esse processamento, e persistindo as similaridades calculadas utilizando a infraestrutura fornecida pelo sistema de Grafos.
                                                                                       
-A rotina de atualização da base de dados de similares é feita em Python, executa constantemente, buscando informações na base de dados de Grafos, compara com as informações existentes na base dados de Similaridade, e persiste na última se houver divergência, utilizando o protocolo específico do MongoDB nas comunicações.
+A rotina de atualização da base de dados de similares é feita em Python, executa constantemente, buscando informações na base de dados de Grafos, compara com as informações existentes na base dados de Similaridade, e persiste na última se houver divergência.
+
+#### Rotas
+
+Dentre as rotas da API REST de similaridade, temos:
+
+```
+/caso/<numero_caso>
+```
+
+Realiza a busca dos dados de um caso no Banco de Dados do ePol utilizando o número do caso passado como identificador do caso.
+
+```
+/caso/<node_id>/similares?metodo_similaridade=<tipo_similaridade>
+```
+
+Realiza a busca dos casos similares ao caso solicitado (caso identificado na base de dado de Grafos pelo node_id passado) de acordo com o método de similaridade passado como parâmetro de requisição, podendo esse método ser `"ia"` ou `"dados_estruturados"`.
+
+```
+/caso/temporario/<node_id>?salvar=<salvar>
+```
+
+Realiza a remoção do caso temporário (identificado pelo node_id passado) e todos os seus arcos de similaridade da base de dados de Grafos e caso o parâmetro salvar for `True`, então é criada uma versão permanente desse caso após sua exclusão e todos os arcos de similaridade são transferidos para esse caso permanente.
 
 ![Diagrama de container do ePol](./epol/container-diagram-epol.png)
 
