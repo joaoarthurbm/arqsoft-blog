@@ -33,3 +33,7 @@ Este documento foi produzido pelos alunos:
 ### Objetivo Geral
 
 O OpenSearch é uma aplicação capaz de armazenar dados e, graças ao seu sistema de indexação eficiente, essa aplicação consegue prover um mecanismo de busca eficaz e otimizado. Também está disponível uma interface de usuário (OpenSearch Dashboards), capaz de exibir os dados de variadas formas. A aplicação pode trabalhar com uma variedade de plugins, aprimorando a eficiência da pesquisa, da segurança, análise da performance, entre outros. 
+
+### Objetivos Específicos
+
+Normalmente o OpenSearch é utilizado para armazenar, gerenciar e visualizar dados de uma forma simples e contínua. Esses recursos são amplamente utilizados para casos de uso baseados em pesquisas de aplicação, análise de dados, métricas e logs. O OpenSearch se aplica a qualquer sistema que necessita de um monitoramento contínuo, a partir do OpenSearch Dashboards, que fornece visualizações gráficas dos dados a fim de facilitar toda a análise.
