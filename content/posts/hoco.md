@@ -50,7 +50,7 @@ Abaixo, é possível observar o diagrama de componentes do sistema:
 
 **Questions Models e Organization Models:** São componetes que fazem a conexão com o Banco de Dados, fazendo leitura e/ou escrita dos dados no mesmo;
 
-**Login Controller:** Esse componente é um REST Controller do Flask que faz o controle da sessão de login, é responsável por realizar o login e logout do usuário e a restauração da senha do usuário, fazendo ususo do componente Security Component;
+**Login Controller:** Esse componente é um REST Controller do Flask que faz o controle da sessão de login, é responsável por realizar o login e logout do usuário e a restauração da senha do usuário, fazendo uso do componente Security Component;
 
 **Security Component:** É o componente responsável por criptografar e descriptografar as senhas dos usuários, verificar se os dados de login estão corretos, verificar se o usuário tem permissão de acesso à funcionalidade solicitada pelo mesmo;
 
