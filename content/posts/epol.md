@@ -58,11 +58,15 @@ A rotina de atualização da base de dados de similares é feita em Python, exec
 
 Dentre as rotas da API REST de similaridade, temos:
 
+##### Buscar caso no BD ePol
+
 ```
 /caso/<numero_caso>
 ```
 
 Realiza a busca dos dados de um caso no Banco de Dados do ePol utilizando o número do caso passado como identificador do caso.
+
+##### Buscar casos similares
 
 ```
 /caso/<node_id>/similares?metodo_similaridade=<tipo_similaridade>
@@ -70,11 +74,15 @@ Realiza a busca dos dados de um caso no Banco de Dados do ePol utilizando o núm
 
 Realiza a busca dos casos similares ao caso solicitado (caso identificado na base de dado de Grafos pelo node_id passado) de acordo com o método de similaridade passado como parâmetro de requisição, podendo esse método ser `"ia"` ou `"dados_estruturados"`.
 
+##### Iniciar transição de caso temporário para caso permantente
+
 ```
 /caso/temporario/<node_id>?salvar=<salvar>
 ```
 
 Realiza a remoção do caso temporário (identificado pelo node_id passado) e todos os seus arcos de similaridade da base de dados de Grafos e caso o parâmetro salvar for `True`, então é criada uma versão permanente desse caso após sua exclusão e todos os arcos de similaridade são transferidos para esse caso permanente.
+
+A seguir, o diagrama de container do ePol.
 
 ![Diagrama de container do ePol](./epol/container-diagram-epol.png)
 
@@ -83,3 +91,18 @@ Realiza a remoção do caso temporário (identificado pelo node_id passado) e to
 A implantação do sistema de similaridade é feito utilizando containers Docker em todos os serviços, e a configuração da comunicação com outros módulos é feita a partir de variáveis de ambiente, que comumente são utilizados no OpenShift Container Platform, porém como o Docker é um "criador" de ambiente, esses serviços podem ser executados em uma VM. Para mais detalhes, consultar a documentação oficial dos serviços citados. Segue abaixo o diagrama de implantação.
 
 ![Diagrama de implantação do ePol](./epol/diagrama-implantacao.png)
+
+### Componentes
+
+O módulo de Similaridade do ePol é composto por rotinas feitas em Python, sub-módulos feitos em Flask Python, e uma base de dados construída utilizando MongoDB.
+
+![Diagrama de componentes do ePol](./epol/component-diagram-epol.png)
+
+- **BD Similaridade**: Base de dados construída em MongoDB. Serve como uma camada de cache para que seja evitado um *overhead* de requisições para a base de dados de Grafos.
+- **Caso Controller**: Esse módulo é responsável pela parte de comunicação com o Frontend. É ele que inicia a busca por dados de um inquérito no banco de dados do ePol, que busca inquéritos similares a um inquérito alvo, e também quem inicia a transformação de um caso temporário no banco de dados de Grafos, para um caso permantente.
+- **Modelo Controller**: Reponsável por carregar binários de modelos de *Machine Learning*, e transformando-os em objetos Python.
+- **BD ePol Facade**: Fachada de acesso ao BD do ePol. É ela que é utilizada quando são requeridas informações de um caso já existente nessa base dados.
+- **BD Grafos Facade**: Fachada de acesso ao BD Grafos. Ela é utilizada para buscar informações de similaridade na base de dados de Grafos.
+- **Rotina de Cálculo de Similaridade**: Verifica informações de similaridade dos inquéritos presentes na base de dados de Grafos, realizando o processamento dessas informações se um inquérito não as possuir.
+- **Rotina de Atualização do BD Similaridade**: Compara informações de similaridade entre a base de dados de Grafos e a base de dados de Similaridade, se houver informação relevante, atualiza essa última.
+
