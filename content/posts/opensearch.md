@@ -27,3 +27,9 @@ Este documento foi produzido pelos alunos:
 ## Descrição Geral sobre o OpenSearch
 - De acordo com o aws.amazon, o maintener do OpenSearch:
 > O OpenSearch é um conjunto distribuído de pesquisa e análise usado para uma ampla variedade de casos de uso. O OpenSearch fornece um sistema altamente escalável para fornecer acesso rápido e resposta a grandes volumes de dados com uma ferramenta de visualização integrada, o OpenSearch Dashboards, que facilita a exploração de dados pelos usuários. Como Elasticsearch e o Apache Solr, o OpenSearch é alimentado pela biblioteca de pesquisa Apache Lucene. O OpenSearch e o OpenSearch Dashboards foram originalmente derivados do Elasticsearch 7.10.2 e do Kibana 7.10.2.
+
+---
+
+### Objetivo Geral
+
+O OpenSearch é uma aplicação capaz de armazenar dados e, graças ao seu sistema de indexação eficiente, essa aplicação consegue prover um mecanismo de busca eficaz e otimizado. Também está disponível uma interface de usuário (OpenSearch Dashboards), capaz de exibir os dados de variadas formas. A aplicação pode trabalhar com uma variedade de plugins, aprimorando a eficiência da pesquisa, da segurança, análise da performance, entre outros. 
