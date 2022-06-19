@@ -53,3 +53,15 @@ Implementar uma plataforma em que seja possível criar e apresentar slides.
 
 Fornecer de ferramentas que deixam a apresentação mais interativa e mais fácil de disponibilizada para outras pessoas, sem precisar cadastro por parte dos espectadores, e podendo ser compartilhada com apenas um link.
 
+### Contexto
+
+![fig1]()
+
+### Containers
+
+![fig2]()
+
+### Componentes
+
+![fig3]()
+
