@@ -23,6 +23,7 @@ Este documento foi produzido pelos alunos:
 - Projeto documentado: https://github.com/opensearch-project/OpenSearch
 
 # Descrição arquitetural - OpenSearch
+Este documento descreve parte da arquitetura do projeto [OpenSearch](https://opensearch.org/). Essa descrição foi baseada principalmente no modelo C4.
 
 ## Descrição Geral sobre o OpenSearch
 - De acordo com o aws.amazon, o maintener do OpenSearch:
