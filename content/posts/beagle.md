@@ -42,7 +42,6 @@ Ao usar o Beagle, os desenvolvedores podem:
 * Ter mais confiança de que os aplicativos se comportarão de maneira semelhante em diferentes plataformas, pois o código será compartilhado e padronizado entre backend e frontend.
 * Testar facilmente novas hipóteses de negócios ou fazer correções ao vivo em aplicativos para melhorar a experiência dos usuários e receber feedback.
 
-
 ## O framework Beagle
 
 ### Objetivo Geral
