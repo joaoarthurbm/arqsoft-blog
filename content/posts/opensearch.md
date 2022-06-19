@@ -37,3 +37,10 @@ O OpenSearch é uma aplicação capaz de armazenar dados e, graças ao seu siste
 ### Objetivos Específicos
 
 Normalmente o OpenSearch é utilizado para armazenar, gerenciar e visualizar dados de uma forma simples e contínua. Esses recursos são amplamente utilizados para casos de uso baseados em pesquisas de aplicação, análise de dados, métricas e logs. O OpenSearch se aplica a qualquer sistema que necessita de um monitoramento contínuo, a partir do OpenSearch Dashboards, que fornece visualizações gráficas dos dados a fim de facilitar toda a análise.
+
+### Contexto
+
+O OpenSearch é capaz de armazenar dados utilizando indexação a fim de tornar o processo de busca mais ágil. De forma geral, qualquer aplicação pode utilizar do OpenSearch a fim de armazenar seus dados e consumi-los depois. Os dados de qualquer aplicação genérica passará por um injetor de dados, a fim de serem processados e enviados para onde o OpenSearch estará em execução. O mantenedor do OpenSearch oferece o Data Prepper como um injetor de dados padrão, porém outros podem ser utilizados, como por exemplo o FluentBit. 
+Com o objetivo de consumir os dados de forma mais estruturada, o OpenSearch Dashboards oferece ferramentas para gerar diversas visualizações gráficas sobre o conteúdo e como eles se distribuem e se relacionam. Porém, o usuário pode acessar os dados diretamente da API REST do OpenSearch, garantindo uma flexibilidade maior para diversos usos.
+
+![Diagrama de Contexto](c4_contexto_opensearch.png)
