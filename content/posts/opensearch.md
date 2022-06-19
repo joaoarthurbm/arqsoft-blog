@@ -50,3 +50,12 @@ Com o objetivo de consumir os dados de forma mais estruturada, o OpenSearch Dash
 
 O OpenSearch, usa de uma API REST para realizar as suas comunicações com outros serviços. Através dessas requisições, é possível inserir, buscar, deletar e alterar documentos, também é possível mudar a maioria das configurações, checar o estado do cluster, coletar estatísticas, entre várias outras operações. Um cluster OpenSearch pode ser constituído de inúmeros nós e esses podem ser do tipo Gerenciador de Cluster, de Ingestão e de Dados. 
 O nó Gerenciador de Cluster é responsável por gerenciar as operações no cluster e acompanhar o estado do mesmo, isso inclui criar e excluir índices, monitorar a entrada, saída e o estado de nós. Já o nó de Dados, é responsável por armazenar os dados e executar todas as operações relacionadas aos dados locais, sendo essas operações, a indexação, pesquisa, agregação. Por fim, os nós de Ingestão, eles são responsáveis pelo pré-processamento dos dados, que é feito antes de armazená-los em um índice específico, dentro do cluster. Na documentação do OpenSearch não está disponível como a comunicação entre os nós do cluster é feita.
+
+![Diagrama de Containers](c4_containers_opensearch.png)
+
+### Componentes 
+
+Avançando para entender a estrutura interna dos nós, temos que existem diversos índices em um único nó, a fim de organizar os dados. Cada índice é uma coleção de documentos do tipo JSON, tal documento ao ser alocado a um índice terá ao seu conteúdo alguns metadados adicionados, como o nome do índice, o tipo, o id e outras informações que serão necessárias quando a busca for realizada. 
+Com a finalidade de não permitir a existência de nós muito grandes e de garantir backup aos dados, o OpenSearch separa a divisão de dados de um índice dentro de fragmentos(Shards), que podem ser armazenados em diferentes nós e cada índice também terá diversos shards. É importante ressaltar que cada Shard também funciona como um índice, uma implementação do Lucene index, e cópias desses Shards são criadas e distribuídas para outros nós, garantindo o backup do conteúdo caso algum nó pare de funcionar.
+
+![Diagrama de Componentes](c4_componentes_opensearch.png)
