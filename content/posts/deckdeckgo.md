@@ -31,8 +31,25 @@ Maurício Marques da Silva Monte
 
 Projeto documentado: https://github.com/deckgo/deckdeckgo
 
-## Descrição Geral
+# Descrição Arquitetural -- DeckDeckGo
+
+Este documento descreve parte da arquitetura da plataforma DeckDekGo, com foco no editor online de slides, ora denominado como [DeckDeckGo Studio](https://deckdeckgo.com/en/). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
+
+## Descrição Geral sobre o DeckDeckGo
 
 O DeckDeckGo é um editor open source de apresentações de slides online. Ele funciona em qualquer dispositivo (desktop, mobile ou tablets) sem a necessidade de qualquer instalação prévia. Ele também permite interação entre o apresentador e o público através de votações ao vivo.
 
 Ao contrário de outros softwares de apresentação, os slides são publicados como aplicativos online, com o objetivo de tornar mais fácil seu compartilhamento.
+
+Outras features do DeckDeckGo podem ser encontrados nesse [link](https://deckdeckgo.com/en/features).
+
+## A plataforma DeckDeckGo Studio
+
+### Objetivo Geral
+
+Implementar uma plataforma em que seja possível criar e apresentar slides.
+
+### Objetivos Específicos
+
+Fornecer de ferramentas que deixam a apresentação mais interativa e mais fácil de disponibilizada para outras pessoas, sem precisar cadastro por parte dos espectadores, e podendo ser compartilhada com apenas um link.
+
