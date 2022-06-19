@@ -37,19 +37,21 @@ O Transtats é um software open source para auxiliar sistemas que trabalham com 
 
 ## Containers
 
-Os quatro contêiners principais que compõe o Transtats são a Aplicação Web, uma aplicação Single Page (SPA), a API, e o BD.
+<img class="center" src="./transtats/diagrama-container.png" style="width:80%">
 
-A Aplicação Web é escrito em Python, usa Django como framework web e é servida pelo Apache. Ela se comunica com a SPA entregando o conteúdo requisitado, além de se comunicar com a API requisitando funcionalidades.
+Os quatro contêiners principais que compõe o Transtats são a Aplicação Web, uma Aplicação Single Page (SPA), a API, e o BD.
 
-A SPA é escrita em JavaScript, utiliza o Bootstrap como framework front-end e se comunica apenas com a Aplicação Web ao enviar as interações do usuário com a página.
+A Aplicação Web é escrita em `Python`, usa `Django` como framework web e é servida pelo `Apache`. Ela se comunica com a SPA entregando o conteúdo requisitado, além de se comunicar com a API repassando às requisições feita pelo usuário.
 
-O BD utilizado pelo sistema é o PostgresSQL e serve para armazenar os pacotes em tradução/traduzidos e suas métricas.
+A SPA é escrita em `JavaScript`, utiliza o `Bootstrap` como framework front-end e se comunica apenas com a Aplicação Web notificando sobre as ações do usuário com a página.
+
+O BD utilizado pelo sistema é o `PostgresSQL` e serve para armazenar os pacotes escolhidos pelo usuário a ser traduzidos e suas métricas.
 
 A API é escrita em Python, usa Django e se comunica com:
-- a Aplicação Web respondendo às requisições, 
-- com o gerenciador de repositório indo buscar o link onde o pacote se encontra
-- com a plataforma de tradução onde os pacotes serão traduzidos, e
-- com o BD onde os pacotes e as métricas são armazenados.
+- a Aplicação Web, respondendo às requisições; 
+- com o gerenciador de repositório, fazendo a busca do pacote pelo link do repositório indicado;
+- com a plataforma de tradução, onde os pacotes serão traduzidos; 
+- com o BD, onde os pacotes e as métricas são armazenados.
 
 Alguma operações que a API oferece são:
 
@@ -58,6 +60,8 @@ Adiciona um pacote ao Transtats:
 POST /api/package/create 
 ```
 **Exemplo**
+
+- Request
 ```
 curl -d '{
     "package_name": "dnf", 
@@ -68,6 +72,12 @@ curl -d '{
 -H "Authorization: Token <your-transtats-api-token>" 
 -H "Content-Type: application/json" 
 -X POST http://localhost:8080/api/package/create 
+```
+- Response
+```
+{
+    "dnf":"Package added Successfully."
+}
 ```
 
 Verifica a saúde de um pacote
@@ -85,6 +95,7 @@ Executa um job
 POST /api/job/run
 ```
 **Exemplo**
+- Request
 ```
 curl -d '{
     "job_type": "syncdownstream", 
@@ -95,6 +106,13 @@ curl -d '{
 -H 'Content-Type: application/json' 
 -H 'Authorization: Token <your-transtats-api-token>' 
 -X POST http://localhost:8080/api/job/run
+```
+- Response
+```
+{
+    "Success":"Job created and logged. URL: http://localhost:8080/jobs/log/2a5966a9-3e5e-4ad1-b89e-1ee0e3b1651b/detail",
+    "job_id":"2a5966a9-3e5e-4ad1-b89e-1ee0e3b1651b"
+}
 ```
 
 Recupera detalhes de um job
