@@ -56,6 +56,6 @@ Abaixo, é possível observar o diagrama de componentes do sistema:
 
 **User Controller:** É um REST Controller do Flask que provê todas as funcionalidades referentes à um usuário em específico (por isso faz uso do Security Component, pois é necessário que o usuário esteja logada, exceto no cadastro), como o cadastro do usuário (não precisa de login), exclusão de conta, cadastro de atividades, exclusão de atividade, edição de perfil, aprovar atividade (precisa que o usuário tenha mais permissões, não permitindo que um aluno aprove atividades);
 
-**User Modells:** É o componenente que faz a conexão com o Banco de Dados, fazendo a leitura e escrita dos dados no mesmo;
+**User Models:** É o componenente que faz a conexão com o Banco de Dados, fazendo a leitura e escrita dos dados no mesmo;
 
 **Atividade Service:** É o componente responsável por prover todas as funcionalidades referentes às atividades, como cadastro, cálculo de créditos, recuperação das atividades e suas informações. Esse componente tambem faz conexão com o Banco de Dados, fazendo a leitura e escrita dos dados no mesmo;
