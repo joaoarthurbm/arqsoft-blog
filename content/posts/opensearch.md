@@ -59,3 +59,8 @@ Avançando para entender a estrutura interna dos nós, temos que existem diverso
 Com a finalidade de não permitir a existência de nós muito grandes e de garantir backup aos dados, o OpenSearch separa a divisão de dados de um índice dentro de fragmentos(Shards), que podem ser armazenados em diferentes nós e cada índice também terá diversos shards. É importante ressaltar que cada Shard também funciona como um índice, uma implementação do Lucene index, e cópias desses Shards são criadas e distribuídas para outros nós, garantindo o backup do conteúdo caso algum nó pare de funcionar.
 
 ![Diagrama de Componentes](c4_componentes_opensearch.png)
+
+### Visão de Informação
+Uma das principais funcionalidades do OpenSearch seria a analise de logs, um possivel fluxo seria uma aplicação enviando os seus logs, para uma instancia do FluentBit, que por sua vez enviaria esses logs para o data prepper, que transforma os dados em um formato que é esperado pelo o OpenSearch e indexa esses logs em um cluster, então a partir desse momento, os dados podem ser visualizados por meio do OpenSearch Dashboards.
+
+![Diagrama de Visão de Informação](visao_informacao_opensearch.png)
