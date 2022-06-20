@@ -40,8 +40,8 @@ O Sistema tem acesso a 4 funcionalidades: Chatbot, Processamento de Linguagem Na
 
 A fonte original de PLN é incorporada através do Open NLP, mas o usuário pode alterar e importar de fontes externas. Isso serve como uma maneira de enriquecer os dados.
 
-!["Container 1"]("https://raw.githubusercontent.com/nayarasps/arqsoft-blog/nayara.souza/content/posts/turing/container-1.png")
+!["Container 1"](https://raw.githubusercontent.com/nayarasps/arqsoft-blog/nayara.souza/content/posts/turing/container-1.png)
 
 Na navegação semântica há o uso de um banco de dados externo da Apache que segue o conceito de Sqoop, com o intuito de criar consultas complexas e mapear atributos com o objetivo de realizar a indexação baseada no resultado.
 
-!["Container 2"]("https://raw.githubusercontent.com/nayarasps/arqsoft-blog/nayara.souza/content/posts/turing/container-2.png")
+!["Container 2"](https://raw.githubusercontent.com/nayarasps/arqsoft-blog/nayara.souza/content/posts/turing/container-2.png)
