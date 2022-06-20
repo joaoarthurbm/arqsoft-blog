@@ -63,7 +63,7 @@ No primeiro nível, podemos ver a aplicação em uma perspectiva macro, os atore
 - O objetivo principal é representar o produto em sua forma mais abstrata.
 
 ![context](beagle/contexto-beagle.png)
-<center>Figura 1. Diagrama de contexto do Beagle</center>
+<p align="center">Figura 1. Diagrama de contexto do Beagle</p>
 
 Mais detalhadamente, no diagrama de contexto, vemos o Beagle, que é o framework abordado nesse documento, e suas principais dependencias externas, além de um desenvolvedor de software comum que interage com ele.
 
@@ -90,7 +90,7 @@ Para melhor exibição, nas Figuras 3, 4 e 5 estão mostrados os componentes de 
 No Backend do Beagle, existem duas formas de manipular os Models e Contexts da biblioteca, através de um sistema Typescript e outro Kotlin. Nos dois sistemas, uma biblioteca padrão Beagle é criada e contém modelos que possuem contexto, operações, ações e interfaces para interagir com a aplicação do usuário de forma dinâmica e flexível.
 
 ![components-backend](beagle/componentes-backend.png)
-<center>Figura 3. Diagrama de componentes para o Beagle Backend</center>
+<p align="center">Figura 3. Diagrama de componentes para o Beagle Backend</p>
 
 O Beagle Android é responsável por fazer a relação entre o framework Beagle e aplicações Android, permitindo que os componentes recebidos do Backend sejam consumidos e tratados para gerar Views do Android. Os componentes do Beagle são:
 
@@ -99,7 +99,7 @@ O Beagle Android é responsável por fazer a relação entre o framework Beagle 
 - Operações (Operações aritméticas, operadores lógicos, etc) padrão e customizadas.
 
 ![components-android](beagle/componentes-android.png)
-<center>Figura 4. Diagrama de componentes para o Beagle Android</center>
+<p align="center">Figura 4. Diagrama de componentes para o Beagle Android</p>
 
 Para o Beagle Web, foi feita ums divisão em duas partes:
 
@@ -111,11 +111,11 @@ A biblioteca Frontend tem a função de criar uma ponte entre cada um dos framew
 O Beagle Web Core Tem a base das suas funcionalidades no componente "*Beagle Service*". É a partir dele que o sistema processa e organiza os seus elementos padrões, como componentes e serviços e carrega os seus utilitários. o "*Beagle View*" Utiliza estes utilitários para "traduzir" e renderizar cada tela.
 
 ![components-web](beagle/componentes-web.png)
-<center>Figura 5. Diagrama de componentes para o Beagle Web</center>
+<p align="center">Figura 5. Diagrama de componentes para o Beagle Web</p>
 
 ## Visão da Informação
 
 As principais informações coletadas e manipuladas pelo sistema são as da aplicação do usuário, que precisa fornecer parte dos seus dados para que as interfaces sejam geradas e distribuídas pelo backend do Beagle. Apesar de diferentes sistemas frontend poderem ser usados (Android, Web, iOS), o mesmo Backend Beagle é acessado, e a interface então é devolvida ao usuário, com as informações e personalizações que ele forneceu, como pode ser visto na Figura 6.
 
 ![components-backend](beagle/information.png)
-<center>Figura 6. Máquina de estados para a transferência de informação das aplicações no Beagle</center>
+<p align="center">Figura 6. Máquina de estados para a transferência de informação das aplicações no Beagle</p>
