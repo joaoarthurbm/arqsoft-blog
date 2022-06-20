@@ -35,6 +35,8 @@ Conhecida por ser uma alternativa open-source à plataformas como Slack, Zendesk
 
 ## Contexto
 
+O sistema do Rocket.Chat interage com alguns serviços e aplicações externas no seu funcionamento. Selecionamos os principais para descrever e representar as interações no diagrama de contexto abaixo. Basicamente, um usuário/cliente utiliza o RocketChat para enviar e receber mensagens em tempo real com segurança e criptografia. O RocketChat utiliza o MongoDB para armazenar e consultar diversos dados na aplicação. Além disso, o sistema utiliza o serviço LogEntries para realizar o monitoramento e gerenciamento dos logs da aplicação. O Heroku é utilizado para fazer o processo de build e deploy da aplicação. Para o envio e recebimento de SMS, o Rocket.Chat utiliza os serviços do Twilio. E, por fim, o usuário possui a possibilidade de importar suas informações do Slack, fazendo com que o sistema se comunique com o Slack também.
+
 ![Diagrama de contexto](rocketchat-context-diagram.png)
 
 ## Visão de Informação
