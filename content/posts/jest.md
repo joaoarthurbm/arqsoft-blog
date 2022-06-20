@@ -80,3 +80,9 @@ Até o momento, o Jest é composto por 51 módulos internos. No entanto, para es
 **Jest-Circus**: Componente responsável pela execução efetiva dos testes, esse componente exporta a API usada pelos usuários para construção dos testes, e permite que os testes construídos pelos usuários sejam invocados e testados.
 
 **Jest-Jasmine**: Componente responsável pela execução efetiva dos testes, esse componente exporta a API usada pelos usuários para construção dos testes, e permite que os testes construídos pelos usuários sejam invocados e testados.
+
+## Contribuições Concretas
+
+### Esperando aprovação
+
+[docs: Include a newly written version of the architecture section](https://github.com/facebook/jest/pull/12950)
