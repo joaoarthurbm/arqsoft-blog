@@ -56,7 +56,7 @@ Esse container tem a responsabilidade de fazer o armazenamento, envio de certifi
 
 Em segundo lugar, se tem o HoCo-pro que é uma aplicação também web que utiliza o protocolo HTTPS e pode ser acessada pelos professores atráves de qualquer browser, este também faz uso da biblioteca [React](https://pt-br.reactjs.org/), e tem a função de permitir a análise dos certificados de atividades complementares e envio de feedbacks.
 
-Ambos sistemas listados acima HoCo e HoCo-pro fazem uso da API RESTful HoCo desenvolvida em Python utilizando o framework [Flask](https://flask.palletsprojects.com/en/2.1.x/). Esse container tem a responsabilidade de servir tanto as funcionalidades e páginas da interface web, como também lê e escreve no Banco de Dados.
+Ambos sistemas listados acima HoCo e HoCo-pro fazem uso da API RESTful HoCo desenvolvida em Python utilizando o framework [Flask](https://flask.palletsprojects.com/en/2.1.x/). Esse container tem a responsabilidade de servir tanto as funcionalidades e fazer o agente intermediário entre o frontend e o banco de dados, tratando e processando os possíveis dados.
 
 Algumas das principais operações que a API HoCo disponibiliza são:
 
