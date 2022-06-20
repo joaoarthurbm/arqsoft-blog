@@ -59,4 +59,4 @@ Abaixo, é possível observar o diagrama de componentes do sistema:
 
 **User Models:** É o componenente que faz a conexão com o Banco de Dados, fazendo a leitura e escrita dos dados no mesmo;
 
-**Atividade Service:** É o componente responsável por prover todas as funcionalidades referentes às atividades, como cadastro, cálculo de créditos, recuperação das atividades e suas informações. Esse componente tambem faz conexão com o Banco de Dados, fazendo a leitura e escrita dos dados no mesmo;
+**Atividade Service:** É o componente responsável por prover todas as funcionalidades referentes às atividades, como cadastro, cálculo de créditos, recuperação das atividades e suas informações. Esse componente também faz conexão com o Banco de Dados, fazendo a leitura e escrita dos dados no mesmo;
