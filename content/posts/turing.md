@@ -50,4 +50,4 @@ Na navegação semântica há o uso de um banco de dados externo da Apache que s
 
 O diagrama abaixo descreve a máquina de estados do chatbot. Ao iniciarmos uma conversa, o agente espera um input nosso, no caso, uma frase. Com a frase em mãos, ele usa o motor de busca para descobrir a intenção da frase. Nesse ponto, o agente possui uma lista de intenções com a qual está apto a responder, caso o motor de busca não consiga relacionar a frase usada a uma previamente treinada, o agente não entenderá a frase e não responderá. No caso da intenção ser validada, uma resposta é montada de acordo com as frases de resposta.
 
-!["Máquina de estados chatbot"]((https://raw.githubusercontent.com/nayarasps/arqsoft-blog/nayara.souza/content/posts/turing/maquina_de_estados_chatbot.png)
+!["Máquina de estados chatbot"](https://raw.githubusercontent.com/nayarasps/arqsoft-blog/nayara.souza/content/posts/turing/maquina_de_estados_chatbot.png)
