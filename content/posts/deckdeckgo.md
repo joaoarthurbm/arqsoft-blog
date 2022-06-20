@@ -31,13 +31,13 @@ Maurício Marques da Silva Monte
 
 Projeto documentado: https://github.com/deckgo/deckdeckgo
 
-# Descrição Arquitetural -- DeckDeckGo
+# Descrição Arquitetural - DeckDeckGo
 
 Este documento descreve parte da arquitetura da plataforma DeckDekGo, com foco no editor online de slides, ora denominado como [DeckDeckGo Studio](https://deckdeckgo.com/en/). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
 
 ## Descrição Geral sobre o DeckDeckGo
 
-O DeckDeckGo é um editor open source de apresentações de slides online. Ele funciona em qualquer dispositivo (desktop, mobile ou tablets) sem a necessidade de qualquer instalação prévia. Ele também permite interação entre o apresentador e o público através de votações ao vivo.
+O DeckDeckGo é um editor open source de apresentações de slides online. Ele funciona em qualquer dispositivo (desktop, mobile ou tablets) sem a necessidade de qualquer instalação prévia. Além disso, permite a interação entre o apresentador e o público através de votações ao vivo.
 
 Ao contrário de outros softwares de apresentação, os slides são publicados como aplicativos online, com o objetivo de tornar mais fácil seu compartilhamento.
 
@@ -47,23 +47,29 @@ Outras features do DeckDeckGo podem ser encontrados nesse [link](https://deckdec
 
 ### Objetivo Geral
 
-Implementar uma plataforma em que seja possível criar e apresentar slides.
+A aplicação oferece um serviço de criação e distribuição de slides de forma online, interativa e multiplataforma.
 
 ### Objetivos Específicos
 
-Fornecer de ferramentas que deixam a apresentação mais interativa e mais fácil de disponibilizada para outras pessoas, sem precisar cadastro por parte dos espectadores, e podendo ser compartilhada com apenas um link.
+O DeckDeckGo dispõe de ferramentas que permitem às apresentações serem mais interativas e facilmente disponibilizadas para o público, podendo ser compartilhada com apenas um link, sem a necessidade de cadastro por parte dos espectadores. É possível ainda criar slides a partir de diferentes formatos como por exemplo Markdown ou HTML.
 
 ### Contexto
 
-![fig1]()
+O DeckDeckGo estabelece comunicações com serviços de Cloud como AWS e Firebase, além de receber e gerenciar informações em real-time com o WebRTC. Para o armazenamento, utiliza um banco de dados não relacional (NoSQL), permitindo maior velocidade em suas consultas.
+
+- **AWS**: Plataforma em nuvem onde o backend da aplicação está hospedada. Permite, entre outros, maior estabilidade de perfomance em diversos dispositivos.
+- **WebRTC**: Permite que dados sejam enviados no formato _peer-to-peer_ em tempo real. A tecnologia está disponível em todos os navegadores modernos, no DeckDeckGo é utilizada para computar votações ao vivo, por exemplo.
+- **Firebase Cloud Functions**: Realiza operações de iserção e remoção em banco de dados na nuvem.
+
+![Diagrama de Contexto](diagrama_contexto.png)
 
 ### Containers
 
-![fig2]()
+![Diagrama de Containers](diagrama_containers.png)
 
 ### Componentes
 
-![fig3]()
+![Diagrama de Componentes]()
 
 ### Visão de Informação
 
@@ -75,4 +81,4 @@ Uma vez publicados, os slides ficam disponíveis através de um link no estado e
 
 Uma vez publicado, o slide continua podendo ser duplicados, mas agora também podem ser deletados pelo usuário.
 
-![fig4](visao_da_informacao.png)
+![Visão da Informação](visao_da_informacao.png)
