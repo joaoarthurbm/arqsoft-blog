@@ -58,56 +58,9 @@ Em segundo lugar, se tem o HoCo-pro que é uma aplicação também web que utili
 
 Ambos sistemas listados acima HoCo e HoCo-pro fazem uso da API RESTful HoCo desenvolvida em Python utilizando o framework [Flask](https://flask.palletsprojects.com/en/2.1.x/). Esse container tem a responsabilidade de servir tanto as funcionalidades e fazer o agente intermediário entre o frontend e o banco de dados, tratando e processando os possíveis dados.
 
-Algumas das principais operações que a API HoCo disponibiliza são:
+As operações que a API HoCo disponibiliza estão contidas na [documentação da API](https://github.com/Guardians-DSC/API-HoCo/blob/main/api.md)
 
-```
-GET /credits
-```
-
-```
-GET /categories/
-```
-
-```
-POST /activity
-```
-
-```
-GET /activities
-```
-
-```
-PATCH /activity?id=<atividade_id>
-```
-
-```
-DELETE /atividade?id=<atividade_id>
-```
-
-```
-POST /org
-```
-
-```
-GET /orgs
-```
-
-```
-DELETE /org?id=<org_id>
-```
-
-```
-POST /question
-```
-
-```
-GET /questions
-```
-
-```
-DELETE /question?id=<question_id>
-```
-
+Para melhor detalhamento das rotas da API HoCo 
 O sistema HoCo-pro além de fazer uso da API HoCo também fará uso do container API de avaliação que será desenvolvida utilizando [Java](https://www.java.com/) e [Spring Boot](https://spring.io/projects/spring-boot) e é responsável por disponibilizar rotas para a avaliação das atividades complementares cadastradas pelos estudantes.
 
 Por fim, existe o container Database, como é exibido no diagrama está sendo utilizado o MongoDB que é um banco de dados não relacional que armazena os dados dos estudantes, certificados de atividades complementares, imagens das organizações, dúvidas recorrentes e etc.
