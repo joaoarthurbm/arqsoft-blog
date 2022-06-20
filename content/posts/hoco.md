@@ -114,4 +114,4 @@ Em seguida, para comprovar a validade das informações fornecidas, os arquivos 
 
 Caso as informações entre os dados e os arquivos sejam compatíveis o processo de dispensa de horas é efetuado. Caso contrário, o usuário é informado de uma incompatibilidade entre as informações, e o processo é invalidado ou o ciclo deve seguir novamente a partir do estado de edição.
 
-![figME](maquina-estados.png)
+![figME](/content/posts/hoco/maquina-estados.png)
