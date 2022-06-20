@@ -40,7 +40,7 @@ O projeto visa criar uma plataforma onde os alunos poderão fazer o gerenciament
 
 Abaixo, é possível observar o diagrama de componentes do sistema:
 
-![ComponentDiagram](/content/posts/hoco/diagrama-componetes.png)
+![ComponentDiagram](/content/posts/hoco/diagrama-componentes.png)
 
 **Nos componentes, temos:**
 
