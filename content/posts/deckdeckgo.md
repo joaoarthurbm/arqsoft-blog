@@ -59,7 +59,7 @@ O DeckDeckGo estabelece comunicações com serviços de Cloud como AWS e Firebas
 
 - **AWS**: Plataforma em nuvem onde o backend da aplicação está hospedada. Permite, entre outros, maior estabilidade de perfomance em diversos dispositivos.
 - **WebRTC**: Permite que dados sejam enviados no formato _peer-to-peer_ em tempo real. A tecnologia está disponível em todos os navegadores modernos, no DeckDeckGo é utilizada para computar votações ao vivo, por exemplo.
-- **Firebase Cloud Functions**: Realiza operações de iserção e remoção em banco de dados na nuvem.
+- **Firebase Cloud Functions**: Realiza operações de iserção, modificação e remoção em banco de dados na nuvem.
 
 ![Diagrama de Contexto](diagrama_contexto.png)
 
