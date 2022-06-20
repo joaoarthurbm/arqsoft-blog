@@ -92,6 +92,26 @@ No Backend do Beagle, existem duas formas de manipular os Models e Contexts da b
 ![components-backend](beagle/componentes-backend.png)
 <center>Figura 3. Diagrama de componentes para o Beagle Backend</center>
 
+O Beagle Android é responsável por fazer a relação entre o framework Beagle e aplicações Android, permitindo que os componentes recebidos do Backend sejam consumidos e tratados para gerar Views do Android. Os componentes do Beagle são:
+
+- Componentes visuais (botões, textos, campos de texto, etc) padrão e customizados;
+- Ações (Navegação, Alerta, SendRequest, etc) padrão e customizadas;
+- Operações (Operações aritméticas, operadores lógicos, etc) padrão e customizadas.
+
+![components-android](beagle/componentes-android.png)
+<center>Figura 4. Diagrama de componentes para o Beagle Android</center>
+
+Para o Beagle Web, foi feita ums divisão em duas partes:
+
+- A biblioteca Frontend
+- O Beagle Web Core
+
+A biblioteca Frontend tem a função de criar uma ponte entre cada um dos frameworks suportados (Angular, React, Flutter) e o Core. Cada um dos frameworks tem os componentes de interface padrão do Beagle, bem como um utilitário para fazer a conexão com o Core para obter as telas nativamente. Neste diagrama, por fins de simplicidade, condensamos o utilitário Angular e o React em uma caixinha apenas, a "*Beagle Typescript*", devido a sua similaridade. 
+
+O Beagle Web Core Tem a base das suas funcionalidades no componente "*Beagle Service*". É a partir dele que o sistema processa e organiza os seus elementos padrões, como componentes e serviços e carrega os seus utilitários. o "*Beagle View*" Utiliza estes utilitários para "traduzir" e renderizar cada tela.
+
+![components-web](beagle/componentes-web.png)
+<center>Figura 5. Diagrama de componentes para o Beagle Web</center>
 
 ## Visão da Informação
 
