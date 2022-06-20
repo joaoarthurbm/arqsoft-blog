@@ -77,8 +77,18 @@ Quando as informações contidas no JSON são desserializadas, o mecanismo de la
 </p>
 <p align="center">Figura 1. Diagrama de contexto do Beagle</p>
 
-## Componentes
+## Containers
+Visando mostrar o sistema de forma mais ampla com ênfase na arquitetura e nas tecnologias, usou-se como contêiners de back
+-end, front-end infraestrutura.
 
+O Beagle front-end é instalado em aplicativos Web e Mobile e permite a observação da renderização do serviço, permitindo 
+a requisição do UI screen para o Beagle back-end, esse que é configurado no backend do aplicativo para facilitar a 
+criação dos componentes orientados ao servidor, seguindo o que foi acordado pelo usuario desenvolvedor. O back-end, também
+, é hospedado pela infraestrutura, entidade que implementa o Beagle e é configurada pelo Devops.
+
+
+
+## Componentes
 Para melhor exibição, nas Figuras 3, 4 e 5 estão mostrados os componentes de três containers: Backend, Android e Web. 
 
 No Backend do Beagle, existem duas formas de manipular os Models e Contexts da biblioteca, através de um sistema Typescript e outro Kotlin. Nos dois sistemas, uma biblioteca padrão Beagle é criada e contém modelos que possuem contexto, operações, ações e interfaces para interagir com a aplicação do usuário de forma dinâmica e flexível.
