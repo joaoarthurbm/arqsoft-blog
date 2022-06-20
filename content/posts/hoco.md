@@ -115,3 +115,16 @@ Em seguida, para comprovar a validade das informações fornecidas, os arquivos 
 Caso as informações entre os dados e os arquivos sejam compatíveis o processo de dispensa de horas é efetuado. Caso contrário, o usuário é informado de uma incompatibilidade entre as informações, e o processo é invalidado ou o ciclo deve seguir novamente a partir do estado de edição.
 
 ![figME](/content/posts/hoco/maquina-estados.png)
+
+# Contribuições Concretas
+
+Segue as PRs que foram feitas para a construção do documento acima:
+
+- [Criação da base do documento](https://github.com/joaoarthurbm/arqsoft-blog/pull/153/commits/a7baf4f282f34534b618c8380bb3699d6a2f5150)
+- [Criação da seção de descrição](https://github.com/RodrigoEC/arqsoft-blog/pull/3)
+- [Criação das seções de contexto e container](https://github.com/RodrigoEC/arqsoft-blog/pull/4)
+- [Criação da seção de diagramas de componente](https://github.com/RodrigoEC/arqsoft-blog/pull/1)
+- [Criação da seção de visão de informação](https://github.com/RodrigoEC/arqsoft-blog/pull/2)
+
+
+⚠️ Obs: As seções foram revisadas por todos os membros da equipe, onde foram feitas sugestões de melhorias. Além disso, alguns dos diagramas foram feitas em conjunto para que houvesse coerência entre os diagramas de seções diferentes.
