@@ -1,3 +1,10 @@
++++
+title = "Arquitetura do projeto HoCo"
+date = 2022-06-20
+tags = []
+categories = []
++++
+
 # Autores
 
 Esse documento foi produzido pelos alunos:
