@@ -37,7 +37,6 @@ Conhecida por ser uma alternativa open-source à plataformas como Slack, Zendesk
 
 Uma parte essencial para o sistema é como ele lida com mensagens criptografadas para fornecer comunicações seguras. Ele funciona da seguinte maneira, ao clicar duas vezes no nome de usúario do contato, abre uma janela de canal. Ele habilita o Off-the-Record MEssaging para enviar mensagens criptografadas. Quando o remetente habilita o OTR, o sistema alerta o receptor para habilitar o OTR em sua janela de canal para receber essas mensagens criptografadas. Em segundo plano, o software rapidamente divide suas mensagens em pacotes criptografados pela Signal Protocol Library. Os pacotes são enviados para o lado do receptor através do Internet Relay Chat. Quando os pacotes são recebidos, eles são descriptografados pela Signal Protocol Library. Finalmente, a mensagem aparece na janela do receptor.
 
-<br>
+<h4 align="center"> Diagrama Comportamental para Mensagens Criptografadas </h4>
 
 ![alt text](https://i.imgur.com/7VfhY4G.jpge)
-<h4 align="center"> Diagrama Comportamental para Mensagens Criptografadas </h4>
