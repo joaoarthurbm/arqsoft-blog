@@ -39,13 +39,11 @@ O Transtats é uma aplicação open source para auxiliar desenvolvedores de soft
 
 ### Objetivo Geral
 
-Automatizar o fluxo de trabalho da tradução de pacotes, além de auxiliar a equipe informando métricas do progresso da tradução.
+Automatizar o processo de tradução de pacotes de código e informar métricas e estatísticas do progresso da tradução.
 
 ### Objetivos Específicos
 
-{
-    ...
-}
+Compilar as estatística do processo de tradução em componentes visuais, como gráficos e tabelas, realizar a tradução para diversas línguas, avaliar a cobertura da tradução e agrupar traduções específicas por releases.
 
 ### Contexto
 
