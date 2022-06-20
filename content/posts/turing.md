@@ -45,3 +45,9 @@ A fonte original de PLN é incorporada através do Open NLP, mas o usuário pode
 Na navegação semântica há o uso de um banco de dados externo da Apache que segue o conceito de [Sqoop](https://sqoop.apache.org), com o intuito de criar consultas complexas e mapear atributos com o objetivo de realizar a indexação baseada no resultado.
 
 !["Container 2"](https://raw.githubusercontent.com/nayarasps/arqsoft-blog/nayara.souza/content/posts/turing/container-2.png)
+
+## Visão de informação
+
+O diagrama abaixo descreve a máquina de estados do chatbot. Ao iniciarmos uma conversa, o agente espera um input nosso, no caso, uma frase. Com a frase em mãos, ele usa o motor de busca para descobrir a intenção da frase. Nesse ponto, o agente possui uma lista de intenções com a qual está apto a responder, caso o motor de busca não consiga relacionar a frase usada a uma previamente treinada, o agente não entenderá a frase e não responderá. No caso da intenção ser validada, uma resposta é montada de acordo com as frases de resposta.
+
+!("Máquina de estados chatbot")[https://raw.githubusercontent.com/joaoarthurbm/arqsoft-blog/a23ed778cc00bea228962c2a8cc079047f3a9b76/content/posts/turing/Maquina%20de%20estados%20chatbot.png]
