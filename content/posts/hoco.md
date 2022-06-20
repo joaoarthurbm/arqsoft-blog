@@ -36,19 +36,19 @@ O HoCo tem como objetivo principal sanar uma deficiência conhecida no curso de 
 O projeto visa criar uma plataforma onde os alunos poderão fazer o gerenciamento das suas atividades complementares de forma simples e unificada. Ao fazer uso do HoCo o aluno poderá cadastrar suas atividades complementares e estas serão enviadas para a coordenação do curso para que essas sejam avaliadas quanto a sua corretude e validez de forma automática.
 
 
-## Diagrama de componetes
+## Diagrama de componentes
 
 Abaixo, é possível observar o diagrama de componentes do sistema:
 
-![ComponetDiagram](/content/posts/hoco/diagrama-componetes.png)
+![ComponentDiagram](/content/posts/hoco/diagrama-componetes.png)
 
 **Nos componentes, temos:**
 
 *Os componentes referentes à sessão de perguntas e organizações são bastante semelhantes.*
 
-**Questions Controller e Organization Controller:** São REST Controllers do Flask que fazem o controle sobre a sessão de perguntas e de organização do HoCo, respectivamente, pois é possível que o usuário administrador cadastre dúvidas e suas respostas e organizações e comunidades existentes na graduação no HoCo, esses componetes fazem uso respectivamente dos componetes Questions Modells e Organization Modells. Ambos não precisam de login;
+**Questions Controller e Organization Controller:** São REST Controllers do Flask que fazem o controle sobre a sessão de perguntas e de organização do HoCo, respectivamente, pois é possível que o usuário administrador cadastre dúvidas e suas respostas e organizações e comunidades existentes na graduação no HoCo, esses componentes fazem uso respectivamente dos componentes Questions Modells e Organization Modells. Ambos não precisam de login;
 
-**Questions Models e Organization Models:** São componetes que fazem a conexão com o Banco de Dados, fazendo leitura e/ou escrita dos dados no mesmo;
+**Questions Models e Organization Models:** São componentes que fazem a conexão com o Banco de Dados, fazendo leitura e/ou escrita dos dados no mesmo;
 
 **Login Controller:** Esse componente é um REST Controller do Flask que faz o controle da sessão de login, é responsável por realizar o login e logout do usuário e a restauração da senha do usuário, fazendo uso do componente Security Component;
 
