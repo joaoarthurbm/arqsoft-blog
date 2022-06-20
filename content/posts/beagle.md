@@ -60,28 +60,22 @@ Ser um meio que otimize e auxilie no controle do desenvolvimento de aplicativos 
 
 No primeiro nível, podemos ver a aplicação em uma perspectiva macro, os atores, seus papéis e também como eles interagem entre si. O desenvolvedor, ao possuir uma aplicação que deseja integrar com o Beagle, faz as configurações iniciais e de Infraestrutura para se conectar ao Beagle, que então fornecerá as APIs necessárias para criar e manipular componentes Beagle.
 
-- O objetivo principal é representar o produto em sua forma mais abstrata.
-
-![context](beagle/contexto-beagle.png)
-<p align="center">Figura 1. Diagrama de contexto do Beagle</p>
 
 Mais detalhadamente, no diagrama de contexto, vemos o Beagle, que é o framework abordado nesse documento, e suas principais dependencias externas, além de um desenvolvedor de software comum que interage com ele.
 
-## Application
+### Application
 
 - Nesse compartimento acontece a transformacão do JSON para a tela relacionada. Esse JSON é o que o back-end forneceria ao front-end por meio de uma resposta HTTP e o  frontend irá então interpretá-lo e renderizá-lo corretamente na tela da plataforma. Logo, é o servidor que possibilita o envio de objetos JSON para serem renderizados e, consequentemente, visualizados no frontend.
 - Esse componente permite que telas e regras de negócios sejam escritas apenas uma vez e depois renderizadas nativamente em cada plataforma onde o Beagle está presente. O consumo das APIs que fornecem os dados para a aplicação antes executados pelas frentes, agora é de responsabilidade da BFF (Back-end para Front-end).
 
-## Beagle
+### Beagle
 
 Quando as informações contidas no JSON são desserializadas, o mecanismo de layout entra em ação renderizando os componentes gerados com base no Design System da aplicação e usa o Yoga Layout para renderizar nativamente componentes nas plataformas construindo seus respectivos layouts usando os conceitos do Flexbox.
 
-
-
-
-
-
-
+<p align="center">
+  <img src="beagle/contexto-beagle.png">
+</p>
+<p align="center">Figura 1. Diagrama de contexto do Beagle</p>
 
 ## Componentes
 
@@ -117,5 +111,7 @@ O Beagle Web Core Tem a base das suas funcionalidades no componente "*Beagle Ser
 
 As principais informações coletadas e manipuladas pelo sistema são as da aplicação do usuário, que precisa fornecer parte dos seus dados para que as interfaces sejam geradas e distribuídas pelo backend do Beagle. Apesar de diferentes sistemas frontend poderem ser usados (Android, Web, iOS), o mesmo Backend Beagle é acessado, e a interface então é devolvida ao usuário, com as informações e personalizações que ele forneceu, como pode ser visto na Figura 6.
 
-![components-backend](beagle/information.png)
+<p align="center">
+  <img src="beagle/information.png">
+</p>
 <p align="center">Figura 6. Máquina de estados para a transferência de informação das aplicações no Beagle</p>
