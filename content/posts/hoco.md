@@ -41,7 +41,7 @@ Primeiramente temos o usuário do sistema, este é um estudante do curso de Ciê
 
  Além disso, temos a opção de visualização de como os créditos das atividades dos alunos estão distribuídos entre os vários tipos de atividades complementares, o HoCo também lista as organizações estudantis do curso que possuem atividades complementares e do mesmo modo lista dúvidas recorrentes dos estudantes. 
 
-Como é exibido no diagrama abaixo, há o usuário do tipo professor(a), isso porque há a implementação também web do HoCo para uso exclusivo dos professores, o HoCo-pro.
+Como é exibido no diagrama abaixo, existe um segundo tipo de usuário, o(a) professor(a), isso porque há a implementação também web do HoCo para uso exclusivo dos professores, o HoCo-pro, onde a pessoa professora poderá fazer a avaliação das atividades complementares.
 
 Por fim, há a API de avaliação desenvolvida pela coordenação do curso, sendo esta responsável por permitir que a avaliação e feedback das atividades complementares cadastradas sejam realizadas.
 
