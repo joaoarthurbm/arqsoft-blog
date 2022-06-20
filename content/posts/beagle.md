@@ -60,14 +60,29 @@ Ao usar o Beagle, os desenvolvedores podem:
 - Além disso, você consegue construir fluxos de ponta a ponta apenas utilizando esse framework.
 - Também é facilita diretamente na comunicação entre componentes e você consegue fazer isso facilmente.
 
-### Contexto
+## Contexto
 
-No primeiro nível, podemos ver a aplicação em uma perspectiva macro, os atores, seus papéis e também como eles interagem entre si. 
+No primeiro nível, podemos ver a aplicação em uma perspectiva macro, os atores, seus papéis e também como eles interagem entre si. O desenvolvedor, ao possuir uma aplicação que deseja integrar com o Beagle, faz as configurações iniciais e de Infraestrutura para se conectar ao Beagle, que então fornecerá as APIs necessárias para criar e manipular componentes Beagle.
 
 - O objetivo principal é representar o produto em sua forma mais abstrata.
 
-![context](contexto-beagle.png)
+![context](beagle/contexto-beagle.png)
+<center>Figura 1. Diagrama de contexto do Beagle</center>
 
 
+## Componentes
+
+Para melhor exibição, nas Figuras 3, 4 e 5 estão mostrados os componentes de três containers: Backend, Android e Web. 
+
+No Backend do Beagle, existem duas formas de manipular os Models e Contexts da biblioteca, através de um sistema Typescript e outro Kotlin. Nos dois sistemas, uma biblioteca padrão Beagle é criada e contém modelos que possuem contexto, operações, ações e interfaces para interagir com a aplicação do usuário de forma dinâmica e flexível.
+
+![components-backend](beagle/componentes-backend.png)
+<center>Figura 3. Diagrama de componentes para o Beagle Backend</center>
 
 
+## Visão da Informação
+
+As principais informações coletadas e manipuladas pelo sistema são as da aplicação do usuário, que precisa fornecer parte dos seus dados para que as interfaces sejam geradas e distribuídas pelo backend do Beagle. Apesar de diferentes sistemas frontend poderem ser usados (Android, Web, iOS), o mesmo Backend Beagle é acessado, e a interface então é devolvida ao usuário, com as informações e personalizações que ele forneceu, como pode ser visto na Figura 6.
+
+![components-backend](beagle/information.png)
+<center>Figura 6. Máquina de estados para a transferência de informação das aplicações no Beagle</center>
