@@ -33,3 +33,15 @@ Este documento descreve parte da arquitetura do projeto [Turing IA](https://gith
 ## Descrição Geral sobre Turing AI
 
 O Viglet Turing AI é uma solução open source que tem como principais funcionalidades a Navegação Semântica e o Chatbot. O usuário pode escolher entre vários NLPs para enriquecer os dados. Todo o conteúdo é indexado no Solr como uma ferramenta de busca.
+
+## Container
+
+O Sistema tem acesso a 4 funcionalidades: Chatbot, Processamento de Linguagem Natural (PLN), Navegação Semântica e Mecanismo de Busca.
+
+A fonte original de PLN é incorporada através do Open NLP, mas o usuário pode alterar e importar de fontes externas. Isso serve como uma maneira de enriquecer os dados.
+
+!["Container 1"]("https://raw.githubusercontent.com/nayarasps/arqsoft-blog/nayara.souza/content/posts/turing/container-1.png")
+
+Na navegação semântica há o uso de um banco de dados externo da Apache que segue o conceito de Sqoop, com o intuito de criar consultas complexas e mapear atributos com o objetivo de realizar a indexação baseada no resultado.
+
+!["Container 2"]("https://raw.githubusercontent.com/nayarasps/arqsoft-blog/nayara.souza/content/posts/turing/container-2.png")
