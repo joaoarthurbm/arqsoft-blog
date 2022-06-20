@@ -59,11 +59,13 @@ O DeckDeckGo estabelece comunicações com serviços de Cloud como AWS e Firebas
 
 - **AWS**: Plataforma em nuvem onde o backend da aplicação está hospedada. Permite, entre outros, maior estabilidade de perfomance em diversos dispositivos.
 - **WebRTC**: Permite que dados sejam enviados no formato _peer-to-peer_ em tempo real. A tecnologia está disponível em todos os navegadores modernos, no DeckDeckGo é utilizada para computar votações ao vivo, por exemplo.
-- **Firebase Cloud Functions**: Realiza operações de iserção, modificação e remoção em banco de dados na nuvem.
+- **Firebase Cloud Functions**: Realiza operações de inserção, modificação e remoção em banco de dados na nuvem.
 
 ![Diagrama de Contexto](diagrama_contexto.png)
 
 ### Containers
+
+O Studio é onde as edições são feitas. Ele usa Stencil, que é uma ferramenta usada para sistemas de design em JavaScript. Esse container faz chamadas API num backend hospedado em AWS. Esse backend na AWS também se comunica com o WebRTC, que é usado pelo Controle remoto através de dados enviados peer-to-peer em tempo real. O Controle remoto também usa Stencil, além do Ionic PWA, que utiliza recursos modernos da Web para oferecer experiências rápidas de aplicativos nativos, sem lojas de aplicativos ou downloads, e todas as vantagens da Web. Tanto o Studio quanto o Controle remoto usam o Firebase Cloud Functions como banco de dados em nuvem. A página principal do DeckDeckGo utiliza JavaScript e Gatsby.
 
 ![Diagrama de Containers](diagrama_containers.png)
 
