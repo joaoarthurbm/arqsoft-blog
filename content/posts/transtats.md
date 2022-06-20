@@ -25,7 +25,7 @@ Gustavo Farias de Souza Silva
 - Matrícula: 118210480
 - Contato: gustavo.silva@ccc.ufcg.edu.br
 
-- Projeto documentado: https://github.com/transtats/transtats
+Projeto documentado: https://github.com/transtats/transtats
 
 # Descrição Arquitetural -- Transtats
 
@@ -135,3 +135,15 @@ Recupera detalhes de um job
 ```
 GET /api/job/<job_id>/log
 ```
+
+### Componentes
+
+{
+    ...
+}
+
+### Visão de Informação
+
+{
+    ...
+}
