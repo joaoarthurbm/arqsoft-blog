@@ -40,4 +40,4 @@ Uma parte essencial para o sistema é como ele lida com mensagens criptografadas
 <br>
 
 ![alt text](https://i.imgur.com/7VfhY4G.jpge)
-<center>Diagrama Comportamental para Mensagens Criptografadas
+<h4 align="center"> Diagrama Comportamental para Mensagens Criptografadas </h4>
