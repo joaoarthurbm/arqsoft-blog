@@ -43,4 +43,4 @@ Como é exibido no diagrama abaixo, há o usuário do tipo professor(a), isso po
 
 Por fim, há a API de avaliação desenvolvida pela coordenação do curso, sendo esta responsável por permitir que a avaliação e feedback das atividades complementares cadastradas sejam realizadas.
 
-![fig1](diagrama-contexto.png)
+![fig1](/content/hoco/diagrama-contexto.png)
