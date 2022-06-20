@@ -75,12 +75,12 @@ O Studio é onde as edições são feitas. Ele usa Stencil, que é uma ferrament
 
 ### Visão de Informação
 
-Os slides são a informação mais fundamental da aplicação. É o foco da plataforma e outras entidades são criadas em volta das apresentações. Por exemplo, a aplicação também lida com votações, mas estas são apenas uma feature criada para complementar os slides. Abaixo segue uma descrição textual e um diagrama explicando sobre os estados desta informação.
+Os slides são a informação mais fundamental da aplicação.
+Após o usuário criar um slide, este é considerado como rascunho, podendo ser editado. Também é possível duplicá-lo ou deletá-lo.
+Ao duplicar um rascunho, um novo rascunho de slide é gerado no mesmo estado em que estava o rascunho original.
 
-Após o slide ser criado, ele pode ser selecionado pelo usuário e aplicação abre uma tela de edição do slide. Dentro do perfil do usuário estão listados os slides criados por ele e estes podem ser editados ou duplicados enquanto ainda não tiverem sido publicados.
+Uma vez que o usuário clique em publicar, o rascunho é publicado e os slides ficam disponíveis através de um link, no estado em que estavam quando o usuário realizou esta ação. Caso o usuário faça mais alterações no rascunho do slide publicado, estas alterações estarão disponíveis apenas no rascunho, a menos que o usuário clique em publicar novamente, gerando uma nova versão do slide publicado.
 
-Uma vez publicados, os slides ficam disponíveis através de um link no estado em que estavam quando o usuário clicou em publicar. Caso o usuário faça mais alterações no slide, elas estarão disponíveis apenas no rascunho, a menos que o usuário clique em publicar novamente e gere uma nova versão do slide publicado, que está disponível no mesmo link.
-
-Uma vez publicado, o slide continua podendo ser duplicados, mas agora também podem ser deletados pelo usuário.
+É importante destacar que, atualmente, um slide publicado não pode ser deletado, mesmo que o rascunho que gerou o slide tenha sido deletado.
 
 ![Visão da Informação](visao_da_informacao.png)
