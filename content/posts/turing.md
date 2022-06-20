@@ -38,10 +38,10 @@ O Viglet Turing AI é uma solução open source que tem como principais funciona
 
 O Sistema tem acesso a 4 funcionalidades: Chatbot, Processamento de Linguagem Natural (PLN), Navegação Semântica e Mecanismo de Busca.
 
-A fonte original de PLN é incorporada através do Open NLP, mas o usuário pode alterar e importar de fontes externas. Isso serve como uma maneira de enriquecer os dados.
+A fonte original de PLN é incorporada através do Open NLP, mas o usuário pode alterar e importar de fontes externas, como: [OpenText Content Analytics](https://www.opentext.com/), [CoreNLP](https://stanfordnlp.github.io/CoreNLP/), [SpaCy](https://spacy.io) e [Polyglot NLP](https://polyglot.readthedocs.io). Isso serve como uma maneira de enriquecer os dados, melhorando assim a tomada de decisão.
 
 !["Container 1"](https://raw.githubusercontent.com/nayarasps/arqsoft-blog/nayara.souza/content/posts/turing/container-1.png)
 
-Na navegação semântica há o uso de um banco de dados externo da Apache que segue o conceito de Sqoop, com o intuito de criar consultas complexas e mapear atributos com o objetivo de realizar a indexação baseada no resultado.
+Na navegação semântica há o uso de um banco de dados externo da Apache que segue o conceito de [Sqoop](https://sqoop.apache.org), com o intuito de criar consultas complexas e mapear atributos com o objetivo de realizar a indexação baseada no resultado.
 
 !["Container 2"](https://raw.githubusercontent.com/nayarasps/arqsoft-blog/nayara.souza/content/posts/turing/container-2.png)
