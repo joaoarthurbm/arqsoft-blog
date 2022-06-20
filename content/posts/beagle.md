@@ -77,7 +77,7 @@ Mais detalhadamente, no diagrama de contexto, vemos o Beagle, que é o framework
 
 ## Beagle
 
-- Quando as informações contidas no JSON são desserializadas, o mecanismo de layout entra em ação renderizando os componentes gerados com base no Design System da aplicação e sa o Yoga Layout para renderizar nativamente componentes nas plataformas Android e iOS e construir seus respectivos layouts usando os conceitos do Flexbox.
+- Quando as informações contidas no JSON são desserializadas, o mecanismo de layout entra em ação renderizando os componentes gerados com base no Design System da aplicação e usa o Yoga Layout para renderizar nativamente componentes nas plataformas construindo seus respectivos layouts usando os conceitos do Flexbox.
 
 
 
