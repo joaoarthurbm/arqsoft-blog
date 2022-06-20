@@ -68,6 +68,23 @@ No primeiro nível, podemos ver a aplicação em uma perspectiva macro, os atore
 
 ![context](contexto-beagle.png)
 
+Mais detalhadamente, no diagrama de contexto, vemos o Beagle, que é o framework abordado nesse documento, e suas principais dependencias externas, além de um desenvolvedor de software comum que interage com ele.
+
+## Application
+
+- Nesse compartimento acontece a transformacão do JSON para a tela relacionada. Esse JSON é o que o back-end forneceria ao front-end por meio de uma resposta HTTP e o  frontend irá então interpretá-lo e renderizá-lo corretamente na tela da plataforma. Logo, é o servidor que possibilita o envio de objetos JSON para serem renderizados e, consequentemente, visualizados no frontend.
+- Esse componente permite que telas e regras de negócios sejam escritas apenas uma vez e depois renderizadas nativamente em cada plataforma onde o Beagle está presente. O consumo das APIs que fornecem os dados para a aplicação antes executados pelas frentes, agora é de responsabilidade da BFF (Back-end para Front-end).
+
+## Beagle
+
+- Quando as informações contidas no JSON são desserializadas, o mecanismo de layout entra em ação renderizando os componentes gerados com base no Design System da aplicação e sa o Yoga Layout para renderizar nativamente componentes nas plataformas Android e iOS e construir seus respectivos layouts usando os conceitos do Flexbox.
+
+
+
+
+
+
+
 
 
 
