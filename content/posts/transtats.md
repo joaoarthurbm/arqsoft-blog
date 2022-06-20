@@ -39,3 +39,10 @@ O Transtats é uma aplicação open source para auxiliar desenvolvedores de soft
 Como visto na imagem, o "framework Jobs" ilustrado centraliza o processamento para auxiliar na tarefa de localização do idioma, interagindo com o Controller, com a camada responsável pelas mensagens e com a outra camada de Serviço. Ela tem acesso a informações sobre o lançamento do produto e seu respectivo cronograma, repositório de origem do pacote, plataforma de tradução de pacotes e sistema de compilação de pacotes para poder fazer isso. Já a API REST fica responsável por registrar e ou manipular os pacotes e prover informações e gráficos sobre um determinado trabalho.
 
 <img class="center" src="./transtats/ts-arch.png" alt="Diagrama de contexto - Transtats" style="width:60%">
+
+
+## Componentes
+
+
+<img class="center" src="./transtats/components-diagram.jpg" alt="Diagrama de componente - Transtats" style="width:60%">
+
