@@ -37,6 +37,7 @@ Neste website, pode-se conferir a [Arquitetura do Beagle](https://docs.usebeagle
 [Beagle](https://github.com/ZupIT/beagle-c4model/tree/v1.0.1) é uma estrutura de código aberto que ajuda os desenvolvedores a implementar a interface do usuário orientada a servidor de maneira multiplataforma .
   
 Ao usar o Beagle, os desenvolvedores podem:
+
 * Alterar rapidamente um layout de aplicativo, dados, fluxo de navegação ou até mesmo lógica, apenas alterando o código no back-end.
 * Ser mais independente das lojas de dispositivos móveis, como App Store e Play Store, porque a maioria das alterações não precisa de uma atualização de aplicativo.
 * Ter mais confiança de que os aplicativos se comportarão de maneira semelhante em diferentes plataformas, pois o código será compartilhado e padronizado entre backend e frontend.
@@ -46,12 +47,7 @@ Ao usar o Beagle, os desenvolvedores podem:
 
 ### Objetivo Geral
 
-Ao usar o Beagle, os desenvolvedores podem:
-
-- Alterar rapidamente um layout de aplicativo, dados, fluxo de navegação ou até mesmo lógica , apenas alterando o código no back-end.
-- Ser mais independente das lojas de dispositivos móveis , como App Store e Play Store, porque a maioria das alterações não precisa de uma atualização de aplicativo.
-- Ter mais confiança de que os aplicativos se comportarão de maneira semelhante em diferentes plataformas , pois o código será compartilhado e padronizado entre backend e frontend.
-- Testar facilmente novas hipóteses de negócios ou faça correções ao vivo em aplicativos para melhorar a experiência dos usuários e receber feedback.
+Ser um meio que otimize e auxilie no controle do desenvolvimento de aplicativos em diversas plataformas, fornecendo atualização automática nas lojas digitais e compartilhamento de informações entre o back-end e o front-end a partir de estrututas simples e de facil manuseio.
 
 ### Objetivos Específicos
 
@@ -77,7 +73,7 @@ Mais detalhadamente, no diagrama de contexto, vemos o Beagle, que é o framework
 
 ## Beagle
 
-- Quando as informações contidas no JSON são desserializadas, o mecanismo de layout entra em ação renderizando os componentes gerados com base no Design System da aplicação e usa o Yoga Layout para renderizar nativamente componentes nas plataformas construindo seus respectivos layouts usando os conceitos do Flexbox.
+Quando as informações contidas no JSON são desserializadas, o mecanismo de layout entra em ação renderizando os componentes gerados com base no Design System da aplicação e usa o Yoga Layout para renderizar nativamente componentes nas plataformas construindo seus respectivos layouts usando os conceitos do Flexbox.
 
 
 
