@@ -105,3 +105,13 @@ Abaixo, é possível observar o diagrama de componentes do sistema:
 **User Models:** É o componenente que faz a conexão com o Banco de Dados, fazendo a leitura e escrita dos dados no mesmo;
 
 **Atividade Service:** É o componente responsável por prover todas as funcionalidades referentes às atividades, como cadastro, cálculo de créditos, recuperação das atividades e suas informações. Esse componente também faz conexão com o Banco de Dados, fazendo a leitura e escrita dos dados no mesmo;
+
+### Visão de Informação
+
+A máquina de estados a seguir explicita o ciclo de vida do processo de dispensa de horas complementares proposto pelo HoCo. Para tal, inicialmente cadastra-se atividades do aluno informando o nome da atividade, os créditos obtidos na atividade, as horas equivalentes a atividade, e a categoria da atividade (tais dados são persistidos em um banco de dados). Caso algum dado necessite de alteração, efetua-se a edição dos dados (um ou mais campos de interesse). 
+
+Em seguida, para comprovar a validade das informações fornecidas, os arquivos comprovatórios de cada atividade são carregados e enviados para a coordenação do curso para que a validação dos dados possa ser efetuada. 
+
+Caso as informações entre os dados e os arquivos sejam compatíveis o processo de dispensa de horas é efetuado. Caso contrário, o usuário é informado de uma incompatibilidade entre as informações, e o processo é invalidado ou o ciclo deve seguir novamente a partir do estado de edição.
+
+![figME](/content/posts/hoco/maquina-estados.png)
