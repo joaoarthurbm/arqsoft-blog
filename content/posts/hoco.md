@@ -37,7 +37,9 @@ O projeto visa criar uma plataforma onde os alunos poderão fazer o gerenciament
 
 ### Contexto
 
-Primeiramente temos o usuário do sistema, este é um estudante do curso de Ciência da Computação na UFCG, ele é responsável por enviar os seus certificados recebidos em atividades complementares para o sistema HoCo armazenar. No sistema HoCo, esses certificados podem ser facilmente enviados para a avaliação, além disso, há a opção de visualização de como os créditos das atividades dos alunos estão distribuídos entre os vários tipos de atividades complementares, o HoCo também lista as organizações estudantis do curso que possuem atividades complementares e do mesmo modo lista dúvidas recorrentes dos estudantes. 
+Primeiramente temos o usuário do sistema, este é um estudante do curso de Ciência da Computação na UFCG. Esse usuário é responsável por enviar os seus certificados recebidos em atividades complementares para o sistema HoCo armazenar. No sistema HoCo, esses certificados podem ser facilmente enviados para a avaliação.
+
+ Além disso, temos a opção de visualização de como os créditos das atividades dos alunos estão distribuídos entre os vários tipos de atividades complementares, o HoCo também lista as organizações estudantis do curso que possuem atividades complementares e do mesmo modo lista dúvidas recorrentes dos estudantes. 
 
 Como é exibido no diagrama abaixo, há o usuário do tipo professor(a), isso porque há a implementação também web do HoCo para uso exclusivo dos professores, o HoCo-pro.
 
