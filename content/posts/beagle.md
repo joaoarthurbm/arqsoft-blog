@@ -86,6 +86,10 @@ a requisição do UI screen para o Beagle back-end, esse que é configurado no b
 criação dos componentes orientados ao servidor, seguindo o que foi acordado pelo usuario desenvolvedor. O back-end, também
 , é hospedado pela infraestrutura, entidade que implementa o Beagle e é configurada pelo Devops.
 
+![components-backend](beagle/container_beagle.png)
+<p align="center">Figura 2. Diagrama de containers do Beagle</p>
+
+
 
 
 ## Componentes
