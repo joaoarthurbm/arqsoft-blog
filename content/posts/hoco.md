@@ -88,7 +88,7 @@ Por fim, existe o container Database, como é exibido no diagrama está sendo ut
 
 ![fig1](diagrama-containers.png)
 
-## Diagrama de componentes
+### Diagrama de componentes
 
 Abaixo, é possível observar o diagrama de componentes do sistema:
 
@@ -123,7 +123,7 @@ Caso as informações entre os dados e os arquivos sejam compatíveis o processo
 
 ![figME](maquina-estados.png)
 
-# Contribuições Concretas
+## Contribuições Concretas
 
 Segue as PRs que foram feitas para a construção do documento acima:
 
