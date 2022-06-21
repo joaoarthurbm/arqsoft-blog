@@ -58,7 +58,7 @@ Na navegação semântica há o uso de um banco de dados externo da Apache que s
 !["Container 2"](container-2.png)
 
 
-## O diagrama de componentes
+## Componentes
 
 Na imagem a baixo, temos o container chatbot sendo ampliado e revelando seus componentes dentro dele, o qual, podemos ver que ele comunica-se com o cliente e elabora intenções complexas, obtem também relatórios e evolui progressivamente sua interação. 
 
