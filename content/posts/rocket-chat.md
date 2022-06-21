@@ -50,4 +50,4 @@ Uma parte essencial para o sistema é como ele lida com mensagens criptografadas
 
 <h4 align="center"> Diagrama Máquina de Estados para Mensagens Criptografadas </h4>
 
-![Diagrama Máquina de Estados para Mensagens Criptografadas](https://raw.githubusercontent.com/bielmenezesc/arqsoft-blog/gabriel.cabral/content/posts/rocket-chat/rocketchat-diagrama-maquina-de-estados.png)
+![Diagrama Máquina de Estados para Mensagens Criptografadas](rocketchat-diagrama-maquina-de-estados.png)
