@@ -32,7 +32,17 @@ Este documento descreve parte da arquitetura do projeto [Turing IA](https://gith
 
 ## Descrição Geral sobre Turing AI
 
-O Viglet Turing AI é uma plataforma que utiliza processamento de linguagem natural (NLP) e aprendizado de máquina para fornecer dados mais inteligentes, possui como principais 
+O Viglet Turing AI é uma plataforma que utiliza processamento de linguagem natural (NLP) e aprendizado de máquina para fornecer dados mais inteligentes, possui como principais funcionalidades a Navegação Semântica e o Chatbot. O usuário pode escolher entre vários NLPs para enriquecer os dados. Todo o conteúdo é indexado no Solr como uma ferramenta de busca.
+
+## Contexto
+A aplicação é baixada em um arquivo jar, onde, depois de executado, a Turing fornece acesso remoto à administração, configuração e gerenciamento por meio de suas interfaces de aplicativos da Web.
+
+A Aplicação Web permite ao usuário acesso as funcionalidades do sistema, onde muitas delas são interligadas e compartilham informações com as outras. 
+
+* A funcionalidade de NLP possui diferentes configurações de ferramentas para extrair dados por Processamento de Linguagem Natural, o usuário pode inserir esses dados em um modelo de Machine Learning pré configurado, como também pode configurar um novo modelo de acordo com sua preferência.
+* O Turing AI utiliza uma Search Engine pré configurada para armazenar e recuperar dados de Converse (Chatbot) e Sites de Navegação Semântica. O Turing também fornece a adição de outras Search Engines para sua execução, assim como a novas configurações das propriedades que dependem dele.
+
+!["Diagrama de Contexto"](contexto.png)
 
         
  ## Containers
