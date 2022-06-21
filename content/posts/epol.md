@@ -106,3 +106,15 @@ O módulo de Similaridade do ePol é composto por rotinas feitas em Python, sub-
 - **Rotina de Cálculo de Similaridade**: Verifica informações de similaridade dos inquéritos presentes na base de dados de Grafos, realizando o processamento dessas informações se um inquérito não as possuir.
 - **Rotina de Atualização do BD Similaridade**: Compara informações de similaridade entre a base de dados de Grafos e a base de dados de Similaridade, se houver informação relevante, atualiza essa última.
 
+### Visão de Informação
+
+A API de Similaridade em sua rota de busca por similares, recebe um identificador de um inquérito, um tipo de similaridade a ser cálculada, e em acréscimo, se o tipo de similaridade for dados estruturados, recebe também um JSON com os dados estruturados desse inquérito alvo.
+
+No método de similaridade por inteligência artificial, o identificador do inquérito é utilizado para realizar uma busca pelo texto de um inquérito. A partir desse texto, os embeddings (representação do texto em vetor) são gerados, em seguida agrupados através de um modelo de agrupamento, então as similaridades são calculadas dentro do agrupamento encontrado a partir de operações com vetores, e logo após são salvas no banco de dados de Grafos.
+
+No método de similaridade por dados estruturados, os dados estruturados do inquérito alvo são utilizados para realizar uma comparação com os dados estruturados dos inquéritos presentes no banco de dados do ePol, e a partir disso as similaridades são encontradas, e logo após são salvas no banco de dados de Grafos.
+
+A seguir, o diagrama de fluxo de informação que representa o que foi descrito anteriormente.
+
+![Diagrama de fluxo de informação](./epol/data-flow-diagram.png)
+
