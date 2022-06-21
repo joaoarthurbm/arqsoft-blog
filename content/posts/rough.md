@@ -54,7 +54,12 @@ O core recebe as configurações de inicialização da chamada com o método que
 Então ele utiliza funções utilitárias que irão calcular e definir a figura desejada.
 ![container](/roughjs/containers.png)
 
-### Components
+### Componentes
 
 A biblioteca é constituída por um conjunto de funções que geram imagens em forma de vetores SVG ou elementos HTML Canvas. Esses, por sua vez, se utilizam de um grupo de funções que codificam formas geométricas (linha, retângulo, elipse, circulo, polígono, arco, curva, ou caminho) com estilos de linhas personalizáveis. E por fim, esses possuem uma miríade de estilos de preenchimentos configuráveis, em formas (hachura, sólido, zigue-zague, cross, hachura cheia (cross-hatch), pontos, linhas, e linha em zigue-zague), cor, angulação dentre outras opções.
 ![container](/roughjs/components.png)
+
+### Visão de Informação
+
+A forma que os dados dessa biblioteca são manipulados é utilizando um generator para gerar os tipos mais comuns de desenho como, circulos, eclipse, retângulos, linhas entre outros. Além disso, é utilizado fillers para preencher as figuras geometricas. Geometry é um arquivo essencial para essa biblioteca, pois é a partir dele que são gerados, produzidos e calculados as linhas e pontos de rotação de todos os desenhos que forem feitos. Outro arquivo que é base para todos os outros é o core, pois possui a interface utilizada em quase todos os arquivos do sistema. Por fim, o renderer se utiliza de todos esses outros arquivos mencionados acima, além de utilizar possui outros métodos para fazer todo o processo de desenho acontecer, calculos, preenchimento, direcionamento e curvaturas.
+
