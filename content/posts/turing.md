@@ -57,6 +57,16 @@ Na navegação semântica há o uso de um banco de dados externo da Apache que s
 
 !["Container 2"](container-2.png)
 
+
+## O diagrama de componentes
+
+Na imagem a baixo, temos o container chatbot sendo ampliado e revelando seus componentes dentro dele, o qual, podemos ver que ele comunica-se com o cliente e elabora intenções complexas, obtem também relatórios e evolui progressivamente sua interação. 
+
+Os componentes TurConverseAgentAPI, TurConverseIntentAPI, TurConverseHistoryAPI, TurConverseEntityAPI, TurConverseTrainingAPI, também são controladores, com isso possibilitando ter acesso, além de salvar no banco de dados. 
+
+!["diagrama de componentes"](diagrama_de_componentes.png)
+
+
 ## Visão de informação
 
 O diagrama abaixo descreve a máquina de estados do chatbot. Ao iniciarmos uma conversa, o agente espera um input nosso, no caso, uma frase. Com a frase em mãos, ele usa o motor de busca para descobrir a intenção da frase. Nesse ponto, o agente possui uma lista de intenções com a qual está apto a responder, caso o motor de busca não consiga relacionar a frase usada a uma previamente treinada, o agente não entenderá a frase e não responderá. No caso da intenção ser validada, uma resposta é montada de acordo com as frases de resposta.
