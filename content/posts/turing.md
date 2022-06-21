@@ -1,5 +1,5 @@
 +++
-title = "Documentação Arquitetural - Turing"
+title = "Turing AI - Documentação Arquitetural"
 date = 2022-06-06
 tags = []
 categories = []
@@ -32,22 +32,23 @@ Este documento descreve parte da arquitetura do projeto [Turing IA](https://gith
 
 ## Descrição Geral sobre Turing AI
 
-O Viglet Turing AI é uma solução open source que tem como principais funcionalidades a Navegação Semântica e o Chatbot. O usuário pode escolher entre vários NLPs para enriquecer os dados. Todo o conteúdo é indexado no Solr como uma ferramenta de busca.
+O Viglet Turing AI é uma plataforma que utiliza processamento de linguagem natural (NLP) e aprendizado de máquina para fornecer dados mais inteligentes, possui como principais 
 
-## Container
+        
+ ## Containers
 
 O Sistema tem acesso a 4 funcionalidades: Chatbot, Processamento de Linguagem Natural (PLN), Navegação Semântica e Mecanismo de Busca.
 
 A fonte original de PLN é incorporada através do Open NLP, mas o usuário pode alterar e importar de fontes externas, como: [OpenText Content Analytics](https://www.opentext.com/), [CoreNLP](https://stanfordnlp.github.io/CoreNLP/), [SpaCy](https://spacy.io) e [Polyglot NLP](https://polyglot.readthedocs.io). Isso serve como uma maneira de enriquecer os dados, melhorando assim a tomada de decisão.
 
-!["Container 1"](https://raw.githubusercontent.com/nayarasps/arqsoft-blog/nayara.souza/content/posts/turing/container-1.png)
+!["Container 1"](container-1.png)
 
 Na navegação semântica há o uso de um banco de dados externo da Apache que segue o conceito de [Sqoop](https://sqoop.apache.org), com o intuito de criar consultas complexas e mapear atributos com o objetivo de realizar a indexação baseada no resultado.
 
-!["Container 2"](https://raw.githubusercontent.com/nayarasps/arqsoft-blog/nayara.souza/content/posts/turing/container-2.png)
+!["Container 2"](container-2.png)
 
 ## Visão de informação
 
 O diagrama abaixo descreve a máquina de estados do chatbot. Ao iniciarmos uma conversa, o agente espera um input nosso, no caso, uma frase. Com a frase em mãos, ele usa o motor de busca para descobrir a intenção da frase. Nesse ponto, o agente possui uma lista de intenções com a qual está apto a responder, caso o motor de busca não consiga relacionar a frase usada a uma previamente treinada, o agente não entenderá a frase e não responderá. No caso da intenção ser validada, uma resposta é montada de acordo com as frases de resposta.
 
-!["Máquina de estados chatbot"](https://raw.githubusercontent.com/nayarasps/arqsoft-blog/nayara.souza/content/posts/turing/maquina_de_estados_chatbot.png)
+!["Máquina de estados chatbot"](maquina_de_estados_chatbot.png)
