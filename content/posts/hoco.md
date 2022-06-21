@@ -8,6 +8,7 @@ categories = []
 # Autores
 
 Esse documento foi produzido pelos alunos:
+
 **Daniel Gomes de lima**
 
 - Github: https://github.com/dnlgomesl
