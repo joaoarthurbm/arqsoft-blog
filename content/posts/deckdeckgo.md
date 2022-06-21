@@ -71,7 +71,9 @@ O Studio é onde as edições são feitas. Ele usa Stencil, que é uma ferrament
 
 ### Componentes
 
-![Diagrama de Componentes]()
+O Studio, foco dessa análise, permite a criação e edição de slides, a partir da interação com o componente de apresentação. É possível inserir Gifs nas apresentações, que são providos pelo Provedor de Gifs. O Publisher busca informações do usuário para criar uma estrutura de diretórios nos quais serão salvas as apresentações de slide, além de criar seus respectivos links (deckdeckgo.com/{nome_do_usuário}/{nome_da_apresentação}. 
+
+![Diagrama de Componentes](diagrama_componentes.png)
 
 ### Visão de Informação
 
