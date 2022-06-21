@@ -26,7 +26,7 @@ Kleberson John Santos de Maria.
 
 Signal é um aplicativo open source multiplataforma de comunicação criptografada de ponta a ponta para Android e iOS. Seguindo altos padrões de privacidade e segurança, ele usa TCP/IP (Internet) para enviar mensagens individuais ou em grupo, que, por sua vez, podem ser constituídas de textos, arquivos, notas de voz, imagens e vídeos, além de ser possível realizar chamadas de voz e vídeo entre duas pessoas.
 
-### Conatiners
+### Containers
 
 ![Diagrama de container](https://github.com/matheusforlan/arqsoft-blog/blob/matheus.andrade/content/posts/signal/Conatiners.png)
 
