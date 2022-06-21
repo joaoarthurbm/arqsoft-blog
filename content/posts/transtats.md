@@ -144,6 +144,9 @@ GET /api/job/<job_id>/log
 
 ### Visão de Informação
 
-{
-    ...
-}
+Por meio do front-end, o usuário solicita a tradução para um pacote de código por meio da inserção do link do repositório deste pacote. O usuário também pode escolher entre diferentes templates de tradução, em que cada template possui diferentes configurações. A aplicação web envia uma requisição para a API que, por sua vez, envia o código para a Plataforma de Tradução e essa plataforma realiza a tradução de acordo com os padrões de adaptação de software, Internationalization (i18n) e Localization (l10n). Uma vez finalizada, o Transtats armazena a tradução em uma nova branch no repositório de origem, por meio do Gerenciador de Repositórios. Durante todo o processo de tradução, o Transtas armazena em seu banco de dados o status e as estatísticas geradas no processo de tradução.
+
+A imagem abaixo representa, por meio de um diagrama de estados, o processo de solicitação da tradução de um pacote.
+
+<img class="center" src="./transtats/visao-de-info.png">
+
