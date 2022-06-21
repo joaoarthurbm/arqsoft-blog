@@ -40,9 +40,23 @@ O sistema do Rocket.Chat interage com alguns serviços e aplicações externas n
 ![Diagrama de contexto](rocketchat-context-diagram.png)
 
 ## Containers
+
 O rocket-chat pode ser apresentado em apenas um container principal, no qual apresenta as chamadas e o fluxo das mesmas. Evidenciando o que já é deixado claro no diagrama de contexto: Diversas chamadas a apis externas. O rocket possui tanto aplicação mobile (Android e IOS) desenvolvida em react native quanto web (html e css), ambas se comunicam com a api rest através do protocolo http.
 
 ![containers](rocketchat-container-diagram.png)
+
+## Componentes
+Os principais Componentes do sistema RocketChat estão descritos a seguir:
+
+* **Login**: componente responsável pelo login dos usuários no sistema;
+* **Security Componente**: componente responsável por funcionalidades relacionadas ao login, mudança de senhas, etc;
+* **User Registration**: componente responsável pelo cadastro de um usuário no sistema, colentando todos os dados necessáios;
+* **Creating video/audio/text channels**: componente responsável pela criação de canais que podem ser de texto, audio e video;
+* **Editing channels data**: componente responsável pela atualização dos dados dos canais ;
+* **Dashboard**: componente responsável pela vizualização de todos os canais disponiveis no servidor.
+
+Abaixo encontra-se o diagrama de componentes acima citados.
+![Componentes](rocketchat-componentes-diagram.png)
 
 ## Visão de Informação
 
