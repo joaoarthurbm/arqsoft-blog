@@ -58,22 +58,18 @@ Database: O banco de dados (SQLite) armazena o número de telefone do usuário r
 
 ![Diagrama de componentes](https://github.com/matheusforlan/arqsoft-blog/blob/matheus.andrade/content/posts/signal/Components.png)
 
+O aplicativo para Android  possui diversos componentes que podem ser divididos em grupos específicos:
 
-	O aplicativo para Android  possui diversos componentes que podem ser divididos em grupos específicos:
-
- Aplicação: todos os componentes de UI e notificações que interagem com o usuário.
+Aplicação: todos os componentes de UI e notificações que interagem com o usuário.
 
 Jobs: Como o app é em sua maior parte assíncrono, as principais atividades de envio e recebimento de mensagens são lidas como tarefas a serem realizadas em um momento futuro, agendado pelo Manager
 
 Services: A parte que interage com o banco de dados, interfaces e outros componentes externos necessários para o funcionamento do app.
-
-
-    Cada grupo de componentes exercem funções bem definidas, como camadas da aplicação. Vamo fazer aqui uma listagem dos principais componentes: 
+Cada grupo de componentes exercem funções bem definidas, como camadas da aplicação. Vamo fazer aqui uma listagem dos principais componentes: 
 
 UI logic: encapsula toda  a lógica do front-end do app, isso inclui mini componentes como perfil de usuário, registramento de novos usuários, gerenciadores de mensagem e conversas,contatos, além do WebRTC para chamadas(que nesse caso, deve ser síncrono)
 
 Receivers:  a parte de comunicação do app, que se liga ao framework do android, agindo como intermediário entre o signal server o Google Cloud Messaging. Permite as notificações push.
-
 
 Jobs: são a forma como app lida com assincronismo. São tarefas curtas para serem realizadas em algum momento, gerenciadas pelo Job Manager. Podem ser criados por atividades ou receptores.
 
@@ -90,12 +86,9 @@ Hardware Controller: Parte que permite que o app tenha acesso ao hardware do sma
 
 ### Informação
 
-![Diagrama de container](https://github.com/matheusforlan/arqsoft-blog/blob/matheus.andrade/content/posts/signal/Information-View.png)
+![Diagrama de informação](https://github.com/matheusforlan/arqsoft-blog/blob/matheus.andrade/content/posts/signal/Information-View.png)
 
 Conforme ilustrado no diagrama acima, o fluxo da informação se inicia a partir do momento em que o usuário começa a digitar em seu teclado virtual, no qual a mensagem é tratada internamente como um rascunho e, este por sua vez, é sempre anexado a uma conversa específica e pode ser editado.
 Já quando o remetente clica no botão para enviar mensagem, a mesma passa para o status de mensagem composta, e com isso não pode ser modificada. Vale salientar que nesse instante, a mensagem ainda não foi transmitida.
 Após esse passo, a mensagem é criptografada e enviada aos servidores do Signal, onde ao chegar, o destinatário é notificado sobre a existência de uma nova mensagem endereçada ao mesmo. Ele, então, pesquisa por novas mensagens nos servidores do Signal, recupera a mensagem enviada e a descriptografa em uma mensagem legível. Essa transição também aciona um som e/ou vibração no telefone para notificar o usuário alvo da mensagem recém-chegada.
 Por fim, o destinatário abre a sua aplicação para ler a mensagem, que passa a ter o status como “lida”, informação que pode ser visualizada pelo remetente da mensagem. 
-
-
- 
