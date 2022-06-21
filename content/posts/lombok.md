@@ -119,3 +119,24 @@ Algumas funcionalidades e exemplos do uso Lombok podem ser vistas abaixo:
 
     }
 ```
+
+# Componentes
+
+O Lombok possui quatro componentes principais:
+
+**AnnotationProcessorHider**: É carregado pelo Lombok.jar no processo de compilação e serve como ponto de partida para o processamento de anotações Lombok.
+
+**ShadowClassLoader**: Procura por arquivos .SLC.lombok e inicia o AnnotationProcessor.
+
+**AnnotationProcessor**: Reconhece o ambiente em que o lombok se encontra e delega para o sub-processador correspondente.
+
+**LombokProcessor**: Traduz as anotações para o código correspondente e injeta na Árvore sintática abstrata.
+
+![Diagrama de Componentes](lombok/diagrama-de-componentes.svg)
+
+# Código
+
+<pre>
+Nesta etapa não faremos diagramas que apresentam detalhes da
+implementação. Faremos isso mais adiante.
+</pre>
