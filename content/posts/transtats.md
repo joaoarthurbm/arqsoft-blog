@@ -46,9 +46,9 @@ Automatizar o processo de tradução de pacotes de código e informar métricas 
 Compilar as estatística do processo de tradução em componentes visuais, como gráficos e tabelas, realizar a tradução para diversas línguas, avaliar a cobertura da tradução e agrupar traduções específicas por releases.
 
 ### Contexto
-<img class="center" src="./transtats/contexto_transtats.png" style="width:80%">
+<img class="center" src="./transtats/context_transtats.png" style="width:80%">
 
-Em uma visão mais geral da aplicação, o gerenciador do Transtats é responsável pelo processamento das informações sobre o progresso e processo da tradução, ele interage com o banco de dados para a leitura/escrita e sincronização dos dados, a partir disso o sistema é capaz de gerar tanto gráficos como relatórios com as estatísticas em relação às releases. Ainda relacionado ao gerenciador, fica também a parte de criação das mensagens/notificações à equipe(desenvolvedores, gerentes, time de qualidade etc).
+Em uma visão mais geral da aplicação, o Transtats é responsável pela centralização das operações sobre o progresso e processo da tradução, ele precisa interagir com o gerenciador de repositório para receber/buscar os dados, faz o processamento e posteriormente o sistema faz o envio dos pacotes de informação para a outra entidade do diagrama, a plataforma de tradução.
 
 
 
