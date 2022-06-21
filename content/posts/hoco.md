@@ -66,7 +66,7 @@ Como é exibido no diagrama abaixo, existe um segundo tipo de usuário, o(a) pro
 
 Por fim, há a API de avaliação desenvolvida pela coordenação do curso, sendo esta responsável por permitir que a avaliação e feedback das atividades complementares cadastradas sejam realizadas.
 
-![fig1](hoco/diagrama-contexto.png)
+![fig1](diagrama-contexto.png)
 
 ### Containers
 
@@ -86,13 +86,13 @@ O sistema HoCo-pro além de fazer uso da API HoCo também fará uso do container
 
 Por fim, existe o container Database, como é exibido no diagrama está sendo utilizado o MongoDB que é um banco de dados não relacional que armazena os dados dos estudantes, certificados de atividades complementares, imagens das organizações, dúvidas recorrentes e etc.
 
-![fig1](hoco/diagrama-containers.png)
+![fig1](diagrama-containers.png)
 
 ## Diagrama de componentes
 
 Abaixo, é possível observar o diagrama de componentes do sistema:
 
-![ComponentDiagram](/content/posts/hoco/diagrama-componentes.png)
+![ComponentDiagram](diagrama-componentes.png)
 
 **Nos componentes, temos:**
 
@@ -121,7 +121,7 @@ Em seguida, para comprovar a validade das informações fornecidas, os arquivos 
 
 Caso as informações entre os dados e os arquivos sejam compatíveis o processo de dispensa de horas é efetuado. Caso contrário, o usuário é informado de uma incompatibilidade entre as informações, e o processo é invalidado ou o ciclo deve seguir novamente a partir do estado de edição.
 
-![figME](/content/posts/hoco/maquina-estados.png)
+![figME](maquina-estados.png)
 
 # Contribuições Concretas
 
