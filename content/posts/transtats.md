@@ -111,6 +111,7 @@ Executa um job
 POST /api/job/run
 ```
 **Exemplo**
+
 - Request
 ```
 curl -d '{
@@ -149,7 +150,7 @@ O `Jobs Framework` oferece atualmente seis templates de comunicação, sendo est
 - dpushtrans: download das traduções da plataforma de tradução de pacotes e upload na plataforma CI.
 - pulltrans: download das traduções da plataforma CI e envio de volta.
 
-<img class="center" src="./transtats/components-diagram.jpg" alt="Diagrama de componente - Transtats" style="width:80%"
+<img class="center" src="./transtats/components-diagram.jpg" alt="Diagrama de componente - Transtats" style="width:80%">
 
 ### Visão de Informação
 
