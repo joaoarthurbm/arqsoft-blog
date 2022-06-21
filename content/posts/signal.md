@@ -26,6 +26,17 @@ Kleberson John Santos de Maria.
 
 Signal é um aplicativo open source multiplataforma de comunicação criptografada de ponta a ponta para Android e iOS. Seguindo altos padrões de privacidade e segurança, ele usa TCP/IP (Internet) para enviar mensagens individuais ou em grupo, que, por sua vez, podem ser constituídas de textos, arquivos, notas de voz, imagens e vídeos, além de ser possível realizar chamadas de voz e vídeo entre duas pessoas.
 
+## Descrição Arquitetural – Signal Android
+
+Este documento descreve parte da arquitetura do projeto Signal. Essa descrição foi baseada principalmente no modelo C4.
+É importante destacar que não será descrita toda a arquitetura do Signal. Essa descrição arquitetural se concentra apenas no cliente Android.
+
+### Contexto
+
+Temos acima  o diagrama de  contexto do aplicativo Signal Android, o qual o usuário pode enviar mensagens e fazer ligações individuais ou em grupo. Para se comunicar com o Signal Server, é acionado o serviço de nuvem Amazon Route 53  que faz uma pesquisa de DNS do Signal Server e retorna uma lista com os Signal Servers disponíveis mais adequados. O Signal utiliza o Signal Protocol para criptografar mensagens e o webRTC para configurar um canal de streaming de vídeo/voz criptografado. O Signal Server empurra pacotes para frente e para trás entre os clientes conectados (gerenciando os usuários, enviando mensagens e estabelecendo conexão entre os usuários nas ligações), além de usar o Firebase Cloud Messaging para enviar notificações de mensagens e chamadas para o usuário que está recebendo.
+
+![Diagrama de contexto](https://github.com/matheusforlan/arqsoft-blog/blob/matheus.andrade/content/posts/signal/Context.png)
+
 ### Containers
 
 ![Diagrama de container](https://github.com/matheusforlan/arqsoft-blog/blob/matheus.andrade/content/posts/signal/Conatiners.png)
