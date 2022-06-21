@@ -38,7 +38,7 @@ Database: O banco de dados (SQLite) armazena o número de telefone do usuário r
 
 ### Informação
 
-![Diagrama de container](https://github.com/matheusforlan/arqsoft-blog/blob/matheus.andrade/content/posts/signal/Information.png)
+![Diagrama de container](https://github.com/matheusforlan/arqsoft-blog/blob/matheus.andrade/content/posts/signal/Information-View.png)
 
 Conforme ilustrado no diagrama acima, o fluxo da informação se inicia a partir do momento em que o usuário começa a digitar em seu teclado virtual, no qual a mensagem é tratada internamente como um rascunho e, este por sua vez, é sempre anexado a uma conversa específica e pode ser editado.
 Já quando o remetente clica no botão para enviar mensagem, a mesma passa para o status de mensagem composta, e com isso não pode ser modificada. Vale salientar que nesse instante, a mensagem ainda não foi transmitida.
