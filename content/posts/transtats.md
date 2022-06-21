@@ -139,9 +139,9 @@ GET /api/job/<job_id>/log
 
 ### Componentes
 
-Os componentes do container API são o `API REST` que possibilita a comunicação das requisições na aplicação web com o `Controller`, segundo componente responsável por gerenciar o sistema utilizando mais dois componentes: `Jobs Framework`, que faz uso do componente de mensagens `Async Msg Queue`, e o `Model`, responsável por estabelecer o modelo de comunicação com o banco de dados.
+Os componentes do container API são o `API REST` que possibilita a comunicação das requisições na aplicação web com o `Controller`, segundo componente responsável por gerenciar o sistema utilizando mais dois componentes: `Jobs Framework`, que faz uso do componente de mensagens `Async Msg Queue`, e o `Model`, responsável por estabelecer o modelo de comunicação com o banco de dados. O `Async Msg Queue` armazena requisições não bloqueantes ao `Jobs Framework`.
 
-O `Jobs Framework` oferece atualmente seis templates de comunicação, sendo estes e seus respsctivos serviços:
+O `Jobs Framework` oferece atualmente seis templates de comunicação, sendo estes e seus respectivos serviços:
 
 - syncupstream: clonagem do repositório de origem do pacote, filtragem das traduções e cálculo de estatísticas.
 - syncdownstream: localização do SRPM mais recente, descompactação, filtragem de arquivos de tradução e cálculo estatísticas.
@@ -159,4 +159,3 @@ Por meio do front-end, o usuário solicita a tradução para um pacote de códig
 A imagem abaixo representa, por meio de um diagrama de estados, o processo de solicitação da tradução de um pacote.
 
 <img class="center" src="./transtats/visao-de-info.png">
-
