@@ -138,9 +138,18 @@ GET /api/job/<job_id>/log
 
 ### Componentes
 
-{
-    ...
-}
+Os componentes do container API são o `API REST` que possibilita a comunicação das requisições na aplicação web com o `Controller`, segundo componente responsável por gerenciar o sistema utilizando mais dois componentes: `Jobs Framework`, que faz uso do componente de mensagens `Async Msg Queue`, e o `Model`, responsável por estabelecer o modelo de comunicação com o banco de dados.
+
+O `Jobs Framework` oferece atualmente seis templates de comunicação, sendo estes e seus respsctivos serviços:
+
+- syncupstream: clonagem do repositório de origem do pacote, filtragem das traduções e cálculo de estatísticas.
+- syncdownstream: localização do SRPM mais recente, descompactação, filtragem de arquivos de tradução e cálculo estatísticas.
+- stringchange: clonagem do repositório de origem do pacote, geração do modelo (POT) de acordo com o comando fornecido, download do modelo da plataforma e busca/comparação de diferenças.
+- pushtrans: clonagem do repositório de origem do pacote, filtragem das traduções e upload para a plataforma CI.
+- dpushtrans: download das traduções da plataforma de tradução de pacotes e upload na plataforma CI.
+- pulltrans: download das traduções da plataforma CI e envio de volta.
+
+<img class="center" src="./transtats/components-diagram.jpg" alt="Diagrama de componente - Transtats" style="width:80%"
 
 ### Visão de Informação
 
