@@ -46,11 +46,10 @@ Automatizar o processo de tradução de pacotes de código e informar métricas 
 Compilar as estatística do processo de tradução em componentes visuais, como gráficos e tabelas, realizar a tradução para diversas línguas, avaliar a cobertura da tradução e agrupar traduções específicas por releases.
 
 ### Contexto
-<img class="center" src="./transtats/context_transtats.png" style="width:80%">
 
-Em uma visão mais geral da aplicação, o Transtats é responsável pela centralização das operações sobre o progresso e processo da tradução, ele precisa interagir com o gerenciador de repositório para receber/buscar os dados, faz o processamento e posteriormente o sistema faz o envio dos pacotes de informação para a outra entidade do diagrama, a plataforma de tradução.
+<img class="center" src="./transtats/context-diagram.png" style="width:80%">
 
-
+O usuário solicita a tradução de um pacote de código ao Transtats e este, por sua vez, utiliza uma Plataforma de Tradução e um componente de Gerenciamento do Repositório, ambos externos, para realizar a tradução e devolver o código traduzido ao usuário. Nos diagramas a seguir, esse processo pode ser visto com mais detalhes.
 
 ### Containers
 
@@ -140,7 +139,7 @@ GET /api/job/<job_id>/log
 
 ### Componentes
 
-Os componentes do container API são o `API REST` que possibilita a comunicação das requisições na aplicação web com o `Controller`, segundo componente responsável por gerenciar o sistema utilizando mais dois componentes: `Jobs Framework`, que faz uso do componente de mensagens `Async Msg Queue`, e o `Model`, responsável por estabelecer o modelo de comunicação com o banco de dados. O `Async Msg Queue` armazena requisições não bloqueantes ao `Jobs Framework`.
+Os componentes do container API são o `API REST` que possibilita a comunicação das requisições na aplicação web com o `Controller`, segundo componente responsável por gerenciar o sistema utilizando mais dois componentes: `Jobs Framework`, que é o responsável por padronizar o processo de tradução por meio de arquivos YAML, e o `Model`, responsável por estabelecer o modelo de comunicação com o banco de dados. O `Async Msg Queue` armazena requisições não bloqueantes ao `Jobs Framework`.
 
 O `Jobs Framework` oferece atualmente seis templates de comunicação, sendo estes e seus respectivos serviços:
 
