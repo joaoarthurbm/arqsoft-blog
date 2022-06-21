@@ -140,3 +140,13 @@ O Lombok possui quatro componentes principais:
 Nesta etapa não faremos diagramas que apresentam detalhes da
 implementação. Faremos isso mais adiante.
 </pre>
+
+#  Visão de informação
+
+Para essa etapa vamos em demonstrar o fluxo de execução, do processamento de uma anotação Lombok em determinada classe.
+
+![Diagrama de Visão](lombok/Diagrama de Visão.svg)
+
+# Contribuições Concretas
+
+Ainda não foram abertas PRs para o repositório oficial do Lombok porque ainda é necessário validar a documentação já produzida e provavelmente é necessário produzir uma versão em inglês.
