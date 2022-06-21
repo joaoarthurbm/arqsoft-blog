@@ -46,8 +46,8 @@ O rocket-chat pode ser apresentado em apenas um container principal, no qual apr
 
 ## Visão de Informação
 
-Uma parte essencial para o sistema é como ele lida com mensagens criptografadas para fornecer comunicações seguras. Ele funciona da seguinte maneira, ao clicar duas vezes no nome de usúario do contato, abre uma janela de canal. Ele habilita o Off-the-Record MEssaging para enviar mensagens criptografadas. Quando o remetente habilita o OTR, o sistema alerta o receptor para habilitar o OTR em sua janela de canal para receber essas mensagens criptografadas. Em segundo plano, o software rapidamente divide suas mensagens em pacotes criptografados pela Signal Protocol Library. Os pacotes são enviados para o lado do receptor através do Internet Relay Chat. Quando os pacotes são recebidos, eles são descriptografados pela Signal Protocol Library. Finalmente, a mensagem aparece na janela do receptor.
+Uma parte essencial para o sistema é como ele lida com mensagens criptografadas para fornecer comunicações seguras. Ele funciona da seguinte maneira, ao clicar duas vezes no nome de usúario do contato, abre uma janela de canal. Ele habilita o Off-the-Record Messaging para enviar mensagens criptografadas. Quando o transmissor habilita o OTR, o sistema alerta o receptor para habilitar o OTR em sua janela de canal para receber essas mensagens criptografadas. Em segundo plano, o software rapidamente divide suas mensagens em pacotes criptografados pela Signal Protocol Library. Os pacotes são enviados para o lado do receptor através do Internet Relay Chat. Quando os pacotes são recebidos, eles são descriptografados pela Signal Protocol Library. Finalmente, a mensagem aparece na janela do receptor.
 
-<h4 align="center"> Diagrama Comportamental para Mensagens Criptografadas </h4>
+<h4 align="center"> Diagrama Máquina de Estados para Mensagens Criptografadas </h4>
 
-![alt text](https://i.imgur.com/7VfhY4G.jpge)
+![Diagrama Máquina de Estados para Mensagens Criptografadas](rocketchat-maquina-de-estados.png)
