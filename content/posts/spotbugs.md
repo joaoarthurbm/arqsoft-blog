@@ -71,7 +71,7 @@ Depois de configurado o findBugs executa o método execute() o qual vai criar o 
 
 ![components](spotbugs/components.png)
 
-## visão de informação
+## Visão de informação
 
 O projeto é enviado para o AnalysisContext que  passa as classes do projeto para os detectores de bugs que podem ser do tipo baseado em visitante ou baseado em cfg, que mandam os bugs para a saída.
 
