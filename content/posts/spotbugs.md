@@ -54,4 +54,5 @@ O SpotBugs é um sistema simples, que pode ser usado de forma standalone ou inte
 O Desenvolvedor precisa escolher como usar o software, seja pela opção standalone ou integrada. 
 
 Obviamente é necessário também um software alvo para que o sistema seja direcionado.
+
 ![context](spotbugs/context.png)
