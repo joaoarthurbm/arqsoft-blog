@@ -64,3 +64,10 @@ Como o Spotbugs funciona através de um aplicativo externo na forma de um plugin
 
 ![containers](spotbugs/containers.png)
 
+## Components
+
+O objeto findBugs pode ser configurado de algumas formas, por exemplo: quais categorias de bugs devem ser retornadas, como vulnerabilidade de códigos maliciosos e corretude, qual nível de esforço da análise, decidindo entre uma análise mais meticulosa porém com maior custo de processamento, ou mais leve (menos precisa porém mais rápida), dentre outras configurações.
+
+
+![components](spotbugs/Components.png)
+
