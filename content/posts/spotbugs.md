@@ -67,7 +67,13 @@ Como o Spotbugs funciona através de um aplicativo externo na forma de um plugin
 ## Components
 
 O objeto findBugs pode ser configurado de algumas formas, por exemplo: quais categorias de bugs devem ser retornadas, como vulnerabilidade de códigos maliciosos e corretude, qual nível de esforço da análise, decidindo entre uma análise mais meticulosa porém com maior custo de processamento, ou mais leve (menos precisa porém mais rápida), dentre outras configurações.
+Depois de configurado o findBugs executa o método execute() o qual vai criar o objeto analisysContext que por sua vez chama o repositório BCEL que serve como um repositório de toda informação global pertencente à atual sessão de análise, este usa os detectores para encontrar e reportar os bugs.
 
+![components](spotbugs/components.png)
 
-![components](spotbugs/Components.png)
+## visão de informação
+
+O projeto é enviado para o AnalysisContext que  passa as classes do projeto para os detectores de bugs que podem ser do tipo baseado em visitante ou baseado em cfg, que mandam os bugs para a saída.
+
+![visao_de_informacao](spotbugs/visao_de_informacao.png)
 
