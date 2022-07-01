@@ -56,3 +56,11 @@ O Desenvolvedor precisa escolher como usar o software, seja pela opção standal
 Obviamente é necessário também um software alvo para que o sistema seja direcionado.
 
 ![context](spotbugs/context.png)
+
+## Containers
+
+Para iniciar, uma instância da classe FindBugs é criada. Ela serve como engrenagem principal para executar o analisador. O analisador retorna todos os ‘warnings’ (dados persistidos no banco de Dados) que por sua vez são passados como parâmetro do construtor do findBugs. O segundo parâmetro é o projeto que será analisado.
+Como o Spotbugs funciona através de um aplicativo externo na forma de um plugin ou como um stand alone através de uma interface, que pode ser uma GUI ou através de linha de comando, o analisador pode receber dados de ambas as partes, analisando e reportando os bugs encontrados.
+
+![containers](spotbugs/containers.png)
+
