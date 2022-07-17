@@ -1,3 +1,10 @@
++++
+title = "Arquitetura do serviço de similaridade entre inquéritos do ePol - IA"
+date = 2022-06-06
+tags = []
+categories = []
++++
+
 # Descrição Arquitetural – Serviço de similaridade entre inquéritos do ePol
 
 Este documento descreve parte da arquitetura do projeto [ePol](https://github.com/orgs/epol-ufcg/teams/similaridade/repositories). Essa descrição foi baseada principalmente no modelo [C4](https://c4model.com/).
