@@ -49,7 +49,7 @@ Queremos encontrar inquéritos similares a partir de um inquérito alvo *on the 
 
 O usuário, agente da Polícia Federal, utiliza o Frontend do SmartPol para processar documentos, gerar e buscar dados de inquéritos. O Frontend se comunica com o módulo de Similaridade para iniciar e buscar casos similares. O módulo citado anteriormente, cujo é o alvo desse documento, é responsável por iniciar o processamento de similaridade entre inquéritos, realizando a persistência dos resultados desse processamento através de comunicação com o módulo de Grafos. Além disso, juntamente com o módulo de Sumarização e com o módulo de Grafos, é responsável pela transformação de um caso temporário em um caso permanente.
 
-![Diagrama de contexto do ePol](./epol/context-diagram-epol.png)
+![Diagrama de contexto do ePol](context-diagram-epol.png)
 
 ### Containers
 
@@ -91,19 +91,19 @@ Realiza a remoção do caso temporário (identificado pelo node_id passado) e to
 
 A seguir, o diagrama de container do ePol.
 
-![Diagrama de container do ePol](./epol/container-diagram-epol.png)
+![Diagrama de container do ePol](container-diagram-epol.png)
 
 #### Implantação
 
 A implantação do sistema de similaridade é feito utilizando containers Docker em todos os serviços, e a configuração da comunicação com outros módulos é feita a partir de variáveis de ambiente, que comumente são utilizados no OpenShift Container Platform, porém como o Docker é um "criador" de ambiente, esses serviços podem ser executados em uma VM. Para mais detalhes, consultar a documentação oficial dos serviços citados. Segue abaixo o diagrama de implantação.
 
-![Diagrama de implantação do ePol](./epol/diagrama-implantacao.png)
+![Diagrama de implantação do ePol](diagrama-implantacao.png)
 
 ### Componentes
 
 O módulo de Similaridade do ePol é composto por rotinas feitas em Python, sub-módulos feitos em Flask Python, e uma base de dados construída utilizando MongoDB.
 
-![Diagrama de componentes do ePol](./epol/component-diagram-epol.png)
+![Diagrama de componentes do ePol](component-diagram-epol.png)
 
 - **BD Similaridade**: Base de dados construída em MongoDB. Serve como uma camada de cache para que seja evitado um *overhead* de requisições para a base de dados de Grafos.
 - **Caso Controller**: Esse módulo é responsável pela parte de comunicação com o Frontend. É ele que inicia a busca por dados de um inquérito no banco de dados do ePol, que busca inquéritos similares a um inquérito alvo, e também quem inicia a transformação de um caso temporário no banco de dados de Grafos, para um caso permantente.
@@ -123,5 +123,5 @@ No método de similaridade por dados estruturados, os dados estruturados do inqu
 
 A seguir, o diagrama de fluxo de informação que representa o que foi descrito anteriormente.
 
-![Diagrama de fluxo de informação](./epol/data-flow-diagram.png)
+![Diagrama de fluxo de informação](data-flow-diagram.png)
 
