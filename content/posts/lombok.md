@@ -49,8 +49,7 @@ Para fazer uso do Lombok, o usuário deve adicionar a anotação correspondente 
 
 Durante a compilação, quando as anotações são processadas, o Lombok injeta o código representado pela anotação e o compilador continua o processo de compilação, ao fim, os arquivos .class serão gerados como se o .java possuísse o código inserido pelo Lombok. 
 
-![Diagrama de Contexto](lombok/diagrama-de-contexto.svg)
-
+![Diagrama de Contexto](/content/posts/lombok/diagrama-de-contexto.svg)
 
 # Container
 
@@ -132,7 +131,7 @@ O Lombok possui quatro componentes principais:
 
 **LombokProcessor**: Traduz as anotações para o código correspondente e injeta na Árvore sintática abstrata.
 
-![Diagrama de Componentes](lombok/diagrama-de-componentes.svg)
+![Diagrama de Componentes](/content/posts/lombok/diagrama-de-componentes.svg)
 
 # Código
 
