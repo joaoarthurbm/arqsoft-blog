@@ -144,7 +144,7 @@ implementação. Faremos isso mais adiante.
 
 Para essa etapa vamos em demonstrar o fluxo de execução, do processamento de uma anotação Lombok em determinada classe.
 
-![Visão de informação](lombok/visao-de-informacao.svg)
+![Visão de informação](/content/posts/lombok/visao-de-informacao.svg)
 
 # Contribuições Concretas
 
